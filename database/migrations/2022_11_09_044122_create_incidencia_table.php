@@ -13,16 +13,16 @@ class CreateIncidenciaTable extends Migration
      */
     public function up()
     {
-        Schema::create('incidencia', function (Blueprint $table) {
+        Schema::create('incidencias', function (Blueprint $table) {
             $table->id();
             $table->date("Fecha");
             $table->text("Descripcion");
             $table->unsignedBigInteger("id_Ciclo");
-            $table->foreign("id_Ciclo")->references("id")->on("cicloescolar")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_Alumno");
-            $table->foreign("id_Alumno")->references("id")->on("alumno")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_Admin");
-            $table->foreign("id_Admin")->references("id")->on("administrativo")->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign("id_Ciclo")->references("id")->on("cicloescolars")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("alumno_id");
+            $table->foreign("alumno_id")->references("id")->on("alumnos")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

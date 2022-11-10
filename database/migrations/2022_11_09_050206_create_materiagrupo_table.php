@@ -13,11 +13,11 @@ class CreateMateriagrupoTable extends Migration
      */
     public function up()
     {
-        Schema::create('materiagrupo', function (Blueprint $table) {
-            $table->unsignedBigInteger("id_Grupo");
-            $table->foreign("id_Grupo")->references("id")->on("grupo")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_Materia");
-            $table->foreign("id_Materia")->references("id")->on("materia")->onDelete('cascade')->onUpdate('cascade');
+        Schema::create('grupo_materia', function (Blueprint $table) {
+            $table->unsignedBigInteger("grupo_id");
+            $table->foreign("grupo_id")->references("id")->on("grupos")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("materia_id");
+            $table->foreign("materia_id")->references("id")->on("materias")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

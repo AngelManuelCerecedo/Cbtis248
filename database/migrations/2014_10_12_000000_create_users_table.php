@@ -15,13 +15,29 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('password2')->nullable();
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+
+            $table->string("Curp",18)->unique();
+            $table->string("Nombre",45);
+            $table->string("ApPaterno",45);
+            $table->string("ApMaterno",45);
+            $table->string("Rfc",13)->unique();
+            $table->string("Clave_Cobro",45);
+            $table->string("Puesto",45);
+            $table->string("Perfil",45);
+            $table->date("Fecha_ingreso");
+            $table->date("Fecha_ingreso_SEP");
+            $table->date("Fecha_ingreso_DGETI");
+            $table->string("Categoria",45);
+            $table->string("Numero_Tarjeta",45);
+            $table->integer("Horas_Nom");
+            $table->string("Numero_Plaza",45);
+            $table->text("Observasiones");
+            $table->string("Estatus",45);
+
             $table->timestamps();
         });
     }

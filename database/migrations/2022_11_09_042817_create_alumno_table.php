@@ -13,7 +13,7 @@ class CreateAlumnoTable extends Migration
      */
     public function up()
     {
-        Schema::create('alumno', function (Blueprint $table) {
+        Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
             $table->string("Curp",18)->unique();
             $table->string("Nombre",45);
@@ -33,16 +33,16 @@ class CreateAlumnoTable extends Migration
             $table->string("Tipo_Sangre",5);
             $table->date("Año_Fin");
             $table->string("Promedio",45);
-            $table->unsignedBigInteger("Clave_Secu");
-            $table->foreign("Clave_Secu")->references("id")->on("secundaria")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_Padre");
-            $table->foreign("id_Padre")->references("id")->on("padre")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("Clave_Grupo");
-            $table->foreign("Clave_Grupo")->references("id")->on("grupo")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_Esp");
-            $table->foreign("id_Esp")->references("id")->on("especialidad")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_Grado");
-            $table->foreign("id_grado")->references("id")->on("grado")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("secundaria_id");
+            $table->foreign("secundaria_id")->references("id")->on("secundarias")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("padre_id");
+            $table->foreign("padre_id")->references("id")->on("padres")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("grupo_id");
+            $table->foreign("grupo_id")->references("id")->on("grupos")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("especialidad_id");
+            $table->foreign("especialidad_id")->references("id")->on("especialidads")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("grado_id");
+            $table->foreign("grado_id")->references("id")->on("grados")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

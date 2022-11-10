@@ -28,6 +28,10 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    
+    public function incidencia(){
+        return $this->hasMany("App\Models\Incidencia");
+    }
 
     /**
      * The attributes that should be hidden for serialization.

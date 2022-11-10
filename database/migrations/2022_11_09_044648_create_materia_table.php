@@ -13,14 +13,14 @@ class CreateMateriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('materia', function (Blueprint $table) {
+        Schema::create('materias', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre",45);
             $table->integer("Horas_Sem");
-            $table->unsignedBigInteger("id_Esp");
-            $table->foreign("id_Esp")->references("id")->on("especialidad")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_Grado");
-            $table->foreign("id_Grado")->references("id")->on("grado")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("especialidad_id");
+            $table->foreign("especialidad_id")->references("id")->on("especialidads")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("grado_id");
+            $table->foreign("grado_id")->references("id")->on("grados")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

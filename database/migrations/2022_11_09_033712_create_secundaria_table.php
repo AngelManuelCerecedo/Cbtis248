@@ -13,7 +13,7 @@ class CreateSecundariaTable extends Migration
      */
     public function up()
     {
-        Schema::create('secundaria', function (Blueprint $table) {
+        Schema::create('secundarias', function (Blueprint $table) {
             $table->id();
             $table->string("ClaveSecu")->unique();
             $table->string("Nombre",45);

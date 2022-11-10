@@ -13,11 +13,11 @@ class CreateMateriaprofesorTable extends Migration
      */
     public function up()
     {
-        Schema::create('materiaprofesor', function (Blueprint $table) {
-            $table->unsignedBigInteger("id_Materia");
-            $table->foreign("id_Materia")->references("id")->on("materia")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_Profesor");
-            $table->foreign("id_Profesor")->references("id")->on("profesor")->onDelete('cascade')->onUpdate('cascade');
+        Schema::create('materia_profesor', function (Blueprint $table) {
+            $table->unsignedBigInteger("materia_id");
+            $table->foreign("materia_id")->references("id")->on("materias")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("profesor_id");
+            $table->foreign("profesor_id")->references("id")->on("profesors")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

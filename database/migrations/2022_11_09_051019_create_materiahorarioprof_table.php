@@ -13,13 +13,13 @@ class CreateMateriahorarioprofTable extends Migration
      */
     public function up()
     {
-        Schema::create('materiahorarioprof', function (Blueprint $table) {
+        Schema::create('horarioprofesor_materia', function (Blueprint $table) {
             $table->string("Hora",45);
             $table->string("Dia",45);
-            $table->unsignedBigInteger("id_Materia");
-            $table->foreign("id_Materia")->references("id")->on("materia")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_HorarioProf");
-            $table->foreign("id_HorarioProf")->references("id")->on("horarioprofesor")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("materia_id");
+            $table->foreign("materia_id")->references("id")->on("materias")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("horarioprofesor_id");
+            $table->foreign("horarioprofesor_id")->references("id")->on("horarioprofesors")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

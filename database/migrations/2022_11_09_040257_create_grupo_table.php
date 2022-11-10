@@ -13,16 +13,16 @@ class CreateGrupoTable extends Migration
      */
     public function up()
     {
-        Schema::create('grupo', function (Blueprint $table) {
+        Schema::create('grupos', function (Blueprint $table) {
             $table->id();
             $table->string("Clave_Grupo",45);
             $table->string("Turno",45);
             $table->string("Especialidad",45);
             $table->string("Salon",45);
-            $table->unsignedBigInteger("id_grado");
-            $table->foreign("id_grado")->references("id")->on("grado")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_ciclo");
-            $table->foreign("id_ciclo")->references("id")->on("cicloescolar")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("grado_id");
+            $table->foreign("grado_id")->references("id")->on("grados")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("ciclo_id");
+            $table->foreign("ciclo_id")->references("id")->on("cicloescolars")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateGrupoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grupo');
+        Schema::dropIfExists('grupos');
     }
 }

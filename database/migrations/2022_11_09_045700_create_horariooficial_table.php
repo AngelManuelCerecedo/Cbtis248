@@ -13,7 +13,7 @@ class CreateHorariooficialTable extends Migration
      */
     public function up()
     {
-        Schema::create('horariooficial', function (Blueprint $table) {
+        Schema::create('horariooficials', function (Blueprint $table) {
             $table->id();
             $table->integer("Horas_Tot");
             $table->integer("Horas_Tota");
@@ -23,8 +23,8 @@ class CreateHorariooficialTable extends Migration
             $table->integer("Total");
             $table->text("Observaciones");
             $table->date("Fecha");
-            $table->unsignedBigInteger("id_Ciclo");
-            $table->foreign("id_Ciclo")->references("id")->on("cicloescolar")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("ciclo_id");
+            $table->foreign("ciclo_id")->references("id")->on("cicloescolars")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

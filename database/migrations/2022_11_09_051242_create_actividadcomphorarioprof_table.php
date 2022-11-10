@@ -13,11 +13,11 @@ class CreateActividadcomphorarioprofTable extends Migration
      */
     public function up()
     {
-        Schema::create('actividadcomphorarioprof', function (Blueprint $table) {
-            $table->unsignedBigInteger("id_ActComp");
-            $table->foreign("id_ActComp")->references("id")->on("actividadcomp")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("id_HorarioProf");
-            $table->foreign("id_HorarioProf")->references("id")->on("horarioprofesor")->onDelete('cascade')->onUpdate('cascade');
+        Schema::create('actividadcomp_horarioprofesor', function (Blueprint $table) {
+            $table->unsignedBigInteger("actividadcomp_id");
+            $table->foreign("actividadcomp_id")->references("id")->on("actividadcomps")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("horarioprofesor_id");
+            $table->foreign("horarioprofesor_id")->references("id")->on("horarioprofesors")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

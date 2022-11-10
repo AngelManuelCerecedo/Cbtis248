@@ -13,7 +13,7 @@ class CreateEspecialidadTable extends Migration
      */
     public function up()
     {
-        Schema::create('especialidad', function (Blueprint $table) {
+        Schema::create('especialidads', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre",45);
             $table->timestamps();

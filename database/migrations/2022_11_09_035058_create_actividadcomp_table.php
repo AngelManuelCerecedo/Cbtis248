@@ -13,7 +13,7 @@ class CreateActividadcompTable extends Migration
      */
     public function up()
     {
-        Schema::create('actividadcomp', function (Blueprint $table) {
+        Schema::create('actividadcomps', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre",45);
             $table->integer("HoraSem");

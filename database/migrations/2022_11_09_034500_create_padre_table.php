@@ -13,7 +13,7 @@ class CreatePadreTable extends Migration
      */
     public function up()
     {
-        Schema::create('padre', function (Blueprint $table) {
+        Schema::create('padres', function (Blueprint $table) {
             $table->id();
             $table->string("Nombre",45);
             $table->string("ApPaterno",45);

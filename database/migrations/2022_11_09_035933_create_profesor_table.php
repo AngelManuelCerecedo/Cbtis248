@@ -13,7 +13,7 @@ class CreateProfesorTable extends Migration
      */
     public function up()
     {
-        Schema::create('profesor', function (Blueprint $table) {
+        Schema::create('profesors', function (Blueprint $table) {
             $table->id();
             $table->string("Curp",18)->unique();
             $table->string("Nombre",45);

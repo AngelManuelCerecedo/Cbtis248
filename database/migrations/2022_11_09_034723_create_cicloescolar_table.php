@@ -13,7 +13,7 @@ class CreateCicloescolarTable extends Migration
      */
     public function up()
     {
-        Schema::create('cicloescolar', function (Blueprint $table) {
+        Schema::create('cicloescolars', function (Blueprint $table) {
             $table->id();
             $table->string("Semestre",45);
             $table->timestamps();
