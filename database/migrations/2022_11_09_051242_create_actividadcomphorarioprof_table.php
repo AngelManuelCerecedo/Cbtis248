@@ -15,7 +15,7 @@ class CreateActividadcomphorarioprofTable extends Migration
     {
         Schema::create('actividadcomp_horarioprofesor', function (Blueprint $table) {
             $table->unsignedBigInteger("actividadcomp_id");
-            $table->foreign("actividadcomp_id")->references("id")->on("actividadcomps")->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign("actividadcomp_id")->references("id")->on("act_comps")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("horarioprofesor_id");
             $table->foreign("horarioprofesor_id")->references("id")->on("horarioprofesors")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

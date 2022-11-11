@@ -30,7 +30,7 @@ class CreateProfesorTable extends Migration
             $table->string("Numero_Tarjeta",45);
             $table->integer("Horas_Nom");
             $table->string("Numero_Plaza",45);
-            $table->text("Observasiones");
+            $table->text("Observaciones");
             $table->string("Estatus",45);
             $table->timestamps();
         });

@@ -22,7 +22,7 @@ class CreateGrupoTable extends Migration
             $table->unsignedBigInteger("grado_id");
             $table->foreign("grado_id")->references("id")->on("grados")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("ciclo_id");
-            $table->foreign("ciclo_id")->references("id")->on("cicloescolars")->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign("ciclo_id")->references("id")->on("ciclo_escolars")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

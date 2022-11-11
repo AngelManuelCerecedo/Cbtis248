@@ -24,7 +24,7 @@ class CreateHorariooficialTable extends Migration
             $table->text("Observaciones");
             $table->date("Fecha");
             $table->unsignedBigInteger("ciclo_id");
-            $table->foreign("ciclo_id")->references("id")->on("cicloescolars")->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign("ciclo_id")->references("id")->on("ciclo_escolars")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

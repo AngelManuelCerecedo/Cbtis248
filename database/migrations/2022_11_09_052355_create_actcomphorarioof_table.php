@@ -15,7 +15,7 @@ class CreateActcomphorarioofTable extends Migration
     {
         Schema::create('actividadcomp_horariooficial', function (Blueprint $table) {
             $table->unsignedBigInteger("actividadcomp_id");
-            $table->foreign("actividadcomp_id")->references("id")->on("actividadcomps")->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign("actividadcomp_id")->references("id")->on("act_comps")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("horariooficial_id");
             $table->foreign("horariooficial_id")->references("id")->on("horariooficials")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
