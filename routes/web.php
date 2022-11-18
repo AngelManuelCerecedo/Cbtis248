@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AlumnosController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +28,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+// RUTAS DE ALUMNOS
+
+Route::get('alumnos/catalogo',[AlumnosController::class,'Balumno'])->name('BuscarAlumnos');
+Route::get('alumnos/registro',[AlumnosController::class,'Ralumno'])->name('RegistrarAlumnos');
+Route::get('alumnos/incidencia',[AlumnosController::class,'Cincidencia'])->name('Cincidencia');
