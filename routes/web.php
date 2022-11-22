@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PersonalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +35,8 @@ Route::middleware([
 Route::get('alumnos/catalogo',[AlumnosController::class,'Balumno'])->name('BuscarAlumnos');
 Route::get('alumnos/registro',[AlumnosController::class,'Ralumno'])->name('RegistrarAlumnos');
 Route::get('alumnos/incidencia',[AlumnosController::class,'Cincidencia'])->name('Cincidencia');
+
+// RUTAS DEL PERSONAL
+
+Route::get('personal/catalogo',[PersonalController::class,'Bpersonal'])->name('BuscarPersonal');
+Route::get('personal/registro',[PersonalController::class,'Rpersonal'])->name('RegistrarPersonal');

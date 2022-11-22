@@ -75,10 +75,10 @@
                 </div>
 
                 <div class=" leading-7 text-left text-[15px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloPersonal">
-                    <a href="">
+                    <a href="{{route('BuscarPersonal')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Buscar Personal</h1>
                     </a>
-                    <a href="">
+                    <a href="{{route('RegistrarPersonal')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Registrar Personal</h1>
                     </a>
                 </div>
