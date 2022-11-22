@@ -3,6 +3,7 @@
 use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\MateriasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,3 +41,8 @@ Route::get('alumnos/incidencia',[AlumnosController::class,'Cincidencia'])->name(
 
 Route::get('personal/catalogo',[PersonalController::class,'Bpersonal'])->name('BuscarPersonal');
 Route::get('personal/registro',[PersonalController::class,'Rpersonal'])->name('RegistrarPersonal');
+
+// RUTAS DE LAS MATERIAS
+
+Route::get('materias/catalogo',[MateriasController::class,'Bmateria'])->name('BuscarMaterias');
+Route::get('materias/registro',[MateriasController::class,'Rmateria'])->name('RegistrarMaterias');

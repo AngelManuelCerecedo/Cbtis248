@@ -1317,6 +1317,18 @@ select {
 .mb-1 {
   margin-bottom: 0.25rem;
 }
+.mt-14 {
+  margin-top: 3.5rem;
+}
+.ml-32 {
+  margin-left: 8rem;
+}
+.ml-64 {
+  margin-left: 16rem;
+}
+.ml-96 {
+  margin-left: 24rem;
+}
 .block {
   display: block;
 }
@@ -1775,6 +1787,15 @@ select {
 .p-2\.5 {
   padding: 0.625rem;
 }
+.p-24 {
+  padding: 6rem;
+}
+.p-64 {
+  padding: 16rem;
+}
+.p-32 {
+  padding: 8rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1880,6 +1901,12 @@ select {
 }
 .pr-8 {
   padding-right: 2rem;
+}
+.pr-32 {
+  padding-right: 8rem;
+}
+.pl-32 {
+  padding-left: 8rem;
 }
 .text-left {
   text-align: left;
@@ -2776,6 +2803,10 @@ select {
 
   .lg\:ml-4 {
     margin-left: 1rem;
+  }
+
+  .lg\:ml-96 {
+    margin-left: 24rem;
   }
 
   .lg\:hidden {
