@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActividadController;
 use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PersonalController;
@@ -46,3 +47,8 @@ Route::get('personal/registro',[PersonalController::class,'Rpersonal'])->name('R
 
 Route::get('materias/catalogo',[MateriasController::class,'Bmateria'])->name('BuscarMaterias');
 Route::get('materias/registro',[MateriasController::class,'Rmateria'])->name('RegistrarMaterias');
+
+// RUTAS DE LAS ACTIVIDADES COMPLEMENTARIAS
+
+Route::get('actividad/catalogo',[ActividadController::class,'Bactividad'])->name('BuscarActividades');
+Route::get('actividad/registro',[ActividadController::class,'Ractividad'])->name('RegistrarActividades');

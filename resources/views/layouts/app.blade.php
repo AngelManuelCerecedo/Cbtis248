@@ -114,13 +114,13 @@
                     <a href="{{route('BuscarMaterias')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Buscar Materia</h1>
                     </a>
-                    <a href="{{route('RegistrarMaterias')}}"">
+                    <a href="{{route('RegistrarMaterias')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Registrar Materia</h1>
                     </a>
-                    <a href="">
+                    <a href="{{route('BuscarActividades')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Buscar Actividad Complementaria</h1>
                     </a>
-                    <a href="">
+                    <a href="{{route('RegistrarActividades')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Registrar Actividad Complementaria</h1>
                     </a>
                 </div>
