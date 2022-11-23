@@ -15,4 +15,5 @@ class AlumnosController extends Controller
     public function Cincidencia(){
         return view('alumnos.Cincidencia');
     }
+    
 }
