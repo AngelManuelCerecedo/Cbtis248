@@ -4,6 +4,9 @@ use App\Http\Controllers\ActividadController;
 use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\PadresController;
+use App\Http\Controllers\SecundariasController;
+use App\Http\Controllers\IncidenciasController;
 use App\Http\Controllers\MateriasController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,11 +35,13 @@ Route::middleware([
     })->name('dashboard');
 });
 
-// RUTAS DE ALUMNOS
+// RUTAS DEL CONTROL ESCOLAR
 
-Route::get('alumnos/catalogo',[AlumnosController::class,'Balumno'])->name('BuscarAlumnos');
-Route::get('alumnos/registro',[AlumnosController::class,'Ralumno'])->name('RegistrarAlumnos');
-Route::get('alumnos/incidencia',[AlumnosController::class,'Cincidencia'])->name('Cincidencia');
+Route::get('Alumnos',[AlumnosController::class,'alumno'])->name('Alumnos');
+Route::get('Alumnos/Formulario',[AlumnosController::class,'ralumno'])->name('RAlumno');
+Route::get('Padres',[PadresController::class,'padre'])->name('Padres');
+Route::get('Secundarias',[SecundariasController::class,'secundaria'])->name('Secundarias');
+Route::get('Incidencias',[IncidenciasController::class,'incidencia'])->name('Incidencias');
 
 // RUTAS DEL PERSONAL
 

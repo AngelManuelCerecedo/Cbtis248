@@ -1,16 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Registrar Alumno')
+@section('title', 'Secundarias')
 @section('content')
-    @livewire('alumnos.ralumnos')
+    @livewire('secundarias.index')
 @endsection
 @section('js')
     <script>
         window.addEventListener('swal', event => {
             Swal.fire({
-                position: 'mid',
-                icon: event.detail.type,
                 title: event.detail.title,
-                showConfirmButton: false,
+                icon: event.detail.type,
+
             })
         });
     </script>

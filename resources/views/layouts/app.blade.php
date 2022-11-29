@@ -49,18 +49,21 @@
                     <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
                         <i class="bi bi-mortarboard"></i>
                         <div class="flex justify-between w-full items-center" onclick="dropDown1()">
-                            <span class="text-[20px] ml-4 text-gray-200">Alumnos</span>
+                            <span class="text-[20px] ml-4 text-gray-200">Control Escolar</span>
                         </div>
                     </div>
                 </span>
-                <div class=" leading-7 text-left text-[15px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloAlumno">
-                    <a href="{{route('BuscarAlumnos')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Buscar Alumno</h1>
+                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloAlumno">
+                    <a href="{{route('Alumnos')}}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Alumnos</h1>
                     </a>
-                    <a href="{{route('RegistrarAlumnos')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Registrar Alumno</h1>
+                    <a href="{{route('Padres')}}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Padres</h1>
                     </a>
-                    <a href="{{route('Cincidencia')}}">
+                    <a href="{{route('Secundarias')}}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Secundarias</h1>
+                    </a>
+                    <a href="{{route('Incidencias')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Incidencias</h1>
                     </a>
                 </div>
@@ -74,7 +77,7 @@
                     </div>
                 </div>
 
-                <div class=" leading-7 text-left text-[15px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloPersonal">
+                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloPersonal">
                     <a href="{{route('BuscarPersonal')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Buscar Personal</h1>
                     </a>
@@ -92,7 +95,7 @@
                     </div>
                 </div>
 
-                <div class=" leading-7 text-left text-[15px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloHorario">
+                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloHorario">
                     <a href="">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Grupo</h1>
                     </a>
@@ -110,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class=" leading-7 text-left text-[15px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloMateria">
+                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloMateria">
                     <a href="{{route('BuscarMaterias')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Buscar Materia</h1>
                     </a>
@@ -134,7 +137,7 @@
                     </div>
                 </div>
 
-                <div class=" leading-7 text-left text-[15px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloGrupo">
+                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloGrupo">
                     <a href="">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Buscar Grupo</h1>
                     </a>

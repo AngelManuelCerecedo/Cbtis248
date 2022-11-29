@@ -6,14 +6,10 @@ use Illuminate\Http\Request;
 
 class AlumnosController extends Controller
 {
-    public function Balumno(){
+    public function alumno(){
         return view('alumnos.Balumno');
-    }
-    public function Ralumno(){
+    }    
+    public function ralumno(){
         return view('alumnos.Ralumno');
-    }
-    public function Cincidencia(){
-        return view('alumnos.Cincidencia');
-    }
-    
+    }  
 }

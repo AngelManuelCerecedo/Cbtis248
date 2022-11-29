@@ -16,7 +16,7 @@ class SecundariaFactory extends Factory
         return [
             'ClaveSecu' => $this->faker->unique()->randomElement(['LOPT','PUBA','QLTE','ZARE','PLOT','TOUE','LOPQ','PUBG','QLTJ','ZARB']),
             'Nombre' => $this->faker->randomElement(['ST1','ST2','ST3','ST4','ST5','ST6','ST7','ST8','ST9','ST170']),
-            'Modalidad' => $this->faker->randomElement(['Presencial','Telesecundaria','Remota','Digital']),
+            'Modalidad' => $this->faker->randomElement(['General','Tecnica','Telesecundaria','Otra']),
             'Regimen' => $this->faker->randomElement(['Publica','Privada']),
         ];
     }

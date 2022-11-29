@@ -1,8 +1,11 @@
 <div>
+    @if($modal)
+    @include('livewire.secundarias.modalRS')
+    @endif
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div class="pt-8">
-                <h1 class="text-4xl font-sans leading-tight text-center">ALUMNOS</h1>
+                <h1 class="text-4xl font-sans leading-tight text-center">SECUNDARIAS</h1>
             </div>
             <!--DIV PADRE-->
             <div class="my-2 flex sm:flex-row flex-col pt-16">
@@ -23,43 +26,29 @@
                             <option value="20">20</option>
                         </select>
                     </div>
-                    <div>
-                        <select wire:model='estatus'
-                            class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 sm:px-2 sm:mr-0 lg:ml-4 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                            <option value="Todos">Todos</option>
-                            <option value="Activo">Activo</option>
-                            <option value="Baja Temporal">Baja Temporal</option>
-                            <option value="Baja Definitiva">Baja Definitiva</option>
-                            <option value="Egresados">Egresado</option>
-                        </select>
-                    </div>
                 </div>
             </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                 <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                    @if ($alumnos->count())
+                    @if ($secundarias->count())
                         <table class="min-w-full leading-normal font-sans text-center">
                             <thead>
                                 <tr>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
+                                        Clave
+                                    </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
                                         Nombre
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Apellido Paterno
+                                        Modalidad
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Apellido Materno
-                                    </th>
-                                    <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Curp
-                                    </th>
-                                    <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Num. Control
+                                        Regimen
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sesansmibold text-gray-600 uppercase tracking-wider">
@@ -68,23 +57,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($alumnos as $alumno)
+                                @foreach ($secundarias as $secundaria)
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->Nombre }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $secundaria->ClaveSecu }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->ApPaterno }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $secundaria->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->ApMaterno }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $secundaria->Modalidad }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->Curp }}</p>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ $alumno->Numero_Control }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $secundaria->Regimen }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         </td>
@@ -108,21 +93,20 @@
                             </div>
                         </div>
                     @endif
-                    @if ($alumnos->hasPages())
+                    @if ($secundarias->hasPages())
                         <div class="px-6 py-3">
-                            {{ $alumnos->links() }}
+                            {{ $secundarias->links() }}
                         </div>
                     @endif
                 </div>
             </div>
         </div>
         <div class="flex items-center justify-center w-full mt-10">
-            <a href="{{route('RAlumno')}}">
-                <button
-                    class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none">
-                    Registrar Alumno
-                </button>
-            </a>
+            <button
+                class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
+                wire:click='abrirmodal()'>
+                Registrar Secundaria
+            </button>
         </div>
     </div>
 </div>

@@ -12,7 +12,6 @@ class Balumnos extends Component
     public $search;
     public $cantidad = 5;
     public $estatus = 'Todos';
-    public $prueba;
 
 
     public function render()

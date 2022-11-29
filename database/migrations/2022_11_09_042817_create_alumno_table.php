@@ -29,7 +29,6 @@ class CreateAlumnoTable extends Migration
             $table->string("Codigo_Postal",45);
             $table->string("Calle_Num",45);
             $table->string("Colonia",45);
-            $table->string("Telefono_Fijo",10);
             $table->string("Celular_Alum",10);
             $table->string("Numero_Seguro",11);
             $table->string("Tipo_Sangre",5);
@@ -39,7 +38,7 @@ class CreateAlumnoTable extends Migration
             $table->foreign("secundaria_id")->references("id")->on("secundarias")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("padre_id");
             $table->foreign("padre_id")->references("id")->on("padres")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("grupo_id");
+            $table->unsignedBigInteger("grupo_id")->nullable();
             $table->foreign("grupo_id")->references("id")->on("grupos")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("especialidad_id");
             $table->foreign("especialidad_id")->references("id")->on("especialidads")->onDelete('cascade')->onUpdate('cascade');

@@ -28,7 +28,6 @@ class AlumnoFactory extends Factory
             'Codigo_Postal' => $this->faker->randomElement(['68000','68123','68200','68900']),
             'Calle_Num' => $this->faker->randomElement(['1','2','3','4']),
             'Colonia' => $this->faker->randomElement(['Oaxaca','Etla','ElChayo','SanMartin']),
-            'Telefono_Fijo' => $this->faker->randomElement(['951423423','9511233212','9515677656','9517899889','9510345981','9511066675']),
             'Celular_Alum' => $this->faker->randomElement(['951423423','9511233212','9515677656','9517899889','9510345981','9511066675']),
             'Numero_Seguro' => $this->faker->randomElement(['951423423','9511233212','9515677656','9517899889','9510345981','9511066675']),
             'Tipo_Sangre' => $this->faker->randomElement(['A+','O+','ORH+','ORH-','B+','AB+']),
