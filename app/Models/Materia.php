@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Materia extends Model
 {
     use HasFactory;
+    protected $fillable=['id','Nombre','Horas_Sem','especialidad_id','grado_id'];
     public function grupo(){
         return $this->belongsToMany("App\Models\Grupo");
     }

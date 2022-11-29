@@ -114,17 +114,11 @@
                 </div>
 
                 <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloMateria">
-                    <a href="{{route('BuscarMaterias')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Buscar Materia</h1>
+                    <a href="{{route('Materias')}}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Materias</h1>
                     </a>
-                    <a href="{{route('RegistrarMaterias')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Registrar Materia</h1>
-                    </a>
-                    <a href="{{route('BuscarActividades')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Buscar Actividad Complementaria</h1>
-                    </a>
-                    <a href="{{route('RegistrarActividades')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Registrar Actividad Complementaria</h1>
+                    <a href="{{route('Actividades')}}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Actividades Complementarias</h1>
                     </a>
                 </div>
 

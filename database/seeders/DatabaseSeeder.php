@@ -29,8 +29,8 @@ class DatabaseSeeder extends Seeder
         Secundaria::factory(10)->create();
         Padre::factory(10)->create();
         $this->call(CicloSeeder::class);
-        Grado::factory(6)->create();
-        Especialidad::factory(6)->create();
+        $this->call(GradoSeeder::class);
+        $this->call(EspecialidadSeeder::class);
         ActComp::factory(10)->create();
         User::factory(10)->create();
         Profesor::factory(10)->create();

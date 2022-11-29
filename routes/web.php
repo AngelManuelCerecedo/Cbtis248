@@ -50,10 +50,8 @@ Route::get('personal/registro',[PersonalController::class,'Rpersonal'])->name('R
 
 // RUTAS DE LAS MATERIAS
 
-Route::get('materias/catalogo',[MateriasController::class,'Bmateria'])->name('BuscarMaterias');
-Route::get('materias/registro',[MateriasController::class,'Rmateria'])->name('RegistrarMaterias');
+Route::get('Materias',[MateriasController::class,'materia'])->name('Materias');
 
 // RUTAS DE LAS ACTIVIDADES COMPLEMENTARIAS
 
-Route::get('actividad/catalogo',[ActividadController::class,'Bactividad'])->name('BuscarActividades');
-Route::get('actividad/registro',[ActividadController::class,'Ractividad'])->name('RegistrarActividades');
+Route::get('Actividades Complementarias',[ActividadController::class,'actividad'])->name('Actividades');

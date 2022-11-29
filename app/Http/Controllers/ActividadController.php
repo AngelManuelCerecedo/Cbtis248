@@ -6,10 +6,7 @@ use Illuminate\Http\Request;
 
 class ActividadController extends Controller
 {
-    public function Bactividad(){
-        return view('actividades.Bactividad');
-    }
-    public function Ractividad(){
-        return view('actividades.Ractividad');
+    public function actividad(){
+        return view('actividades.index');
     }
 }
