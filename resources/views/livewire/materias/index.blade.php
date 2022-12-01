@@ -1,6 +1,6 @@
 <div>
-    @if($modal)
-    @include('livewire.materias.modalRM')
+    @if ($modal)
+        @include('livewire.materias.modalRM')
     @endif
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
@@ -55,9 +55,17 @@
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $materia->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $materia->especialidad_id}}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $materia->especialidad->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <button wire:click="editar({{ $materia->id }})" type="button"
+                                                class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1"><i
+                                                    class="bi bi-pencil-square"></i></button>
+
+                                            <button wire:click="borrar({{ $materia->id }})" type="button"
+                                                class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
+                                                    class="bi bi-trash-fill"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -88,11 +96,11 @@
             </div>
         </div>
         <div class="flex items-center justify-center w-full mt-10">
-                <button
-                    class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
-                    wire:click='crearmodal()'>
-                    Registrar Materia
-                </button>
+            <button
+                class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
+                wire:click='crearmodal()'>
+                Registrar Materia
+            </button>
         </div>
     </div>
 </div>

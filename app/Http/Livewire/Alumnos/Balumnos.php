@@ -12,6 +12,7 @@ class Balumnos extends Component
     public $search;
     public $cantidad = 5;
     public $estatus = 'Todos';
+    protected $listeners = ['delete'];
 
 
     public function render()
@@ -43,5 +44,26 @@ class Balumnos extends Component
     public function updatingCantidad()
     {
         $this->resetPage();
+    }
+
+    public function borrar($id){
+
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'title' => '¿Estás seguro de eliminar?',
+            'type' => 'warning',
+            'id' => $id,
+        ]);
+    }
+
+    public function delete($id)
+    {
+
+        Alumno::findOrFail($id)->delete();
+        $this->redic();
+
+    }
+
+    public function redic(){
+        return redirect()->route('Alumnos');
     }
 }

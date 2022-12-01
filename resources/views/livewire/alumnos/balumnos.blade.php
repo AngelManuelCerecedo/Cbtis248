@@ -87,6 +87,16 @@
                                                 {{ $alumno->Numero_Control }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+
+                                            <a href="{{route('EAlumno',[$alumno->id])}}">
+                                                <button type="button"
+                                                    class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1"><i
+                                                        class="bi bi-pencil-square"></i></button>
+                                            </a>
+
+                                            <button wire:click="borrar({{ $alumno->id }})" type="button"
+                                                class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
+                                                    class="bi bi-trash-fill"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -117,7 +127,7 @@
             </div>
         </div>
         <div class="flex items-center justify-center w-full mt-10">
-            <a href="{{route('RAlumno')}}">
+            <a href="{{ route('RAlumno') }}">
                 <button
                     class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none">
                     Registrar Alumno

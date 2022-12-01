@@ -41,13 +41,9 @@
                                 <select wire:model='ESP'
                                     class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
                                     <option value="0">Selecciona una Especialidad</option>
-                                    <option value="1">Programacion</option>
-                                    <option value="2">Alimentos y Bebidas</option>
-                                    <option value="3">Administracion</option>
-                                    <option value="4">Soporte y Mantenimiento</option>
-                                    <option value="5">Mantenimiento Automotriz</option>
-                                    <option value="6">Servicios de Hospedaje</option>
-                                    <option value="7">Sin Especialidad</option>
+                                    @foreach ($especialidad as $esps)
+                                        <option value="{{ $esps->id }}">{{ $esps->Nombre }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -57,12 +53,9 @@
                                 <select wire:model='G'
                                     class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
                                     <option value="0">Selecciona un Grado</option>
-                                    <option value="5">Primero</option>
-                                    <option value="2">Segundo</option>
-                                    <option value="1">Tercero</option>
-                                    <option value="6">Cuarto</option>
-                                    <option value="4">Quinto</option>
-                                    <option value="3">Sexto</option>
+                                    @foreach ($grado as $grads)
+                                        <option value="{{ $grads->id }}">{{ $grads->Nombre }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

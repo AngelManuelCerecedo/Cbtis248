@@ -15,7 +15,7 @@ class Materia extends Model
     public function grado(){
         return $this->belongsTo("App\Models\Grado");
     }
-    public function especilalidad(){
+    public function especialidad(){
         return $this->belongsTo("App\Models\Especialidad");
     }
     public function Profesor(){

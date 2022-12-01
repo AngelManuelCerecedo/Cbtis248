@@ -11,5 +11,9 @@ class AlumnosController extends Controller
     }    
     public function ralumno(){
         return view('alumnos.Ralumno');
-    }  
+    }
+    
+    public function ealumno($id){
+        return view('alumnos.Ealumno', ['id' => $id]);
+    }
 }

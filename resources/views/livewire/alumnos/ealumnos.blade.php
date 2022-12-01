@@ -2,7 +2,7 @@
     <div class="w-full">
         <div class="w-full rounded p-8 sm:p-12 mt-4">
 
-            <p class="text-4xl font-sans leading-tight text-center">DATOS DEL ALUMNO</p>
+            <p class="text-4xl font-sans leading-tight text-center">EDITAR LA INFORMACIÓN DEL ALUMNO</p>
             <div class="md:flex items-center mt-12">
                 <div class="w-full md:w-1/4 flex flex-col">
                     <label class="font-sans leading-none">Numero de Control</label>
@@ -141,6 +141,18 @@
                     <input type="date" wire:model='AF'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
                 </div>
+
+                <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
+                    <label class="font-sans leading-none">Estatus</label>
+                    <select wire:model='EST'
+                        class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
+                        <option value="Activo">Activo</option>
+                        <option value="Baja Temporal">Baja Temporal</option>
+                        <option value="Baja Definitiva">Baja Definitiva</option>
+                        <option value="Egresados">Egresado</option>
+                    </select>
+                </div>
+
             </div>
 
             <div class="mt-20">
@@ -275,9 +287,15 @@
 
             <div class="flex items-center justify-center w-full mt-24">
                 <button
+                    class="mt-9 font-sans leading-none text-white py-4 px-10 mr-10 bg-[#D5C28B] rounded hover:bg-[#D5C28B] focus:ring-2 focus:ring-offset-2 focus:ring-[#D5C28B] focus:outline-none"
+                    wire:click="redic()">
+                    Cancelar
+                </button>
+
+                <button
                     class="mt-9 font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
-                    wire:click="registrar()">
-                    Registrar
+                    wire:click="actualizar()">
+                    Actualizar
                 </button>
             </div>
         </div>

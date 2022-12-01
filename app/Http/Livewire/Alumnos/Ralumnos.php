@@ -144,6 +144,6 @@ class Ralumnos extends Component
         $this->REG = '';
     }
     public function redic(){
-        return view('livewire.alumnos.balumnos');
+        return redirect()->route('Alumnos');
     }
 }

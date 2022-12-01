@@ -1,6 +1,6 @@
-<div> 
-    @if($modal)
-    @include('livewire.padres.modalRP')
+<div>
+    @if ($modal)
+        @include('livewire.padres.modalRP')
     @endif
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
@@ -72,6 +72,13 @@
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $padre->Telefono }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <button wire:click="editar({{ $padre->id }})" type="button"
+                                                class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1"><i
+                                                    class="bi bi-pencil-square"></i></button>
+
+                                            <button wire:click="borrar({{ $padre->id }})" type="button"
+                                                class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
+                                                    class="bi bi-trash-fill"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach

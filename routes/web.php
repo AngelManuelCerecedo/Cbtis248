@@ -39,6 +39,7 @@ Route::middleware([
 
 Route::get('Alumnos',[AlumnosController::class,'alumno'])->name('Alumnos');
 Route::get('Alumnos/Formulario',[AlumnosController::class,'ralumno'])->name('RAlumno');
+Route::get('Alumnos/Editar/{id}',[AlumnosController::class,'ealumno'])->name('EAlumno');
 Route::get('Padres',[PadresController::class,'padre'])->name('Padres');
 Route::get('Secundarias',[SecundariasController::class,'secundaria'])->name('Secundarias');
 Route::get('Incidencias',[IncidenciasController::class,'incidencia'])->name('Incidencias');
@@ -54,4 +55,4 @@ Route::get('Materias',[MateriasController::class,'materia'])->name('Materias');
 
 // RUTAS DE LAS ACTIVIDADES COMPLEMENTARIAS
 
-Route::get('Actividades Complementarias',[ActividadController::class,'actividad'])->name('Actividades');
+Route::get('ActividadesComplementarias',[ActividadController::class,'actividad'])->name('Actividades');
