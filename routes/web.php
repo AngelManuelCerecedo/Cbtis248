@@ -8,6 +8,7 @@ use App\Http\Controllers\PadresController;
 use App\Http\Controllers\SecundariasController;
 use App\Http\Controllers\IncidenciasController;
 use App\Http\Controllers\MateriasController;
+use App\Http\Controllers\AdministradoresController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,8 +48,12 @@ Route::get('Incidencias',[IncidenciasController::class,'incidencia'])->name('Inc
 // RUTAS DEL PERSONAL
 
 Route::get('Profesores',[PersonalController::class,'Bpersonal'])->name('BuscarPersonal');
-Route::get('Profesores/Editar/{id}',[PersonalController::class,'Epersonal'])->name('EPersonal');
 Route::get('Profesores/Formulario',[PersonalController::class,'Rpersonal'])->name('RegistrarPersonal');
+Route::get('Profesores/Editar/{id}',[PersonalController::class,'Epersonal'])->name('EditarPersonal');
+
+Route::get('Administradores',[AdministradoresController::class,'Badministrador'])->name('BuscarAdministrador');
+Route::get('Administradores/Formulario',[AdministradoresController::class,'Radministrador'])->name('RegistrarAdministrador');
+Route::get('Administradores/Editar/{id}',[AdministradoresController::class,'Eadministrador'])->name('EditarAdministrador');
 
 // RUTAS DE LAS MATERIAS
 

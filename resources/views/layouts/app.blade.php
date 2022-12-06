@@ -58,7 +58,7 @@
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Alumnos</h1>
                     </a>
                     <a href="{{route('Padres')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Padres</h1>
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Tutores</h1>
                     </a>
                     <a href="{{route('Secundarias')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Secundarias</h1>
@@ -81,7 +81,7 @@
                     <a href="{{route('BuscarPersonal')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Profesores</h1>
                     </a>
-                    <a href="{{route('RegistrarPersonal')}}">
+                    <a href="{{route('BuscarAdministrador')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Administrativos</h1>
                     </a>
                 </div>
