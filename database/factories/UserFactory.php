@@ -44,7 +44,7 @@ class UserFactory extends Factory
             'Horas_Nom' => $this->faker->numberBetween(1,6),
             'Numero_Plaza' => $this->faker->randomElement(['1','2','3']),
             'Observaciones' => $this->faker->randomElement(['Sin Observaciones']),
-            'Estatus' => $this->faker->randomElement(['Acticvo','Inactivo']),
+            'Estatus' => $this->faker->randomElement(['Activo','Inactivo']),
         ];
     }
 

@@ -102,16 +102,30 @@
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
+                    <label class="font-sans leading-none">Estatus</label>
+                    <select wire:model='ESTATUS'
+                        class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
+                        <option>Selecciona un Estatus</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
                 </div>
             </div>
         </div>
         <div class="flex items-center justify-center w-full mt-24">
             <button
-                class="mt-9 font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
-                wire:click="registrar()">
-                Registrar
-            </button>
+            class="mt-9 font-sans leading-none text-white py-4 px-10 mr-10 bg-[#D5C28B] rounded hover:bg-[#D5C28B] focus:ring-2 focus:ring-offset-2 focus:ring-[#D5C28B] focus:outline-none"
+            wire:click="redic()">
+            Cancelar
+        </button>
+
+        <button
+            class="mt-9 font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
+            wire:click="actualizar()">
+            Actualizar
+        </button>
         </div>
 
     </div>
 </div>
+

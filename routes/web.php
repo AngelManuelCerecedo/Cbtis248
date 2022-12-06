@@ -46,8 +46,9 @@ Route::get('Incidencias',[IncidenciasController::class,'incidencia'])->name('Inc
 
 // RUTAS DEL PERSONAL
 
-Route::get('personal/catalogo',[PersonalController::class,'Bpersonal'])->name('BuscarPersonal');
-Route::get('personal/registro',[PersonalController::class,'Rpersonal'])->name('RegistrarPersonal');
+Route::get('Profesores',[PersonalController::class,'Bpersonal'])->name('BuscarPersonal');
+Route::get('Profesores/Editar/{id}',[PersonalController::class,'Epersonal'])->name('EPersonal');
+Route::get('Profesores/Formulario',[PersonalController::class,'Rpersonal'])->name('RegistrarPersonal');
 
 // RUTAS DE LAS MATERIAS
 

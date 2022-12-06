@@ -12,4 +12,7 @@ class PersonalController extends Controller
     public function Rpersonal(){
         return view('personal.Rpersonal');
     }
+    public function Epersonal($id){
+        return view('personal.Epersonal',['id'=>$id]);
+    }
 }

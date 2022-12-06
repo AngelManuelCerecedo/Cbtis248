@@ -26,8 +26,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'password','id','Curp','Nombre','ApPaterno','ApMaterno','Rfc','Clave_Cobro','Puesto','Perfil','Fecha_ingreso','Fecha_ingreso_SEP',	
+        'Fecha_ingreso_DGETI','Categoria','Numero_Tarjeta','Horas_Nom','Numero_Plaza','Observaciones','Estatus'
     ];
+    
     
     public function incidencia(){
         return $this->hasMany("App\Models\Incidencia");
