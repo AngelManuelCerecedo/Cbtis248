@@ -119,7 +119,7 @@
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Contraseña</label>
-                    <input type="password" wire:model='PS'
+                    <input type="text" wire:model='PS'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">

@@ -31,7 +31,7 @@ class Eadministrador extends Component
         $this->O = $administrador->Observaciones;
         $this->ESTATUS = $administrador->Estatus;
         $this->E = $administrador->email;
-        $this->PS = $administrador->password;
+        $this->PS = decrypt($administrador->password2);
 
     }
 
@@ -61,7 +61,8 @@ class Eadministrador extends Component
             'Numero_Plaza' => $this->NP,
             'Observaciones' => $this->O,
             'email' => $this-> E,
-            'password' => $this->PS
+            'password' => bcrypt($this->PS),
+            'password2' => encrypt($this->PS),
         ]);
 
         $this->dispatchBrowserEvent('swal', [

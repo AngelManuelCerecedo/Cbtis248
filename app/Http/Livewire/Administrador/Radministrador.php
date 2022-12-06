@@ -36,7 +36,8 @@ class Radministrador extends Component
             'Numero_Plaza' => $this->NP,
             'Observaciones' => $this->O,
             'email' => $this->E,
-            'password' => $this->PS,
+            'password' => bcrypt($this->PS),
+            'password2' => encrypt($this->PS),
         ]);
         $this->dispatchBrowserEvent('swal', [
             'title' => 'Registro guardado exitosamente',
