@@ -132,11 +132,8 @@
                 </div>
 
                 <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloGrupo">
-                    <a href="">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Buscar Grupo</h1>
-                    </a>
-                    <a href="">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Grupo</h1>
+                    <a href="{{route('Grupos')}}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Grupos</h1>
                     </a>
                 </div>
 

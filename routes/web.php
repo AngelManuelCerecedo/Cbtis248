@@ -9,6 +9,7 @@ use App\Http\Controllers\SecundariasController;
 use App\Http\Controllers\IncidenciasController;
 use App\Http\Controllers\MateriasController;
 use App\Http\Controllers\AdministradoresController;
+use App\Http\Controllers\GruposController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,3 +63,6 @@ Route::get('Materias',[MateriasController::class,'materia'])->name('Materias');
 // RUTAS DE LAS ACTIVIDADES COMPLEMENTARIAS
 
 Route::get('ActividadesComplementarias',[ActividadController::class,'actividad'])->name('Actividades');
+
+// GRUPOS
+Route::get('Grupos',[GruposController::class,'grupo'])->name('Grupos');
