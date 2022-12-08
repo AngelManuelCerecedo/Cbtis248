@@ -12,7 +12,7 @@ class Grupo extends Model
     public function alumno(){
         return $this->hasMany("App\Models\Alumno");
     }
-    public function cicloesc(){
+    public function ciclo(){
         return $this->belongsTo("App\Models\CicloEscolar");
     }
     public function grado(){

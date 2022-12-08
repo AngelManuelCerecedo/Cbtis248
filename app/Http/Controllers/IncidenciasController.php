@@ -10,4 +10,8 @@ class IncidenciasController extends Controller
     {
         return view('incidencias.index');
     }
+    public function lincidencia($id)
+    {
+        return view('incidencias.Lincidencia', ['id' => $id]);
+    }
 }

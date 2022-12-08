@@ -45,6 +45,8 @@ Route::get('Alumnos/Editar/{id}',[AlumnosController::class,'ealumno'])->name('EA
 Route::get('Padres',[PadresController::class,'padre'])->name('Padres');
 Route::get('Secundarias',[SecundariasController::class,'secundaria'])->name('Secundarias');
 Route::get('Incidencias',[IncidenciasController::class,'incidencia'])->name('Incidencias');
+Route::get('ListadoIncidencias/{id}',[IncidenciasController::class,'lincidencia'])->name('Lincidencias');
+
 
 // RUTAS DEL PERSONAL
 

@@ -16,7 +16,7 @@ class IncidenciaFactory extends Factory
         return [
             'Fecha' => $this->faker->randomElement(['2022-01-23','2020-04-13','2021-07-1','2019-10-29']),
             'Descripcion' => $this->faker->randomElement(['problema1','problema2','problema3','problema4']),
-            'id_Ciclo' => $this->faker->randomElement(['1']),
+            'ciclo_id' => $this->faker->randomElement(['1']),
             'alumno_id' => $this->faker->numberBetween(1,10),
             'user_id' => $this->faker->numberBetween(1,10),
         ];

@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Incidencia extends Model
 {
     use HasFactory;
+    protected $fillable=['id','Fecha','Descripcion','ciclo_id','alumno_id','user_id'];
     public function alumno(){
         return $this->hasMany("App\Models\Alumno");
     }
-    public function cicloesc(){
+    public function ciclo(){
         return $this->belongsTo("App\Models\CicloEscolar");
     }
     public function user(){

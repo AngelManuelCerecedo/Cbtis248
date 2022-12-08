@@ -8,44 +8,26 @@ use App\Models\Incidencia;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Bincidencia extends Component
+class Lincidencia extends Component
 {
     use WithPagination;
-    public $search;
     public $cantidad = 5;
     public $F, $C, $D, $iC, $iA, $iU;
     public $ID;
     public $IDAUX;
     public $modal = false;
     public $estado = 0;
-    public $estatus = 'Todos';
-
+    protected $listeners = ['delete'];
 
     public function render()
     {
-
-        if ($this->estatus == "Todos") {
-            $alumnos = Alumno::Where([['Numero_Control', 'like', '%' . $this->search . '%']])
-                ->orWhere([['Nombre', 'like', '%' . $this->search . '%']])
-                ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%']])
-                ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%']])
-                ->orWhere([['Curp', 'like', '%' . $this->search . '%']])
-                ->paginate($this->cantidad);
-        } else
-            $alumnos = Alumno::Where([['Numero_Control', 'like', '%' . $this->search . '%'], ['Estatus', '=', $this->estatus]])
-                ->orWhere([['Nombre', 'like', '%' . $this->search . '%'], ['Estatus', '=', $this->estatus]])
-                ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%'], ['Estatus', '=', $this->estatus]])
-                ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%'], ['Estatus', '=', $this->estatus]])
-                ->orWhere([['Curp', 'like', '%' . $this->search . '%'], ['Estatus', '=', $this->estatus]])
-                ->paginate($this->cantidad);
+        $incidencias = Incidencia::Where('alumno_id' , $this->IDAUX)
+            ->paginate($this->cantidad);
+        $Alumno = Alumno::Where('id', $this->IDAUX)->first();
         $Ciclo = CicloEscolar::all();
-        return view('livewire.incidencias.bincidencia', ['alumnos' => $alumnos, 'ciclo'=>$Ciclo]);
+        return view('livewire.incidencias.lincidencia', ['incidencias' => $incidencias , 'alumno'=> $Alumno, 'ciclo'=> $Ciclo ]);
     }
     public function updatingSearch()
-    {
-        $this->resetPage();
-    }
-    public function updatingEstatus()
     {
         $this->resetPage();
     }
@@ -53,10 +35,9 @@ class Bincidencia extends Component
     {
         $this->resetPage();
     }
-    public function crearmodal($id)
+    public function crearmodal()
     {
         $this->limpiarCampos();
-        $this->IDAUX = $id;
         $this->abrirmodal();
     }
     public function abrirmodal()
@@ -75,18 +56,16 @@ class Bincidencia extends Component
         $this->C = '';
         $this->D = '';
         $this->ID = '';
-        $this->IDAUX = '';
         $this->estado = 0;
     }
     public function guardar()
     {
         Incidencia::updateOrCreate(
+            ['id' => $this->ID],
             [
                 'Fecha' => $this->F,
                 'Descripcion' => $this->D,
                 'ciclo_id' => $this->C,
-                'alumno_id' => $this->IDAUX,
-                'user_id' => 1,
             ]
         );
         $this->dispatchBrowserEvent('swal', [
@@ -98,6 +77,33 @@ class Bincidencia extends Component
         $this->cerrarModal();
     }
 
+    public function editar($id)
+    {
+        $incidencia = Incidencia::findOrFail($id);
+        $this->F = $incidencia->Fecha;
+        $this->D = $incidencia->Descripcion;
+        $this->C = $incidencia->ciclo_id;
+        $this->ID = $incidencia->id;
+        $this->estado = 1;
+        $this->abrirModal();
+    }
+
+    public function borrar($id)
+    {
+
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'title' => '¿Estás seguro de eliminar?',
+            'type' => 'warning',
+            'id' => $id,
+        ]);
+    }
+
+    public function delete($id)
+    {
+
+        Incidencia::findOrFail($id)->delete();
+        $this->redic();
+    }
 
     public function redic()
     {
