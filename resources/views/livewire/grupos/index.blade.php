@@ -1,4 +1,7 @@
 <div>
+    @if ($modalAÑ)
+        @include('livewire.grupos.modalAa')
+    @endif
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div class="pt-8">
@@ -49,7 +52,7 @@
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Ciclo Escolar
+                                        Grado
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sesansmibold text-gray-600 uppercase tracking-wider">
@@ -67,23 +70,24 @@
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->Turno }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->Especialidad }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->especialidad->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->Salon }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->ciclo->Semestre }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->grado->Nombre }}
+                                            </p>
                                         </td>
 
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <button wire:click="añadirA({{ $grupo->id }})" type="button"
+                                                class="text-white bg-[#4eb553]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Añadir
+                                                Alumnos</button>
+                                            <br>
                                             <button wire:click="" type="button"
-                                                class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1"><i
-                                                    class="bi bi-pencil-square"></i></button>
-
-                                            <button wire:click="" type="button"
-                                                class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
-                                                    class="bi bi-trash-fill"></i></button>
+                                                class="text-white bg-[#3065AC]  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Lista
+                                                de Alumnos</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -113,7 +117,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center justify-center w-full mt-10">
+        <div class="flex items-center justify-center w-full mb-10">
             <button
                 class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
                 wire:click=''>

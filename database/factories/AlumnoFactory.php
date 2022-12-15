@@ -35,9 +35,9 @@ class AlumnoFactory extends Factory
             'Promedio' => $this->faker->randomElement(['9','8','7','6']),
             'secundaria_id' => $this->faker->numberBetween(1,10),
             'padre_id' => $this->faker->numberBetween(1,10),
-            'grupo_id' => $this->faker->numberBetween(1,6),
+            'grupo_id' => null,
             'especialidad_id' => $this->faker->numberBetween(1,6),
-            'grado_id' => $this->faker->numberBetween(1,6),
+            'grado_id' => $this->faker->numberBetween(1,1),
         ];
     }
 }

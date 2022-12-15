@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Grupos;
 
+use App\Models\Alumno;
 use App\Models\Grupo;
 use App\Models\CicloEscolar;
 use Livewire\Component;
@@ -14,16 +15,17 @@ class Index extends Component
     public $cantidad = 5;
     public $CG, $T, $E, $S, $G, $C;
     public $cicloescolar;
-    public $modal = false;
+    public $modalAÑ = false;
     public $texto = "";
     public $estado = 0;
+    public $Alumnos, $gruposAÑ;
+    public $ListaALAÑ;
     protected $listeners = ['delete'];
 
     public function render()
     {
         $grupos = Grupo::Where([['Clave_Grupo', 'like', '%' . $this->search . '%']])
             ->orWhere([['Turno', 'like', '%' . $this->search . '%']])
-            ->orWhere([['Especialidad', 'like', '%' . $this->search . '%']])
             ->orWhere([['Salon', 'like', '%' . $this->search . '%']])
             ->paginate($this->cantidad);
         return view('livewire.grupos.index', ['grupos' => $grupos]);
@@ -41,21 +43,13 @@ class Index extends Component
         $this->limpiarCampos();
         $this->abrirmodal();
     }
-    public function abrirmodal()
+    public function abrirmodalAÑ()
     {
-        if ($this->estado == 0) {
-            $this->texto = "Registrar una Materia";
-            $this->modal = true;
-        }
-        if ($this->estado == 1) {
-            $this->texto = "Editar una Materia";
-            $this->modal = true;
-        }
+        $this->modalAÑ = true;
     }
-    public function cerrarModal()
+    public function cerrarModalAÑ()
     {
-        $this->estado = 0;
-        $this->modal = false;
+        $this->modalAÑ = false;
     }
     public function limpiarCampos()
     {
@@ -63,24 +57,14 @@ class Index extends Component
     public function guardar()
     {
     }
-
-    public function editar($id)
-    {
-    }
-
-    public function borrar($id)
-    {
-    }
-
-    public function delete($id)
-    {
-
-        Materia::findOrFail($id)->delete();
-        $this->redic();
-    }
-
     public function redic()
     {
         return redirect()->route('Grupos');
+    }
+    public function añadirA($id)
+    {
+        $this->gruposAÑ = Grupo::Where([['id', $id]])->first();
+        $this->Alumnos = Alumno::Where([['grado_id','=', $this->gruposAÑ->grado_id], ['especialidad_id','=' ,$this->gruposAÑ->especialidad_id] , ['grupo_id', '=', null]]) -> get();
+        $this->abrirmodalAÑ();
     }
 }

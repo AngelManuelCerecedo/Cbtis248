@@ -14,4 +14,7 @@ class Especialidad extends Model
     public function materia(){
         return $this->hasMany("App\Models\Materia");
     }
+    public function grupo(){
+        return $this->hasMany("App\Models\Grupo");
+    }
 }

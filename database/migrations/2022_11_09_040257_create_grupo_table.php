@@ -17,12 +17,13 @@ class CreateGrupoTable extends Migration
             $table->id();
             $table->string("Clave_Grupo",45);
             $table->string("Turno",45);
-            $table->string("Especialidad",45);
             $table->string("Salon",45);
             $table->unsignedBigInteger("grado_id");
             $table->foreign("grado_id")->references("id")->on("grados")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("ciclo_id");
             $table->foreign("ciclo_id")->references("id")->on("ciclo_escolars")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("especialidad_id");
+            $table->foreign("especialidad_id")->references("id")->on("especialidads")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
