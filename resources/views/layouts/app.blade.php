@@ -19,7 +19,7 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
-<body class="bg-[#e0e6ec] font-[Poppins]">
+<body class="bg-[#e0e6ec] font-sans">
 
     <span class="absolute text-white text-4xl top-5 left-4 cursor-pointer" onclick="Openbar()">
         <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>

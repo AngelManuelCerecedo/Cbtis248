@@ -3,18 +3,18 @@
 @section('content')
     @livewire('padres.index')
 @endsection
-@section ('js')
-<script>
-    window.addEventListener('swal', event => {
-        Swal.fire({
-            title: event.detail.title,
-            icon: event.detail.type,
+@section('js')
+    <script>
+        window.addEventListener('swal', event => {
+            Swal.fire({
+                title: event.detail.title,
+                icon: event.detail.type,
 
-        })
-    });
+            })
+        });
 
-     //Eliminado
-  window.addEventListener('swal:confirm', event => {
+        //Eliminado
+        window.addEventListener('swal:confirm', event => {
             Swal.fire({
                     title: event.detail.title,
                     text: "¡No podrás revertir esto!",
@@ -40,5 +40,5 @@
                     }
                 });
         });
-</script>
+    </script>
 @endsection

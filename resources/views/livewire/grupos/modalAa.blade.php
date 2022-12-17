@@ -10,7 +10,7 @@
         <div class="inline-block  align-bottom bg-white rounded-lg text-left  shadow-xl transform transition-all sm:my-8 sm:align-middle sm: max-w-lg md:max-w-4xl sm:w-full"
             role="dialog" aria-modal="true" aria-labelledby="modal-headline">
 
-            <div class="  items-center justify-center  pb-3 ml-3 ">
+            <div class="  items-center justify-center  pb-3 ml-3">
                 <div class="grid    w-auto ">
                     <h2 class="text-xl font-bold ml-3 mb-3 mt-3 text-center">LISTADO DE ALUMNOS</h2>
                     <h2 class="text-xl font-bold ml-3 mb-3 mt-3 text-center">Grupo: {{ $gruposAÑ->Clave_Grupo }} </h2>
@@ -62,7 +62,7 @@
                                                     {{ $Alumno->grado_id }}</p>
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                <button wire:click="" type="button"
+                                                <button wire:click="agregarA({{ $Alumno->id }})" type="button"
                                                     class="text-white bg-[#4eb553]  rounded-lg text-sm  ml-10 py-2 px-6 m-1">
                                                     Añadir
                                                 </button>
@@ -90,8 +90,11 @@
                     </div>
                 </div>
             </div>
+            <div class=" pb-3 ml-3  font-sans">
+                <p>ESPACIOS DISPONIBLES : {{ $TOT }} </p>
+                <p>ESPACIOS OCUPADOS : {{ $CONT }}</p>
+            </div>
             <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-
                 <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
                     <button wire:click="cerrarModalAÑ()" type="button"
                         class="text-white bg-red-500  font-bold px-6 py-3 text-sm  rounded shadow mr-1 mb-1">Cancelar</button>

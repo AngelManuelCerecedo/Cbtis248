@@ -18,6 +18,9 @@ class CreateGrupoTable extends Migration
             $table->string("Clave_Grupo",45);
             $table->string("Turno",45);
             $table->string("Salon",45);
+            $table->integer("TotAL");
+            $table->integer("ALR");
+            $table->string("Estatus",45);
             $table->unsignedBigInteger("grado_id");
             $table->foreign("grado_id")->references("id")->on("grados")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("ciclo_id");

@@ -17,7 +17,10 @@ class GrupoFactory extends Factory
             'Clave_Grupo' => $this->faker->unique()->randomElement(['6as','7as','8bz','9op','1eq','3kñ']),
             'Turno' => $this->faker->randomElement(['Matutino','Vespertino']),
             'Salon' => $this->faker->numberBetween(1,15),
-            'grado_id' => $this->faker->numberBetween(1,6),
+            'TotAL' => 30,
+            'ALR' => 0,
+            'Estatus' => $this->faker->randomElement(['Disponible']),
+            'grado_id' => $this->faker->randomElement(['1']),
             'ciclo_id' => $this->faker->randomElement(['1']),
             'especialidad_id' => $this->faker->numberBetween(1,6),
         ];
