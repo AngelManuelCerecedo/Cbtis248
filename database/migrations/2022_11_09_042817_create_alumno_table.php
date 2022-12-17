@@ -42,7 +42,7 @@ class CreateAlumnoTable extends Migration
             $table->foreign("grupo_id")->references("id")->on("grupos")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("especialidad_id");
             $table->foreign("especialidad_id")->references("id")->on("especialidads")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("grado_id");
+            $table->unsignedBigInteger("grado_id")->nullable();
             $table->foreign("grado_id")->references("id")->on("grados")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

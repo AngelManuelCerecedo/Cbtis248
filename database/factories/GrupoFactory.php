@@ -20,7 +20,7 @@ class GrupoFactory extends Factory
             'TotAL' => 30,
             'ALR' => 0,
             'Estatus' => $this->faker->randomElement(['Disponible']),
-            'grado_id' => $this->faker->randomElement(['1']),
+            'grado_id' => $this->faker->randomElement(['1','6']),
             'ciclo_id' => $this->faker->randomElement(['1']),
             'especialidad_id' => $this->faker->numberBetween(1,6),
         ];

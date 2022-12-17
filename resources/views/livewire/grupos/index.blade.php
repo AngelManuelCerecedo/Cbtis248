@@ -2,6 +2,12 @@
     @if ($modalAÑ)
         @include('livewire.grupos.modalAa')
     @endif
+    @if ($modalLA)
+        @include('livewire.grupos.modalLa')
+    @endif
+    @if ($modalAG)
+        @include('livewire.grupos.modalAg')
+    @endif
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div class="pt-8">
@@ -85,7 +91,7 @@
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->Estatus}}
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->Estatus }}
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -96,9 +102,13 @@
                                             @else
                                             @endif
                                             <br>
-                                            <button wire:click="" type="button"
+                                            <button wire:click="listarA({{ $grupo->id }})" type="button"
                                                 class="text-white bg-[#3065AC]  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Lista
                                                 de Alumnos</button>
+                                            <br>
+                                            <button wire:click="listarAg({{ $grupo->id }})" type="button"
+                                                class="text-white bg-[#6C4675]  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Actualizar
+                                                Grado</button>
                                         </td>
                                     </tr>
                                 @endforeach

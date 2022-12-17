@@ -14,16 +14,17 @@ class Ealumnos extends Component
     public $ide;
     public $NC, $N, $AP, $AM, $C, $LN, $NCA, $COL, $LOC, $CP, $LR, $NSS, $TS, $EC, $EM, $T, $G, $ESP, $PROM, $AF, $EST;
     public $BTUT, $SUGT, $NOM, $APP, $APM, $CEL;
-    public $BSEC,$SUGS, $NSEC, $MODS, $CLAVS, $REG;
-    public $AUXTUT=0, $AUXSEC=0,$AUXTUT2, $AUXSEC2;
+    public $BSEC, $SUGS, $NSEC, $MODS, $CLAVS, $REG;
+    public $AUXTUT = 0, $AUXSEC = 0, $AUXTUT2, $AUXSEC2;
     public function render()
     {
         $GRADOS = Grado::all();
         $ESP = Especialidad::all();
-        return view('livewire.alumnos.ealumnos',['grados' => $GRADOS, 'especialidad' => $ESP]);
+        return view('livewire.alumnos.ealumnos', ['grados' => $GRADOS, 'especialidad' => $ESP]);
     }
 
-    public function mount(){
+    public function mount()
+    {
 
         $alumno = Alumno::where('id', $this->ide)->first();
 
@@ -67,9 +68,8 @@ class Ealumnos extends Component
         $this->MODS = $secundaria->Modalidad;
         $this->REG = $secundaria->Regimen;
         $this->AUXSEC2 = $secundaria->id;
-        
-        $this->reseteo();
 
+        $this->reseteo();
     }
 
     public function reseteo()
@@ -80,7 +80,7 @@ class Ealumnos extends Component
         $this->SUGS = [];
     }
 
-    
+
     public function updatedBTUT()
     {
         $this->SUGT = Padre::Where([['Nombre', 'like', '%' . $this->BTUT . '%']])
@@ -118,47 +118,113 @@ class Ealumnos extends Component
         $this->AUXSEC = $this->SECS->id;
     }
 
-    public function actualizar(){
+    public function actualizar()
+    {
 
-        if($this->AUXTUT == 0){
+        if ($this->AUXTUT == 0) {
             $tutor = $this->AUXTUT2;
-        }else{
+        } else {
             $tutor = $this->AUXTUT;
         }
 
-        if($this->AUXSEC == 0 ){
+        if ($this->AUXSEC == 0) {
             $secundaria = $this->AUXSEC2;
-        }else{
+        } else {
             $secundaria = $this->AUXSEC;
         }
-
-        Alumno::updateOrCreate(
-            ['id' => $this->ide],
-            ['Numero_Control' => $this->NC,
-            'Estatus' => $this->EST,
-            'Curp' => $this->C,
-            'Nombre' => $this->N,
-            'ApPaterno' => $this->AP,
-            'ApMaterno' => $this->AM,
-            'Correo_Electronico' => $this->EM,
-            'Estado_Civil' => $this->EC,
-            'Lugar_Nacimiento' => $this->LN,
-            'Lugar_Radica' => $this->LR,
-            'Localidad' => $this->LOC,
-            'Codigo_Postal' => $this->CP,
-            'Calle_Num' => $this->NCA,
-            'Colonia' => $this->COL,
-            'Celular_Alum' => $this->T,
-            'Numero_Seguro' => $this->NSS,
-            'Tipo_Sangre' => $this->TS,
-            'Año_Fin' => $this->AF,
-            'Promedio' => $this->PROM,
-            'especialidad_id' => $this->ESP,
-            'grado_id' => $this->G,
-            'secundaria_id' => $secundaria,
-            'padre_id' => $tutor,
-        ]);
-
+        if ($this->EST == 'Baja Temporal') {
+            Alumno::updateOrCreate(
+                ['id' => $this->ide],
+                [
+                    'Numero_Control' => $this->NC,
+                    'Estatus' => $this->EST,
+                    'Curp' => $this->C,
+                    'Nombre' => $this->N,
+                    'ApPaterno' => $this->AP,
+                    'ApMaterno' => $this->AM,
+                    'Correo_Electronico' => $this->EM,
+                    'Estado_Civil' => $this->EC,
+                    'Lugar_Nacimiento' => $this->LN,
+                    'Lugar_Radica' => $this->LR,
+                    'Localidad' => $this->LOC,
+                    'Codigo_Postal' => $this->CP,
+                    'Calle_Num' => $this->NCA,
+                    'Colonia' => $this->COL,
+                    'Celular_Alum' => $this->T,
+                    'Numero_Seguro' => $this->NSS,
+                    'Tipo_Sangre' => $this->TS,
+                    'Año_Fin' => $this->AF,
+                    'Promedio' => $this->PROM,
+                    'especialidad_id' => $this->ESP,
+                    'grado_id' => $this->G,
+                    'secundaria_id' => $secundaria,
+                    'padre_id' => $tutor,
+                    'grupo_id' => null,
+                ]
+            );
+        }
+        if ($this->EST == 'Baja Definitiva') {
+            Alumno::updateOrCreate(
+                ['id' => $this->ide],
+                [
+                    'Numero_Control' => $this->NC,
+                    'Estatus' => $this->EST,
+                    'Curp' => $this->C,
+                    'Nombre' => $this->N,
+                    'ApPaterno' => $this->AP,
+                    'ApMaterno' => $this->AM,
+                    'Correo_Electronico' => $this->EM,
+                    'Estado_Civil' => $this->EC,
+                    'Lugar_Nacimiento' => $this->LN,
+                    'Lugar_Radica' => $this->LR,
+                    'Localidad' => $this->LOC,
+                    'Codigo_Postal' => $this->CP,
+                    'Calle_Num' => $this->NCA,
+                    'Colonia' => $this->COL,
+                    'Celular_Alum' => $this->T,
+                    'Numero_Seguro' => $this->NSS,
+                    'Tipo_Sangre' => $this->TS,
+                    'Año_Fin' => $this->AF,
+                    'Promedio' => $this->PROM,
+                    'especialidad_id' => $this->ESP,
+                    'grado_id' => null,
+                    'secundaria_id' => $secundaria,
+                    'padre_id' => $tutor,
+                    'grupo_id' => null,
+                ]
+            );
+        }
+        if ($this->EST == 'Activo') {
+            Alumno::updateOrCreate(
+                ['id' => $this->ide],
+                [
+                    'Numero_Control' => $this->NC,
+                    'Estatus' => $this->EST,
+                    'Curp' => $this->C,
+                    'Nombre' => $this->N,
+                    'ApPaterno' => $this->AP,
+                    'ApMaterno' => $this->AM,
+                    'Correo_Electronico' => $this->EM,
+                    'Estado_Civil' => $this->EC,
+                    'Lugar_Nacimiento' => $this->LN,
+                    'Lugar_Radica' => $this->LR,
+                    'Localidad' => $this->LOC,
+                    'Codigo_Postal' => $this->CP,
+                    'Calle_Num' => $this->NCA,
+                    'Colonia' => $this->COL,
+                    'Celular_Alum' => $this->T,
+                    'Numero_Seguro' => $this->NSS,
+                    'Tipo_Sangre' => $this->TS,
+                    'Año_Fin' => $this->AF,
+                    'Promedio' => $this->PROM,
+                    'especialidad_id' => $this->ESP,
+                    'grado_id' => $this->G,
+                    'secundaria_id' => $secundaria,
+                    'padre_id' => $tutor,
+                    'grupo_id' => null,
+                ]
+            );
+        }
         $this->dispatchBrowserEvent('swal', [
             'title' => 'Registro actualizado exitosamente',
             'type' => 'success'
@@ -166,9 +232,9 @@ class Ealumnos extends Component
         $this->redic();
     }
 
-  
-    public function redic(){
+
+    public function redic()
+    {
         return redirect()->route('Alumnos');
     }
-
 }
