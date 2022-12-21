@@ -17,6 +17,7 @@ class CreateMateriaTable extends Migration
             $table->id();
             $table->string("Nombre",45);
             $table->integer("Horas_Sem");
+            $table->string("Estatus",45);
             $table->unsignedBigInteger("especialidad_id");
             $table->foreign("especialidad_id")->references("id")->on("especialidads")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("grado_id");

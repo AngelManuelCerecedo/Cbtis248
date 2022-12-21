@@ -10,6 +10,8 @@ use App\Http\Controllers\IncidenciasController;
 use App\Http\Controllers\MateriasController;
 use App\Http\Controllers\AdministradoresController;
 use App\Http\Controllers\GruposController;
+use App\Http\Controllers\HorariosController;
+use App\Models\HorarioProfesor;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,3 +70,7 @@ Route::get('ActividadesComplementarias',[ActividadController::class,'actividad']
 
 // GRUPOS
 Route::get('Grupos',[GruposController::class,'grupo'])->name('Grupos');
+
+// Horarios
+Route::get('Horarios',[HorariosController::class,'horario'])->name('Horarios');
+Route::get('Horarios/Materias/{id}',[HorariosController::class,'horarioM'])->name('HorariosM');

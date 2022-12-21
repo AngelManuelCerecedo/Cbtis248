@@ -74,6 +74,7 @@ class Index extends Component
             [
                 'Nombre' => $this->NOM,
                 'Horas_Sem' => $this->HS,
+                'Estatus' => 'Abierto',
                 'especialidad_id' => $this->ESP,
                 'grado_id' => $this->G,
             ]

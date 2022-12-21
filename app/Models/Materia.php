@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Materia extends Model
 {
     use HasFactory;
-    protected $fillable=['id','Nombre','Horas_Sem','especialidad_id','grado_id'];
+    protected $fillable=['id','Nombre','Horas_Sem','Estatus','especialidad_id','grado_id'];
     public function grupo(){
         return $this->belongsToMany("App\Models\Grupo");
     }
@@ -19,7 +19,8 @@ class Materia extends Model
         return $this->belongsTo("App\Models\Especialidad");
     }
     public function Profesor(){
-        return $this->belongsToMany("App\Models\Profesor");
+        return $this->belongsToMany("App\Models\Profesor")
+        ->withTimestamps()->withPivot(['Hora', 'Dia']);
     }
     public function horarioalu(){
         return $this->belongsToMany("App\Models\HorarioAlumno");

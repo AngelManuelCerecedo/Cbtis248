@@ -14,6 +14,9 @@ class CreateMateriaprofesorTable extends Migration
     public function up()
     {
         Schema::create('materia_profesor', function (Blueprint $table) {
+            $table->id();
+            $table->string("Dia",45);
+            $table->string("Hora",45);
             $table->unsignedBigInteger("materia_id");
             $table->foreign("materia_id")->references("id")->on("materias")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("profesor_id");

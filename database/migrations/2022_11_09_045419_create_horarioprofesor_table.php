@@ -20,6 +20,8 @@ class CreateHorarioprofesorTable extends Migration
             $table->string("Clave_Pre",45);
             $table->unsignedBigInteger("ciclo_id");
             $table->foreign("ciclo_id")->references("id")->on("ciclo_escolars")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("profesor_id");
+            $table->foreign("profesor_id")->references("id")->on("profesors")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

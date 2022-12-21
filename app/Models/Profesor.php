@@ -14,6 +14,8 @@ class Profesor extends Model
         return $this->belongsToMany("App\Models\ActComp");
     }
     public function materia(){
-        return $this->belongsToMany("App\Models\Materia");
+        return $this->belongsToMany("App\Models\Materia")
+        ->withTimestamps()->withPivot(['Hora', 'Dia']);
     }
+
 }
