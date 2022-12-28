@@ -31,6 +31,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CicloSeeder::class);
         $this->call(GradoSeeder::class);
         $this->call(EspecialidadSeeder::class);
+        $this->call(DiaSeeder::class);
+        $this->call(HoraSeeder::class);
         ActComp::factory(10)->create();
         User::factory(10)->create();
         Profesor::factory(10)->create();

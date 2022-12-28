@@ -2,6 +2,9 @@
     @if ($modal)
         @include('livewire.materias.modalRM')
     @endif
+    @if ($modalAP)
+        @include('livewire.materias.modalAP')
+    @endif
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div class="pt-8">
@@ -48,6 +51,10 @@
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
+                                        Profesor
+                                    </th>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
                                         Acciones
                                     </th>
                                 </tr>
@@ -66,15 +73,37 @@
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 {{ $materia->grado->Nombre }}</p>
                                         </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
+                                            @if ($materia->profesor_id == null)
+                                                <p class="text-gray-900 whitespace-no-wrap">Sin Asignar</p>
+                                            @endif
+                                            @if ($materia->profesor_id != null)
+                                                <p class="text-gray-900 whitespace-no-wrap">
+                                                    {{ $materia->profesor->Nombre }} {{ $materia->profesor->ApPaterno }}
+                                                    {{ $materia->profesor->ApMaterno }}</p>
+                                            @endif
+                                        </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <button wire:click="editar({{ $materia->id }})" type="button"
-                                                class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1"><i
-                                                    class="bi bi-pencil-square"></i></button>
+                                                class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Editar</button>
 
                                             <button wire:click="borrar({{ $materia->id }})" type="button"
-                                                class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
-                                                    class="bi bi-trash-fill"></i></button>
+                                                class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Eliminar</button>
+
+                                            <br>
+                                            @if ($materia->profesor_id == null)
+                                                <button wire:click="asignar({{ $materia->id }})" type="button"
+                                                    class="text-white bg-[#4eb553]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Asignar
+                                                    Profesor</button>
+                                            @endif
+                                            @if ($materia->profesor_id != null)
+                                                <button wire:click="desasignar({{ $materia->id }})" type="button"
+                                                    class="text-white bg-[#3065AC]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Desasignar
+                                                    Profesor</button>
+                                            @endif
+
                                         </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>
