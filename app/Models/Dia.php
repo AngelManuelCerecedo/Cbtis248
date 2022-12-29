@@ -9,4 +9,7 @@ class Dia extends Model
 {
     use HasFactory;
     protected $fillable=['id','Nombre'];
+    public function horario_profesor(){
+        return $this->hasMany("App\Models\Horario_Profesor");
+    }
 }

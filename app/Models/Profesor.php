@@ -16,7 +16,9 @@ class Profesor extends Model
     public function materia(){
         return $this->belongsToMany("App\Models\Materia");
     }
-
+    public function horario_profesor(){
+        return $this->hasMany("App\Models\Horario_Profesor");
+    }
 
     //public function materia(){
       //  return $this->belongsToMany("App\Models\Materia")

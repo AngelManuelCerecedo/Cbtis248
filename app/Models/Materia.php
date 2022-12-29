@@ -25,8 +25,9 @@ class Materia extends Model
       //  return $this->belongsToMany("App\Models\Profesor")
         //->withTimestamps()->withPivot(['Hora', 'Dia']);
     //}
-
-
+    public function horario_profesor(){
+        return $this->hasMany("App\Models\Horario_Profesor");
+    }
 
     public function horarioalu(){
         return $this->belongsToMany("App\Models\HorarioAlumno");

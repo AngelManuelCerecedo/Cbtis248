@@ -1342,6 +1342,9 @@ select {
 .ml-0 {
   margin-left: 0px;
 }
+.mb-20 {
+  margin-bottom: 5rem;
+}
 .block {
   display: block;
 }
@@ -1772,6 +1775,14 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
 }
+.bg-\[\#4eb553\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(78 181 83 / var(--tw-bg-opacity));
+}
+.bg-\[\#3065AC\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(48 101 172 / var(--tw-bg-opacity));
+}
 .bg-\[\#D5C28B\] {
   --tw-bg-opacity: 1;
   background-color: rgb(213 194 139 / var(--tw-bg-opacity));
@@ -1783,14 +1794,6 @@ select {
 .bg-gray-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
-}
-.bg-\[\#4eb553\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(78 181 83 / var(--tw-bg-opacity));
-}
-.bg-\[\#3065AC\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(48 101 172 / var(--tw-bg-opacity));
 }
 .bg-\[\#6C4675\] {
   --tw-bg-opacity: 1;

@@ -14,10 +14,7 @@ class CreateMateriagrupoTable extends Migration
     public function up()
     {
         Schema::create('grupo_materia', function (Blueprint $table) {
-            $table->unsignedBigInteger("grupo_id");
-            $table->foreign("grupo_id")->references("id")->on("grupos")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("materia_id");
-            $table->foreign("materia_id")->references("id")->on("materias")->onDelete('cascade')->onUpdate('cascade');
+            $table->id();
             $table->timestamps();
         });
     }

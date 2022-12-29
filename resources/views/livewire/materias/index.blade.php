@@ -132,9 +132,9 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center justify-center w-full mt-10">
+        <div class="flex items-center justify-center w-full">
             <button
-                class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
+                class="font-sans mb-20 leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
                 wire:click='crearmodal()'>
                 Registrar Materia
             </button>
