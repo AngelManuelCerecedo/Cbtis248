@@ -12,7 +12,9 @@ use Livewire\Component;
 class Chprofesor extends Component
 {
     public $horarios, $ide, $Profesor;
-    public $M, $D, $H;
+    public $M, $D, $H, $aux=0;
+    public $i = 1, $is= 1,$it= 1,$iq= 1,$ic= 1,$ise= 1,$isi= 1,$io= 1,$in= 1;
+    public $Phoras, $Shoras,$Thoras, $Qhoras,$Choras, $SEhoras,$SIhoras, $Ohoras,$Nhoras;
     public function render()
     {
         $Materias = Materia::all();
@@ -21,6 +23,15 @@ class Chprofesor extends Component
         //$Materias = Materia::Where([['Estatus', '=', 'Abierta']])->get();
         $this->Profesor = Profesor::Where([['id', '=', $this->ide]])->first();
         $this->horarios = Horario_Profesor::Where([['profesor_id', '=', $this->ide]])->get();
+        $this->Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $this->ide] ])->get();
+        $this->Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $this->ide] ])->get();
+        $this->Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['profesor_id', '=', $this->ide] ])->get();
+        $this->Qhoras = Horario_Profesor::Where([['hora_id', '=', 4], ['profesor_id', '=', $this->ide] ])->get();
+        $this->Choras = Horario_Profesor::Where([['hora_id', '=', 5], ['profesor_id', '=', $this->ide] ])->get();
+        $this->SEhoras = Horario_Profesor::Where([['hora_id', '=', 6], ['profesor_id', '=', $this->ide] ])->get();
+        $this->SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['profesor_id', '=', $this->ide] ])->get();
+        $this->Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['profesor_id', '=', $this->ide] ])->get();
+        $this->Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $this->ide] ])->get();
         return view('livewire.horarios.chprofesor', ['materias' => $Materias, 'horas' => $Horas, 'dias' => $Dias]);
     }
     public function añadir(){
@@ -35,7 +46,6 @@ class Chprofesor extends Component
             'type' => 'success'
         ]);
         $this->limpiar();
-        $this->redic();
     }
     public function limpiar(){
         $this->D = '';
