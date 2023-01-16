@@ -27,8 +27,8 @@ class Index extends Component
         $this->especialidad = Especialidad::all();
         $this->profesor = Profesor::all();
 
-        $materias = Materia::Where([['Nombre', 'like', '%' . $this->search . '%']])
-            ->orWhere([['especialidad_id', 'like', '%' . $this->search . '%']])
+        $materias = Materia::Where([['Nombre', 'like', '%' . $this->search . '%'], ['Tipo', '=', 'Materia']])
+            ->orWhere([['especialidad_id', 'like', '%' . $this->search . '%'], ['Tipo', '=', 'Materia']])
             ->paginate($this->cantidad);
         return view('livewire.materias.index', ['materias' => $materias]);
     }
@@ -77,6 +77,7 @@ class Index extends Component
                 'Nombre' => $this->NOM,
                 'Horas_Sem' => $this->HS,
                 'Estatus' => 'Abierto',
+                'Tipo' => 'Materia',
                 'especialidad_id' => $this->ESP,
                 'grado_id' => $this->G,
             ]

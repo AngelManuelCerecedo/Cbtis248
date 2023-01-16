@@ -17,10 +17,11 @@ class CreateMateriaTable extends Migration
             $table->id();
             $table->string("Nombre",45);
             $table->integer("Horas_Sem");
-            $table->string("Estatus",45);
-            $table->unsignedBigInteger("especialidad_id");
+            $table->string("Estatus",45)->nullable();
+            $table->string("Tipo",45)->nullable();
+            $table->unsignedBigInteger("especialidad_id")->nullable();
             $table->foreign("especialidad_id")->references("id")->on("especialidads")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("grado_id");
+            $table->unsignedBigInteger("grado_id")->nullable();
             $table->foreign("grado_id")->references("id")->on("grados")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("profesor_id")->nullable();
             $table->foreign("profesor_id")->references("id")->on("profesors")->onDelete('cascade')->onUpdate('cascade');

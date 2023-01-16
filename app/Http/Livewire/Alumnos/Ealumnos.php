@@ -14,7 +14,7 @@ class Ealumnos extends Component
     public $ide;
     public $NC, $N, $AP, $AM, $C, $LN, $NCA, $COL, $LOC, $CP, $LR, $NSS, $TS, $EC, $EM, $T, $G, $ESP, $PROM, $AF, $EST;
     public $BTUT, $SUGT, $NOM, $APP, $APM, $CEL;
-    public $BSEC, $SUGS, $NSEC, $MODS, $CLAVS, $REG;
+    public $BSEC, $SUGS, $NSEC, $MODS, $CLAVS, $REG, $TUTS, $SECS;
     public $AUXTUT = 0, $AUXSEC = 0, $AUXTUT2, $AUXSEC2;
     public function render()
     {

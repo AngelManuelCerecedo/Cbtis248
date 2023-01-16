@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Actividades;
 
 use App\Models\ActComp;
+use App\Models\Materia;
+use App\Models\Profesor;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,15 +13,16 @@ class Index extends Component
     use WithPagination;
     public $search;
     public $cantidad = 5;
-    public $ID,$NOM, $HS;
-    public $modal = false;
-    public $texto = "";
-    public $estado = 0;
-    protected $listeners = ['delete'];
+    public $ID, $NOM, $HS, $P;
+    public $modal = false, $modalAP = false;
+    public $texto = "", $actividadAP;
+    public $estado = 0,$profesor;
+    protected $listeners = ['delete','desasignar1'];
     public function render()
     {
-        $actividades = ActComp::Where([['Nombre', 'like', '%' . $this->search . '%']])
+        $actividades = Materia::Where([['Nombre', 'like', '%' . $this->search . '%'],['Tipo', '=', 'Actividad']])
             ->paginate($this->cantidad);
+        $this->profesor = Profesor::all();
         return view('livewire.actividades.index', ['actividades' => $actividades]);
     }
     public function updatingSearch()
@@ -59,11 +62,12 @@ class Index extends Component
     }
     public function guardar()
     {
-        ActComp::updateOrCreate(
+        Materia::updateOrCreate(
             ['id' => $this->ID],
             [
                 'Nombre' => $this->NOM,
-                'HoraSem' => $this->HS,
+                'Horas_Sem' => $this->HS,
+                'Tipo' => 'Actividad',
             ]
         );
         $this->dispatchBrowserEvent('swal', [
@@ -77,7 +81,7 @@ class Index extends Component
 
     public function editar($id)
     {
-        $actcomp = ActComp::findOrFail($id);
+        $actcomp = Materia::findOrFail($id);
 
 
         $this->ID = $actcomp->id;
@@ -87,7 +91,8 @@ class Index extends Component
         $this->abrirModal();
     }
 
-    public function borrar($id){
+    public function borrar($id)
+    {
 
         $this->dispatchBrowserEvent('swal:confirm', [
             'title' => '¿Estás seguro de eliminar?',
@@ -99,12 +104,66 @@ class Index extends Component
     public function delete($id)
     {
 
-        ActComp::findOrFail($id)->delete();
+        Materia::findOrFail($id)->delete();
         $this->redic();
-
+    }
+    public function crearmodal1()
+    {
+        //$this->limpiarCampos();
+        $this->abrirmodal1();
+    }
+    public function abrirmodal1()
+    {
+        $this->modalAP = true;
+    }
+    public function cerrarModal1()
+    {
+        $this->modalAP = false;
     }
 
-    public function redic(){
+    public function asignar($id)
+    {
+        $this->actividadAP = Materia::findOrFail($id);
+        $this->abrirModal1();
+    }
+
+    public function guardarAP()
+    {
+        Materia::updateOrCreate(
+            ['id' => $this->actividadAP->id],
+            [
+                'profesor_id' => $this->P
+            ]
+        );
+        $this->cerrarModal1();
+    }
+
+    public function desasignar($id)
+    {
+
+        $this->dispatchBrowserEvent('swal:confirm1', [
+            'title' => '¿Estás seguro que quieres desasignar el profesor?',
+            'type' => 'warning',
+            'id' => $id,
+        ]);
+    }
+
+    public function desasignar1($id)
+    {
+
+        Materia::updateOrCreate(
+            ['id' => $id],
+            [
+                'profesor_id' => null
+            ]
+        );
+        $this->redic();
+    }
+
+
+
+    public function redic()
+    {
         return redirect()->route('Actividades');
     }
 }

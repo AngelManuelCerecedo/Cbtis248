@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ActComp extends Model
 {
     use HasFactory;
-    protected $fillable=['id','Nombre','HoraSem'];
+    protected $fillable=['id','Nombre','HoraSem','profesor_id'];
     public function profesor(){
         return $this->belongsToMany("App\Models\Profesor");
     }

@@ -19,9 +19,11 @@ class CreateHorarioProfesorTable extends Migration
             $table->foreign("dia_id")->references("id")->on("dias")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("hora_id");
             $table->foreign("hora_id")->references("id")->on("horas")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("materia_id");
+            $table->unsignedBigInteger("materia_id")->nullable();
             $table->foreign("materia_id")->references("id")->on("materias")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("profesor_id");
+            $table->unsignedBigInteger("actividad_id")->nullable();
+            $table->foreign("actividad_id")->references("id")->on("act_comps")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("profesor_id")->nullable();
             $table->foreign("profesor_id")->references("id")->on("profesors")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

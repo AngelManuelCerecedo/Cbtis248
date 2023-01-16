@@ -17,6 +17,8 @@ class CreateActividadcompTable extends Migration
             $table->id();
             $table->string("Nombre",45);
             $table->integer("HoraSem");
+            $table->unsignedBigInteger("profesor_id")->nullable();
+            $table->foreign("profesor_id")->references("id")->on("profesors")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

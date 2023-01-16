@@ -17,6 +17,7 @@ class MateriaFactory extends Factory
             'Nombre' => $this->faker->randomElement(['POO','Quimica','LEOyE','Calculo','Fundamentos']),
             'Horas_Sem' => $this->faker->numberBetween(1,6),
             'Estatus' => $this->faker->randomElement(['Abierta','Cerrada']),
+            'Tipo' => $this->faker->randomElement(['Materia']),
             'especialidad_id' => $this->faker->numberBetween(1,6),
             'grado_id' => $this->faker->numberBetween(1,6),
         ];
