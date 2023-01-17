@@ -19,6 +19,7 @@ class CreateMateriaTable extends Migration
             $table->integer("Horas_Sem");
             $table->string("Estatus",45)->nullable();
             $table->string("Tipo",45)->nullable();
+            $table->string("Salon",45)->nullable();
             $table->unsignedBigInteger("especialidad_id")->nullable();
             $table->foreign("especialidad_id")->references("id")->on("especialidads")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("grado_id")->nullable();

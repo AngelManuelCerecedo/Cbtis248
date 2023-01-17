@@ -7,7 +7,7 @@
             <!--DIV PADRE-->
             <div class="my-2 flex sm:flex-row flex-col pt-16">
                 <!--DIV SEARCH-->
-                <div class="block">
+                <div class="block ml-16">
                     <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
                     </span>
                     <input placeholder="Buscar" wire:model='search'
@@ -45,7 +45,7 @@
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Curp
+                                        Categoria
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
@@ -70,37 +70,34 @@
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->ApMaterno }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Curp }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Categoria }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Estatus }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 
-                                            <a href="{{route('HorariosM',[$profesor->id])}}">
+                                            <a href="{{ route('HorariosM', [$profesor->id]) }}">
                                                 <button type="button"
-                                                    class="text-white bg-[#4eb553]  rounded-lg  text-sm  ml-10 py-2 px-8 m-1">
+                                                    class="text-white bg-[#4eb553] rounded-lg  text-sm mr-8 py-2 px-8 ">
                                                     Crear Horario
                                                 </button>
                                             </a>
-                                            
+
                                             <a href="">
                                                 <button type="button"
-                                                    class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-8 m-1">
-                                                    Editar Horario
+                                                    class="text-white bg-yellow-400  rounded-lg  text-sm mt-2 py-2 px-6 ">
+                                                    Imprimir Horario
                                                 </button>
                                             </a>
                                             <br>
-                                            <a href="">
+                                            <button wire:click="borrar({{ $profesor->id }})" type="button"
+                                                class="text-white bg-red-400 rounded-lg  text-sm mr-8 py-2 px-6 ">
+                                                Eliminar Horario
+                                            </button>
+                                            <a href="{{ route('HorariosV', [$profesor->id]) }}">
                                                 <button type="button"
-                                                    class="text-white bg-red-400 hover:bg-red-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">
-                                                    Eliminar Horario
-                                                </button>
-                                            </a>
-                                            
-                                            <a href="">
-                                                <button type="button"
-                                                    class="text-white bg-[#3065AC] rounded-lg  text-sm  ml-10 py-2 px-10 m-1">
+                                                    class="text-white bg-[#3065AC] rounded-lg  text-sm mt-2 py-2 px-10 ">
                                                     Ver Horario
                                                 </button>
                                             </a>

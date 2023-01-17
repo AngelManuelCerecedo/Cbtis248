@@ -13,4 +13,7 @@ class HorariosController extends Controller
     public function horarioM($id){
         return view('horarios.chprofesor', ['id' => $id]);
     }
+    public function horarioV($id){
+        return view('horarios.vhprofesor', ['id' => $id]);
+    }
 }
