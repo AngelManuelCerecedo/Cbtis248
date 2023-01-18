@@ -75,3 +75,6 @@ Route::get('Grupos',[GruposController::class,'grupo'])->name('Grupos');
 Route::get('Horarios',[HorariosController::class,'horario'])->name('Horarios');
 Route::get('Horarios/Materias/{id}',[HorariosController::class,'horarioM'])->name('HorariosM');
 Route::get('Horarios/{id}',[HorariosController::class,'horarioV'])->name('HorariosV');
+
+Route::get('HorariosG',[HorariosController::class,'horarioG'])->name('HorariosG');
+Route::get('HorariosG/Materias/{id}',[HorariosController::class,'horarioGR'])->name('HorariosGR');

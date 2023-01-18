@@ -21,9 +21,7 @@ class Chprofesor extends Component
         $Materias = Materia::all();
         $Horas = Hora::all();
         $Dias = Dia::all();
-        //$Materias = Materia::Where([['Estatus', '=', 'Abierta']])->get();
         $this->Profesor = Profesor::Where([['id', '=', $this->ide]])->first();
-        $this->horarios = Horario_Profesor::Where([['profesor_id', '=', $this->ide]])->get();
         $this->Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $this->ide] ])->orderBy('dia_id','asc')->get();
         $this->Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $this->ide] ])->orderBy('dia_id','asc')->get();
         $this->Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['profesor_id', '=', $this->ide] ])->orderBy('dia_id','asc')->get();

@@ -27,5 +27,8 @@ class Grupo extends Model
     public function horarioalu(){
         return $this->belongsTo("App\Models\horarioAlumno");
     }
+    public function horario_profesor(){
+        return $this->hasMany("App\Models\Horario_Profesor");
+    }
 }
 

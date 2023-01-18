@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div class="pt-8">
-                <h1 class="text-4xl font-sans leading-tight text-center">PROFESORES</h1>
+                <h1 class="text-4xl font-sans leading-tight text-center">GRUPOS</h1>
             </div>
             <!--DIV PADRE-->
             <div class="my-2 flex sm:flex-row flex-col pt-16">
@@ -27,29 +27,21 @@
             </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                 <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                    @if ($profesores->count())
+                    @if ($grupos->count())
                         <table class="min-w-full leading-normal font-sans text-center">
                             <thead>
                                 <tr>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Nombre
+                                        Clave
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Apellido Paterno
+                                        Salon
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Apellido Materno
-                                    </th>
-                                    <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Categoria
-                                    </th>
-                                    <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Estatus
+                                        Especialidad
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sesansmibold text-gray-600 uppercase tracking-wider">
@@ -58,26 +50,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($profesores as $profesor)
+                                @foreach ($grupos as $grupo)
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Nombre }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->Clave_Grupo }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->ApPaterno }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->Salon }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->ApMaterno }}</p>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Categoria }}</p>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Estatus }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->especialidad->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 
-                                            <a href="{{ route('HorariosM', [$profesor->id]) }}">
+                                            <a href="{{ route('HorariosGR', [$grupo->id]) }}">
                                                 <button type="button"
                                                     class="text-white bg-[#4eb553] rounded-lg  text-sm mr-8 py-2 px-8 ">
                                                     Crear Horario
@@ -91,11 +77,11 @@
                                                 </button>
                                             </a>
                                             <br>
-                                            <button wire:click="borrar({{ $profesor->id }})" type="button"
+                                            <button wire:click="borrar({{ $grupo->id }})" type="button"
                                                 class="text-white bg-red-400 rounded-lg  text-sm mr-8 py-2 px-6 ">
                                                 Eliminar Horario
                                             </button>
-                                            <a href="{{ route('HorariosV', [$profesor->id]) }}">
+                                            <a href="{{ route('HorariosV', [$grupo->id]) }}">
                                                 <button type="button"
                                                     class="text-white bg-[#3065AC] rounded-lg  text-sm mt-2 py-2 px-10 ">
                                                     Ver Horario
@@ -122,9 +108,9 @@
                             </div>
                         </div>
                     @endif
-                    @if ($profesores->hasPages())
+                    @if ($grupos->hasPages())
                         <div class="px-6 py-3">
-                            {{ $profesores->links() }}
+                            {{ $grupos->links() }}
                         </div>
                     @endif
                 </div>
