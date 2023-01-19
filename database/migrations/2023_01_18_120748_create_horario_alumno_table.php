@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHorarioProfesorTable extends Migration
+class CreateHorarioAlumnoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateHorarioProfesorTable extends Migration
      */
     public function up()
     {
-        Schema::create('horario__profesors', function (Blueprint $table) {
+        Schema::create('horario_alumno', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("dia_id");
             $table->foreign("dia_id")->references("id")->on("dias")->onDelete('cascade')->onUpdate('cascade');
@@ -25,8 +25,6 @@ class CreateHorarioProfesorTable extends Migration
             $table->foreign("actividad_id")->references("id")->on("act_comps")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("profesor_id")->nullable();
             $table->foreign("profesor_id")->references("id")->on("profesors")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("grupo_id")->nullable();
-            $table->foreign("grupo_id")->references("id")->on("grupos")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -38,6 +36,6 @@ class CreateHorarioProfesorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('horario_profesor');
+        Schema::dropIfExists('horario_alumno');
     }
 }

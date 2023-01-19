@@ -26,6 +26,8 @@ class CreateMateriaTable extends Migration
             $table->foreign("grado_id")->references("id")->on("grados")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("profesor_id")->nullable();
             $table->foreign("profesor_id")->references("id")->on("profesors")->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger("grupo_id")->nullable();
+            $table->foreign("grupo_id")->references("id")->on("grupos")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

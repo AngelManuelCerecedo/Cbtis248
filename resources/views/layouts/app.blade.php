@@ -99,6 +99,9 @@
                     <a href="{{route('Horarios')}}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Profesor</h1>
                     </a>
+                    <a href="{{route('HorariosG')}}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Grupo</h1>
+                    </a>
                 </div>
 
                 <!-- MATERIAS & ACTIVIDAD COMPLEMENTARIA -->
