@@ -18,7 +18,7 @@ class IncidenciaFactory extends Factory
             'Descripcion' => $this->faker->randomElement(['problema1','problema2','problema3','problema4']),
             'ciclo_id' => $this->faker->randomElement(['1']),
             'alumno_id' => $this->faker->numberBetween(1,10),
-            'user_id' => $this->faker->numberBetween(1,10),
+            'user_id' => 1,
         ];
     }
 }

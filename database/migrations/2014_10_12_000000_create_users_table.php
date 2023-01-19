@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string("Numero_Plaza",45);
             $table->text("Observaciones");
             $table->string("Estatus",45);
+            $table->string("EstatusUser",45);
 
             $table->timestamps();
         });

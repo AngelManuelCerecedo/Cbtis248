@@ -11,6 +11,7 @@ use App\Http\Controllers\MateriasController;
 use App\Http\Controllers\AdministradoresController;
 use App\Http\Controllers\GruposController;
 use App\Http\Controllers\HorariosController;
+use App\Http\Controllers\UserController;
 use App\Models\HorarioProfesor;
 use Illuminate\Support\Facades\Route;
 
@@ -75,3 +76,8 @@ Route::get('Grupos',[GruposController::class,'grupo'])->name('Grupos');
 Route::get('Horarios',[HorariosController::class,'horario'])->name('Horarios');
 Route::get('Horarios/Materias/{id}',[HorariosController::class,'horarioM'])->name('HorariosM');
 Route::get('Horarios/{id}',[HorariosController::class,'horarioV'])->name('HorariosV');
+
+//USUARIOS
+Route::resource('Usuarios',UserController::class)->names('Usuarios');
+
+//Roles

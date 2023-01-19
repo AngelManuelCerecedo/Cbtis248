@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -17,6 +18,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +29,7 @@ class User extends Authenticatable
         'name',
         'email','password2',
         'password','id','Curp','Nombre','ApPaterno','ApMaterno','Rfc','Clave_Cobro','Puesto','Perfil','Fecha_ingreso','Fecha_ingreso_SEP',	
-        'Fecha_ingreso_DGETI','Categoria','Numero_Tarjeta','Horas_Nom','Numero_Plaza','Observaciones','Estatus'
+        'Fecha_ingreso_DGETI','Categoria','Numero_Tarjeta','Horas_Nom','Numero_Plaza','Observaciones','Estatus','EstatusUser'
     ];
     
     

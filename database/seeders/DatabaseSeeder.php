@@ -34,11 +34,14 @@ class DatabaseSeeder extends Seeder
         $this->call(DiaSeeder::class);
         $this->call(HoraSeeder::class);
         ActComp::factory(10)->create();
-        User::factory(10)->create();
+        // User::factory(10)->create();
+        $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
         Profesor::factory(10)->create();
         Grupo::factory(6)->create();
         Alumno::factory(10)->create();
         Incidencia::factory(10)->create();
         Materia::factory(10)->create();
+        
     }
 }

@@ -19,6 +19,7 @@ class Radministrador extends Component
     {
         User::updateOrCreate([
             'Estatus' => 'Activo',
+            'EstatusUser' => 'Activo',
             'Curp' => $this->C,
             'Nombre' => $this->N,
             'ApPaterno' => $this->AP,

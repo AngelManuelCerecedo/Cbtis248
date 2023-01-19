@@ -134,6 +134,26 @@
                     </a>
                 </div>
 
+                <!-- Usuarios y Roles -->
+                <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                    <i class="bi bi-person"></i>
+                    <div class="flex justify-between w-full items-center" onclick="dropDown6()">
+                        <span class="text-[20px] ml-4 text-gray-200">Usuarios</span>
+                        <span class="text-sm rotate-180" id="arrow6"></span>
+                    </div>
+                </div>
+
+                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloUsuarios">
+                    <a href="{{route('Usuarios.index')}}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Gestionar Usuarios</h1>
+                    </a>
+                </div>
+                
+
+
+
+
+
                 <!-- CERRAR SESION -->
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
@@ -181,6 +201,13 @@
             document.querySelector('#arrow5').classList.toggle('rotate-0')
         }
         dropDown5()
+
+        function dropDown6() {
+            document.querySelector('#submoduloUsuarios').classList.toggle('hidden')
+            document.querySelector('#arrow6').classList.toggle('rotate-0')
+        }
+
+        dropDown6()
 
         function Openbar() {
             document.querySelector('.sidebar').classList.toggle('left-[-300px]')
