@@ -47,19 +47,23 @@
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Apellido Paterno
+                                        Tutor
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Apellido Materno
+                                        Grado
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Curp
+                                        Especialidad
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
                                         Num. Control
+                                    </th>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
+                                        Estatus
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sesansmibold text-gray-600 uppercase tracking-wider">
@@ -71,24 +75,31 @@
                                 @foreach ($alumnos as $alumno)
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->Nombre }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->Nombre }}
+                                                {{ $alumno->ApPaterno }} {{ $alumno->ApMaterno }}</p>
+
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->padre->Nombre }}
+                                                {{ $alumno->padre->ApPaterno }} {{ $alumno->padre->ApMaterno }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->ApPaterno }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->grado->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->ApMaterno }}</p>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->Curp }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $alumno->especialidad->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 {{ $alumno->Numero_Control }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $alumno->Estatus }}</p>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 
-                                            <a href="{{route('EAlumno',[$alumno->id])}}">
+                                            <a href="{{ route('EAlumno', [$alumno->id]) }}">
                                                 <button type="button"
                                                     class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1"><i
                                                         class="bi bi-pencil-square"></i></button>
@@ -96,7 +107,13 @@
 
                                             <button wire:click="borrar({{ $alumno->id }})" type="button"
                                                 class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
-                                                    class="bi bi-trash-fill"></i></button>
+                                                    class="bi bi-trash-fill"></i>
+                                            </button>
+
+                                            <button wire:click="info({{ $alumno->id }})" type="button"
+                                                class="text-white bg-blue-600 hover:bg-blue-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
+                                                    class="bi bi-info-lg"></i></button>
+
                                         </td>
                                     </tr>
                                 @endforeach

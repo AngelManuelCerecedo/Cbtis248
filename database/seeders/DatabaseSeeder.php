@@ -38,10 +38,11 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         Profesor::factory(10)->create();
-        Grupo::factory(6)->create();
+        $this->call(GrupoSeeder::class);
         Alumno::factory(10)->create();
         Incidencia::factory(10)->create();
-        Materia::factory(10)->create();
+        $this->call(MateriaSeeder::class);
+        //Materia::factory(10)->create();
         
     }
 }

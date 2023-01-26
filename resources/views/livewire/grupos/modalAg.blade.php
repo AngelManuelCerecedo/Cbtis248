@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class=" pb-3 ml-3  font-sans">
-                <p>ESPACIOS DISPONIBLES : {{ $TOT }} </p>
+                <p>ESPACIOS DISPONIBLES : {{$gruposAÑ->TotAL - $gruposAÑ->ALR}} </p>
                 <p>ESPACIOS OCUPADOS : {{ $CONT }}</p>
             </div>
             <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

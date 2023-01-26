@@ -221,7 +221,6 @@ class Ealumnos extends Component
                     'grado_id' => $this->G,
                     'secundaria_id' => $secundaria,
                     'padre_id' => $tutor,
-                    'grupo_id' => null,
                 ]
             );
         }

@@ -12,7 +12,7 @@ class Bincidencia extends Component
 {
     use WithPagination;
     public $search;
-    public $cantidad = 5;
+    public $cantidad = 5, $userlog;
     public $F, $C, $D, $iC, $iA, $iU;
     public $ID;
     public $IDAUX;
@@ -23,7 +23,6 @@ class Bincidencia extends Component
 
     public function render()
     {
-
         if ($this->estatus == "Todos") {
             $alumnos = Alumno::Where([['Numero_Control', 'like', '%' . $this->search . '%']])
                 ->orWhere([['Nombre', 'like', '%' . $this->search . '%']])
@@ -86,7 +85,7 @@ class Bincidencia extends Component
                 'Descripcion' => $this->D,
                 'ciclo_id' => $this->C,
                 'alumno_id' => $this->IDAUX,
-                'user_id' => 1,
+                'user_id' => $this->userlog->id,
             ]
         );
         $this->dispatchBrowserEvent('swal', [

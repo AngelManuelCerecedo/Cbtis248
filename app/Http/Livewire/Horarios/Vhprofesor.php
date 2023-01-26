@@ -7,6 +7,7 @@ use App\Models\Hora;
 use App\Models\Horario_Profesor;
 use App\Models\Materia;
 use App\Models\Profesor;
+use App\Models\User;
 use Livewire\Component;
 
 class Vhprofesor extends Component
@@ -22,7 +23,7 @@ class Vhprofesor extends Component
         $Dias = Dia::all();
         //$Materias = Materia::Where([['Estatus', '=', 'Abierta']])->get();
         $this->aux = $this->ide;
-        $this->Profesor = Profesor::Where([['id', '=', $this->ide]])->first();
+        $this->Profesor = User::Where([['id', '=', $this->ide]])->first();
         $this->horarios = Horario_Profesor::Where([['profesor_id', '=', $this->ide]])->get();
         $this->Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $this->ide] ])->orderBy('dia_id','asc')->get();
         $this->Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $this->ide] ])->orderBy('dia_id','asc')->get();

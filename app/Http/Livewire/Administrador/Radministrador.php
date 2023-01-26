@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Radministrador extends Component
 {
-    public $N, $AP, $AM, $RFC, $CC, $P, $FI, $FID, $FIS, $CAT, $NT, $HN, $NP, $O, $C, $E, $PS;
+    public $N, $AP, $AM, $RFC, $CC, $P, $FI, $FID, $FIS, $CAT, $NT, $HN, $NP, $O, $C, $E, $PS,$TD, $PT;
 
     public function render()
     {
@@ -19,14 +19,15 @@ class Radministrador extends Component
     {
         User::updateOrCreate([
             'Estatus' => 'Activo',
-            'EstatusUser' => 'Activo',
+            'EstatusUser' => 'Inactivo',
+            'email' => $this->E,
             'Curp' => $this->C,
             'Nombre' => $this->N,
             'ApPaterno' => $this->AP,
             'ApMaterno' => $this->AM,
             'Rfc' => $this->RFC,
             'Clave_Cobro' => $this->CC,
-            'Puesto' => 'Administrador',
+            'Puesto' => $this->PT,
             'Perfil' => $this->P,
             'Fecha_ingreso' => $this->FI,
             'Fecha_ingreso_SEP' => $this->FIS,
@@ -36,9 +37,7 @@ class Radministrador extends Component
             'Horas_Nom' => $this->HN,
             'Numero_Plaza' => $this->NP,
             'Observaciones' => $this->O,
-            'email' => $this->E,
-            'password' => bcrypt($this->PS),
-            'password2' => encrypt($this->PS),
+            'Tipo' => $this->TD,
         ]);
         $this->dispatchBrowserEvent('swal', [
             'title' => 'Registro guardado exitosamente',
@@ -65,8 +64,7 @@ class Radministrador extends Component
         $this->HN = '';
         $this->NP = '';
         $this->O = '';
-        $this->E = '';
-        $this->PS = '';
+        $this->TD = '';
     }
     public function redic(){
         return redirect()->route('BuscarAdministrador');

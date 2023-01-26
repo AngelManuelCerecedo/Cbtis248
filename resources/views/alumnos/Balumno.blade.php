@@ -1,12 +1,18 @@
 @extends('layouts.app')
-@section('title','Buscar Alumno')
+@section('title', 'Buscar Alumno')
 @section('content')
-@livewire('alumnos.balumnos')
+    @livewire('alumnos.balumnos')
 @endsection
 @section('js')
-<script>
-  //Eliminado
-  window.addEventListener('swal:confirm', event => {
+    <script>
+        window.addEventListener('swal', event => {
+            Swal.fire({
+                title: event.detail.title,
+                text: event.detail.text,
+            })
+        });
+        //Eliminado
+        window.addEventListener('swal:confirm', event => {
             Swal.fire({
                     title: event.detail.title,
                     text: "¡No podrás revertir esto!",
@@ -32,5 +38,5 @@
                     }
                 });
         });
-</script>
+    </script>
 @endsection

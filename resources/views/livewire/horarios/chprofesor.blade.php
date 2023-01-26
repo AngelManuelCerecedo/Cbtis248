@@ -3,17 +3,18 @@
         <div class="w-full rounded p-8 sm:p-12 ">
 
             <p class="text-4xl font-sans leading-tight text-center">SELECCION DE MATERIAS</p>
-            <p class="text-4xl font-sans leading-tight text-center uppercase">PROFESOR : {{ $Profesor->Nombre }}
+            <p class="text-4xl font-sans leading-tight text-center uppercase">DOCENTE : {{ $Profesor->Nombre }}
                 {{ $Profesor->ApPaterno }} {{ $Profesor->ApMaterno }} </p>
             <div class="md:flex items-center mt-8">
                 <div class="w-full md:w-1/4 flex flex-col">
-                    <label class="font-sans leading-none">Materia</label>
+                    <label class="font-sans leading-none">Materia/Actividad</label>
                     <select wire:model='M'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                        <option value="0">Seleciona una Materia</option>
+                        <option value="0">Seleciona una Materia/Actividad</option>
                         @foreach ($materias as $materia)
-                            @if ($materia->profesor_id == $Profesor->id)
-                                <option value="{{ $materia->id }}">{{ $materia->Nombre }}</option>
+                            @if ($materia->profesor_id == $Profesor->id && $materia->Horas_Sem != $materia->Horas_Reg)
+                                <option value="{{ $materia->id }}">{{ $materia->Nombre }} GRUPO:
+                                    {{ $materia->grupo->Clave_Grupo }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -36,6 +37,22 @@
                         @foreach ($horas as $hora)
                             <option value="{{ $hora->id }}">{{ $hora->Hora }}</option>
                         @endforeach
+                    </select>
+                </div>
+                <div class="w-full md:w-1/4 flex flex-col md:ml-6">
+                    <label class="font-sans leading-none">Lugar</label>
+                    <select wire:model='L'
+                        class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
+                        <option value="0">Seleciona un Lugar</option>
+                        <option value="Salon">Salon</option>
+                        <option value="Taller A.R.H.">Taller A.R.H.</option>
+                        <option value="Taller S.H.">Taller S.H.</option>
+                        <option value="Taller A.B.">Taller A.B</option>
+                        <option value="Aula Ingles">Aula de Ingles</option>
+                        <option value="Centro de Computo">Centro de Computo</option>
+                        <option value="Laboratorio">Laboratorio Multiple</option>
+                        <option value="Biblioteca">Biblioteca</option>
+                        <option value="Area Verde">Area Verde</option>
                     </select>
                 </div>
                 <div class=" flex flex-col md:ml-6">
@@ -86,7 +103,12 @@
                                             @if ($Phora->dia_id == $i)
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $Phora->materia->Nombre }}</p>
+                                                        {{ $Phora->materia->Nombre }}
+                                                        ({{ $Phora->grupo->Clave_Grupo }})
+                                                    </p>
+                                                    <p class="text-gray-900 whitespace-no-wrap uppercase">
+                                                        ({{ $Phora->Lugar }})
+                                                    </p>
                                                     <button wire:click="borrar({{ $Phora->id }})" type="button"
                                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
                                                             class="bi bi-trash-fill"></i></button>
@@ -113,6 +135,10 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
                                                         {{ $Shora->materia->Nombre }}
+                                                        ({{ $Shora->grupo->Clave_Grupo }})
+                                                    </p>
+                                                    <p class="text-gray-900 whitespace-no-wrap uppercase">
+                                                        ({{ $Shora->Lugar }})
                                                     </p>
                                                     <button wire:click="borrar({{ $Shora->id }})" type="button"
                                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
@@ -140,6 +166,10 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
                                                         {{ $Thora->materia->Nombre }}
+                                                        ({{ $Thora->grupo->Clave_Grupo }})
+                                                    </p>
+                                                    <p class="text-gray-900 whitespace-no-wrap uppercase">
+                                                        ({{ $Thora->Lugar }})
                                                     </p>
                                                     <button wire:click="borrar({{ $Thora->id }})" type="button"
                                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
@@ -167,6 +197,10 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
                                                         {{ $Qhora->materia->Nombre }}
+                                                        ({{ $Qhora->grupo->Clave_Grupo }})
+                                                    </p>
+                                                    <p class="text-gray-900 whitespace-no-wrap uppercase">
+                                                        ({{ $Qhora->Lugar }})
                                                     </p>
                                                     <button wire:click="borrar({{ $Qhora->id }})" type="button"
                                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
@@ -194,6 +228,10 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
                                                         {{ $Chora->materia->Nombre }}
+                                                        ({{ $Chora->grupo->Clave_Grupo }})
+                                                    </p>
+                                                    <p class="text-gray-900 whitespace-no-wrap uppercase">
+                                                        ({{ $Chora->Lugar }})
                                                     </p>
                                                     <button wire:click="borrar({{ $Chora->id }})" type="button"
                                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
@@ -221,6 +259,10 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
                                                         {{ $SEhora->materia->Nombre }}
+                                                        ({{ $SEhora->grupo->Clave_Grupo }})
+                                                    </p>
+                                                    <p class="text-gray-900 whitespace-no-wrap uppercase">
+                                                        ({{ $SEhora->Lugar }})
                                                     </p>
                                                     <button wire:click="borrar({{ $SEhora->id }})" type="button"
                                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
@@ -248,6 +290,10 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
                                                         {{ $SIhora->materia->Nombre }}
+                                                        ({{ $SIhora->grupo->Clave_Grupo }})
+                                                    </p>
+                                                    <p class="text-gray-900 whitespace-no-wrap uppercase">
+                                                        ({{ $SIhora->Lugar }})
                                                     </p>
                                                     <button wire:click="borrar({{ $SIhora->id }})" type="button"
                                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
@@ -275,6 +321,10 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
                                                         {{ $Ohora->materia->Nombre }}
+                                                        ({{ $Ohora->grupo->Clave_Grupo }})
+                                                    </p>
+                                                    <p class="text-gray-900 whitespace-no-wrap uppercase">
+                                                        ({{ $Ohora->Lugar }})
                                                     </p>
                                                     <button wire:click="borrar({{ $Ohora->id }})" type="button"
                                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
@@ -302,6 +352,10 @@
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
                                                         {{ $Nhora->materia->Nombre }}
+                                                        ({{ $Nhora->grupo->Clave_Grupo }})
+                                                    </p>
+                                                    <p class="text-gray-900 whitespace-no-wrap uppercase">
+                                                        ({{ $Nhora->Lugar }})
                                                     </p>
                                                     <button wire:click="borrar({{ $Nhora->id }})" type="button"
                                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i

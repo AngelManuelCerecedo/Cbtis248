@@ -26,17 +26,15 @@
 
                             <div class="grid grid-cols-1 gap-5 md:gap-8 mt-2 mx-7">
                                 <div class="grid grid-cols-1">
-                                    <label class=" md:text-sm text-xs text-gray-900 font-semibold">Seleccione
-                                        un administrador</label>
+                                    <label class=" md:text-sm text-xs text-gray-900 font-semibold">Nombre</label>
                                     <select
                                         class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                                         wire:model="administrador" id="">
                                         <option value="0">
-                                            Selecciona un administrador
+                                            Seleccione a una Persona
                                         </option>
                                         @foreach ($administradores as $administrador)
-                                            @if ($administrador->id == 1)
-                                            @else
+                                            @if ($administrador->password == null )
                                                 <option value="{{ $administrador->id }}">
                                                     {{ $administrador->Nombre }} {{ $administrador->ApPaterno }} {{ $administrador->ApMaterno }}
                                                 </option>
@@ -48,17 +46,6 @@
 
                             {{-- {{$prueba}} --}}
 
-                            <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
-                                <div class="grid grid-cols-1">
-                                    <label for="" class=" md:text-sm text-xs text-gray-900 font-semibold">Correo
-                                        electrónico</label>
-                                    <input
-                                        class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
-                                        type="text" placeholder="Correo electronico" id=""
-                                        wire:model="email" />
-
-                                </div>
-                            </div>
 
                             <div class="grid grid-cols-1 gap-5 md:gap-8 mt-2 mx-7">
                                 <div class="grid grid-cols-1">

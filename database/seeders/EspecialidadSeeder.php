@@ -14,11 +14,10 @@ class EspecialidadSeeder extends Seeder
     public function run()
     {
         Especialidad::create(['Nombre'=>'Administracion']);
-        Especialidad::create(['Nombre'=>'Programacion']);
         Especialidad::create(['Nombre'=>'Soporte y Mantenimiento']);
-        Especialidad::create(['Nombre'=>'Bebidas y Alimentos']);
+        Especialidad::create(['Nombre'=>'Programacion']);
         Especialidad::create(['Nombre'=>'Mantenimiento Automotriz']);
         Especialidad::create(['Nombre'=>'Servicios de Hospedaje']);
-        Especialidad::create(['Nombre'=>'Sin Especialidad']);
+        Especialidad::create(['Nombre'=>'Bebidas y Alimentos']);
     }
 }

@@ -51,7 +51,7 @@
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Profesor
+                                        Docente
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
@@ -94,12 +94,12 @@
                                             @if ($materia->profesor_id == null)
                                                 <button wire:click="asignar({{ $materia->id }})" type="button"
                                                     class="text-white bg-[#4eb553]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Asignar
-                                                    Profesor</button>
+                                                    Docente</button>
                                             @endif
                                             @if ($materia->profesor_id != null)
                                                 <button wire:click="desasignar({{ $materia->id }})" type="button"
                                                     class="text-white bg-[#3065AC]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Desasignar
-                                                    Profesor</button>
+                                                    Docente</button>
                                             @endif
 
                                         </td>

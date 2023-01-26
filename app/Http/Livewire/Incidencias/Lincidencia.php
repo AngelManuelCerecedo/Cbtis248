@@ -107,6 +107,6 @@ class Lincidencia extends Component
 
     public function redic()
     {
-        return redirect()->route('Incidencias');
+        return redirect()->route('Lincidencias',[$this->IDAUX]);
     }
 }

@@ -35,6 +35,18 @@
                                     type="text" wire:model="HS" autocomplete="off" />
                             </div>
                         </div>
+                        <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
+                            <div class="grid grid-cols-1">
+                                <label class=" md:text-sm text-xs text-gray-900 font-semibold">Grupo</label>
+                                <select wire:model='GP'
+                                    class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
+                                    <option value="0">Selecciona un Grupo</option>
+                                    @foreach ($grupo as $gp)
+                                        <option value="{{ $gp->id }}">{{ $gp->Clave_Grupo }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

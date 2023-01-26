@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title','Incidencias')
+@section('title', 'Incidencias')
 @section('content')
-@livewire('incidencias.bincidencia')
+    @livewire('incidencias.bincidencia',['userlog'=>auth()->user()])
 @endsection
 @section('js')
-<script>
-  //Eliminado
-  window.addEventListener('swal:confirm', event => {
+    <script>
+        //Eliminado
+        window.addEventListener('swal:confirm', event => {
             Swal.fire({
                     title: event.detail.title,
                     text: "¡No podrás revertir esto!",
@@ -32,5 +32,5 @@
                     }
                 });
         });
-</script>
+    </script>
 @endsection

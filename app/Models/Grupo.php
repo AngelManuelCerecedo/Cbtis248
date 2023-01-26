@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Grupo extends Model
 {
     use HasFactory;
-    protected $fillable=['id','Clave_Grupo','Turno','Salon','TotAL','ALR','Estatus','grado_id','ciclo_id','especialidad_id'];
+    protected $fillable=['id','Clave_Grupo','Salon','TotAL','ALR','Estatus','grado_id','ciclo_id','especialidad_id'];
     public function alumno(){
         return $this->hasMany("App\Models\Alumno");
     }
@@ -22,7 +22,7 @@ class Grupo extends Model
         return $this->belongsTo("App\Models\Especialidad");
     }
     public function materia(){
-        return $this->belongsToMany("App\Models\Materia");
+        return $this->hasMany("App\Models\Materia");
     }
     public function horarioalu(){
         return $this->belongsTo("App\Models\horarioAlumno");

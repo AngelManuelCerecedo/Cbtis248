@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title','Listado de Incidencias')
+@section('title', 'Listado de Incidencias')
 @section('content')
-@livewire('incidencias.lincidencia', ['IDAUX' => $id])
+    @livewire('incidencias.lincidencia', ['IDAUX' => $id])
 @endsection
 @section('js')
-<script>
-  //Eliminado
-  window.addEventListener('swal:confirm', event => {
+    <script>
+        //Eliminado
+        window.addEventListener('swal:confirm', event => {
             Swal.fire({
                     title: event.detail.title,
                     text: "¡No podrás revertir esto!",
@@ -32,5 +32,5 @@
                     }
                 });
         });
-</script>
+    </script>
 @endsection

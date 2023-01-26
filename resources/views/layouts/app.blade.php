@@ -25,12 +25,14 @@
         <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
     </span>
 
-    <div class="sidebar fixed top-0 bottom-0 lg:left-0 left-[-300px] duration-1000
+    <div
+        class="sidebar fixed top-0 bottom-0 lg:left-0 left-[-300px] duration-1000
     p-2 w-[300px] overflow-y-auto text-center bg-[#78163B] shadow h-screen">
         <!-- Imagen TOP -->
         <div class="text-white text-xl">
             <div class="p-0 mt-0 flex items-center rounded-md ">
-                <img src="https://github.com/Darftgamer/LOGO-CBTIS/blob/main/CBTIS248.png?raw=true" alt="logo_Cbtis248" class="w-21">
+                <img src="https://github.com/Darftgamer/LOGO-CBTIS/blob/main/CBTIS248.png?raw=true" alt="logo_Cbtis248"
+                    class="w-21">
                 <i class="bi bi-x ml-20 cursor-pointer lg:hidden" onclick="Openbar()"></i>
             </div>
             <!-- LINEA -->
@@ -38,7 +40,8 @@
             <!-- INICIO -->
             <div>
                 <a href="{{ route('dashboard') }}">
-                    <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  
+                    <div
+                        class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  
                     hover:bg-[#D5C28B]">
                         <i class="bi bi-house"></i>
                         <span class="text-[20px] ml-4 text-white">Inicio</span>
@@ -46,7 +49,8 @@
                 </a>
                 <!-- ALUMNO -->
                 <span class="rotate-180" id="arrow1">
-                    <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                    <div
+                        class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
                         <i class="bi bi-mortarboard"></i>
                         <div class="flex justify-between w-full items-center" onclick="dropDown1()">
                             <span class="text-[20px] ml-4 text-gray-200">Control Escolar</span>
@@ -54,22 +58,23 @@
                     </div>
                 </span>
                 <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloAlumno">
-                    <a href="{{route('Alumnos')}}">
+                    <a href="{{ route('Alumnos') }}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Alumnos</h1>
                     </a>
-                    <a href="{{route('Padres')}}">
+                    <a href="{{ route('Padres') }}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Tutores</h1>
                     </a>
-                    <a href="{{route('Secundarias')}}">
+                    <a href="{{ route('Secundarias') }}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Secundarias</h1>
                     </a>
-                    <a href="{{route('Incidencias')}}">
+                    <a href="{{ route('Incidencias') }}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Incidencias</h1>
                     </a>
                 </div>
 
                 <!-- PERSONAL -->
-                <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                <div
+                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
                     <i class="bi bi-person"></i>
                     <div class="flex justify-between w-full items-center" onclick="dropDown2()">
                         <span class="text-[20px] ml-4 text-gray-200">Personal</span>
@@ -78,16 +83,14 @@
                 </div>
 
                 <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloPersonal">
-                    <a href="{{route('BuscarPersonal')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Profesores</h1>
-                    </a>
-                    <a href="{{route('BuscarAdministrador')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Administrativos</h1>
+                    <a href="{{ route('BuscarAdministrador') }}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Personal</h1>
                     </a>
                 </div>
 
                 <!-- HORARIOS -->
-                <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                <div
+                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
                     <i class="bi bi-clock-history"></i>
                     <div class="flex justify-between w-full items-center" onclick="dropDown3()">
                         <span class="text-[20px] ml-4 text-gray-200">Horarios</span>
@@ -96,16 +99,18 @@
                 </div>
 
                 <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloHorario">
-                    <a href="{{route('Horarios')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Profesor</h1>
+                    <a href="{{ route('Horarios') }}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Docente
+                        </h1>
                     </a>
-                    <a href="{{route('HorariosG')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Grupo</h1>
+                    <a href="{{ route('HorariosG') }}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Horario Grupo</h1>
                     </a>
                 </div>
 
                 <!-- MATERIAS & ACTIVIDAD COMPLEMENTARIA -->
-                <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                <div
+                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
                     <i class="bi bi-book"></i>
                     <div class="flex justify-between w-full items-center" onclick="dropDown4()">
                         <span class="text-[20px] ml-4 text-gray-200">Materias</span>
@@ -114,16 +119,18 @@
                 </div>
 
                 <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloMateria">
-                    <a href="{{route('Materias')}}">
+                    <a href="{{ route('Materias') }}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Materias</h1>
                     </a>
-                    <a href="{{route('Actividades')}}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Actividades Complementarias</h1>
+                    <a href="{{ route('Actividades') }}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Actividades
+                            Complementarias</h1>
                     </a>
                 </div>
 
                 <!-- GRUPOS -->
-                <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                <div
+                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
                     <i class="bi bi-diagram-3"></i>
                     <div class="flex justify-between w-full items-center" onclick="dropDown5()">
                         <span class="text-[20px] ml-4 text-gray-200">Grupos</span>
@@ -132,13 +139,30 @@
                 </div>
 
                 <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloGrupo">
-                    <a href="{{route('Grupos')}}">
+                    <a href="{{ route('Grupos') }}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Grupos</h1>
                     </a>
                 </div>
 
+                <!-- CICLO ESCOLAR -->
+                <div
+                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                    <i class="bi bi-alarm"></i>
+                    <div class="flex justify-between w-full items-center" onclick="dropDown7()">
+                        <span class="text-[20px] ml-4 text-gray-200">Ciclo Escolar</span>
+                        <span class="text-sm rotate-180" id="arrow7"></span>
+                    </div>
+                </div>
+
+                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloCiclos">
+                    <a href="{{ route('Ciclo') }}">
+                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Ciclo Escolar</h1>
+                    </a>
+                </div>
+
                 <!-- Usuarios y Roles -->
-                <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                <div
+                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
                     <i class="bi bi-person"></i>
                     <div class="flex justify-between w-full items-center" onclick="dropDown6()">
                         <span class="text-[20px] ml-4 text-gray-200">Usuarios</span>
@@ -147,11 +171,11 @@
                 </div>
 
                 <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloUsuarios">
-                    <a href="{{route('Usuarios.index')}}">
+                    <a href="{{ route('Usuarios.index') }}">
                         <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Gestionar Usuarios</h1>
                     </a>
                 </div>
-                
+
 
 
 
@@ -160,9 +184,11 @@
                 <!-- CERRAR SESION -->
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
-                    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                    <div
+                        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
                         <i class="bi bi-box-arrow-in-right"></i>
-                        <x-jet-dropdown-link class="text-gray-200 text-[20px]" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                        <x-jet-dropdown-link class="text-gray-200 text-[20px]" href="{{ route('logout') }}"
+                            @click.prevent="$root.submit();">
                             {{ __('Cerrar Sesión') }}
                         </x-jet-dropdown-link>
                     </div>
@@ -211,6 +237,13 @@
         }
 
         dropDown6()
+
+        function dropDown7() {
+
+            document.querySelector('#submoduloCiclos').classList.toggle('hidden')
+            document.querySelector('#arrow7').classList.toggle('rotate-0')
+        }
+        dropDown7()
 
         function Openbar() {
             document.querySelector('.sidebar').classList.toggle('left-[-300px]')

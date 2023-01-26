@@ -2,7 +2,7 @@
     <div class="w-full">
         <div class="w-full rounded p-8 sm:p-12 mt-4">
 
-            <p class="text-4xl font-sans leading-tight text-center">DATOS DEL ADMINISTRADOR</p>
+            <p class="text-4xl font-sans leading-tight text-center">DATOS DEL PERSONAL ANGEL</p>
             <div class="md:flex items-center mt-12">
                 <div class="w-full md:w-1/4 flex flex-col">
                     <label class="font-sans leading-none">Nombre</label>
@@ -41,12 +41,15 @@
                     <select wire:model='CAT'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
                         <option>Selecciona una Categoria</option>
-                        <option value="Categoria1">Categoria1</option>
-                        <option value="Categoria2">Categoria2</option>
-                        <option value="Categoria3">Categoria3</option>
-                        <option value="Categoria4">Categoria4</option>
-                        <option value="Categoria5">Categoria5</option>
-                        <option value="Categoria6">Categoria6</option>
+                        <option value="Asociado 'A'">Asociado 'A'</option>
+                        <option value="Asociado 'B'">Asociado 'B'</option>
+                        <option value="Asociado 'C'">Asociado 'C'</option>
+                        <option value="Titular 'A'">Titular 'A'</option>
+                        <option value="Titular 'B'">Titular 'B'</option>
+                        <option value="Titular 'C'">Titular 'C'</option>
+                        <option value="Asignatura 'A'">Asignatura 'A'</option>
+                        <option value="Asignatura 'B'">Asignatura 'B'</option>
+                        <option value="Asignatura 'C'">Asignatura 'C'</option>
                     </select>
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
@@ -102,20 +105,33 @@
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
-                    <label class="font-sans leading-none">Correo</label>
-                    <input type="text" wire:model='E'
-                        class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    <label class="font-sans leading-none">Puesto</label>
+                    <select wire:model='PT'
+                        class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
+                        <option>Selecciona un Puesto</option>
+                        <option value="Docente">Docente</option>
+                        <option value="Jefe de Departamento">Jefe de Departamento</option>
+                        <option value="Administrativo">Administrativo</option>
+                        <option value="Docente/Administrativo">Docente/Administrativo</option>
+                    </select>
                 </div>
             </div>
             <div class="md:flex items-center mt-8">
                 <div class="w-full md:w-1/4 flex flex-col">
-                    <label class="font-sans leading-none">Contraseña</label>
-                    <input type="password" wire:model='PS'
+                    <label class="font-sans leading-none">Tipo de Personal</label>
+                    <select wire:model='TD'
+                        class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
+                        <option>Selecciona un Tipo</option>
+                        <option value="Usuario">Usuario</option>
+                        <option value="No usuario">No usuario</option>
+                    </select>
+                </div>
+                <div class="w-full md:w-1/4 flex flex-col md:ml-6">
+                    <label class="font-sans leading-none">Correo Electronico</label>
+                    <input type="text" wire:model='E'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
-                </div>
-                <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Grupos')
+@section('title', 'Ciclos')
 @section('content')
-    @livewire('grupos.index')
+    @livewire('ciclos.index')
 @endsection
 @section('js')
     <script>

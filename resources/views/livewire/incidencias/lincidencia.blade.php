@@ -68,7 +68,7 @@
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $incidencia->user->Nombre }}
-                                                {{ $incidencia->user->ApPaterno }}
+                                                {{ $incidencia->user->ApPaterno }} {{ $incidencia->user->ApMaterno }}
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">

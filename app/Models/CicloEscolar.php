@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CicloEscolar extends Model
 {
     use HasFactory;
+    protected $fillable=['id','Semestre'];
     public function incidencia(){
         return $this->hasMany("App\Models\Incidencia");
     }

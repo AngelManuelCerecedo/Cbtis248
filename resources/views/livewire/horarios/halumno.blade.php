@@ -62,14 +62,6 @@
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->especialidad->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-
-                                            <a href="{{ route('HorariosGR', [$grupo->id]) }}">
-                                                <button type="button"
-                                                    class="text-white bg-[#4eb553] rounded-lg  text-sm mr-8 py-2 px-8 ">
-                                                    Crear Horario
-                                                </button>
-                                            </a>
-
                                             <a href="">
                                                 <button type="button"
                                                     class="text-white bg-yellow-400  rounded-lg  text-sm mt-2 py-2 px-6 ">
@@ -77,11 +69,7 @@
                                                 </button>
                                             </a>
                                             <br>
-                                            <button wire:click="borrar({{ $grupo->id }})" type="button"
-                                                class="text-white bg-red-400 rounded-lg  text-sm mr-8 py-2 px-6 ">
-                                                Eliminar Horario
-                                            </button>
-                                            <a href="{{ route('HorariosV', [$grupo->id]) }}">
+                                            <a href="{{ route('HorariosVG', [$grupo->id]) }}">
                                                 <button type="button"
                                                     class="text-white bg-[#3065AC] rounded-lg  text-sm mt-2 py-2 px-10 ">
                                                     Ver Horario

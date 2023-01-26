@@ -45,9 +45,9 @@
                                                 <td
                                                     class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $Phora->materia->Nombre }}</p>
+                                                        {{ $Phora->materia->Nombre }} {{ $Phora->grupo->Clave_Grupo }}</p>
                                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
-                                                        ({{ $Phora->materia->Salon }})
+                                                         ({{ $Phora->Lugar }})
                                                     </p>
 
                                                 </td>
@@ -76,10 +76,10 @@
                                                 <td
                                                     class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $Shora->materia->Nombre }}
+                                                        {{ $Shora->materia->Nombre }} {{ $Shora->grupo->Clave_Grupo }} 
                                                     </p>
                                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
-                                                        ({{ $Shora->materia->Salon }})
+                                                        ({{ $Shora->Lugar }}))
                                                     </p>
                                                 </td>
                                                 <var {{ $is++ }}></var>@break
@@ -107,10 +107,10 @@
                                                 <td
                                                     class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $Thora->materia->Nombre }}
+                                                        {{ $Thora->materia->Nombre }} {{ $Thora->grupo->Clave_Grupo }}
                                                     </p>
                                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
-                                                        ({{ $Thora->materia->Salon }})
+                                                        ({{ $Thora->Lugar}})
                                                     </p>
                                                 </td>
                                                 <var {{ $it++ }}></var>@break
@@ -138,10 +138,10 @@
                                                 <td
                                                     class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $Qhora->materia->Nombre }}
+                                                        {{ $Qhora->materia->Nombre }} {{ $Qhora->grupo->Clave_Grupo }}
                                                     </p>
                                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
-                                                        ({{ $Qhora->materia->Salon }})
+                                                        ({{ $Qhora->Lugar }})
                                                     </p>
                                                 </td>
                                                 <var {{ $iq++ }}></var>@break
@@ -169,10 +169,10 @@
                                                 <td
                                                     class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $Chora->materia->Nombre }}
+                                                        {{ $Chora->materia->Nombre }} {{ $Chora->grupo->Clave_Grupo }}
                                                     </p>
                                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
-                                                        ({{ $Chora->materia->Salon }})
+                                                        ({{ $Chora->Lugar }})
                                                     </p>
                                                 </td>
                                                 <var {{ $ic++ }}></var>@break
@@ -200,10 +200,10 @@
                                                 <td
                                                     class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $SEhora->materia->Nombre }}
+                                                        {{ $SEhora->materia->Nombre }} {{ $SEhora->grupo->Clave_Grupo }}
                                                     </p>
                                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
-                                                        ({{ $SEhora->materia->Salon }})
+                                                        ({{ $SEhora->Lugar }})
                                                     </p>
                                                 </td>
                                                 <var {{ $ise++ }}></var>@break
@@ -231,10 +231,10 @@
                                                 <td
                                                     class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $SIhora->materia->Nombre }}
+                                                        {{ $SIhora->materia->Nombre }} {{ $SIhora->grupo->Clave_Grupo }}
                                                     </p>
                                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
-                                                        ({{ $SIhora->materia->Salon }})
+                                                        ({{ $SIhora->Lugar }})
                                                     </p>
                                                 </td>
                                                 <var {{ $isi++ }}></var>@break
@@ -267,10 +267,10 @@
                                                 <td
                                                     class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $Ohora->materia->Nombre }}
+                                                        {{ $Ohora->materia->Nombre }} {{ $Ohora->grupo->Clave_Grupo }}
                                                     </p>
                                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
-                                                        ({{ $Ohora->materia->Salon }})
+                                                        ({{ $Ohora->Lugar }})
                                                     </p>
                                                 </td>
                                                 <var {{ $io++ }}></var>@break
@@ -299,10 +299,10 @@
                                                 <td
                                                     class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        {{ $Nhora->materia->Nombre }}
+                                                        {{ $Nhora->materia->Nombre }} {{ $Nhora->grupo->Clave_Grupo }}
                                                     </p>
                                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
-                                                        ({{ $Nhora->materia->Salon }})
+                                                        ({{ $Nhora->Lugar }})
                                                     </p>
                                                 </td>
                                                 <var {{ $in++ }}></var>@break

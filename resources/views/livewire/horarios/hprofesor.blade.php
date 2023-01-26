@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div class="pt-8">
-                <h1 class="text-4xl font-sans leading-tight text-center">PROFESORES</h1>
+                <h1 class="text-4xl font-sans leading-tight text-center">DOCENTES</h1>
             </div>
             <!--DIV PADRE-->
             <div class="my-2 flex sm:flex-row flex-col pt-16">
@@ -37,11 +37,7 @@
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Apellido Paterno
-                                    </th>
-                                    <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Apellido Materno
+                                        Puesto
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
@@ -61,13 +57,10 @@
                                 @foreach ($profesores as $profesor)
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Nombre }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Nombre }} {{ $profesor->ApPaterno }} {{ $profesor->ApMaterno }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->ApPaterno }}</p>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->ApMaterno }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Puesto }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Categoria }}</p>

@@ -14,5 +14,9 @@ class CicloSeeder extends Seeder
     public function run()
     {
         CicloEscolar::create(['Semestre'=>'Agosto-Diciembre2022']);
+        CicloEscolar::create(['Semestre'=>'Febrero-Julio2023']);
+        CicloEscolar::create(['Semestre'=>'Agosto-Diciembre2023']);
+        CicloEscolar::create(['Semestre'=>'Febrero-Julio2024']);
+        CicloEscolar::create(['Semestre'=>'Agosto-Diciembre2024']);
     }
 }

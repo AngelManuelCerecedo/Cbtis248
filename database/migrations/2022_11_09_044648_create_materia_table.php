@@ -15,17 +15,16 @@ class CreateMateriaTable extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
-            $table->string("Nombre",45);
+            $table->string("Nombre",100);
             $table->integer("Horas_Sem");
-            $table->string("Estatus",45)->nullable();
             $table->string("Tipo",45)->nullable();
-            $table->string("Salon",45)->nullable();
+            $table->string("Horas_Reg",45)->nullable();
             $table->unsignedBigInteger("especialidad_id")->nullable();
             $table->foreign("especialidad_id")->references("id")->on("especialidads")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("grado_id")->nullable();
             $table->foreign("grado_id")->references("id")->on("grados")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("profesor_id")->nullable();
-            $table->foreign("profesor_id")->references("id")->on("profesors")->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign("profesor_id")->references("id")->on("users")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("grupo_id")->nullable();
             $table->foreign("grupo_id")->references("id")->on("grupos")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

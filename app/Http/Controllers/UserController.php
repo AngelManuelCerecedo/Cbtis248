@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -24,10 +24,10 @@ class UserController extends Controller
     //     return view('users.edit',compact('user','roles'));
     // }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
+        $user = User::where('id', $id)->first();
         $user->roles()->sync($request->roles);
         return redirect()->route('Usuarios.index');
-        
     }
 }

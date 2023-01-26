@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div class="pt-8">
-                <h1 class="text-4xl font-sans leading-tight text-center">ADMINISTRADORES</h1>
+                <h1 class="text-4xl font-sans leading-tight text-center">PERSONAL</h1>
             </div>
             <!--DIV PADRE-->
             <div class="my-2 flex sm:flex-row flex-col pt-16">
@@ -53,11 +53,11 @@
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        E-mail
+                                        Estatus
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Estatus
+                                        Puesto
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sesansmibold text-gray-600 uppercase tracking-wider">
@@ -72,20 +72,23 @@
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->ApPaterno }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->ApPaterno }}
+                                            </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->ApMaterno }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->ApMaterno }}
+                                            </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->email }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->Estatus }}
+                                            </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->Estatus }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->Puesto }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 
-                                            <a href="{{route('EditarAdministrador',[$administrador->id])}}">
+                                            <a href="{{ route('EditarAdministrador', [$administrador->id]) }}">
                                                 <button type="button"
                                                     class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1"><i
                                                         class="bi bi-pencil-square"></i></button>
@@ -94,6 +97,10 @@
                                             <button wire:click="borrar({{ $administrador->id }})" type="button"
                                                 class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
                                                     class="bi bi-trash-fill"></i></button>
+
+                                            <button wire:click="info({{ $administrador->id }})" type="button"
+                                                class="text-white bg-blue-600 hover:bg-blue-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
+                                                    class="bi bi-info-lg"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -127,10 +134,9 @@
             <a href="{{ route('RegistrarAdministrador') }}">
                 <button
                     class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none">
-                    Registrar Administrador
+                    Registrar
                 </button>
             </a>
         </div>
     </div>
 </div>
-

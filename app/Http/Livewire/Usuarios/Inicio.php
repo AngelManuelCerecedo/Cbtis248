@@ -24,13 +24,14 @@ class Inicio extends Component
 
     public function render()
     {
-        $usuarios = User::Where([['Nombre', 'like', '%' . $this->search . '%']])
-        ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%']])
-        ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%']])
-        ->orWhere([['email', 'like', '%' . $this->search . '%']])
+
+        $usuarios = User::Where([['Nombre', 'like', '%' . $this->search . '%'] , ['password', '!=', 'null']])
+        ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%'] , ['password', '!=', 'null']])
+        ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%'] , ['password', '!=', 'null']])
+        ->orWhere([['email', 'like', '%' . $this->search . '%'] , ['password', '!=', 'null']])
         ->paginate($this->cantidad);
 
-        $administradores = User::where('Estatus', 'Activo')->get();
+        $administradores = User::where([['Estatus', '=', 'Activo' ] , ['Tipo', '=', 'Usuario']])->get();
         $roles = Role::all();
 
 
@@ -69,8 +70,6 @@ class Inicio extends Component
         User::updateOrCreate(
         ['id'=>  $this->administrador],
         [
-
-            'email' => $this->email,
             'password' => bcrypt($this->contrasena),
             'password2' => encrypt($this->contrasena),
             'EstatusUser' => 'Activo',

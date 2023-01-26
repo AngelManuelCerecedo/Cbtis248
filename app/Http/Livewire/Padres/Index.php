@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Padres;
 
+use App\Models\Alumno;
 use App\Models\Padre;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -94,12 +95,21 @@ class Index extends Component
     }
 
     public function borrar($id){
-
-        $this->dispatchBrowserEvent('swal:confirm', [
-            'title' => '¿Estás seguro de eliminar?',
-            'type' => 'warning',
-            'id' => $id,
-        ]);
+        $t1 = 'El Tutor tiene un <br/> alumno registrado: <br/>';
+        $alumno = Alumno::Where([['padre_id', '=', $id]])->first();
+        if ($alumno == null){
+            $this->dispatchBrowserEvent('swal:confirm', [
+                'title' => '¿Estás seguro de eliminar?',
+                'type' => 'warning',
+                'id' => $id,
+            ]);
+        }else{
+            $t1 .= $alumno->Nombre . ' ' . $alumno->ApPaterno . ' ' . $alumno->ApMaterno;
+            $this->dispatchBrowserEvent('swal', [
+                'title' => $t1,
+                'type' => 'error'
+            ]);  
+        }
     }
 
     public function delete($id)
@@ -109,7 +119,7 @@ class Index extends Component
         $this->redic();
 
     }
-
+    
     public function redic(){
         return redirect()->route('Padres');
     }

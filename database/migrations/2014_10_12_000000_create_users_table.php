@@ -36,6 +36,7 @@ return new class extends Migration
             $table->integer("Horas_Nom");
             $table->string("Numero_Plaza",45);
             $table->text("Observaciones");
+            $table->string("Tipo", 45);
             $table->string("Estatus",45);
             $table->string("EstatusUser",45);
 

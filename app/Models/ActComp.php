@@ -10,7 +10,7 @@ class ActComp extends Model
     use HasFactory;
     protected $fillable=['id','Nombre','HoraSem','profesor_id'];
     public function profesor(){
-        return $this->belongsToMany("App\Models\Profesor");
+        return $this->belongsTo("App\Models\User");
     }
     public function horarioprof(){
         return $this->belongsToMany("App\Models\HorarioProfesor");

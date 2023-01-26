@@ -29,14 +29,22 @@ class User extends Authenticatable
         'name',
         'email','password2',
         'password','id','Curp','Nombre','ApPaterno','ApMaterno','Rfc','Clave_Cobro','Puesto','Perfil','Fecha_ingreso','Fecha_ingreso_SEP',	
-        'Fecha_ingreso_DGETI','Categoria','Numero_Tarjeta','Horas_Nom','Numero_Plaza','Observaciones','Estatus','EstatusUser'
+        'Fecha_ingreso_DGETI','Categoria','Numero_Tarjeta','Horas_Nom','Numero_Plaza','Observaciones','Estatus','Tipo','EstatusUser'
     ];
     
     
     public function incidencia(){
         return $this->hasMany("App\Models\Incidencia");
     }
-
+    public function materia(){
+        return $this->hasMany("App\Models\Materia");
+    }
+    public function horario_profesor(){
+        return $this->hasMany("App\Models\Horario_Profesor");
+    }
+    public function actcomp(){
+        return $this->hasMany("App\Models\ActComp");
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

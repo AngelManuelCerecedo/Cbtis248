@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Horarios;
 
 use App\Models\Horario_Profesor;
+use App\Models\Materia;
 use App\Models\Profesor;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,10 +17,10 @@ class Hprofesor extends Component
     protected $listeners = ['delete'];
     public function render()
     {
-        $profesores = Profesor::Where([['Nombre', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo']])
-            ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo']])
-            ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo']])
-            ->orWhere([['Curp', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo']])
+        $profesores = User::Where([['Nombre', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', '!=', 'Administrativo']])
+            ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', '!=', 'Administrativo']])
+            ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', '!=', 'Administrativo']])
+            ->orWhere([['Curp', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', '!=', 'Administrativo']])
             ->paginate($this->cantidad);
         return view('livewire.horarios.hprofesor', ['profesores' => $profesores]);
     }
@@ -47,6 +49,8 @@ class Hprofesor extends Component
     {
 
         Horario_Profesor::where('profesor_id', $id)->delete();
+        Materia::where('profesor_id' , $id)->update(['Horas_Reg' => 0,]);
+
         $this->redic();
 
     }

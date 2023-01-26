@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Horario_Profesor extends Model
 {
     use HasFactory;
-    protected $fillable=['dia_id','hora_id','materia_id','profesor_id','grupo_id'];
+    protected $fillable=['Lugar','dia_id','hora_id','materia_id','profesor_id','grupo_id'];
     public function dia(){
         return $this->belongsTo("App\Models\Dia");
     }
@@ -19,7 +19,7 @@ class Horario_Profesor extends Model
         return $this->belongsTo("App\Models\Materia");
     }
     public function profesor(){
-        return $this->belongsTo("App\Models\Profesor");
+        return $this->belongsTo("App\Models\User");
     }
     public function grupo(){
         return $this->belongsTo("App\Models\Grupo");

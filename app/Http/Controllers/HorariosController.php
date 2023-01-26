@@ -20,7 +20,7 @@ class HorariosController extends Controller
     {
         return view('horarios.indexG');
     }
-    public function horarioGR($id){
-        return view('horarios.chalumno', ['id' => $id]);
+    public function horarioVG($id){
+        return view('horarios.vhalumno', ['id' => $id]);
     }
 }

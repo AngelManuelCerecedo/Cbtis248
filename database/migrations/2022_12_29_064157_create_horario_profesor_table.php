@@ -15,6 +15,7 @@ class CreateHorarioProfesorTable extends Migration
     {
         Schema::create('horario__profesors', function (Blueprint $table) {
             $table->id();
+            $table->string("Lugar",45);
             $table->unsignedBigInteger("dia_id");
             $table->foreign("dia_id")->references("id")->on("dias")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("hora_id");
@@ -24,7 +25,7 @@ class CreateHorarioProfesorTable extends Migration
             $table->unsignedBigInteger("actividad_id")->nullable();
             $table->foreign("actividad_id")->references("id")->on("act_comps")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("profesor_id")->nullable();
-            $table->foreign("profesor_id")->references("id")->on("profesors")->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign("profesor_id")->references("id")->on("users")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("grupo_id")->nullable();
             $table->foreign("grupo_id")->references("id")->on("grupos")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

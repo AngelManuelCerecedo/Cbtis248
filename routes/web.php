@@ -9,6 +9,7 @@ use App\Http\Controllers\SecundariasController;
 use App\Http\Controllers\IncidenciasController;
 use App\Http\Controllers\MateriasController;
 use App\Http\Controllers\AdministradoresController;
+use App\Http\Controllers\CicloController;
 use App\Http\Controllers\GruposController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\UserController;
@@ -72,13 +73,17 @@ Route::get('ActividadesComplementarias',[ActividadController::class,'actividad']
 // GRUPOS
 Route::get('Grupos',[GruposController::class,'grupo'])->name('Grupos');
 
-// Horarios
+// HORARIOS
 Route::get('Horarios',[HorariosController::class,'horario'])->name('Horarios');
 Route::get('Horarios/Materias/{id}',[HorariosController::class,'horarioM'])->name('HorariosM');
 Route::get('Horarios/{id}',[HorariosController::class,'horarioV'])->name('HorariosV');
 
 Route::get('HorariosG',[HorariosController::class,'horarioG'])->name('HorariosG');
-Route::get('HorariosG/Materias/{id}',[HorariosController::class,'horarioGR'])->name('HorariosGR');
+Route::get('HorariosG/{id}',[HorariosController::class,'horarioVG'])->name('HorariosVG');
+
+//CICLO ESCOLAR
+Route::get('Ciclo',[CicloController::class,'ciclo'])->name('Ciclo');
+
 
 //USUARIOS
 Route::resource('Usuarios',UserController::class)->names('Usuarios');

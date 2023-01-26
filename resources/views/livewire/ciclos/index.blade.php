@@ -1,14 +1,11 @@
 <div>
     @if ($modal)
-        @include('livewire.actividades.modalRA')
-    @endif
-    @if ($modalAP)
-        @include('livewire.actividades.modalAP')
+        @include('livewire.ciclos.modalRC')
     @endif
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div class="pt-8">
-                <h1 class="text-4xl font-sans leading-tight text-center">ACTIVIDADES COMPLEMENTARIAS</h1>
+                <h1 class="text-4xl font-sans leading-tight text-center">CICLOS ESCOLARES</h1>
             </div>
             <!--DIV PADRE-->
             <div class="my-2 flex sm:flex-row flex-col pt-16">
@@ -33,21 +30,13 @@
             </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                 <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                    @if ($actividades->count())
+                    @if ($ciclos->count())
                         <table class="min-w-full leading-normal font-sans text-center">
                             <thead>
                                 <tr>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Nombre
-                                    </th>
-                                    <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Horas a la Semana
-                                    </th>
-                                    <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
-                                        Docente
+                                        Semestre
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
@@ -56,44 +45,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($actividades as $actividad)
+                                @foreach ($ciclos as $ciclo)
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $actividad->Nombre }}</p>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $actividad->Horas_Sem }}</p>
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            @if ($actividad->profesor_id == null)
-                                                <p class="text-gray-900 whitespace-no-wrap">Sin Asignar</p>
-                                            @endif
-                                            @if ($actividad->profesor_id != null)
-                                                <p class="text-gray-900 whitespace-no-wrap">
-                                                    {{ $actividad->profesor->Nombre }}
-                                                    {{ $actividad->profesor->ApPaterno }}
-                                                    {{ $actividad->profesor->ApMaterno }}</p>
-                                            @endif
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $ciclo->Semestre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <button wire:click="editar({{ $actividad->id }})" type="button"
+                                            <button wire:click="editar({{ $ciclo->id }})" type="button"
                                                 class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Editar</button>
-
-                                            <button wire:click="borrar({{ $actividad->id }})" type="button"
-                                                class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Eliminar</button>
-
-                                            <br>
-                                            @if ($actividad->profesor_id == null)
-                                                <button wire:click="asignar({{ $actividad->id }})" type="button"
-                                                    class="text-white bg-[#4eb553]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Asignar
-                                                    Profesor</button>
-                                            @endif
-                                            @if ($actividad->profesor_id != null)
-                                                <button wire:click="desasignar({{ $actividad->id }})" type="button"
-                                                    class="text-white bg-[#3065AC]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Desasignar
-                                                    Profesor</button>
-                                            @endif
-
                                         </td>
                                     </tr>
                                 @endforeach
@@ -115,19 +74,19 @@
                             </div>
                         </div>
                     @endif
-                    @if ($actividades->hasPages())
+                    @if ($ciclos->hasPages())
                         <div class="px-6 py-3">
-                            {{ $actividades->links() }}
+                            {{ $ciclos->links() }}
                         </div>
                     @endif
                 </div>
             </div>
         </div>
-        <div class="flex items-center justify-center w-full mt-10">
+        <div class="flex items-center justify-center w-full">
             <button
-            class="font-sans mb-20 leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
+                class="font-sans mb-20 leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
                 wire:click='crearmodal()'>
-                Registrar Actividad
+                Registrar Ciclo Escolar
             </button>
         </div>
     </div>

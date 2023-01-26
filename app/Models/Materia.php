@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Materia extends Model
 {
     use HasFactory;
-    protected $fillable=['id','Nombre','Horas_Sem','Estatus','Tipo','Salon','especialidad_id','grado_id','profesor_id'];
+    protected $fillable=['id','Nombre','Horas_Sem','Horas_Reg','Tipo','especialidad_id','grado_id','profesor_id','grupo_id'];
     public function grupo(){
-        return $this->belongsToMany("App\Models\Grupo");
+        return $this->belongsTo("App\Models\Grupo");
     }
     public function grado(){
         return $this->belongsTo("App\Models\Grado");
@@ -19,23 +19,9 @@ class Materia extends Model
         return $this->belongsTo("App\Models\Especialidad");
     }
     public function profesor(){
-        return $this->belongsTo("App\Models\Profesor");
+        return $this->belongsTo("App\Models\User");
     }
-    //public function Profesor(){
-      //  return $this->belongsToMany("App\Models\Profesor")
-        //->withTimestamps()->withPivot(['Hora', 'Dia']);
-    //}
     public function horario_profesor(){
         return $this->hasMany("App\Models\Horario_Profesor");
-    }
-
-    public function horarioalu(){
-        return $this->belongsToMany("App\Models\HorarioAlumno");
-    }
-    public function horarioprof(){
-        return $this->belongsToMany("App\Models\HorarioProfesor");
-    }
-    public function horarioof(){
-        return $this->belongsToMany("App\Models\HorarioOficial");
     }
 }
