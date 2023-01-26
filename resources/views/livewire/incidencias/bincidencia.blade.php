@@ -90,14 +90,19 @@
                                                 {{ $alumno->Numero_Control }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <button wire:click='crearmodal({{ $alumno->id }})' type="button"
-                                                class="text-white border bg-[#4eb553] rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Registrar</button>
+                                            @can('Registrar-Incidencias')
+                                                <button wire:click='crearmodal({{ $alumno->id }})' type="button"
+                                                    class="text-white border bg-[#4eb553] rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Registrar</button>
+                                            @endcan
                                             <br>
-                                            <a href="{{ route('Lincidencias', [$alumno->id]) }}">
-                                                <button type="button"
-                                                    class="text-white border bg-[#3065AC]   rounded-lg text-sm  ml-10 py-2 px-6 m-1">Listado
-                                                    de Incidencias</button>
-                                            </a>
+                                            @can('Listar-Incidencias')
+                                                <a href="{{ route('Lincidencias', [$alumno->id]) }}">
+                                                    <button type="button"
+                                                        class="text-white border bg-[#3065AC]   rounded-lg text-sm  ml-10 py-2 px-6 m-1">Listado
+                                                        de Incidencias</button>
+                                                </a>
+                                            @endcan
+
                                         </td>
                                     </tr>
                                 @endforeach

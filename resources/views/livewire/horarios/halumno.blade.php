@@ -59,22 +59,31 @@
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->Salon }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->especialidad->Nombre }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $grupo->especialidad->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <a href="">
-                                                <button type="button"
-                                                    class="text-white bg-yellow-400  rounded-lg  text-sm mt-2 py-2 px-6 ">
-                                                    Imprimir Horario
-                                                </button>
-                                            </a>
+
+                                            @can('Imprimir-Horario-Grupos')
+                                                <a href="">
+                                                    <button type="button"
+                                                        class="text-white bg-yellow-400  rounded-lg  text-sm mt-2 py-2 px-6 ">
+                                                        Imprimir Horario
+                                                    </button>
+                                                </a>
+                                            @endcan
+
                                             <br>
-                                            <a href="{{ route('HorariosVG', [$grupo->id]) }}">
-                                                <button type="button"
-                                                    class="text-white bg-[#3065AC] rounded-lg  text-sm mt-2 py-2 px-10 ">
-                                                    Ver Horario
-                                                </button>
-                                            </a>
+
+                                            @can('Ver-Horario-Grupos')
+                                                <a href="{{ route('HorariosVG', [$grupo->id]) }}">
+                                                    <button type="button"
+                                                        class="text-white bg-[#3065AC] rounded-lg  text-sm mt-2 py-2 px-10 ">
+                                                        Ver Horario
+                                                    </button>
+                                                </a>
+                                            @endcan
+
                                         </td>
                                     </tr>
                                 @endforeach

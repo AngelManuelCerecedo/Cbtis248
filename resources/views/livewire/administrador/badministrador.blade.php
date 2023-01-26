@@ -88,19 +88,27 @@
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 
-                                            <a href="{{ route('EditarAdministrador', [$administrador->id]) }}">
-                                                <button type="button"
-                                                    class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1"><i
-                                                        class="bi bi-pencil-square"></i></button>
-                                            </a>
+                                            @can('Editar-Personal')
+                                                <a href="{{ route('EditarAdministrador', [$administrador->id]) }}">
+                                                    <button type="button"
+                                                        class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1"><i
+                                                            class="bi bi-pencil-square"></i></button>
+                                                </a>
+                                            @endcan
 
-                                            <button wire:click="borrar({{ $administrador->id }})" type="button"
-                                                class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
-                                                    class="bi bi-trash-fill"></i></button>
 
-                                            <button wire:click="info({{ $administrador->id }})" type="button"
-                                                class="text-white bg-blue-600 hover:bg-blue-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
-                                                    class="bi bi-info-lg"></i></button>
+
+                                            @can('Eliminar-Personal')
+                                                <button wire:click="borrar({{ $administrador->id }})" type="button"
+                                                    class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
+                                                        class="bi bi-trash-fill"></i></button>
+                                            @endcan
+
+                                            @can('Informacion-Personal')
+                                                <button wire:click="info({{ $administrador->id }})" type="button"
+                                                    class="text-white bg-blue-600 hover:bg-blue-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1"><i
+                                                        class="bi bi-info-lg"></i></button>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
@@ -131,12 +139,14 @@
             </div>
         </div>
         <div class="flex items-center justify-center w-full mt-10">
-            <a href="{{ route('RegistrarAdministrador') }}">
-                <button
-                    class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none">
-                    Registrar
-                </button>
-            </a>
+            @can('Registrar-Personal')
+                <a href="{{ route('RegistrarAdministrador') }}">
+                    <button
+                        class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none">
+                        Registrar
+                    </button>
+                </a>
+            @endcan
         </div>
     </div>
 </div>
