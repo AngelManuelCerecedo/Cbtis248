@@ -1,10 +1,19 @@
+<style>
+    body {
+        background-position: center;
+        background-size:cover;
+        background-repeat: no-repeat;
+        max-width: 100%;
+        background-image: url("https://github.com/Darftgamer/LOGO-CBTIS/blob/main/xd.jpg?raw=true")
+    }
+</style>
 <x-guest-layout>
-    <div class="font-sans">
+    <div class="font-sans" >
         <x-jet-authentication-card>
             <x-slot name="logo">
-
+                <img src="https://github.com/Darftgamer/LOGO-CBTIS/blob/main/LOGO-HD.jpeg?raw=true" alt=""
+                    width="150px" height="150px">
             </x-slot>
-
             <x-jet-validation-errors class="mb-4" />
 
             @if (session('status'))
@@ -15,34 +24,20 @@
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-
                 <div>
-                    <x-jet-label for="email" value="{{ __('Correo') }}" />
-                    <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                        required autofocus />
+                    <x-jet-label class="text-lg" for="email" value="{{ __('Correo') }}" />
+                    <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email"
+                        :value="old('email')" required autofocus />
                 </div>
 
                 <div class="mt-4">
-                    <x-jet-label for="password" value="{{ __('Contraseña') }}" />
+                    <x-jet-label class="text-lg" for="password" value="{{ __('Contraseña') }}" />
                     <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
                         autocomplete="current-password" />
                 </div>
-
-                {{-- <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div> --}}
-
                 <div class="flex items-center justify-end mt-4">
-                    {{-- @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif --}}
 
-                    <x-jet-button class="mr-32">
+                    <x-jet-button class="mr-[95px] mt-6 text-lg">
                         {{ __('Iniciar Sesión') }}
                     </x-jet-button>
                 </div>
