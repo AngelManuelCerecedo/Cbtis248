@@ -207,9 +207,9 @@
                         <div
                             class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
                             <i class="bi bi-alarm"></i>
-                            <div class="flex justify-between w-full items-center" onclick="dropDown7()">
+                            <div class="flex justify-between w-full items-center" onclick="dropDown6()">
                                 <span class="text-[20px] ml-4 text-gray-200">Ciclo Escolar</span>
-                                <span class="text-sm rotate-180" id="arrow7"></span>
+                                <span class="text-sm rotate-180" id="arrow6"></span>
                             </div>
                         </div>
                     @endcan
@@ -231,9 +231,9 @@
                         <div
                             class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
                             <i class="bi bi-person"></i>
-                            <div class="flex justify-between w-full items-center" onclick="dropDown6()">
+                            <div class="flex justify-between w-full items-center" onclick="dropDown7()">
                                 <span class="text-[20px] ml-4 text-gray-200">Usuarios</span>
-                                <span class="text-sm rotate-180" id="arrow6"></span>
+                                <span class="text-sm rotate-180" id="arrow7"></span>
                             </div>
                         </div>
                     @endcan
@@ -303,17 +303,17 @@
         dropDown5()
 
         function dropDown6() {
-            document.querySelector('#submoduloUsuarios').classList.toggle('hidden')
+
+            document.querySelector('#submoduloCiclos').classList.toggle('hidden')
             document.querySelector('#arrow6').classList.toggle('rotate-0')
         }
-
         dropDown6()
 
         function dropDown7() {
-
-            document.querySelector('#submoduloCiclos').classList.toggle('hidden')
+            document.querySelector('#submoduloUsuarios').classList.toggle('hidden')
             document.querySelector('#arrow7').classList.toggle('rotate-0')
         }
+
         dropDown7()
 
         function Openbar() {
