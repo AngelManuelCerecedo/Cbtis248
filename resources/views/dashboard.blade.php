@@ -2,7 +2,7 @@
 @section('title', 'Home')
 @section('content')
     <div class="mt-[20px] text-[50px] text-center">
-        BIENVENIDO
+        BIENVENIDO:
         <br>
         <p class="uppercase">{{ auth()->user()->Nombre }} {{ auth()->user()->ApPaterno }} {{ auth()->user()->ApMaterno }} </p>
     </div>
