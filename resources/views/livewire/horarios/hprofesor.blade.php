@@ -80,15 +80,6 @@
                                                 </a>
                                             @endcan
 
-                                            @can('Imprimir-Horario-Docente')
-                                                <a href="">
-                                                    <button type="button"
-                                                        class="text-white bg-yellow-400  rounded-lg  text-sm mt-2 py-2 px-6 ">
-                                                        Imprimir Horario
-                                                    </button>
-                                                </a>
-                                            @endcan
-
                                             <br>
 
                                             @can('Eliminar-Horario-Docente')

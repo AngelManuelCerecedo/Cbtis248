@@ -323,6 +323,25 @@
                     </tbody>
                 </table>
             </div>
+            <div class="flex items-center justify-center w-full mt-10">
+            @can('Imprimir-Horario-Docente')
+            <a href="{{ route('HorariosP', [$Profesor->id])}}">
+                <button type="button"
+                    class="font-sans leading-none text-white py-4 px-10 ml-[95px] bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none">
+                    Imprimir Horario Personal
+                </button>
+            </a>
+        @endcan
+
+        @can('Imprimir-Horario-Docente')
+        <a href="{{ route('horariosO', [$Profesor->id])}}">
+            <button type="button"
+                class="font-sans leading-none text-white py-4 px-10 ml-[40px] bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none">
+                Imprimir Horario Oficial
+            </button>
+        </a>
+    @endcan
+</div>
         </div>
     </div>
 </div>

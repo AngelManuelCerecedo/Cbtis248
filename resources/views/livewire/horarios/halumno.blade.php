@@ -65,7 +65,7 @@
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 
                                             @can('Imprimir-Horario-Grupos')
-                                                <a href="">
+                                                <a href="{{ route('horariosG', [$grupo->id])}}">
                                                     <button type="button"
                                                         class="text-white bg-yellow-400  rounded-lg  text-sm mt-2 py-2 px-6 ">
                                                         Imprimir Horario

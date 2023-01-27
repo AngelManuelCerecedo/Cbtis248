@@ -74,9 +74,14 @@
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <button wire:click="editar({{ $incidencia->id }})" type="button"
                                                 class="text-white border  bg-yellow-400 hover:bg-yellow-500 rounded-lg  text-sm  ml-0 py-2 px-6 m-1">Editar</button>
-                                            <button wire:click="" type="button"
-                                                class="text-white border  bg-green-400 hover:bg-green-500 rounded-lg  text-sm  ml-0 py-2 px-6 m-1">Generar
-                                                Citatorio</button>
+
+                                            <a href="{{ route('citatorio', [$incidencia->id]) }}">
+                                                <button wire:click="" type="button"
+                                                    class="text-white border  bg-green-400 hover:bg-green-500 rounded-lg  text-sm  ml-0 py-2 px-6 m-1">Generar
+                                                    Citatorio</button>
+                                            </a>
+
+
                                             <button wire:click="borrar({{ $incidencia->id }})" type="button"
                                                 class="text-white border  bg-red-400 hover:bg-red-500 rounded-lg  text-sm  ml-0 py-2 px-6 m-1">Eliminar</button>
                                         </td>

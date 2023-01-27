@@ -18,6 +18,89 @@ class Ralumnos extends Component
     public $AUXTUT, $AUXSEC;
     public $PADRES;
 
+    //validaciones
+    protected $rules = [
+        'NC' => 'required|numeric',
+        'N' => 'required',
+        'AP' => 'required',
+        'AM' => 'required',
+        'C' => 'required|min:18|max:18',
+        'LN' => 'required',
+        'NCA' => 'required',
+        'COL' => 'required',
+        'LOC' => 'required',
+        'CP' => 'required|numeric',
+        'LR' => 'required',
+        'NSS' => 'required|min:11|max:11',
+        'TS' => 'required',
+        'EC' => 'required',
+        'EM' => 'required|email',
+        'T' => 'required|digits_between:10,10',
+        'G' => 'required',
+        'ESP' => 'required',
+        'PROM' => 'required|numeric',
+        'AF' => 'required',
+
+        'NOM' => 'required',
+        'APP' => 'required',
+        'APM' => 'required',
+        'CEL' => 'required|digits_between:10,10',
+
+        'NSEC' => 'required',
+        'CLAVS' => 'required',
+        'MODS' => 'required',
+        'REG' => 'required',
+
+
+
+    ];
+    //Mensajes de validaciones
+    protected $messages = [
+        'NC.required' => 'El campo numero de control puede estar vacío',
+        'NC.numeric' => 'Solo se aceptan numeros',
+        'N.required' => 'El campo nombre no puede estar vacío',
+        'AP.required' => 'El campo apellido paterno no puede estar vacío',
+        'AM.required' => 'El campo apellido materno no puede estar vacío',
+        'C.required' => 'El campo curp no puede estar vacío',
+        'C.min' => 'Curp invalida',
+        'C.max' => 'Curp invalida',
+        'LN.required' => 'El campo lugar de nacimiento no puede estar vacío',
+        'NCA.required' => 'El campo número de calle no puede estar vacío',
+        'COL.required' => 'El campo colonia no puede estar vacío',
+        'LOC.required' => 'El campo localidad no puede estar vacío',
+        'CP.required' => 'El campo código postal no puede estar vacío',
+        'CP.numeric' => 'Solo se aceptan numeros',
+        'LR.required' => 'El campo lugar de radicación no puede estar vacío',
+        'NSS.required' => 'El campo número de seguro social no puede estar vacío',
+        'NSS.min' => 'Número de seguro social invalido',
+        'NSS.max' => 'Número de seguro social invalido',
+        'TS.required' => 'El campo tipo de sangre no puede estar vacío',
+        'EC.required' => 'El campo estado civil no puede estar vacío',
+        'EM.required' => 'El campo correo electronico no puede estar vacío',
+        'EM.email' => 'Correo electronico invalido',
+        'T.required' => 'El campo correo telefono no puede estar vacío',
+        'T.digits_between' => 'Telefono invalido',
+        'G.required' => 'El campo grado no puede estar vacío',
+        'ESP.required' => 'El campo especialidad no puede estar vacío',
+        'PROM.required' => 'El campo promedio no puede estar vacío',
+        'PROM.numeric' => 'Promedio invalido',
+        'AF.required' => 'El campo año de finalización no puede estar vacío',
+        'NOM.required' => 'El campo nombre no puede estar vacío',
+        'APP.required' => 'El campo apellido paterno no puede estar vacío',
+        'APM.required' => 'El campo apellido materno no puede estar vacío',
+        'CEL.required' => 'El campo correo telefono no puede estar vacío',
+        'CEL.digits_between' => 'Telefono invalido',
+
+
+        'NSEC.required' => 'El campo nombre no puede estar vacío',
+        'CLAVS.required' => 'El campo clave de secundaria no puede estar vacío',
+        'MODS.required' => 'El campo modalidad no puede estar vacío',
+        'REG.required' => 'El campo regimen no puede estar vacío',
+
+
+    ];
+
+
     public function render()
     {
         $GRADOS = Grado::all();
@@ -28,6 +111,13 @@ class Ralumnos extends Component
     public function mount()
     {
         $this->reseteo();
+    }
+
+    //metodo que valida en tiempo real
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
 
     public function reseteo()
@@ -77,6 +167,8 @@ class Ralumnos extends Component
 
     public function registrar()
     {
+        $this->validate();
+
         Alumno::updateOrCreate([
             'Numero_Control' => $this->NC,
             'Estatus' => 'Activo',
@@ -143,7 +235,8 @@ class Ralumnos extends Component
         $this->CLAVS = '';
         $this->REG = '';
     }
-    public function redic(){
+    public function redic()
+    {
         return redirect()->route('Alumnos');
     }
 }

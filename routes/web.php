@@ -78,6 +78,15 @@ Route::get('Horarios',[HorariosController::class,'horario'])->middleware('can:Ho
 Route::get('Horarios/Materias/{id}',[HorariosController::class,'horarioM'])->middleware('can:Registrar-Horario-Docente')->name('HorariosM');
 Route::get('Horarios/{id}',[HorariosController::class,'horarioV'])->middleware('can:Ver-Horario-Docentes')->name('HorariosV');
 
+//PDF
+//Horarios Profesores
+Route::get('Horarios/Profesor/Personal/{id}',[HorariosController::class,'horariosP'])->name('HorariosP');
+Route::get('Horarios/Profesor/Oficial/{id}',[HorariosController::class,'horariosO'])->name('horariosO');
+//Horarios Grupos
+Route::get('Horarios/Grupos/{id}',[HorariosController::class,'horariosG'])->name('horariosG');
+//Citatorio
+Route::get('Citatorio/{id}',[IncidenciasController::class,'citatorio'])->name('citatorio');
+
 Route::get('HorariosG',[HorariosController::class,'horarioG'])->middleware('can:Horario-Grupos')->name('HorariosG');
 Route::get('HorariosG/{id}',[HorariosController::class,'horarioVG'])->middleware('can:Ver-Horario-Grupos')->name('HorariosVG');
 

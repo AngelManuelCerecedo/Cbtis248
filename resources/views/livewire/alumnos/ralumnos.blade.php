@@ -8,21 +8,34 @@
                     <label class="font-sans leading-none">Numero de Control</label>
                     <input type="text" wire:model='NC'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('NC')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Nombre</label>
                     <input type="text" wire:model='N'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('N')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
+
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                     <label class="font-sans leading-none">Apellido Paterno</label>
                     <input type="text" wire:model='AP'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('AP')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Apellido Materno</label>
                     <input type="text" wire:model='AM'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('AM')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="md:flex items-center mt-8">
@@ -30,21 +43,33 @@
                     <label class="font-sans leading-none">CURP</label>
                     <input type="text" wire:model='C'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('C')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Lugar de Nacimiento</label>
                     <input type="text" wire:model='LN'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('LN')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                     <label class="font-sans leading-none">Numero de Calle</label>
                     <input type="text" wire:model='NCA'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('NCA')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Colonia</label>
                     <input type="text" wire:model='COL'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('COL')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="md:flex items-center mt-8">
@@ -52,21 +77,33 @@
                     <label class="font-sans leading-none">Localidad</label>
                     <input type="text" wire:model='LOC'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('LOC')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Codigo Postal</label>
                     <input type="text" wire:model='CP'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('CP')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                     <label class="font-sans leading-none">Lugar de Radicacion</label>
                     <input type="text" wire:model='LR'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('LR')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Numero de Seguro Social</label>
                     <input type="text" wire:model='NSS'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('NSS')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="md:flex items-center mt-8">
@@ -74,7 +111,7 @@
                     <label class="font-sans leading-none">Tipo de Sangre</label>
                     <select wire:model='TS'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                        <option value="0">Seleciona un Tipo de Sangre</option>
+                        <option value="">Seleciona un Tipo de Sangre</option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>
@@ -84,27 +121,39 @@
                         <option value="O-">O-</option>
                         <option value="No conocido">No conocido</option>
                     </select>
+                    @error('TS')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Estado Civil</label>
                     <select wire:model='EC'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                        <option value="0">Seleciona un Estado Civil</option>
+                        <option value="">Seleciona un Estado Civil</option>
                         <option value="Soltero">Soltero(a)</option>
                         <option value="Casado">Casado(a)</option>
                         <option value="Divorciado">Divorciado(a)</option>
                         <option value="Viudo">Viudo(a)</option>
                     </select>
+                    @error('EC')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                     <label class="font-sans leading-none">Correo Electronico</label>
                     <input type="email" wire:model='EM'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('EM')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Telefono</label>
                     <input type="text" wire:model='T'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('T')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
 
@@ -113,33 +162,45 @@
                     <label class="font-sans leading-none">Grado</label>
                     <select wire:model='G'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                        <option value="0">Seleciona un Grado</option>
+                        <option value="">Seleciona un Grado</option>
                         @foreach ($grados as $grads)
                             <option value="{{ $grads->id }}">{{ $grads->Nombre }}</option>
                         @endforeach
                     </select>
+                    @error('G')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Especialidad</label>
                     <select wire:model='ESP'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                        <option value="0">Seleciona una Especialidad</option>
+                        <option value="">Seleciona una Especialidad</option>
                         @foreach ($especialidad as $esps)
                             <option value="{{ $esps->id }}">{{ $esps->Nombre }}</option>
                         @endforeach
                     </select>
+                    @error('ESP')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                     <label class="font-sans leading-none">Promedio</label>
                     <input type="text" wire:model='PROM'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('PROM')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Año de Finalizacion</label>
                     <input type="date" wire:model='AF'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('AF')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
 
@@ -185,21 +246,33 @@
                     <label class="font-sans leading-none">Nombre</label>
                     <input type="text" wire:model='NOM'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('NOM')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Apellido Paterno</label>
                     <input type="text" wire:model='APP'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('APP')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                     <label class="font-sans leading-none">Apellido Materno</label>
                     <input type="text" wire:model='APM'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('APM')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Celular</label>
                     <input type="text" wire:model='CEL'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('CEL')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
 
@@ -244,31 +317,45 @@
                     <label class="font-sans leading-none">Nombre</label>
                     <input type="text" wire:model='NSEC'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('NSEC')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Clave de Secundaria</label>
                     <input type="text" wire:model='CLAVS'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                    @error('CLAVS')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                     <label class="font-sans leading-none">Modalidad</label>
                     <select wire:model='MODS'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                        <option value="0">Selecciona una Modalidad</option>
+                        <option value="">Selecciona una Modalidad</option>
                         <option value="General">General</option>
                         <option value="Tecnica">Tecnica</option>
                         <option value="Telesecundaria">Telesecundaria</option>
                         <option value="Otra">Otra</option>
                     </select>
+
+                    @error('MODS')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Regimen</label>
                     <select wire:model='REG'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                        <option value="0">Selecciona un Regimen</option>
+                        <option value="">Selecciona un Regimen</option>
                         <option value="Publica">Publica</option>
                         <option value="Privada">Privada</option>
                     </select>
+                    
+                    @error('REG')
+                        <span class="text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
 
