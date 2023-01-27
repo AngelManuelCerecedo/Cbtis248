@@ -57,7 +57,8 @@
                                 @foreach ($profesores as $profesor)
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Nombre }} {{ $profesor->ApPaterno }} {{ $profesor->ApMaterno }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Nombre }}
+                                                {{ $profesor->ApPaterno }} {{ $profesor->ApMaterno }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $profesor->Puesto }}</p>
@@ -70,30 +71,42 @@
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 
-                                            <a href="{{ route('HorariosM', [$profesor->id]) }}">
-                                                <button type="button"
-                                                    class="text-white bg-[#4eb553] rounded-lg  text-sm mr-8 py-2 px-8 ">
-                                                    Crear Horario
-                                                </button>
-                                            </a>
+                                            @can('Registrar-Horario-Docente')
+                                                <a href="{{ route('HorariosM', [$profesor->id]) }}">
+                                                    <button type="button"
+                                                        class="text-white bg-[#4eb553] rounded-lg  text-sm mr-8 py-2 px-8 ">
+                                                        Crear Horario
+                                                    </button>
+                                                </a>
+                                            @endcan
 
-                                            <a href="">
-                                                <button type="button"
-                                                    class="text-white bg-yellow-400  rounded-lg  text-sm mt-2 py-2 px-6 ">
-                                                    Imprimir Horario
-                                                </button>
-                                            </a>
+                                            @can('Imprimir-Horario-Docente')
+                                                <a href="">
+                                                    <button type="button"
+                                                        class="text-white bg-yellow-400  rounded-lg  text-sm mt-2 py-2 px-6 ">
+                                                        Imprimir Horario
+                                                    </button>
+                                                </a>
+                                            @endcan
+
                                             <br>
-                                            <button wire:click="borrar({{ $profesor->id }})" type="button"
-                                                class="text-white bg-red-400 rounded-lg  text-sm mr-8 py-2 px-6 ">
-                                                Eliminar Horario
-                                            </button>
-                                            <a href="{{ route('HorariosV', [$profesor->id]) }}">
-                                                <button type="button"
-                                                    class="text-white bg-[#3065AC] rounded-lg  text-sm mt-2 py-2 px-10 ">
-                                                    Ver Horario
+
+                                            @can('Eliminar-Horario-Docente')
+                                                <button wire:click="borrar({{ $profesor->id }})" type="button"
+                                                    class="text-white bg-red-400 rounded-lg  text-sm mr-8 py-2 px-6 ">
+                                                    Eliminar Horario
                                                 </button>
-                                            </a>
+                                            @endcan
+
+                                            @can('Ver-Horario-Docentes')
+                                                <a href="{{ route('HorariosV', [$profesor->id]) }}">
+                                                    <button type="button"
+                                                        class="text-white bg-[#3065AC] rounded-lg  text-sm mt-2 py-2 px-10 ">
+                                                        Ver Horario
+                                                    </button>
+                                                </a>
+                                            @endcan
+
                                         </td>
                                     </tr>
                                 @endforeach

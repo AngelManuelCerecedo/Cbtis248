@@ -43,49 +43,47 @@ Route::middleware([
 
 // RUTAS DEL CONTROL ESCOLAR
 
-Route::get('Alumnos',[AlumnosController::class,'alumno'])->name('Alumnos');
-Route::get('Alumnos/Formulario',[AlumnosController::class,'ralumno'])->name('RAlumno');
-Route::get('Alumnos/Editar/{id}',[AlumnosController::class,'ealumno'])->name('EAlumno');
-Route::get('Padres',[PadresController::class,'padre'])->name('Padres');
-Route::get('Secundarias',[SecundariasController::class,'secundaria'])->name('Secundarias');
-Route::get('Incidencias',[IncidenciasController::class,'incidencia'])->name('Incidencias');
-Route::get('ListadoIncidencias/{id}',[IncidenciasController::class,'lincidencia'])->name('Lincidencias');
+Route::get('Alumnos',[AlumnosController::class,'alumno'])->middleware('can:Alumnos')->name('Alumnos');
+Route::get('Alumnos/Formulario',[AlumnosController::class,'ralumno'])->middleware('can:Registrar-Alumnos')->name('RAlumno');
+Route::get('Alumnos/Editar/{id}',[AlumnosController::class,'ealumno'])->middleware('can:Editar-Alumnos')->name('EAlumno');
+Route::get('Padres',[PadresController::class,'padre'])->middleware('can:Tutores')->name('Padres');
+Route::get('Secundarias',[SecundariasController::class,'secundaria'])->middleware('can:Secundarias')->name('Secundarias');
+Route::get('Incidencias',[IncidenciasController::class,'incidencia'])->middleware('can:Incidencias')->name('Incidencias');
+Route::get('ListadoIncidencias/{id}',[IncidenciasController::class,'lincidencia'])->middleware('can:Listar-Incidencias')->name('Lincidencias');
 
 
 // RUTAS DEL PERSONAL
 
-Route::get('Profesores',[PersonalController::class,'Bpersonal'])->name('BuscarPersonal');
-Route::get('Profesores/Formulario',[PersonalController::class,'Rpersonal'])->name('RegistrarPersonal');
-Route::get('Profesores/Editar/{id}',[PersonalController::class,'Epersonal'])->name('EditarPersonal');
+// Route::get('Profesores',[PersonalController::class,'Bpersonal'])->middleware('can:Personal-Catalogo')->name('BuscarPersonal');
+// Route::get('Profesores/Formulario',[PersonalController::class,'Rpersonal'])->name('RegistrarPersonal');
+// Route::get('Profesores/Editar/{id}',[PersonalController::class,'Epersonal'])->name('EditarPersonal');
 
-Route::get('Administradores',[AdministradoresController::class,'Badministrador'])->name('BuscarAdministrador');
-Route::get('Administradores/Formulario',[AdministradoresController::class,'Radministrador'])->name('RegistrarAdministrador');
-Route::get('Administradores/Editar/{id}',[AdministradoresController::class,'Eadministrador'])->name('EditarAdministrador');
+Route::get('Administradores',[AdministradoresController::class,'Badministrador'])->middleware('can:Personal-Catalogo')->name('BuscarAdministrador');
+Route::get('Administradores/Formulario',[AdministradoresController::class,'Radministrador'])->middleware('can:Registrar-Personal')->name('RegistrarAdministrador');
+Route::get('Administradores/Editar/{id}',[AdministradoresController::class,'Eadministrador'])->middleware('can:Editar-Personal')->name('EditarAdministrador');
 
 // RUTAS DE LAS MATERIAS
 
-Route::get('Materias',[MateriasController::class,'materia'])->name('Materias');
+Route::get('Materias',[MateriasController::class,'materia'])->middleware('can:Ver-Materias')->name('Materias');
 
 // RUTAS DE LAS ACTIVIDADES COMPLEMENTARIAS
 
-Route::get('ActividadesComplementarias',[ActividadController::class,'actividad'])->name('Actividades');
+Route::get('ActividadesComplementarias',[ActividadController::class,'actividad'])->middleware('can:Ver-Actividades-Complementarias')->name('Actividades');
 
 // GRUPOS
-Route::get('Grupos',[GruposController::class,'grupo'])->name('Grupos');
+Route::get('Grupos',[GruposController::class,'grupo'])->middleware('can:Ver-Grupos')->name('Grupos');
 
 // HORARIOS
-Route::get('Horarios',[HorariosController::class,'horario'])->name('Horarios');
-Route::get('Horarios/Materias/{id}',[HorariosController::class,'horarioM'])->name('HorariosM');
-Route::get('Horarios/{id}',[HorariosController::class,'horarioV'])->name('HorariosV');
+Route::get('Horarios',[HorariosController::class,'horario'])->middleware('can:Horario-Docente')->name('Horarios');
+Route::get('Horarios/Materias/{id}',[HorariosController::class,'horarioM'])->middleware('can:Registrar-Horario-Docente')->name('HorariosM');
+Route::get('Horarios/{id}',[HorariosController::class,'horarioV'])->middleware('can:Ver-Horario-Docentes')->name('HorariosV');
 
-Route::get('HorariosG',[HorariosController::class,'horarioG'])->name('HorariosG');
-Route::get('HorariosG/{id}',[HorariosController::class,'horarioVG'])->name('HorariosVG');
+Route::get('HorariosG',[HorariosController::class,'horarioG'])->middleware('can:Horario-Grupos')->name('HorariosG');
+Route::get('HorariosG/{id}',[HorariosController::class,'horarioVG'])->middleware('can:Ver-Horario-Grupos')->name('HorariosVG');
 
 //CICLO ESCOLAR
-Route::get('Ciclo',[CicloController::class,'ciclo'])->name('Ciclo');
+Route::get('Ciclo',[CicloController::class,'ciclo'])->middleware('can:Ver-Ciclo-Escolar')->name('Ciclo');
 
 
 //USUARIOS
-Route::resource('Usuarios',UserController::class)->names('Usuarios');
-
-//Roles
+Route::resource('Usuarios',UserController::class)->middleware('can:Ver-Usuarios')->names('Usuarios');

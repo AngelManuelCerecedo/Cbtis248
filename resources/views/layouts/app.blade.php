@@ -39,143 +39,214 @@
             <hr class="my-2 text-white">
             <!-- INICIO -->
             <div>
-                <a href="{{ route('dashboard') }}">
-                    <div
-                        class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  
+                @can('dashboard')
+                    <a href="{{ route('dashboard') }}">
+                        <div
+                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  
                     hover:bg-[#D5C28B]">
-                        <i class="bi bi-house"></i>
-                        <span class="text-[20px] ml-4 text-white">Inicio</span>
-                    </div>
-                </a>
-                <!-- ALUMNO -->
-                <span class="rotate-180" id="arrow1">
-                    <div
-                        class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                        <i class="bi bi-mortarboard"></i>
-                        <div class="flex justify-between w-full items-center" onclick="dropDown1()">
-                            <span class="text-[20px] ml-4 text-gray-200">Control Escolar</span>
+                            <i class="bi bi-house"></i>
+                            <span class="text-[20px] ml-4 text-white">Inicio</span>
                         </div>
+                    </a>
+                @endcan
+
+                @can('Control-Escolar')
+                    @can('Control-Escolar')
+                        <!-- ALUMNO -->
+                        <span class="rotate-180" id="arrow1">
+                            <div
+                                class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                                <i class="bi bi-mortarboard"></i>
+                                <div class="flex justify-between w-full items-center" onclick="dropDown1()">
+                                    <span class="text-[20px] ml-4 text-gray-200">Control Escolar</span>
+                                </div>
+                            </div>
+                        </span>
+                    @endcan
+                    <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloAlumno">
+                        @can('Alumnos')
+                            <a href="{{ route('Alumnos') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Alumnos</h1>
+                            </a>
+                        @endcan
+                        @can('Tutores')
+                            <a href="{{ route('Padres') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Tutores</h1>
+                            </a>
+                        @endcan
+                        @can('Secundarias')
+                            <a href="{{ route('Secundarias') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Secundarias</h1>
+                            </a>
+                        @endcan
+                        @can('Incidencias')
+                            <a href="{{ route('Incidencias') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Incidencias</h1>
+                            </a>
+                        @endcan
                     </div>
-                </span>
-                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloAlumno">
-                    <a href="{{ route('Alumnos') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Alumnos</h1>
-                    </a>
-                    <a href="{{ route('Padres') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Tutores</h1>
-                    </a>
-                    <a href="{{ route('Secundarias') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Secundarias</h1>
-                    </a>
-                    <a href="{{ route('Incidencias') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Incidencias</h1>
-                    </a>
-                </div>
+                @endcan
 
-                <!-- PERSONAL -->
-                <div
-                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                    <i class="bi bi-person"></i>
-                    <div class="flex justify-between w-full items-center" onclick="dropDown2()">
-                        <span class="text-[20px] ml-4 text-gray-200">Personal</span>
-                        <span class="text-sm rotate-180" id="arrow2"></span>
+                @can('Personal')
+
+                    @can('Personal')
+                        <!-- PERSONAL -->
+                        <div
+                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                            <i class="bi bi-person"></i>
+                            <div class="flex justify-between w-full items-center" onclick="dropDown2()">
+                                <span class="text-[20px] ml-4 text-gray-200">Personal</span>
+                                <span class="text-sm rotate-180" id="arrow2"></span>
+                            </div>
+                        </div>
+                    @endcan
+
+                    @can('Personal-Catalogo')
+                        <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloPersonal">
+                            <a href="{{ route('BuscarAdministrador') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Personal</h1>
+                            </a>
+                        </div>
+                    @endcan
+                @endcan
+
+                @can('Horarios')
+                    @can('Horarios')
+                        <!-- HORARIOS -->
+                        <div
+                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                            <i class="bi bi-clock-history"></i>
+                            <div class="flex justify-between w-full items-center" onclick="dropDown3()">
+                                <span class="text-[20px] ml-4 text-gray-200">Horarios</span>
+                                <span class="text-sm rotate-180" id="arrow3"></span>
+                            </div>
+                        </div>
+                    @endcan
+
+                    <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloHorario">
+                        @can('Horario-Docente')
+                            <a href="{{ route('Horarios') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Docente
+                                </h1>
+                            </a>
+                        @endcan
+
+                        @can('Horario-Grupos')
+                            <a href="{{ route('HorariosG') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Horario Grupo</h1>
+                            </a>
+                        @endcan
                     </div>
-                </div>
 
-                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloPersonal">
-                    <a href="{{ route('BuscarAdministrador') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Personal</h1>
-                    </a>
-                </div>
+                @endcan
 
-                <!-- HORARIOS -->
-                <div
-                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                    <i class="bi bi-clock-history"></i>
-                    <div class="flex justify-between w-full items-center" onclick="dropDown3()">
-                        <span class="text-[20px] ml-4 text-gray-200">Horarios</span>
-                        <span class="text-sm rotate-180" id="arrow3"></span>
+
+                @can('Materias')
+
+                    @can('Materias')
+                        <!-- MATERIAS & ACTIVIDAD COMPLEMENTARIA -->
+                        <div
+                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                            <i class="bi bi-book"></i>
+                            <div class="flex justify-between w-full items-center" onclick="dropDown4()">
+                                <span class="text-[20px] ml-4 text-gray-200">Materias</span>
+                                <span class="text-sm rotate-180" id="arrow4"></span>
+                            </div>
+                        </div>
+                    @endcan
+
+                    <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloMateria">
+
+                        @can('Ver-Materias')
+                            <a href="{{ route('Materias') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Materias</h1>
+                            </a>
+                        @endcan
+
+
+                        @can('Ver-Actividades-Complementarias')
+                            <a href="{{ route('Actividades') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Actividades
+                                    Complementarias</h1>
+                            </a>
+                        @endcan
                     </div>
-                </div>
 
-                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloHorario">
-                    <a href="{{ route('Horarios') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Docente
-                        </h1>
-                    </a>
-                    <a href="{{ route('HorariosG') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Horario Grupo</h1>
-                    </a>
-                </div>
+                @endcan
 
-                <!-- MATERIAS & ACTIVIDAD COMPLEMENTARIA -->
-                <div
-                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                    <i class="bi bi-book"></i>
-                    <div class="flex justify-between w-full items-center" onclick="dropDown4()">
-                        <span class="text-[20px] ml-4 text-gray-200">Materias</span>
-                        <span class="text-sm rotate-180" id="arrow4"></span>
+
+
+                @can('Grupos')
+                    @can('Grupos')
+                        <!-- GRUPOS -->
+                        <div
+                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                            <i class="bi bi-diagram-3"></i>
+                            <div class="flex justify-between w-full items-center" onclick="dropDown5()">
+                                <span class="text-[20px] ml-4 text-gray-200">Grupos</span>
+                                <span class="text-sm rotate-180" id="arrow5"></span>
+                            </div>
+                        </div>
+                    @endcan
+
+                    <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloGrupo">
+
+                        @can('Ver-Grupos')
+                            <a href="{{ route('Grupos') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Grupos</h1>
+                            </a>
+                        @endcan
                     </div>
-                </div>
+                @endcan
 
-                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloMateria">
-                    <a href="{{ route('Materias') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Materias</h1>
-                    </a>
-                    <a href="{{ route('Actividades') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Actividades
-                            Complementarias</h1>
-                    </a>
-                </div>
 
-                <!-- GRUPOS -->
-                <div
-                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                    <i class="bi bi-diagram-3"></i>
-                    <div class="flex justify-between w-full items-center" onclick="dropDown5()">
-                        <span class="text-[20px] ml-4 text-gray-200">Grupos</span>
-                        <span class="text-sm rotate-180" id="arrow5"></span>
+                @can('Ciclo-Escolar')
+
+                    @can('Ciclo-Escolar')
+                        <!-- CICLO ESCOLAR -->
+                        <div
+                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                            <i class="bi bi-alarm"></i>
+                            <div class="flex justify-between w-full items-center" onclick="dropDown7()">
+                                <span class="text-[20px] ml-4 text-gray-200">Ciclo Escolar</span>
+                                <span class="text-sm rotate-180" id="arrow7"></span>
+                            </div>
+                        </div>
+                    @endcan
+
+                    <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloCiclos">
+                        @can('Ver-Ciclo-Escolar')
+                            <a href="{{ route('Ciclo') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Ciclo Escolar</h1>
+                            </a>
+                        @endcan
+
                     </div>
-                </div>
+                @endcan
 
-                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloGrupo">
-                    <a href="{{ route('Grupos') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Grupos</h1>
-                    </a>
-                </div>
+                @can('Usuarios')
 
-                <!-- CICLO ESCOLAR -->
-                <div
-                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                    <i class="bi bi-alarm"></i>
-                    <div class="flex justify-between w-full items-center" onclick="dropDown7()">
-                        <span class="text-[20px] ml-4 text-gray-200">Ciclo Escolar</span>
-                        <span class="text-sm rotate-180" id="arrow7"></span>
+                    @can('Usuarios')
+                        <!-- Usuarios-->
+                        <div
+                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                            <i class="bi bi-person"></i>
+                            <div class="flex justify-between w-full items-center" onclick="dropDown6()">
+                                <span class="text-[20px] ml-4 text-gray-200">Usuarios</span>
+                                <span class="text-sm rotate-180" id="arrow6"></span>
+                            </div>
+                        </div>
+                    @endcan
+
+                    <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloUsuarios">
+                        @can('Ver-Usuarios')
+                            <a href="{{ route('Usuarios.index') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Gestionar Usuarios</h1>
+                            </a>
+                        @endcan
+
                     </div>
-                </div>
-
-                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloCiclos">
-                    <a href="{{ route('Ciclo') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Ciclo Escolar</h1>
-                    </a>
-                </div>
-
-                <!-- Usuarios y Roles -->
-                <div
-                    class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                    <i class="bi bi-person"></i>
-                    <div class="flex justify-between w-full items-center" onclick="dropDown6()">
-                        <span class="text-[20px] ml-4 text-gray-200">Usuarios</span>
-                        <span class="text-sm rotate-180" id="arrow6"></span>
-                    </div>
-                </div>
-
-                <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloUsuarios">
-                    <a href="{{ route('Usuarios.index') }}">
-                        <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Gestionar Usuarios</h1>
-                    </a>
-                </div>
-
+                @endcan
 
 
 

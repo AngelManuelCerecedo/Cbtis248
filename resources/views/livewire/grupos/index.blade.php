@@ -91,35 +91,54 @@
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <a>
-                                                @if ($grupo->TotAL > $grupo->ALR )
-                                                    <button wire:click="añadirA({{ $grupo->id }})" type="button"
-                                                        class="text-white bg-[#4eb553]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Añadir
-                                                        Alumnos</button>
-                                                @else
-                                                @endif
-                                            </a>
-                                            <a>
-                                                <button wire:click="listarA({{ $grupo->id }})" type="button"
-                                                    class="text-white bg-[#3065AC]  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Lista
-                                                    de Alumnos</button>
-                                            </a>
+
+                                            @can('Añadir-Alumnos')
+                                                <a>
+                                                    @if ($grupo->TotAL > $grupo->ALR)
+                                                        <button wire:click="añadirA({{ $grupo->id }})" type="button"
+                                                            class="text-white bg-[#4eb553]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Añadir
+                                                            Alumnos</button>
+                                                    @else
+                                                    @endif
+                                                </a>
+                                            @endcan
+
+
+
+                                            @can('Listar-Alumnos')
+                                                <a>
+                                                    <button wire:click="listarA({{ $grupo->id }})" type="button"
+                                                        class="text-white bg-[#3065AC]  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Lista
+                                                        de Alumnos</button>
+                                                </a>
+                                            @endcan
+
                                             <br>
-                                            <a>
-                                                <button wire:click="editar({{ $grupo->id }})" type="button"
-                                                    class="text-white bg-yellow-400  rounded-lg text-sm  ml-11   py-2 px-9 m-1">
-                                                    Editar Grupo </button>
-                                            </a>
-                                            <a>
-                                                <button wire:click="listarAg({{ $grupo->id }})" type="button"
-                                                    class="text-white bg-[#6C4675]  rounded-lg text-sm  ml-10 py-2 px-7 m-1">Actualizar
-                                                    Grado</button>
-                                            </a>
+
+                                            @can('Editar-Grupo')
+                                                <a>
+                                                    <button wire:click="editar({{ $grupo->id }})" type="button"
+                                                        class="text-white bg-yellow-400  rounded-lg text-sm  ml-11   py-2 px-9 m-1">
+                                                        Editar Grupo </button>
+                                                </a>
+                                            @endcan
+
+                                            @can('Actualizar-Grados')
+                                                <a>
+                                                    <button wire:click="listarAg({{ $grupo->id }})" type="button"
+                                                        class="text-white bg-[#6C4675]  rounded-lg text-sm  ml-10 py-2 px-7 m-1">Actualizar
+                                                        Grado</button>
+                                                </a>
+                                            @endcan
+
                                             <br>
-                                            <button wire:click="borrar({{ $grupo->id }})" type="button"
-                                                class="text-white bg-red-400 rounded-lg  text-sm ml-4 py-2 px-6 ">
-                                                Eliminar Grupo
-                                            </button>
+
+                                            @can('Eliminar-Grupos')
+                                                <button wire:click="borrar({{ $grupo->id }})" type="button"
+                                                    class="text-white bg-red-400 rounded-lg  text-sm ml-4 py-2 px-6 ">
+                                                    Eliminar Grupo
+                                                </button>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
@@ -150,11 +169,14 @@
             </div>
         </div>
         <div class="flex items-center justify-center w-full mb-10">
-            <button
-                class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
-                wire:click='crearmodal()'>
-                Registrar Grupo
-            </button>
+
+            @can('Registrar-Grupo')
+                <button
+                    class="font-sans leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
+                    wire:click='crearmodal()'>
+                    Registrar Grupo
+                </button>
+            @endcan
         </div>
     </div>
 </div>

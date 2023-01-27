@@ -76,22 +76,32 @@
                                             @endif
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <button wire:click="editar({{ $actividad->id }})" type="button"
-                                                class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Editar</button>
 
-                                            <button wire:click="borrar({{ $actividad->id }})" type="button"
-                                                class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Eliminar</button>
+                                            @can('Editar-Actividad-Complementaria')
+                                                <button wire:click="editar({{ $actividad->id }})" type="button"
+                                                    class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Editar</button>
+                                            @endcan
+
+                                            @can('Eliminar-Actividad-Complementaria')
+                                                <button wire:click="borrar({{ $actividad->id }})" type="button"
+                                                    class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Eliminar</button>
+                                            @endcan
 
                                             <br>
+
                                             @if ($actividad->profesor_id == null)
-                                                <button wire:click="asignar({{ $actividad->id }})" type="button"
-                                                    class="text-white bg-[#4eb553]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Asignar
-                                                    Profesor</button>
+                                                @can('Asignar-Docente-Actividad-Complementario')
+                                                    <button wire:click="asignar({{ $actividad->id }})" type="button"
+                                                        class="text-white bg-[#4eb553]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Asignar
+                                                        Profesor</button>
+                                                @endcan
                                             @endif
                                             @if ($actividad->profesor_id != null)
-                                                <button wire:click="desasignar({{ $actividad->id }})" type="button"
-                                                    class="text-white bg-[#3065AC]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Desasignar
-                                                    Profesor</button>
+                                                @can('Desasignar-Docente-Actividad-Complementaria')
+                                                    <button wire:click="desasignar({{ $actividad->id }})" type="button"
+                                                        class="text-white bg-[#3065AC]  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Desasignar
+                                                        Profesor</button>
+                                                @endcan
                                             @endif
 
                                         </td>
@@ -124,11 +134,14 @@
             </div>
         </div>
         <div class="flex items-center justify-center w-full mt-10">
-            <button
-            class="font-sans mb-20 leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
-                wire:click='crearmodal()'>
-                Registrar Actividad
-            </button>
+            @can('Registrar-Actividad-Complementaria')
+                <button
+                    class="font-sans mb-20 leading-none text-white py-4 px-10 bg-[#78163B] rounded hover:bg-[#78163B] focus:ring-2 focus:ring-offset-2 focus:ring-[#78163B] focus:outline-none"
+                    wire:click='crearmodal()'>
+                    Registrar Actividad
+                </button>
+            @endcan
+
         </div>
     </div>
 </div>
