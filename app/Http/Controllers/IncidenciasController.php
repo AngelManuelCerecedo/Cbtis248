@@ -27,6 +27,6 @@ class IncidenciasController extends Controller
         ]);
 
         $pdf->setPaper('letter','landscape');
-         return $pdf->download('Citatorio-'..'.pdf');
+        //  return $pdf->download('Citatorio-'..'.pdf');
     }
 }

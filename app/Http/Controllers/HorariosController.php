@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CicloEscolar;
 use App\Models\Grupo;
 use App\Models\Horario_Profesor;
+use App\Models\Materia;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
@@ -36,9 +37,18 @@ class HorariosController extends Controller
     {
 
 
-         $i = 1; $is= 1; $it= 1; $iq= 1; $ic= 1; $ise= 1; $isi= 1; $io= 1; $in= 1;
+         $i = 1; $countM=0;  $countA=0;
         $Profesor = User::Where([['id', '=', $id]])->first();
-        // $Ciclo = CicloEscolar::all()->orderBy('id', 'desc')->first();
+        $fechaActual = date('d/m/y');
+        $Materias = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Materia']])->get();
+        $Actividades = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Actividad']])->get();
+        foreach ($Materias as $Materia){
+            $countM += $Materia->Horas_Sem;
+        }
+        foreach ($Actividades as $Actividade){
+            $countA += $Actividade->Horas_Sem;
+        }
+        $Ciclo = CicloEscolar::orderBy('id', 'desc')->first();
         $Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
@@ -60,16 +70,11 @@ class HorariosController extends Controller
             'SIhoras' => $SIhoras,
             'Ohoras' => $Ohoras,
             'Nhoras' => $Nhoras,
-            // 'Ciclo' => $Ciclo,
+            'Ciclo' => $Ciclo,
+            'fechaActual' => $fechaActual,
             'i'=> $i,
-            'is'=> $is,
-            'it'=> $it,
-            'iq'=> $iq,
-            'ic'=> $ic,
-            'ise'=> $ise,
-            'isi'=> $isi,
-            'io'=> $io,
-            'in'=> $in,
+            'countM'=> $countM,
+            'countA'=> $countA,
         ]);
 
         $pdf->setPaper('letter','landscape');
@@ -77,9 +82,18 @@ class HorariosController extends Controller
     }
 
     public function horariosO($id){
-        $i = 1; $is= 1; $it= 1; $iq= 1; $ic= 1; $ise= 1; $isi= 1; $io= 1; $in= 1;
+        $i = 1; $countM=0;  $countA=0; $NOM="";
         $Profesor = User::Where([['id', '=', $id]])->first();
-        // $Ciclo = CicloEscolar::all()->orderBy('id', 'desc')->first(); aqui tienes que traer el ultimo ciclo escolar
+        $fechaActual = date('d/m/y');
+        $Materias = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Materia']])->get();
+        $Actividades = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Actividad']])->get();
+        foreach ($Materias as $Materia){
+            $countM += $Materia->Horas_Sem;
+        }
+        foreach ($Actividades as $Actividade){
+            $countA += $Actividade->Horas_Sem;
+        }
+        $Ciclo = CicloEscolar::orderBy('id', 'desc')->first();  
         $Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
@@ -89,7 +103,8 @@ class HorariosController extends Controller
         $SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-
+        $str = strtoupper($Ciclo->Semestre);
+        $nom = strtoupper($Profesor->Nombre) . strtoupper($Profesor->ApPaterno) . strtoupper($Profesor->ApMaterno);
         $pdf2 = PDF::loadView('pdfs.horarioO', [
             'profesor' => $Profesor,
             'Phoras' => $Phoras,
@@ -101,16 +116,12 @@ class HorariosController extends Controller
             'SIhoras' => $SIhoras,
             'Ohoras' => $Ohoras,
             'Nhoras' => $Nhoras,
-            // 'Ciclo' => $Ciclo,
+            'Ciclo' => $str,
+            'nom' => $nom,
+            'fechaActual' => $fechaActual,
             'i'=> $i,
-            'is'=> $is,
-            'it'=> $it,
-            'iq'=> $iq,
-            'ic'=> $ic,
-            'ise'=> $ise,
-            'isi'=> $isi,
-            'io'=> $io,
-            'in'=> $in,
+            'countM'=> $countM,
+            'countA'=> $countA,
         ]);
         $pdf2->setPaper('letter','landscape');
         return $pdf2->download('Horario-Oficial-'.$Profesor->Nombre. $Profesor->ApPaterno. $Profesor->ApMaterno.'.pdf');
@@ -120,9 +131,9 @@ class HorariosController extends Controller
 
 
     public function horariosG($id){
-        $i = 1; $is= 1; $it= 1; $iq= 1; $ic= 1; $ise= 1; $isi= 1; $io= 1; $in= 1;
+        $i = 1;
         $Grupos = Grupo::Where([['id', '=', $id]])->first();
-        // $Ciclo = CicloEscolar::all()->orderBy('id', 'desc')->first(); aqui tienes que traer el ultimo ciclo escolar
+        $Ciclo = CicloEscolar::orderBy('id', 'desc')->first(); 
         $Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
@@ -144,16 +155,8 @@ class HorariosController extends Controller
             'SIhoras' => $SIhoras,
             'Ohoras' => $Ohoras,
             'Nhoras' => $Nhoras,
-            // 'Ciclo' => $Ciclo,
+            'Ciclo' => $Ciclo,
             'i'=> $i,
-            'is'=> $is,
-            'it'=> $it,
-            'iq'=> $iq,
-            'ic'=> $ic,
-            'ise'=> $ise,
-            'isi'=> $isi,
-            'io'=> $io,
-            'in'=> $in,
         ]);
         $pdf3->setPaper('letter','landscape');
         return $pdf3->download('Horario-Grupo-'.$Grupos->Clave_Grupo.'.pdf');

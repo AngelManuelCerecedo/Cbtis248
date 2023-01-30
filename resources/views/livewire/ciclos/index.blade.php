@@ -57,6 +57,9 @@
                                                     class="text-white bg-yellow-400 hover:bg-yellow-500  rounded-lg  text-sm  ml-10 py-2 px-6 m-1">Editar</button>
                                             @endcan
 
+                                            <button wire:click="borrar({{ $ciclo->id }})" type="button"
+                                                class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Eliminar
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
