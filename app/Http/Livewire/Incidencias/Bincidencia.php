@@ -20,6 +20,21 @@ class Bincidencia extends Component
     public $estado = 0;
     public $estatus = 'Todos';
 
+    //VALIDACIONES
+    protected $rules = [
+        'F' => 'required',
+        'C' => 'required',
+        'D' => 'required',
+    ];
+
+    //MENSAJES DE ERRORES
+    protected $messages = [
+        'F.required' => 'El campo fecha no puede estar vacío',
+        'C.required' => 'El campo ciclo no puede estar vacío',
+        'D.required' => 'El campo descripción no puede estar vacío',
+       
+    ];
+
 
     public function render()
     {
@@ -38,7 +53,12 @@ class Bincidencia extends Component
                 ->orWhere([['Curp', 'like', '%' . $this->search . '%'], ['Estatus', '=', $this->estatus]])
                 ->paginate($this->cantidad);
         $Ciclo = CicloEscolar::all();
-        return view('livewire.incidencias.bincidencia', ['alumnos' => $alumnos, 'ciclo'=>$Ciclo]);
+        return view('livewire.incidencias.bincidencia', ['alumnos' => $alumnos, 'ciclo' => $Ciclo]);
+    }
+    //metodo que valida en tiempo real
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
     public function updatingSearch()
     {
@@ -79,6 +99,7 @@ class Bincidencia extends Component
     }
     public function guardar()
     {
+        $this->validate();
         Incidencia::updateOrCreate(
             [
                 'Fecha' => $this->F,

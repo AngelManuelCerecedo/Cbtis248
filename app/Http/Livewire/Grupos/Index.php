@@ -25,6 +25,26 @@ class Index extends Component
     public $Prueba, $IDAUX, $IDAUXLIST, $PruebaLA, $IDAUXACT, $PruebaACT;
     protected $listeners = ['delete', 'actualizar', 'delete1'];
 
+    //validaciones
+    protected $rules = [
+        'C' => 'required',
+        'S' => 'required',
+        'T' => 'required',
+        'E' => 'required',
+        'G' => 'required',
+        'CL' => 'required',
+    ];
+    //Mensajes de validaciones
+    protected $messages = [
+        'C.required' => 'El campo clave de grupo no puede estar vacío',
+        'S.required' => 'El campo salón no puede estar vacío',
+        'T.required' => 'El campo total de alumnos no puede estar vacío',
+        'E.required' => 'El campo especialidad no puede estar vacío',
+        'G.required' => 'El campo grado no puede estar vacío',
+        'CL.required' => 'El campo ciclo escolar no puede estar vacío',
+
+    ];
+
     public function render()
     {
         $this->grado = Grado::all();
@@ -34,6 +54,13 @@ class Index extends Component
             ->orWhere([['Salon', 'like', '%' . $this->search . '%']])
             ->paginate($this->cantidad);
         return view('livewire.grupos.index', ['grupos' => $grupos]);
+    }
+
+    //metodo que valida en tiempo real
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
     public function updatingSearch()
     {
@@ -76,7 +103,8 @@ class Index extends Component
     }
     public function guardar()
     {
-        if($this->grupoAUX == null){
+        $this->validate();
+        if ($this->grupoAUX == null) {
             Grupo::updateOrCreate(
                 ['id' => $this->ID],
                 [
@@ -96,7 +124,7 @@ class Index extends Component
             ]);
             $this->limpiarCampos();
             $this->cerrarModal();
-        }else{
+        } else {
             if ($this->grupoAUX->TotAL == $this->T) {
                 Grupo::updateOrCreate(
                     ['id' => $this->ID],
@@ -107,7 +135,7 @@ class Index extends Component
                         'grado_id' => $this->G,
                         'ciclo_id' => $this->CL,
                         'especialidad_id' => $this->E,
-    
+
                     ]
                 );
                 $this->dispatchBrowserEvent('swal', [
@@ -127,7 +155,7 @@ class Index extends Component
                         'grado_id' => $this->G,
                         'ciclo_id' => $this->CL,
                         'especialidad_id' => $this->E,
-    
+
                     ]
                 );
                 $this->dispatchBrowserEvent('swal', [
@@ -138,7 +166,6 @@ class Index extends Component
                 $this->cerrarModal();
             }
         }
-
     }
 
     public function editar($id)

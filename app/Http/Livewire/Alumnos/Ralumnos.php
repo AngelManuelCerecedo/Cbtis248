@@ -88,7 +88,7 @@ class Ralumnos extends Component
         'NOM.required' => 'El campo nombre no puede estar vacío',
         'APP.required' => 'El campo apellido paterno no puede estar vacío',
         'APM.required' => 'El campo apellido materno no puede estar vacío',
-        'CEL.required' => 'El campo correo telefono no puede estar vacío',
+        'CEL.required' => 'El campo telefono no puede estar vacío',
         'CEL.digits_between' => 'Telefono invalido',
 
 
@@ -168,6 +168,42 @@ class Ralumnos extends Component
     public function registrar()
     {
         $this->validate();
+
+        if ($this->AUXTUT != null) {
+            $this->AUXTUT  = $this->AUXTUT;
+        } else {
+
+            Padre::updateOrCreate(
+                [
+                    'Nombre' => $this->NOM,
+                    'ApPaterno' => $this->APP,
+                    'ApMaterno' => $this->APM,
+                    'Telefono' => $this->CEL,
+                ]
+            );
+
+            $newtutor = Padre::orderBy('id', 'desc')->first();
+            $this->AUXTUT = $newtutor->id;
+        }
+
+
+        if ($this->AUXSEC != null) {
+            $this->AUXSEC  = $this->AUXSEC;
+        } else {
+
+            Secundaria::updateOrCreate(
+                [
+                    'ClaveSecu' => $this->CLAVS,
+                    'Nombre' => $this->NSEC,
+                    'Modalidad' => $this->MODS,
+                    'Regimen' => $this->REG,
+                ]
+            );
+
+            $newsecundaria = Secundaria::orderBy('id', 'desc')->first();
+            $this->AUXSEC = $newsecundaria->id;
+        }
+
 
         Alumno::updateOrCreate([
             'Numero_Control' => $this->NC,

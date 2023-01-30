@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Usuarios;
+
 use Livewire\WithPagination;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -13,30 +14,47 @@ class Inicio extends Component
     use WithPagination;
     public $search;
     public $cantidad = 5;
-    public $modal = false, $modal2= false, $modal3= false;
+    public $modal = false, $modal2 = false, $modal3 = false;
     public $texto = "";
-    public $administrador,$email, $contrasena;
-    public $ideee,$nuevoemail,$nuevacontrasena,$nuevoestado;
+    public $administrador, $email, $contrasena;
+    public $ideee, $nuevoemail, $nuevacontrasena, $nuevoestado, $mensajenuevoemail, $mensajenuevacontrasena, $mensajeestado;
     public $user;
 
+    //validaciones
+    protected $rules = [
+        'administrador' => 'required',
+        'contrasena' => 'required',
+    ];
+    //Mensajes de validaciones
+    protected $messages = [
+        'administrador.required' => 'Debe seleccionar un empleado',
+        'contrasena.required' => 'El campo contraseña no puede estar vacío',
+    ];
 
 
 
     public function render()
     {
 
-        $usuarios = User::Where([['Nombre', 'like', '%' . $this->search . '%'] , ['password', '!=', 'null']])
-        ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%'] , ['password', '!=', 'null']])
-        ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%'] , ['password', '!=', 'null']])
-        ->orWhere([['email', 'like', '%' . $this->search . '%'] , ['password', '!=', 'null']])
-        ->paginate($this->cantidad);
+        $usuarios = User::Where([['Nombre', 'like', '%' . $this->search . '%'], ['password', '!=', 'null']])
+            ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%'], ['password', '!=', 'null']])
+            ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%'], ['password', '!=', 'null']])
+            ->orWhere([['email', 'like', '%' . $this->search . '%'], ['password', '!=', 'null']])
+            ->paginate($this->cantidad);
 
-        $administradores = User::where([['Estatus', '=', 'Activo' ] , ['Tipo', '=', 'Usuario']])->get();
+        $administradores = User::where([['Estatus', '=', 'Activo'], ['Tipo', '=', 'Usuario']])->get();
         $roles = Role::all();
 
 
-      
-        return view('livewire.usuarios.inicio', ['usuarios' => $usuarios,'administradores' => $administradores,'roles' => $roles]);
+
+        return view('livewire.usuarios.inicio', ['usuarios' => $usuarios, 'administradores' => $administradores, 'roles' => $roles]);
+    }
+
+    //metodo que valida en tiempo real
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
     public function updatingSearch()
     {
@@ -67,13 +85,15 @@ class Inicio extends Component
 
     public function guardar()
     {
+        $this->validate();
         User::updateOrCreate(
-        ['id'=>  $this->administrador],
-        [
-            'password' => bcrypt($this->contrasena),
-            'password2' => encrypt($this->contrasena),
-            'EstatusUser' => 'Activo',
-        ]);
+            ['id' =>  $this->administrador],
+            [
+                'password' => bcrypt($this->contrasena),
+                'password2' => encrypt($this->contrasena),
+                'EstatusUser' => 'Activo',
+            ]
+        );
 
         $this->dispatchBrowserEvent('swal1', [
             'title' => 'Usuario guardado exitosamente',
@@ -89,7 +109,7 @@ class Inicio extends Component
         $this->nuevoemail = '';
         $this->nuevacontrasena = '';
         $this->nuevoestado = '';
-        $this->ideee='';
+        $this->ideee = '';
     }
 
     public function abrirModal2()
@@ -109,30 +129,45 @@ class Inicio extends Component
         $this->nuevoemail = $usuario->email;
         $this->nuevacontrasena = decrypt($usuario->password2);
         $this->nuevoestado = $usuario->EstatusUser;
-        $this->ideee=$usuario->id;
+        $this->ideee = $usuario->id;
         $this->abrirModal2();
     }
 
-    public function guardar2(){
+    public function guardar2()
+    {
 
+        if ($this->nuevoemail != '') {
+            $this->mensajenuevoemail = '';
+            if ($this->nuevacontrasena != '') {
+                $this->mensajenuevacontrasena = '';
+                if ($this->nuevoestado != '') {
+                    $this->mensajeestado = '';
+                    User::updateOrCreate(
+                        ['id' => $this->ideee],
+                        [
+                            'email' => $this->nuevoemail,
+                            'password' => bcrypt($this->nuevacontrasena),
+                            'password2' => encrypt($this->nuevacontrasena),
+                            'EstatusUser' =>  $this->nuevoestado,
+                        ]
+                    );
 
-        User::updateOrCreate(
-            ['id' => $this->ideee],
-            [
-                'email' => $this->nuevoemail,
-                'password' => bcrypt($this->nuevacontrasena),
-                'password2' => encrypt($this->nuevacontrasena),
-                'EstatusUser' =>  $this->nuevoestado,
-            ]
-        );
+                    $this->dispatchBrowserEvent('swal2', [
+                        'title' => 'Usuario Editado exitosamente',
+                        'type' => 'success'
+                    ]);
 
-        $this->dispatchBrowserEvent('swal2', [
-            'title' => 'Usuario Editado exitosamente',
-            'type' => 'success'
-        ]);
-
-        $this->limpiarCampos2();
-        $this->cerrarModal2();
+                    $this->limpiarCampos2();
+                    $this->cerrarModal2();
+                } else {
+                    $this->mensajeestado = 'Debe seleccionar un estado';
+                }
+            } else {
+                $this->mensajenuevacontrasena = 'El campo contraseña no puede estar vacío';
+            }
+        } else {
+            $this->mensajenuevoemail = 'El campo correo no puede estar vacío';
+        }
     }
 
 
@@ -151,12 +186,8 @@ class Inicio extends Component
 
     public function asignarrol($id)
     {
-       
+
         $this->user = User::where('id', $id)->first();
         $this->abrirModal3();
     }
-
-    
-
- 
 }

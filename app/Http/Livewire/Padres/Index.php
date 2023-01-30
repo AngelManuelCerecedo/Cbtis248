@@ -12,11 +12,30 @@ class Index extends Component
     use WithPagination;
     public $search;
     public $cantidad = 5;
-    public $ID,$NOM, $AP, $AM, $TEL;
+    public $ID, $NOM, $AP, $AM, $TEL;
     public $modal = false;
     public $texto = "";
     public $estado = 0;
     protected $listeners = ['delete'];
+
+    //VALIDACIONES
+    protected $rules = [
+        'NOM' => 'required',
+        'AP' => 'required',
+        'AM' => 'required',
+        'TEL' => 'required|digits_between:10,10',
+    ];
+
+    //MENSAJES DE ERRORES
+    protected $messages = [
+        'NOM.required' => 'El campo nombre no puede estar vacío',
+        'AP.required' => 'El campo apellido paterno no puede estar vacío',
+        'AM.required' => 'El campo apellido materno no puede estar vacío',
+        'TEL.required' => 'El campo telefono no puede estar vacío',
+        'TEL.digits_between' => 'Telefono invalido',
+    ];
+
+
     public function render()
     {
         $padres = Padre::Where([['Nombre', 'like', '%' . $this->search . '%']])
@@ -26,6 +45,14 @@ class Index extends Component
             ->paginate($this->cantidad);
         return view('livewire.padres.index', ['padres' => $padres]);
     }
+
+    //metodo que valida en tiempo real
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -41,7 +68,7 @@ class Index extends Component
     }
     public function abrirmodal()
     {
-      
+
         if ($this->estado == 0) {
             $this->texto = "Registrar un Tutor";
             $this->modal = true;
@@ -53,7 +80,7 @@ class Index extends Component
     }
     public function cerrarModal()
     {
-        $this->estado=0;
+        $this->estado = 0;
         $this->modal = false;
     }
     public function limpiarCampos()
@@ -62,18 +89,20 @@ class Index extends Component
         $this->AP = '';
         $this->AM = '';
         $this->TEL = '';
-        $this->estado=0;
+        $this->estado = 0;
     }
     public function guardar()
     {
-        Padre::updateOrCreate( 
-        ['id' => $this->ID],
-        [
-            'Nombre' => $this->NOM,
-            'ApPaterno' => $this->AP,
-            'ApMaterno' => $this->AM,
-            'Telefono' => $this->TEL,
-        ]);
+        $this->validate();
+        Padre::updateOrCreate(
+            ['id' => $this->ID],
+            [
+                'Nombre' => $this->NOM,
+                'ApPaterno' => $this->AP,
+                'ApMaterno' => $this->AM,
+                'Telefono' => $this->TEL,
+            ]
+        );
         $this->dispatchBrowserEvent('swal', [
             'title' => 'Registro Exitoso',
             'type' => 'success'
@@ -83,32 +112,34 @@ class Index extends Component
         $this->cerrarModal();
     }
 
-    public function editar($id){
+    public function editar($id)
+    {
         $tutor = Padre::findOrFail($id);
-        $this->ID=$tutor->id;
-        $this->NOM=$tutor->Nombre;
-        $this->AP=$tutor->ApPaterno;
-        $this->AM=$tutor->ApMaterno;
-        $this->TEL=$tutor->Telefono;
-        $this->estado=1;
+        $this->ID = $tutor->id;
+        $this->NOM = $tutor->Nombre;
+        $this->AP = $tutor->ApPaterno;
+        $this->AM = $tutor->ApMaterno;
+        $this->TEL = $tutor->Telefono;
+        $this->estado = 1;
         $this->abrirModal();
     }
 
-    public function borrar($id){
+    public function borrar($id)
+    {
         $t1 = 'El Tutor tiene un <br/> alumno registrado: <br/>';
         $alumno = Alumno::Where([['padre_id', '=', $id]])->first();
-        if ($alumno == null){
+        if ($alumno == null) {
             $this->dispatchBrowserEvent('swal:confirm', [
                 'title' => '¿Estás seguro de eliminar?',
                 'type' => 'warning',
                 'id' => $id,
             ]);
-        }else{
+        } else {
             $t1 .= $alumno->Nombre . ' ' . $alumno->ApPaterno . ' ' . $alumno->ApMaterno;
             $this->dispatchBrowserEvent('swal', [
                 'title' => $t1,
                 'type' => 'error'
-            ]);  
+            ]);
         }
     }
 
@@ -117,10 +148,10 @@ class Index extends Component
 
         Padre::findOrFail($id)->delete();
         $this->redic();
-
     }
-    
-    public function redic(){
+
+    public function redic()
+    {
         return redirect()->route('Padres');
     }
 }

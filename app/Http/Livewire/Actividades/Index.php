@@ -16,18 +16,39 @@ class Index extends Component
     use WithPagination;
     public $search;
     public $cantidad = 5;
-    public $ID, $NOM, $HS, $P, $GP;
+    public $ID, $NOM, $HS, $P, $GP, $mensajeerrorp;
     public $modal = false, $modalAP = false;
     public $texto = "", $actividadAP, $grupo;
-    public $estado = 0,$profesor;
-    protected $listeners = ['delete','desasignar1'];
+    public $estado = 0, $profesor;
+    protected $listeners = ['delete', 'desasignar1'];
+
+    //validaciones
+    protected $rules = [
+        'NOM' => 'required',
+        'HS' => 'required',
+        'GP' => 'required',
+    ];
+    //Mensajes de validaciones
+    protected $messages = [
+        'NOM.required' => 'El campo nombre no puede estar vacío',
+        'HS.required' => 'El campo horas a la semana no puede estar vacío',
+        'GP.required' => 'El campo grupo no puede estar vacío',
+
+    ];
+
     public function render()
     {
         $this->grupo = Grupo::all();
-        $actividades = Materia::Where([['Nombre', 'like', '%' . $this->search . '%'],['Tipo', '=', 'Actividad']])
+        $actividades = Materia::Where([['Nombre', 'like', '%' . $this->search . '%'], ['Tipo', '=', 'Actividad']])
             ->paginate($this->cantidad);
-        $this->profesor = User::Where('Puesto', '!=' , 'Administrativo') -> get();
+        $this->profesor = User::Where('Puesto', '!=', 'Administrativo')->get();
         return view('livewire.actividades.index', ['actividades' => $actividades]);
+    }
+    //metodo que valida en tiempo real
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
     public function updatingSearch()
     {
@@ -55,17 +76,22 @@ class Index extends Component
     }
     public function cerrarModal()
     {
+
         $this->estado = 0;
+        $this->limpiarCampos();
         $this->modal = false;
     }
     public function limpiarCampos()
     {
         $this->NOM = '';
         $this->HS = '';
+        $this->GP = '';
+        $this->mensajeerrorp='';
         $this->estado = 0;
     }
     public function guardar()
     {
+        $this->validate();
         Materia::updateOrCreate(
             ['id' => $this->ID],
             [
@@ -100,18 +126,18 @@ class Index extends Component
     {
         $t1 = 'El Docente <br>';
         $profesor = Materia::Where([['id', '=', $id]])->first();
-        if ($profesor->profesor_id == null){
+        if ($profesor->profesor_id == null) {
             $this->dispatchBrowserEvent('swal:confirm', [
                 'title' => '¿Estás seguro de eliminar?',
                 'type' => 'warning',
                 'id' => $id,
             ]);
-        }else{
-            $t1 .= $profesor->profesor->Nombre . ' ' . $profesor->profesor->ApPaterno . ' ' . $profesor->profesor->ApMaterno .'<br> <FONT SIZE=5> tiene la actividad asignada </font>';
+        } else {
+            $t1 .= $profesor->profesor->Nombre . ' ' . $profesor->profesor->ApPaterno . ' ' . $profesor->profesor->ApMaterno . '<br> <FONT SIZE=5> tiene la actividad asignada </font>';
             $this->dispatchBrowserEvent('swal', [
                 'title' => $t1,
                 'type' => 'error'
-            ]);  
+            ]);
         }
     }
 
@@ -132,6 +158,7 @@ class Index extends Component
     }
     public function cerrarModal1()
     {
+        $this->limpiarCampos();
         $this->modalAP = false;
     }
 
@@ -143,31 +170,37 @@ class Index extends Component
 
     public function guardarAP()
     {
-        Materia::updateOrCreate(
-            ['id' => $this->actividadAP->id],
-            [
-                'profesor_id' => $this->P
-            ]
-        );
-        $this->cerrarModal1();
+        if($this->P != ''){
+            $this->mensajeerrorp="";
+            Materia::updateOrCreate(
+                ['id' => $this->actividadAP->id],
+                [
+                    'profesor_id' => $this->P
+                ]
+            );
+            $this->cerrarModal1();
+        }else{
+            $this->mensajeerrorp = "Debe seleccionar un docente";
+        }
+       
     }
 
     public function desasignar($id)
     {
         $t1 = 'El Docente <br>';
         $profesor = Horario_Profesor::Where([['materia_id', '=', $id]])->first();
-        if ($profesor == null){
+        if ($profesor == null) {
             $this->dispatchBrowserEvent('swal:confirm1', [
                 'title' => '¿Estás seguro que quieres desasignar al Docente?',
                 'type' => 'warning',
                 'id' => $id,
             ]);
-        }else{
-            $t1 .= $profesor->profesor->Nombre . ' ' . $profesor->profesor->ApPaterno . ' ' . $profesor->profesor->ApMaterno .'<br> <FONT SIZE=5> tiene la actividad asignada en su horario </font>';
+        } else {
+            $t1 .= $profesor->profesor->Nombre . ' ' . $profesor->profesor->ApPaterno . ' ' . $profesor->profesor->ApMaterno . '<br> <FONT SIZE=5> tiene la actividad asignada en su horario </font>';
             $this->dispatchBrowserEvent('swal', [
                 'title' => $t1,
                 'type' => 'error'
-            ]);  
+            ]);
         }
     }
 

@@ -46,7 +46,8 @@ class Balumnos extends Component
         $this->resetPage();
     }
 
-    public function borrar($id){
+    public function borrar($id)
+    {
 
         $this->dispatchBrowserEvent('swal:confirm', [
             'title' => '¿Estás seguro de eliminar?',
@@ -60,23 +61,38 @@ class Balumnos extends Component
 
         Alumno::findOrFail($id)->delete();
         $this->redic();
-
     }
-    public function info($id){
+    public function info($id)
+    {
         $t1 = ' INFORMACIÓN <br>';
         $alumno = Alumno::findOrFail($id);
-        if ($alumno -> grupo_id == null){$auxg = 'Sin Asignar';}else{ $auxg = $alumno->grupo->Clave_Grupo;}
-        $t1 .= '<FONT SIZE=5> Alumno : '.$alumno->Nombre .' ' . $alumno->ApPaterno . ' ' . $alumno->ApMaterno .'<br/> Numero de Control : '.$alumno->Numero_Control
-        .'<br> Estatus: '.$alumno->Estatus .'<br> Curp : '.$alumno->Curp .'<br> Correo : '.$alumno->Correo_Electronico .'<br> Estado Civil : '.$alumno->Estado_Civil
-        .'<br> Lugar de Nacimiento : '.$alumno->Lugar_Nacimiento .'<br> Lugar de Radicación : '.$alumno->Lugar_Radica .'<br> Localidad : '.$alumno->Localidad .'<br> C.P. : '.$alumno->Codigo_Postal
-        .' Calle : '.$alumno->Calle_Num .'<br/> Colonia : '.$alumno->Colonia .'<br/> Celular : '.$alumno->Celular_Alum .'<br/> Numero de Seguro : '.$alumno->Numero_Seguro
-        .'<br> Tipo Sanguineo : '.$alumno->Tipo_Sangre .'<br/> Año de Terminación : '.$alumno->Año_Fin .'<br/> Secundaria : '.$alumno->secundaria->Nombre .'<br/> Grado : '.$alumno->grado->Nombre
-        .'<br> Especialidad : '.$alumno->especialidad->Nombre.'<br> Grupo : '. $auxg .'<br/> Tutor : '.$alumno->padre->Nombre.' '.$alumno->padre->ApPaterno.' '.$alumno->padre->ApMaterno . '</font>';
+        if ($alumno->grupo_id == null) {
+            $auxg = 'Sin Asignar';
+           
+        } else {
+            $auxg = $alumno->grupo->Clave_Grupo;
+            
+        }
+
+        if($alumno->grado_id == null){
+            $auxgr= "Sin Asignar";
+        }else{
+            $auxgr = $alumno->grado->Nombre;
+        }
+
+        
+        $t1 .= '<FONT SIZE=5> Alumno : ' . $alumno->Nombre . ' ' . $alumno->ApPaterno . ' ' . $alumno->ApMaterno . '<br/> Numero de Control : ' . $alumno->Numero_Control
+            . '<br> Estatus: ' . $alumno->Estatus . '<br> Curp : ' . $alumno->Curp . '<br> Correo : ' . $alumno->Correo_Electronico . '<br> Estado Civil : ' . $alumno->Estado_Civil
+            . '<br> Lugar de Nacimiento : ' . $alumno->Lugar_Nacimiento . '<br> Lugar de Radicación : ' . $alumno->Lugar_Radica . '<br> Localidad : ' . $alumno->Localidad . '<br> C.P. : ' . $alumno->Codigo_Postal
+            . ' Calle : ' . $alumno->Calle_Num . '<br/> Colonia : ' . $alumno->Colonia . '<br/> Celular : ' . $alumno->Celular_Alum . '<br/> Numero de Seguro : ' . $alumno->Numero_Seguro
+            . '<br> Tipo Sanguineo : ' . $alumno->Tipo_Sangre . '<br/> Año de Terminación : ' . $alumno->Año_Fin . '<br/> Secundaria : ' . $alumno->secundaria->Nombre . '<br/> Grado : ' . $auxgr
+            . '<br> Especialidad : ' . $alumno->especialidad->Nombre . '<br> Grupo : ' . $auxg . '<br/> Tutor : ' . $alumno->padre->Nombre . ' ' . $alumno->padre->ApPaterno . ' ' . $alumno->padre->ApMaterno . '</font>';
         $this->dispatchBrowserEvent('swal', [
             'title' => $t1,
-        ]); 
+        ]);
     }
-    public function redic(){
+    public function redic()
+    {
         return redirect()->route('Alumnos');
     }
 }

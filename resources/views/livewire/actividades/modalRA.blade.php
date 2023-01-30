@@ -26,6 +26,9 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Nombre</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="text" wire:model="NOM" autocomplete="off" />
+                                @error('NOM')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
@@ -33,6 +36,9 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Horas a la Semana</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="text" wire:model="HS" autocomplete="off" />
+                                @error('HS')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
@@ -40,11 +46,14 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Grupo</label>
                                 <select wire:model='GP'
                                     class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                                    <option value="0">Selecciona un Grupo</option>
+                                    <option value="">Selecciona un Grupo</option>
                                     @foreach ($grupo as $gp)
                                         <option value="{{ $gp->id }}">{{ $gp->Clave_Grupo }}</option>
                                     @endforeach
                                 </select>
+                                @error('GP')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>

@@ -24,6 +24,9 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Fecha</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="date" wire:model="F" autocomplete="off" />
+                                @error('F')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -32,21 +35,26 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Ciclo</label>
                                 <select wire:model='C'
                                     class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                                    <option value="0">Seleccione un Ciclo Escolar</option>
+                                    <option value="">Seleccione un Ciclo Escolar</option>
                                     @foreach ($ciclo as $ciclo)
                                         <option value="{{ $ciclo->id }}">{{ $ciclo->Semestre }}</option>
                                     @endforeach
                                 </select>
+                                @error('C')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
                             <div class="grid grid-cols-1">
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Descripcion</label>
-                                <textarea
-                                    class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
-                                    type="text" wire:model="D" autocomplete="off">
+                                <textarea class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 " type="text"
+                                    wire:model="D" autocomplete="off">
                                 </textarea>
+                                @error('D')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>

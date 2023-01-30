@@ -23,34 +23,42 @@
                     <div class="grid    w-auto ">
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
                             <div class="grid grid-cols-1">
-                                <label
-                                    class=" md:text-sm text-xs text-gray-900 font-semibold">Nombre</label>
+                                <label class=" md:text-sm text-xs text-gray-900 font-semibold">Nombre</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="text" wire:model="NOM" autocomplete="off" />
+                                @error('NOM')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
                             <div class="grid grid-cols-1">
-                                <label
-                                    class=" md:text-sm text-xs text-gray-900 font-semibold">Apellido Paterno</label>
+                                <label class=" md:text-sm text-xs text-gray-900 font-semibold">Apellido Paterno</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="text" wire:model="AP" autocomplete="off" />
+                                @error('AP')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
                             <div class="grid grid-cols-1">
-                                <label
-                                    class=" md:text-sm text-xs text-gray-900 font-semibold">Apellido Materno</label>
+                                <label class=" md:text-sm text-xs text-gray-900 font-semibold">Apellido Materno</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="text" wire:model="AM" autocomplete="off" />
+                                @error('AM')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
                             <div class="grid grid-cols-1">
-                                <label
-                                    class=" md:text-sm text-xs text-gray-900 font-semibold">Telefono</label>
+                                <label class=" md:text-sm text-xs text-gray-900 font-semibold">Telefono</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="text" wire:model="TEL" autocomplete="off" />
+                                @error('TEL')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 

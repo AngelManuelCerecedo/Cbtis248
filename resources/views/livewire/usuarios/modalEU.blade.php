@@ -26,24 +26,27 @@
 
                             <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
                                 <div class="grid grid-cols-1">
-                                    <label for="" class=" md:text-sm text-xs text-gray-900 font-semibold">Nuevo Correo
+                                    <label for="" class=" md:text-sm text-xs text-gray-900 font-semibold">Nuevo
+                                        Correo
                                         electrónico</label>
                                     <input
                                         class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                         type="text" placeholder="Correo electronico" id=""
                                         wire:model="nuevoemail" />
+                                    <span class="text-red-600">{{ $mensajenuevoemail }}</span>
 
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 gap-5 md:gap-8 mt-2 mx-7">
                                 <div class="grid grid-cols-1">
-                                    <label for=""
-                                        class=" md:text-sm text-xs text-gray-900 font-semibold">Nueva Contraseña</label>
+                                    <label for="" class=" md:text-sm text-xs text-gray-900 font-semibold">Nueva
+                                        Contraseña</label>
                                     <input
                                         class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
-                                        type="text" placeholder="Contraseña" id="" wire:model="nuevacontrasena"
-                                        />
+                                        type="text" placeholder="Contraseña" id=""
+                                        wire:model="nuevacontrasena" />
+                                    <span class="text-red-600">{{ $mensajenuevacontrasena }}</span>
 
                                 </div>
                             </div>
@@ -55,6 +58,9 @@
                                     <select
                                         class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                                         wire:model="nuevoestado" id="">
+                                        <option value="">
+                                            Seleccione un estado
+                                        </option>
                                         <option value="Activo">
                                             Activo
                                         </option>
@@ -62,6 +68,7 @@
                                             Inactivo
                                         </option>
                                     </select>
+                                    <span class="text-red-600">{{ $mensajeestado }}</span>
                                 </div>
                             </div>
 

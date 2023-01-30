@@ -14,7 +14,7 @@
             <!--header-->
             <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                 <h3 class="text-2xl font-semibold">
-                    {{$texto}}
+                    {{ $texto }}
                 </h3>
             </div>
 
@@ -26,13 +26,19 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Clave del Grupo</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="text" wire:model="C" autocomplete="off" />
+                                @error('C')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
                             <div class="grid grid-cols-1">
-                                <label class=" md:text-sm text-xs text-gray-900 font-semibold">Salon</label>
+                                <label class=" md:text-sm text-xs text-gray-900 font-semibold">Salón</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="text" wire:model="S" autocomplete="off" />
+                                @error('S')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
@@ -40,6 +46,9 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Total de Alumnos</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="text" wire:model="T" autocomplete="off" />
+                                @error('T')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
@@ -47,11 +56,14 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Especialidad</label>
                                 <select wire:model='E'
                                     class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                                    <option value="0">Selecciona una Especialidad</option>
+                                    <option value="">Selecciona una Especialidad</option>
                                     @foreach ($especialidad as $esps)
                                         <option value="{{ $esps->id }}">{{ $esps->Nombre }}</option>
                                     @endforeach
                                 </select>
+                                @error('E')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
@@ -59,11 +71,14 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Grado</label>
                                 <select wire:model='G'
                                     class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                                    <option value="0">Selecciona un Grado</option>
+                                    <option value="">Selecciona un Grado</option>
                                     @foreach ($grado as $grads)
                                         <option value="{{ $grads->id }}">{{ $grads->Nombre }}</option>
                                     @endforeach
                                 </select>
+                                @error('G')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
@@ -71,11 +86,14 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Ciclo Escolar</label>
                                 <select wire:model='CL'
                                     class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                                    <option value="0">Selecciona un Ciclo</option>
+                                    <option value="">Selecciona un Ciclo</option>
                                     @foreach ($ciclo as $cicl)
                                         <option value="{{ $cicl->id }}">{{ $cicl->Semestre }}</option>
                                     @endforeach
                                 </select>
+                                @error('CL')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>

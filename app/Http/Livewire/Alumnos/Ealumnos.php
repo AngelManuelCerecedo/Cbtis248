@@ -15,10 +15,10 @@ class Ealumnos extends Component
     public $NC, $N, $AP, $AM, $C, $LN, $NCA, $COL, $LOC, $CP, $LR, $NSS, $TS, $EC, $EM, $T, $G, $ESP, $PROM, $AF, $EST;
     public $BTUT, $SUGT, $NOM, $APP, $APM, $CEL;
     public $BSEC, $SUGS, $NSEC, $MODS, $CLAVS, $REG, $TUTS, $SECS;
-    public $AUXTUT = 0, $AUXSEC = 0, $AUXTUT2, $AUXSEC2;
+    public $AUXTUT, $AUXSEC, $AUXTUT2, $AUXSEC2;
 
-     //validaciones
-     protected $rules = [
+    //validaciones
+    protected $rules = [
         'NC' => 'required|numeric',
         'N' => 'required',
         'AP' => 'required',
@@ -35,10 +35,11 @@ class Ealumnos extends Component
         'EC' => 'required',
         'EM' => 'required|email',
         'T' => 'required|digits_between:10,10',
-        'G' => 'required',
         'ESP' => 'required',
         'PROM' => 'required|numeric',
         'AF' => 'required',
+        'EST' => 'required',
+
 
         'NOM' => 'required',
         'APP' => 'required',
@@ -55,7 +56,7 @@ class Ealumnos extends Component
     ];
     //Mensajes de validaciones
     protected $messages = [
-        'NC.required' => 'El campo numero de control puede estar vacío',
+        'NC.required' => 'El campo número de control puede estar vacío',
         'NC.numeric' => 'Solo se aceptan numeros',
         'N.required' => 'El campo nombre no puede estar vacío',
         'AP.required' => 'El campo apellido paterno no puede estar vacío',
@@ -79,11 +80,11 @@ class Ealumnos extends Component
         'EM.email' => 'Correo electronico invalido',
         'T.required' => 'El campo correo telefono no puede estar vacío',
         'T.digits_between' => 'Telefono invalido',
-        'G.required' => 'El campo grado no puede estar vacío',
         'ESP.required' => 'El campo especialidad no puede estar vacío',
         'PROM.required' => 'El campo promedio no puede estar vacío',
         'PROM.numeric' => 'Promedio invalido',
         'AF.required' => 'El campo año de finalización no puede estar vacío',
+        'EST.required' => 'El campo estado no puede estar vacío',
         'NOM.required' => 'El campo nombre no puede estar vacío',
         'APP.required' => 'El campo apellido paterno no puede estar vacío',
         'APM.required' => 'El campo apellido materno no puede estar vacío',
@@ -136,8 +137,14 @@ class Ealumnos extends Component
         $especialidad = Especialidad::where('id', $alumno->especialidad_id)->first();
         $this->ESP = $especialidad->id;
 
-        $grado = Grado::where('id', $alumno->grado_id)->first();
-        $this->G = $grado->id;
+
+        if ($alumno->grado_id == null) {
+            $this->G = '';
+        } else {
+            $grado = Grado::where('id', $alumno->grado_id)->first();
+            $this->G = $grado->id;
+        }
+
 
         $padre = Padre::where('id', $alumno->padre_id)->first();
         $this->NOM = $padre->Nombre;
@@ -157,12 +164,12 @@ class Ealumnos extends Component
         $this->reseteo();
     }
 
-      //metodo que valida en tiempo real
+    //metodo que valida en tiempo real
 
-      public function updated($propertyName)
-      {
-          $this->validateOnly($propertyName);
-      }
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function reseteo()
     {
@@ -214,17 +221,68 @@ class Ealumnos extends Component
     {
         $this->validate();
 
-        if ($this->AUXTUT == 0) {
-            $tutor = $this->AUXTUT2;
+        if ($this->AUXTUT == null) {
+
+            $comporbartutor = Padre::Where('id', $this->AUXTUT2)->first();
+
+            $comprobarnom = $comporbartutor->Nombre;
+            $comprobarapp = $comporbartutor->ApPaterno;
+            $comprobarapm = $comporbartutor->ApMaterno;
+            $comprobartel = $comporbartutor->Telefono;
+
+            if ($comprobarnom ==  $this->NOM &&   $comprobarapp == $this->APP && $comprobarapm ==  $this->APM && $comprobartel == $this->CEL) {
+                $tutor = $this->AUXTUT2;
+            } else {
+
+                Padre::updateOrCreate(
+                    [
+                        'Nombre' => $this->NOM,
+                        'ApPaterno' => $this->APP,
+                        'ApMaterno' => $this->APM,
+                        'Telefono' => $this->CEL,
+                    ]
+                );
+
+                $newtutor = Padre::orderBy('id', 'desc')->first();
+
+                $tutor = $newtutor->id;
+            }
         } else {
             $tutor = $this->AUXTUT;
         }
 
-        if ($this->AUXSEC == 0) {
-            $secundaria = $this->AUXSEC2;
+        if ($this->AUXSEC == null) {
+
+            $comporbarsec = Secundaria::Where('id', $this->AUXSEC2)->first();
+
+            $comprobarNSEC = $comporbarsec->Nombre;
+            $comprobarMODS = $comporbarsec->Modalidad;
+            $comprobarREG = $comporbarsec->Regimen;
+            $comprobarCLAVS = $comporbarsec->ClaveSecu;
+
+            if ($comprobarNSEC  ==  $this->NSEC &&  $comprobarMODS == $this->MODS && $comprobarREG == $this->REG && $comprobarCLAVS == $this->CLAVS) {
+                $secundaria = $this->AUXSEC2;
+            } else {
+
+                Secundaria::updateOrCreate(
+                    [
+                        'ClaveSecu' => $this->CLAVS,
+                        'Nombre' => $this->NSEC,
+                        'Modalidad' => $this->MODS,
+                        'Regimen' => $this->REG,
+                    ]
+                );
+
+                $newsecundaria = Secundaria::orderBy('id', 'desc')->first();
+                $secundaria = $newsecundaria->id;
+            }
         } else {
             $secundaria = $this->AUXSEC;
         }
+
+
+
+
         if ($this->EST == 'Baja Temporal') {
             Alumno::updateOrCreate(
                 ['id' => $this->ide],
