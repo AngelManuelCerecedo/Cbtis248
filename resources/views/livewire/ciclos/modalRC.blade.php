@@ -26,6 +26,9 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Semestre</label>
                                 <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
                                     type="text" wire:model="SEM" autocomplete="off" />
+                                @error('SEM')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>

@@ -19,6 +19,22 @@ class Lincidencia extends Component
     public $estado = 0;
     protected $listeners = ['delete'];
 
+
+     //VALIDACIONES
+     protected $rules = [
+        'F' => 'required',
+        'C' => 'required',
+        'D' => 'required',
+    ];
+
+    //MENSAJES DE ERRORES
+    protected $messages = [
+        'F.required' => 'El campo fecha no puede estar vacío',
+        'C.required' => 'El campo ciclo no puede estar vacío',
+        'D.required' => 'El campo descripción no puede estar vacío',
+       
+    ];
+
     public function render()
     {
         $incidencias = Incidencia::Where('alumno_id' , $this->IDAUX)
@@ -26,6 +42,11 @@ class Lincidencia extends Component
         $Alumno = Alumno::Where('id', $this->IDAUX)->first();
         $Ciclo = CicloEscolar::all();
         return view('livewire.incidencias.lincidencia', ['incidencias' => $incidencias , 'alumno'=> $Alumno, 'ciclo'=> $Ciclo ]);
+    }
+    //metodo que valida en tiempo real
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
     public function updatingSearch()
     {
@@ -60,6 +81,7 @@ class Lincidencia extends Component
     }
     public function guardar()
     {
+        $this->validate();
         Incidencia::updateOrCreate(
             ['id' => $this->ID],
             [

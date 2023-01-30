@@ -17,6 +17,23 @@ class Index extends Component
     public $texto = "";
     public $estado = 0;
     protected $listeners = ['delete'];
+
+    //VALIDACIONES
+    protected $rules = [
+        'NOM' => 'required',
+        'CLAVE' => 'required',
+        'MOD' => 'required',
+        'REG' => 'required',
+    ];
+
+    //MENSAJES DE ERRORES
+    protected $messages = [
+        'NOM.required' => 'El campo nombre no puede estar vacío',
+        'CLAVE.required' => 'El campo clave de secundaria no puede estar vacío',
+        'MOD.required' => 'El campo modalidad no puede estar vacío',
+        'REG.required' => 'El campo regimen no puede estar vacío',
+    ];
+
     public function render()
     {
         $secundarias = Secundaria::Where([['Nombre', 'like', '%' . $this->search . '%']])
@@ -25,6 +42,12 @@ class Index extends Component
             ->orWhere([['Regimen', 'like', '%' . $this->search . '%']])
             ->paginate($this->cantidad);
         return view('livewire.secundarias.index', ['secundarias' => $secundarias]);
+    }
+
+    //metodo que valida en tiempo real
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
     public function updatingSearch()
     {
@@ -53,6 +76,7 @@ class Index extends Component
     public function cerrarModal()
     {
         $this->estado = 0;
+        $this->limpiarCampos();
         $this->modal = false;
     }
     public function limpiarCampos()
@@ -65,6 +89,7 @@ class Index extends Component
     }
     public function guardar()
     {
+        $this->validate();
         Secundaria::updateOrCreate(
             ['id' => $this->ID],
             [
@@ -83,32 +108,34 @@ class Index extends Component
         $this->cerrarModal();
     }
 
-    public function editar($id){
+    public function editar($id)
+    {
         $secundaria = Secundaria::findOrFail($id);
-        $this->ID=$secundaria->id;
-        $this->NOM=$secundaria->Nombre;
-        $this->CLAVE=$secundaria->ClaveSecu;
-        $this->MOD=$secundaria->Modalidad;
-        $this->REG=$secundaria->Regimen;
-        $this->estado=1;
+        $this->ID = $secundaria->id;
+        $this->NOM = $secundaria->Nombre;
+        $this->CLAVE = $secundaria->ClaveSecu;
+        $this->MOD = $secundaria->Modalidad;
+        $this->REG = $secundaria->Regimen;
+        $this->estado = 1;
         $this->abrirModal();
     }
 
-    public function borrar($id){
+    public function borrar($id)
+    {
         $t1 = 'La Secundaria tiene un <br/> alumno registrado: <br/>';
         $alumno = Alumno::Where([['secundaria_id', '=', $id]])->first();
-        if ($alumno == null){
+        if ($alumno == null) {
             $this->dispatchBrowserEvent('swal:confirm', [
                 'title' => '¿Estás seguro de eliminar?',
                 'type' => 'warning',
                 'id' => $id,
             ]);
-        }else{
+        } else {
             $t1 .= $alumno->Nombre . ' ' . $alumno->ApPaterno . ' ' . $alumno->ApMaterno;
             $this->dispatchBrowserEvent('swal', [
                 'title' => $t1,
                 'type' => 'error'
-            ]);  
+            ]);
         }
     }
 
@@ -117,10 +144,10 @@ class Index extends Component
 
         Secundaria::findOrFail($id)->delete();
         $this->redic();
-
     }
 
-    public function redic(){
+    public function redic()
+    {
         return redirect()->route('Secundarias');
     }
 }

@@ -26,21 +26,25 @@
 
                             <div class="grid grid-cols-1 gap-5 md:gap-8 mt-2 mx-7">
                                 <div class="grid grid-cols-1">
-                                    <label class=" md:text-sm text-xs text-gray-900 font-semibold">Nombre</label>
+                                    <label class=" md:text-sm text-xs text-gray-900 font-semibold">Empleado</label>
                                     <select
                                         class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                                         wire:model="administrador" id="">
-                                        <option value="0">
+                                        <option value="">
                                             Seleccione a una Persona
                                         </option>
                                         @foreach ($administradores as $administrador)
-                                            @if ($administrador->password == null )
+                                            @if ($administrador->password == null)
                                                 <option value="{{ $administrador->id }}">
-                                                    {{ $administrador->Nombre }} {{ $administrador->ApPaterno }} {{ $administrador->ApMaterno }}
+                                                    {{ $administrador->Nombre }} {{ $administrador->ApPaterno }}
+                                                    {{ $administrador->ApMaterno }}
                                                 </option>
                                             @endif
                                         @endforeach
                                     </select>
+                                    @error('administrador')
+                                        <span class="text-red-600">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -53,13 +57,15 @@
                                         class=" md:text-sm text-xs text-gray-900 font-semibold">Contraseña</label>
                                     <input
                                         class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
-                                        type="text" placeholder="Contraseña" id="" wire:model="contrasena"
-                                        />
-
+                                        type="text" placeholder="Contraseña" id=""
+                                        wire:model="contrasena" />
+                                    @error('contrasena')
+                                        <span class="text-red-600">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
-        
+
 
 
                         </div>

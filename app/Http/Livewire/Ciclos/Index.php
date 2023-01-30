@@ -16,12 +16,28 @@ class Index extends Component
     public $texto = "";
     public $estado = 0, $estado1 = 0;
     protected $listeners = ['delete', 'desasignar1'];
+
+    //validaciones
+    protected $rules = [
+        'SEM' => 'required',
+    ];
+    //Mensajes de validaciones
+    protected $messages = [
+        'SEM.required' => 'El campo semestre no puede estar vacío',
+    ];
+
     public function render()
     {
         $ciclos = CicloEscolar::Where([['Semestre', 'like', '%' . $this->search . '%']])
             ->paginate($this->cantidad);
 
         return view('livewire.ciclos.index', ['ciclos' => $ciclos]);
+    }
+    //metodo que valida en tiempo real
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
     public function updatingSearch()
     {
@@ -59,6 +75,7 @@ class Index extends Component
     }
     public function guardar()
     {
+        $this->validate();
         CicloEscolar::updateOrCreate(
             ['id' => $this->ID],
             [
@@ -82,5 +99,4 @@ class Index extends Component
         $this->estado = 1;
         $this->abrirModal();
     }
-
 }

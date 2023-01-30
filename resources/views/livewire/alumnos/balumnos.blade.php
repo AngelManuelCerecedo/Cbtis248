@@ -82,9 +82,17 @@
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->padre->Nombre }}
                                                 {{ $alumno->padre->ApPaterno }} {{ $alumno->padre->ApMaterno }}</p>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->grado->Nombre }}</p>
-                                        </td>
+
+                                        @if ($alumno->grado == null)
+                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
+                                                <p class="text-gray-900 whitespace-no-wrap">"Sin Grado asignado"</p>
+                                            </td>
+                                        @else
+                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
+                                                <p class="text-gray-900 whitespace-no-wrap">{{ $alumno->grado->Nombre }}
+                                                </p>
+                                            </td>
+                                        @endif
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 {{ $alumno->especialidad->Nombre }}</p>

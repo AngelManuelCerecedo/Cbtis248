@@ -17,18 +17,37 @@ class Index extends Component
     use WithPagination;
     public $search;
     public $cantidad = 5;
-    public $ID, $NOM, $HS, $ESP, $G, $P, $GP;
+    public $ID, $NOM, $HS, $ESP, $G, $P, $GP, $mensajeerrorp;
     public $grado, $especialidad, $profesor, $grupo;
     public $modal = false, $modalAP = false;
     public $texto = "", $materiaAP;
     public $estado = 0, $estado1 = 0;
-    protected $listeners = ['delete','desasignar1'];
+    protected $listeners = ['delete', 'desasignar1'];
+
+    //validaciones
+    protected $rules = [
+        'NOM' => 'required',
+        'HS' => 'required',
+        'ESP' => 'required',
+        'G' => 'required',
+        'GP' => 'required',
+        
+    ];
+    //Mensajes de validaciones
+    protected $messages = [
+        'NOM.required' => 'El campo nombre no puede estar vacío',
+        'HS.required' => 'El campo horas a la semana no puede estar vacío',
+        'ESP.required' => 'El campo especialidad no puede estar vacío',
+        'G.required' => 'El campo grado no puede estar vacío',
+        'GP.required' => 'El campo grupo no puede estar vacío',
+        
+    ];
 
     public function render()
     {
         $this->grado = Grado::all();
         $this->especialidad = Especialidad::all();
-        $this->profesor = User::Where('Puesto', '!=' , 'Administrativo') -> get();
+        $this->profesor = User::Where('Puesto', '!=', 'Administrativo')->get();
         $this->grupo = Grupo::all();
 
         $materias = Materia::Where([['Nombre', 'like', '%' . $this->search . '%'], ['Tipo', '=', 'Materia']])
@@ -36,6 +55,14 @@ class Index extends Component
             ->paginate($this->cantidad);
         return view('livewire.materias.index', ['materias' => $materias]);
     }
+
+    //metodo que valida en tiempo real
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -51,6 +78,7 @@ class Index extends Component
     }
     public function abrirmodal()
     {
+
         if ($this->estado == 0) {
             $this->texto = "Registrar una Materia";
             $this->modal = true;
@@ -62,6 +90,7 @@ class Index extends Component
     }
     public function cerrarModal()
     {
+        $this->limpiarCampos();
         $this->estado = 0;
         $this->modal = false;
     }
@@ -71,10 +100,13 @@ class Index extends Component
         $this->HS = '';
         $this->ESP = '';
         $this->G = '';
+        $this->GP = '';
+        $this->mensajeerrorp='';
         $this->estado = 0;
     }
     public function guardar()
     {
+        $this->validate();
         Materia::updateOrCreate(
             ['id' => $this->ID],
             [
@@ -113,18 +145,18 @@ class Index extends Component
     {
         $t1 = 'El Docente <br>';
         $profesor = Materia::Where([['id', '=', $id]])->first();
-        if ($profesor->profesor_id == null){
+        if ($profesor->profesor_id == null) {
             $this->dispatchBrowserEvent('swal:confirm', [
                 'title' => '¿Estás seguro de eliminar?',
                 'type' => 'warning',
                 'id' => $id,
             ]);
-        }else{
-            $t1 .= $profesor->profesor->Nombre . ' ' . $profesor->profesor->ApPaterno . ' ' . $profesor->profesor->ApMaterno .'<br> <FONT SIZE=5> tiene la materia asignada </font>';
+        } else {
+            $t1 .= $profesor->profesor->Nombre . ' ' . $profesor->profesor->ApPaterno . ' ' . $profesor->profesor->ApMaterno . '<br> <FONT SIZE=5> tiene la materia asignada </font>';
             $this->dispatchBrowserEvent('swal', [
                 'title' => $t1,
                 'type' => 'error'
-            ]);  
+            ]);
         }
     }
 
@@ -146,6 +178,7 @@ class Index extends Component
     }
     public function cerrarModal1()
     {
+        $this->limpiarCampos();
         $this->modalAP = false;
     }
 
@@ -155,32 +188,40 @@ class Index extends Component
         $this->abrirModal1();
     }
 
-    public function guardarAP(){
-        Materia::updateOrCreate(
-            ['id' => $this->materiaAP->id],
-            [
-                'profesor_id' => $this->P
-            ]
-        );
-        $this->cerrarModal1();
+    public function guardarAP()
+    {
+        if($this->P != ''){
+            $this->mensajeerrorp="";
+            Materia::updateOrCreate(
+                ['id' => $this->materiaAP->id],
+                [
+                    'profesor_id' => $this->P
+                ]
+            );
+            $this->cerrarModal1();
+        }else{
+            $this->mensajeerrorp = "Debe seleccionar un docente";
+        }
+      
     }
 
-    public function desasignar($id){
+    public function desasignar($id)
+    {
 
         $t1 = 'El Docente <br>';
         $profesor = Horario_Profesor::Where([['materia_id', '=', $id]])->first();
-        if ($profesor == null){
+        if ($profesor == null) {
             $this->dispatchBrowserEvent('swal:confirm1', [
                 'title' => '¿Estás seguro que quieres desasignar al Docente?',
                 'type' => 'warning',
                 'id' => $id,
             ]);
-        }else{
-            $t1 .= $profesor->profesor->Nombre . ' ' . $profesor->profesor->ApPaterno . ' ' . $profesor->profesor->ApMaterno .'<br> <FONT SIZE=5> tiene la materia asignada en su horario </font>';
+        } else {
+            $t1 .= $profesor->profesor->Nombre . ' ' . $profesor->profesor->ApPaterno . ' ' . $profesor->profesor->ApMaterno . '<br> <FONT SIZE=5> tiene la materia asignada en su horario </font>';
             $this->dispatchBrowserEvent('swal', [
                 'title' => $t1,
                 'type' => 'error'
-            ]);  
+            ]);
         }
     }
 

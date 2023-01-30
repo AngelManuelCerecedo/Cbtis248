@@ -18,6 +18,23 @@ class Chprofesor extends Component
     public $i = 1, $is = 1, $it = 1, $iq = 1, $ic = 1, $ise = 1, $isi = 1, $io = 1, $in = 1;
     public $Phoras, $Shoras, $Thoras, $Qhoras, $Choras, $SEhoras, $SIhoras, $Ohoras, $Nhoras;
     protected $listeners = ['desasignar1'];
+
+    //validaciones
+    protected $rules = [
+        'M' => 'required',
+        'D' => 'required',
+        'H' => 'required',
+        'L' => 'required',
+    ];
+    //Mensajes de validaciones
+    protected $messages = [
+        'M.required' => 'El campo materia / actividad puede estar vacío',
+        'D.required' => 'El campo día puede estar vacío',
+        'H.required' => 'El campo hora no puede estar vacío',
+        'L.required' => 'El campo lugar no puede estar vacío',
+    ];
+
+
     public function render()
     {
         $Materias = Materia::all();
@@ -35,8 +52,17 @@ class Chprofesor extends Component
         $this->Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $this->ide]])->orderBy('dia_id', 'asc')->get();
         return view('livewire.horarios.chprofesor', ['materias' => $Materias, 'horas' => $Horas, 'dias' => $Dias]);
     }
+
+    //metodo que valida en tiempo real
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public function añadir()
     {
+        $this->validate();
         $t1 = 'Lugar Ocupado por : <br>';
         $t2 = 'El grupo tiene <br> dia y hora Ocupado por : <br>';
         $this->Grupo = Materia::Where([['id', '=', $this->M]])->first();

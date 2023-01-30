@@ -26,14 +26,17 @@
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Nombre</label>
                                 <select wire:model='P'
                                     class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                                    <option value="0">Selecciona un Docente</option>
+                                    <option value="">Selecciona un Docente</option>
                                     @foreach ($profesor as $prof)
-                                        @if ($prof->Estatus == "Activo")
+                                        @if ($prof->Estatus == 'Activo')
                                             <option value="{{ $prof->id }}">{{ $prof->Nombre }}
                                                 {{ $prof->ApPaterno }} {{ $prof->ApMaterno }}</option>
                                         @endif
                                     @endforeach
                                 </select>
+
+                                <span class="text-red-600">{{$mensajeerrorp}}</span>
+
                             </div>
                         </div>
                     </div>
