@@ -84,24 +84,19 @@
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
-                    <label class="font-sans leading-none">Perfil</label>
-                    <select wire:model='P'
-                        class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                        <option>Selecciona un Perfil</option>
-                        <option value="Perfil1">Perfil1</option>
-                        <option value="Perfil2">Perfil2</option>
-                        <option value="Perfil3">Perfil3</option>
-                        <option value="Perfil4">Perfil4</option>
-                        <option value="Perfil5">Perfil5</option>
-                        <option value="Perfil6">Perfil6</option>
-                    </select>
+                    <label class="font-sans leading-none">Perfil Abreviado</label>
+                    <input type="text" wire:model='P'
+                    class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
+                    <label class="font-sans leading-none">Perfil Abreviado</label>
+                    <input type="text" wire:model='P'
+                    class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
+                </div>
+                <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Observaciones</label>
                     <input type="text" wire:model='O'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
-                </div>
-                <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                 </div>
             </div>
         </div>

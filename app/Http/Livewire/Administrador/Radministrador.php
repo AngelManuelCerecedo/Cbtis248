@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Radministrador extends Component
 {
-    public $N, $AP, $AM, $RFC, $CC, $P, $FI, $FID, $FIS, $CAT, $NT, $HN, $NP, $O, $C, $E, $PS,$TD, $PT;
+    public $N, $AP, $AM, $RFC, $CC, $P, $FI, $FID, $FIS, $CAT, $NT, $HN, $NP, $O, $C, $E, $PS,$TD, $PT, $PA;
 
      //VALIDACIONES
      protected $rules = [
@@ -86,6 +86,7 @@ class Radministrador extends Component
             'Rfc' => $this->RFC,
             'Clave_Cobro' => $this->CC,
             'Puesto' => $this->PT,
+            'Perfil_A' => $this->PA,
             'Perfil' => $this->P,
             'Fecha_ingreso' => $this->FI,
             'Fecha_ingreso_SEP' => $this->FIS,
@@ -113,6 +114,7 @@ class Radministrador extends Component
         $this->AM = '';
         $this->RFC = '';
         $this->CC = '';
+        $this->PA = '';
         $this->P = '';
         $this->FI = '';
         $this->FIS = '';

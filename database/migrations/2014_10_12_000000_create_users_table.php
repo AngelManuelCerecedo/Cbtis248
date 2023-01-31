@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string("Rfc",13)->unique();
             $table->string("Clave_Cobro",45);
             $table->string("Puesto",45);
+            $table->string("Perfil_A",45);
             $table->string("Perfil",45);
             $table->date("Fecha_ingreso");
             $table->date("Fecha_ingreso_SEP");

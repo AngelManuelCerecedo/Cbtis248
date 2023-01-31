@@ -50,9 +50,17 @@ class Index extends Component
         $this->grado = Grado::all();
         $this->ciclo = CicloEscolar::all();
         $this->especialidad = Especialidad::all();
-        $grupos = Grupo::Where([['Clave_Grupo', 'like', '%' . $this->search . '%']])
+        if ($esp_id = Especialidad ::Where([['Nombre','like','%'.$this->search.'%']])->first()){
+            $grupos = Grupo::Where([['Clave_Grupo', 'like', '%' . $this->search . '%']])
             ->orWhere([['Salon', 'like', '%' . $this->search . '%']])
+            ->orWhere([['especialidad_id', 'like', '%' . $esp_id->id . '%']])
             ->paginate($this->cantidad);
+        }
+        else{
+            $grupos = Grupo::Where([['Clave_Grupo', 'like', '%' . $this->search . '%']])
+            ->orWhere([['Salon', 'like', '%' . $this->search . '%']])
+            ->paginate($this->cantidad);         
+        }
         return view('livewire.grupos.index', ['grupos' => $grupos]);
     }
 

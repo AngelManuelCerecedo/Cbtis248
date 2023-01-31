@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
         Secundaria::factory(10)->create();
         Padre::factory(10)->create();
         $this->call(CicloSeeder::class);
@@ -33,11 +32,9 @@ class DatabaseSeeder extends Seeder
         $this->call(EspecialidadSeeder::class);
         $this->call(DiaSeeder::class);
         $this->call(HoraSeeder::class);
-        ActComp::factory(10)->create();
-        // User::factory(10)->create();
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
-        Profesor::factory(10)->create();
+        //Profesor::factory(10)->create();
         $this->call(GrupoSeeder::class);
         Alumno::factory(10)->create();
         Incidencia::factory(10)->create();

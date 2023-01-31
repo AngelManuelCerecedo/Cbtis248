@@ -120,10 +120,10 @@
                                                     </p>
                                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
                                                         ({{ $Phora->Lugar }})
-                                                    </p>
                                                     <button wire:click="borrar({{ $Phora->id }})" type="button"
                                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
                                                             class="bi bi-trash-fill"></i></button>
+                                                        </p>
                                                 </td>
                                                 <var {{ $i++ }}></var>
                                             @break
@@ -153,10 +153,10 @@
                                                 </p>
                                                 <p class="text-gray-900 whitespace-no-wrap uppercase">
                                                     ({{ $Shora->Lugar }})
-                                                </p>
                                                 <button wire:click="borrar({{ $Shora->id }})" type="button"
                                                     class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
                                                         class="bi bi-trash-fill"></i></button>
+                                                    </p>
                                             </td>
                                             <var {{ $is++ }}></var>
                                         @break
@@ -186,10 +186,10 @@
                                             </p>
                                             <p class="text-gray-900 whitespace-no-wrap uppercase">
                                                 ({{ $Thora->Lugar }})
-                                            </p>
                                             <button wire:click="borrar({{ $Thora->id }})" type="button"
                                                 class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
                                                     class="bi bi-trash-fill"></i></button>
+                                                </p>
                                         </td>
                                         <var {{ $it++ }}></var>
                                     @break
@@ -219,10 +219,10 @@
                                         </p>
                                         <p class="text-gray-900 whitespace-no-wrap uppercase">
                                             ({{ $Qhora->Lugar }})
-                                        </p>
                                         <button wire:click="borrar({{ $Qhora->id }})" type="button"
                                             class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
                                                 class="bi bi-trash-fill"></i></button>
+                                            </p>
                                     </td>
                                     <var {{ $iq++ }}></var>
                                 @break
@@ -252,10 +252,10 @@
                                     </p>
                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
                                         ({{ $Chora->Lugar }})
-                                    </p>
                                     <button wire:click="borrar({{ $Chora->id }})" type="button"
                                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
                                             class="bi bi-trash-fill"></i></button>
+                                        </p>
                                 </td>
                                 <var {{ $ic++ }}></var>
                             @break
@@ -285,10 +285,10 @@
                                 </p>
                                 <p class="text-gray-900 whitespace-no-wrap uppercase">
                                     ({{ $SEhora->Lugar }})
-                                </p>
                                 <button wire:click="borrar({{ $SEhora->id }})" type="button"
                                     class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
                                         class="bi bi-trash-fill"></i></button>
+                                    </p>
                             </td>
                             <var {{ $ise++ }}></var>
                         @break
@@ -318,10 +318,10 @@
                             </p>
                             <p class="text-gray-900 whitespace-no-wrap uppercase">
                                 ({{ $SIhora->Lugar }})
-                            </p>
                             <button wire:click="borrar({{ $SIhora->id }})" type="button"
                                 class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
                                     class="bi bi-trash-fill"></i></button>
+                                </p>
                         </td>
                         <var {{ $isi++ }}></var>
                     @break
@@ -351,10 +351,10 @@
                         </p>
                         <p class="text-gray-900 whitespace-no-wrap uppercase">
                             ({{ $Ohora->Lugar }})
-                        </p>
                         <button wire:click="borrar({{ $Ohora->id }})" type="button"
                             class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
                                 class="bi bi-trash-fill"></i></button>
+                            </p>
                     </td>
                     <var {{ $io++ }}></var>
                 @break
@@ -384,10 +384,10 @@
                     </p>
                     <p class="text-gray-900 whitespace-no-wrap uppercase">
                         ({{ $Nhora->Lugar }})
-                    </p>
                     <button wire:click="borrar({{ $Nhora->id }})" type="button"
                         class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
                             class="bi bi-trash-fill"></i></button>
+                        </p>
                 </td>
                 <var {{ $in++ }}></var>
             @break

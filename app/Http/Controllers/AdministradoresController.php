@@ -13,6 +13,6 @@ class AdministradoresController extends Controller
         return view('administradores.Radministrador');
     }
     public function Eadministrador($id){
-        return view('administradores.Eadministrador',['id'=>$id]);
+        return view('administradores.Eadministrador',['id'=>$id]); 
     }
 }

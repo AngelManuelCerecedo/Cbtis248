@@ -29,7 +29,7 @@ class User extends Authenticatable
         'name',
         'email','password2',
         'password','id','Curp','Nombre','ApPaterno','ApMaterno','Rfc','Clave_Cobro','Puesto','Perfil','Fecha_ingreso','Fecha_ingreso_SEP',	
-        'Fecha_ingreso_DGETI','Categoria','Numero_Tarjeta','Horas_Nom','Numero_Plaza','Observaciones','Estatus','Tipo','EstatusUser'
+        'Fecha_ingreso_DGETI','Categoria','Numero_Tarjeta','Horas_Nom','Numero_Plaza','Observaciones','Estatus','Tipo','EstatusUser','Perfil_A'
     ];
     
     

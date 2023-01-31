@@ -11,12 +11,12 @@ use Livewire\WithPagination;
 class Lincidencia extends Component
 {
     use WithPagination;
-    public $cantidad = 5;
-    public $F, $C, $D, $iC, $iA, $iU;
+    public $cantidad = 5, $incidencia;
+    public $F, $C, $D, $iC, $iA, $iU, $F1, $t1;
     public $ID;
     public $IDAUX;
-    public $modal = false;
-    public $estado = 0;
+    public $modal = false, $modal1 = false ;
+    public $estado = 0, $estado1 = 0;
     protected $listeners = ['delete'];
 
 
@@ -70,6 +70,7 @@ class Lincidencia extends Component
     {
         $this->estado = 0;
         $this->modal = false;
+        $this->modal1 = false;
     }
     public function limpiarCampos()
     {
@@ -125,6 +126,56 @@ class Lincidencia extends Component
 
         Incidencia::findOrFail($id)->delete();
         $this->redic();
+    }
+    
+    public function crearmodal1()
+    {
+        $this->limpiarCampos();
+        $this->abrirmodal1();
+    }
+    public function abrirmodal1()
+    {
+        $this->estado1 = 1;
+        $this->t1 = '';
+        $this->modal1 = true;
+    }
+    public function cerrarModal1()
+    {
+        $this->estado1 = 0;
+        $this->modal1 = false;
+    }
+
+
+    public function verificar($id)
+    {
+        $this->incidencia = Incidencia::Where([['id', '=', $id]])->first();
+        if ($this->incidencia->alumno->grupo_id == NULL){
+            $this->dispatchBrowserEvent('swal', [
+                'title' => 'El alumno no tiene un grupo asignado',
+                'type' => 'error'
+            ]);
+        }
+        else{
+            $this->estado = 1;
+            $this->abrirmodal1();
+        }
+    }
+    public function citar($id)
+    {
+        //$this->validate();
+        if ($this->F1 != ''){
+            $this->modal1 = false;
+            Incidencia::updateOrCreate(
+                ['id' => $id],
+                [
+                    'Fecha_C' => $this->F1,
+                ]
+            );
+            $this->F1 = '';
+            redirect()->route('citatorio', [$id]);
+        }else {
+            $this->t1 = 'El campo fecha no puede estar vacio';
+        }
     }
 
     public function redic()

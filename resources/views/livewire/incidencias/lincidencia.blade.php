@@ -2,6 +2,9 @@
     @if ($modal)
         @include('livewire.incidencias.modalEI')
     @endif
+    @if ($modal1)
+        @include('livewire.incidencias.modalF')
+    @endif
     <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div class="pt-8">
@@ -12,17 +15,6 @@
             </div>
             <!--DIV PADRE-->
             <div class="my-2 flex sm:flex-row flex-col pt-16">
-                <!--DIV CANTIDAD-->
-                <!-- <div class="flex flex-row mb-1 sm:mb-0  lg:pr-4 xl:pl-96">
-                    <div class="sm:pl-0 sm:mr-0 xl:pl-96">
-                        <select wire:model='cantidad'
-                            class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 sm:py-0 sm:px-2 sm:pr-8 md:py-2 md:px-4 md:pr-8 lg:mx-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                        </select>
-                    </div>
-                </div>-->
             </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                 <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -74,14 +66,10 @@
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <button wire:click="editar({{ $incidencia->id }})" type="button"
                                                 class="text-white border  bg-yellow-400 hover:bg-yellow-500 rounded-lg  text-sm  ml-0 py-2 px-6 m-1">Editar</button>
-
-                                            <a href="{{ route('citatorio', [$incidencia->id]) }}">
-                                                <button wire:click="" type="button"
-                                                    class="text-white border  bg-green-400 hover:bg-green-500 rounded-lg  text-sm  ml-0 py-2 px-6 m-1">Generar
-                                                    Citatorio</button>
-                                            </a>
-
-
+                                                
+                                            <button wire:click="verificar({{ $incidencia->id }})" type="button"
+                                                class="text-white border  bg-green-400 hover:bg-green-500 rounded-lg  text-sm  ml-0 py-2 px-6 m-1">Generar Citatorio</button>
+                                                
                                             <button wire:click="borrar({{ $incidencia->id }})" type="button"
                                                 class="text-white border  bg-red-400 hover:bg-red-500 rounded-lg  text-sm  ml-0 py-2 px-6 m-1">Eliminar</button>
                                         </td>

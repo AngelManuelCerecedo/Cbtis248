@@ -15,7 +15,7 @@ class Index extends Component
     public $modal = false;
     public $texto = "";
     public $estado = 0, $estado1 = 0;
-    protected $listeners = ['delete', 'desasignar1'];
+    protected $listeners = ['delete'];
 
     //validaciones
     protected $rules = [
@@ -98,5 +98,25 @@ class Index extends Component
         $this->SEM = $ciclo->Semestre;
         $this->estado = 1;
         $this->abrirModal();
+    }
+
+    public function borrar($id)
+    {
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'title' => '¿Estás seguro de eliminar?',
+            'type' => 'warning',
+            'id' => $id,
+        ]);
+    }
+
+    public function delete($id)
+    {
+
+        CicloEscolar::findOrFail($id)->delete();
+        $this->redic();
+    }
+    public function redic()
+    {
+        return redirect()->route('Ciclo');
     }
 }

@@ -28,6 +28,6 @@ class Alumno extends Model
         return $this->belongsTo("App\Models\Grado");
     }
     public function incidencia(){
-        return $this->belongsTo("App\Models\Incidencia");
+        return $this->hasMany("App\Models\Incidencia");
     }
 }

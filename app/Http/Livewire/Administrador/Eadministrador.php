@@ -8,7 +8,7 @@ use Livewire\Component;
 class Eadministrador extends Component
 {
     public $ide;
-    public $N, $AP, $AM, $RFC, $CC, $P, $FI, $FID, $FIS, $CAT, $NT, $HN, $NP, $O, $C, $E, $PS, $TD, $PT;
+    public $N, $AP, $AM, $RFC, $CC, $P, $FI, $FID, $FIS, $CAT, $NT, $HN, $NP, $O, $C, $E, $PS, $TD, $PT, $PA;
     public $ESTATUS;
 
     //VALIDACIONES
@@ -78,6 +78,7 @@ class Eadministrador extends Component
         $this->AM = $administrador->ApMaterno;
         $this->RFC = $administrador->Rfc;
         $this->CC = $administrador->Clave_Cobro;
+        $this->PA = $administrador->Perfil_A;
         $this->P = $administrador->Perfil;
         $this->FI = $administrador->Fecha_ingreso;
         $this->FID = $administrador->Fecha_ingreso_DGETI;
@@ -119,6 +120,7 @@ class Eadministrador extends Component
                     'ApMaterno' => $this->AM,
                     'Rfc' => $this->RFC,
                     'Clave_Cobro' => $this->CC,
+                    'Perfil_A' => $this->PA,
                     'Perfil' => $this->P,
                     'Fecha_ingreso' => $this->FI,
                     'Fecha_ingreso_DGETI' => $this->FID,

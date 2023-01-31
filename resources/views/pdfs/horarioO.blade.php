@@ -150,29 +150,6 @@
 		<tr>
 			<td style="width: 16.6667%; text-align: center; font-size: 13px;">10:00-11:00</td>
             @for ($p = 0; $p < 5; $p++)
-            @if (!empty($Qhoras) && $Qhoras != '[]')
-                @foreach ($Qhoras as $Qhora)
-                    @for ($i; $i < 6; $i++)
-                        @if ($Qhora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center;  font-size: 13px; ">
-                                    {{ $Qhora->materia->Nombre }} {{ $Qhora->grupo->Clave_Grupo }}<br>
-                                    ({{ $Qhora->Lugar }})
-                            </td>
-                            {{ $i++ }}@break
-                        @else
-                            <td style="width: 16.6667%; text-align: center;"></td>
-                        @endif
-                    @endfor
-                @endforeach
-            @else
-                <td style="width: 16.6667%; text-align: center;"></td>
-            @endif
-        @endfor
-        {{ $i= 1 }}
-		</tr>
-		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">11:00-12:00</td>
-            @for ($p = 0; $p < 5; $p++)
             @if (!empty($Choras) && $Choras != '[]')
                 @foreach ($Choras as $Chora)
                     @for ($i; $i < 6; $i++)
@@ -194,7 +171,7 @@
         {{ $i= 1 }}
 		</tr>
 		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">12:00-13:00</td>
+			<td style="width: 16.6667%; text-align: center; font-size: 13px;">11:00-12:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($SEhoras) && $SEhoras != '[]')
                 @foreach ($SEhoras as $SEhora)
@@ -216,8 +193,8 @@
         @endfor
         {{ $i= 1 }}
 		</tr>
-        <tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">13:00-14:00</td>
+		<tr>
+			<td style="width: 16.6667%; text-align: center; font-size: 13px;">12:00-13:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($SIhoras) && $SIhoras != '[]')
                 @foreach ($SIhoras as $SIhora)
@@ -239,8 +216,8 @@
         @endfor
         {{ $i= 1 }}
 		</tr>
-		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">14:00-15:00</td>
+        <tr>
+			<td style="width: 16.6667%; text-align: center; font-size: 13px;">13:00-14:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($Ohoras) && $Ohoras != '[]')
                 @foreach ($Ohoras as $Ohora)
@@ -263,7 +240,7 @@
         {{ $i= 1 }}
 		</tr>
 		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">15:00-16:00</td>
+			<td style="width: 16.6667%; text-align: center; font-size: 13px;">14:00-15:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($Nhoras) && $Nhoras != '[]')
                 @foreach ($Nhoras as $Nhora)

@@ -3,35 +3,31 @@
    <style type="text/css">  
    .transformacion2 { text-transform: uppercase;}    
    </style> 
-    <table style="width: 100%; border-collapse: collapse; margin-top: -6%">
+    <table style="width: 100%; border-collapse: collapse; margin-top: -4%">
         <tbody>
             <tr>
-                <td >
-                    <img src="LOGO-HD.jpeg">
+                <td style="width: 20%;">
+                    <img src="{{public_path('/assets/logo.png')}}">
                 </td>
                 <td style="width: 80%;">
                     <h2 style="text-align: center;">CENTRO DE BACHILLERATO TECNOLÓGICO <br />industrial y de servicios No. 248</h2>
                 </td>
-                <td style="">
-                    <img src="https://github.com/Darftgamer/LOGO-CBTIS/blob/main/LOGO-HD.jpeg?raw=true">
+                <td style="width: 20%;">
+                    <img src="{{public_path('/assets/sep.png')}}">
                 </td>
             </tr>
             <tr>
                 <td style="">
-                    <img src="https://github.com/Darftgamer/LOGO-CBTIS/blob/main/LOGO-HD.jpeg?raw=true">
                 </td>
                 <td style="width: 80%; text-align: center; text-transform: uppercase;">SEMESTRE : {{$Ciclo->Semestre}} </td>
                 <td style="">
-                    <img src="https://github.com/Darftgamer/LOGO-CBTIS/blob/main/LOGO-HD.jpeg?raw=true">
                 </td>
             </tr>
             <tr>
                 <td style="">
-                    <img src="https://github.com/Darftgamer/LOGO-CBTIS/blob/main/LOGO-HD.jpeg?raw=true">
                 </td>
                 <td style="width: 80%; text-align: center; transformacion2;">HORARIO DE CLASES </td>
                 <td style="">
-                    <img src="https://github.com/Darftgamer/LOGO-CBTIS/blob/main/LOGO-HD.jpeg?raw=true">
                 </td>
             </tr>
         </tbody>

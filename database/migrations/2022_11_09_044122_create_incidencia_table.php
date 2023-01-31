@@ -17,6 +17,7 @@ class CreateIncidenciaTable extends Migration
             $table->id();
             $table->date("Fecha");
             $table->text("Descripcion");
+            $table->date("Fecha_C")->nullable();
             $table->unsignedBigInteger("ciclo_id");
             $table->foreign("ciclo_id")->references("id")->on("ciclo_escolars")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("alumno_id");

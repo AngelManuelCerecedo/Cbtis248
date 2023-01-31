@@ -47,7 +47,7 @@ class Index extends Component
     {
         $this->grado = Grado::all();
         $this->especialidad = Especialidad::all();
-        $this->profesor = User::Where('Puesto', '!=', 'Administrativo')->get();
+        $this->profesor = User::Where('Puesto', '!=', 'Administrativo')->orderBy('Horas_Nom', 'desc')->get();
         $this->grupo = Grupo::all();
 
         $materias = Materia::Where([['Nombre', 'like', '%' . $this->search . '%'], ['Tipo', '=', 'Materia']])
@@ -198,6 +198,7 @@ class Index extends Component
                     'profesor_id' => $this->P
                 ]
             );
+            $this->P=0;
             $this->cerrarModal1();
         }else{
             $this->mensajeerrorp = "Debe seleccionar un docente";
