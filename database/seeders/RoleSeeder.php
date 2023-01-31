@@ -50,6 +50,12 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'Registrar-Incidencias', 'description' => 'Registrar Incidencias'])->syncRoles([$root, $admin]);
         Permission::create(['name' => 'Listar-Incidencias', 'description' => 'Ver Incidencias'])->syncRoles([$root, $admin, $dir]);
 
+        Permission::create(['name' => 'Editar-Incidencias', 'description' => 'Editar Incidencias'])->syncRoles([$root, $admin]);
+        Permission::create(['name' => 'Generar-Citatorio', 'description' => 'Generar citatorio'])->syncRoles([$root, $admin, $dir]);
+        Permission::create(['name' => 'Eliminar-Incidencias', 'description' => 'Eliminar Incidencias'])->syncRoles([$root, $admin]);
+
+
+
 
         //Personal
         Permission::create(['name' => 'Personal', 'description' => 'Acceder a Personal '])->syncRoles([$root, $admin, $dir]);
@@ -101,7 +107,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'Ver-Grupos', 'description' => 'Catálogo de Grupos'])->syncRoles([$root, $admin, $dir]);
         Permission::create(['name' => 'Registrar-Grupo', 'description' => 'Registrar Grupos'])->syncRoles([$root, $admin]);
         Permission::create(['name' => 'Añadir-Alumnos', 'description' => 'Añadir alumnos a Grupos'])->syncRoles([$root, $admin]);
-        Permission::create(['name' => 'Listar-Alumnos', 'description' => 'Consultar alumnos por Grupos'])->syncRoles([$root, $admin]);
+        Permission::create(['name' => 'Listar-Alumnos', 'description' => 'Consultar alumnos por Grupos'])->syncRoles([$root, $admin,$dir]);
         Permission::create(['name' => 'Editar-Grupo', 'description' => 'Editar información de Grupos'])->syncRoles([$root, $admin]);
         Permission::create(['name' => 'Actualizar-Grados', 'description' => 'Actualizar Grados'])->syncRoles([$root, $admin]);
         Permission::create(['name' => 'Eliminar-Grupos', 'description' => 'Eliminar información de Grupos'])->syncRoles([$root, $admin]);
@@ -111,7 +117,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'Ver-Ciclo-Escolar', 'description' => 'Catálogo de Ciclos Escolares'])->syncRoles([$root, $admin, $dir]);
         Permission::create(['name' => 'Registrar-Ciclo-Escolar', 'description' => 'Registrar Ciclos Escolares'])->syncRoles([$root, $admin]);
         Permission::create(['name' => 'Editar-Ciclo-Escolar', 'description' => 'Editar Ciclos Escolares'])->syncRoles([$root, $admin]);
-
+        Permission::create(['name' => 'Eliminar-Ciclo-Escolar', 'description' => 'Eliminar Ciclos Escolares'])->syncRoles([$root, $admin]);
 
         //Usuarios
         Permission::create(['name' => 'Usuarios', 'description' => 'Acceder a Usuarios'])->syncRoles([$root]);
