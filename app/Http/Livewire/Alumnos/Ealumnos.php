@@ -15,7 +15,7 @@ class Ealumnos extends Component
     public $NC, $N, $AP, $AM, $C, $LN, $NCA, $COL, $LOC, $CP, $LR, $NSS, $TS, $EC, $EM, $T, $G, $ESP, $PROM, $AF, $EST;
     public $BTUT, $SUGT, $NOM, $APP, $APM, $CEL;
     public $BSEC, $SUGS, $NSEC, $MODS, $CLAVS, $REG, $TUTS, $SECS;
-    public $AUXTUT, $AUXSEC, $AUXTUT2, $AUXSEC2;
+    public $AUXTUT, $AUXSEC, $AUXTUT2, $AUXSEC2, $n,$nom, $apep, $apem, $nomt, $apept, $apemt;
 
     //validaciones
     protected $rules = [
@@ -104,6 +104,113 @@ class Ealumnos extends Component
 
     public function render()
     {
+
+        if ($this->C != ''){
+            $car = str_split($this->C);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+                if ($i>3){ break;}
+               if (is_numeric($car[$i])) {
+                    $this->n = 'La curp no debe empezar con numeros';
+                } else {
+                    $this->n = '';
+                }
+            }
+        }else{
+            $this->n = '';
+        }
+
+        if ($this->N != ''){
+            $car = str_split($this->N);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->nom = 'El nombre no puede llevar numeros';
+                } else {
+                    $this->nom = '';
+                }
+            }
+        }else{
+            $this->nom = '';
+        }
+
+        if ($this->AP != ''){
+            $car = str_split($this->AP);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->apep = 'El apellido paterno no puede llevar numeros';
+                } else {
+                    $this->apep = '';
+                }
+            }
+        }else{
+            $this->apep = '';
+        }
+
+        if ($this->AM != ''){
+            $car = str_split($this->AM);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->apem = 'El apellido materno no puede llevar numeros';
+                } else {
+                    $this->apem = '';
+                }
+            }
+        }else{
+            $this->apem = '';
+        }
+
+        //tutor
+
+        if ($this->NOM != ''){
+            $car = str_split($this->NOM);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->nomt = 'El nombre no puede llevar numeros';
+                } else {
+                    $this->nomt = '';
+                }
+            }
+        }else{
+            $this->nomt = '';
+        }
+
+        if ($this->APP != ''){
+            $car = str_split($this->APP);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->apept = 'El apellido paterno no puede llevar numeros';
+                } else {
+                    $this->apept = '';
+                }
+            }
+        }else{
+            $this->apept = '';
+        }
+
+        if ($this->APM != ''){
+            $car = str_split($this->APM);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->apemt = 'El apellido materno no puede llevar numeros';
+                } else {
+                    $this->apemt = '';
+                }
+            }
+        }else{
+            $this->apemt = '';
+        }
+
+
+
+        //
+
+
         $GRADOS = Grado::all();
         $ESP = Especialidad::all();
         return view('livewire.alumnos.ealumnos', ['grados' => $GRADOS, 'especialidad' => $ESP]);

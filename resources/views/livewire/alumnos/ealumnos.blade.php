@@ -19,6 +19,7 @@
                     @error('N')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $nom }}</span>
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                     <label class="font-sans leading-none">Apellido Paterno</label>
@@ -27,6 +28,7 @@
                     @error('AP')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $apep }}</span>
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Apellido Materno</label>
@@ -35,6 +37,7 @@
                     @error('AM')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $apem }}</span>
                 </div>
             </div>
             <div class="md:flex items-center mt-8">
@@ -45,6 +48,7 @@
                     @error('C')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $n }}</span>
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Lugar de Nacimiento</label>
@@ -264,6 +268,7 @@
                     @error('NOM')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $nomt }}</span>
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Apellido Paterno</label>
@@ -272,6 +277,7 @@
                     @error('APP')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $apept }}</span>
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                     <label class="font-sans leading-none">Apellido Materno</label>
@@ -280,6 +286,7 @@
                     @error('APM')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $apemt }}</span>
 
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">

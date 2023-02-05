@@ -11,6 +11,7 @@
                     @error('N')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $nom }}</span>
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Apellido Paterno</label>
@@ -19,6 +20,7 @@
                     @error('AP')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $apep }}</span>
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6">
                     <label class="font-sans leading-none">Apellido Materno</label>
@@ -27,6 +29,7 @@
                     @error('AM')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $apem }}</span>
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">CURP</label>
@@ -35,6 +38,7 @@
                     @error('C')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $cr }}</span>
                 </div>
             </div>
             <div class="md:flex items-center mt-8">
@@ -45,6 +49,7 @@
                     @error('RFC')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
+                    <span class="text-red-600">{{ $rfc }}</span>
                 </div>
                 <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4">
                     <label class="font-sans leading-none">Clave de Cobro</label>
