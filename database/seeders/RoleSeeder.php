@@ -18,14 +18,15 @@ class RoleSeeder extends Seeder
         $root = Role::create(['name' => 'SuperAdministrador']);
         $admin = Role::create(['name' => 'Administrador']);
         $dir = Role::create(['name' => 'Director']);
+        $OE = Role::create(['name' => 'Orientador Educativo']);
 
 
         //Dashboard
-        $permission = Permission::create(['name' => 'dashboard', 'description' => 'Dashboard'])->syncRoles([$root, $admin, $dir]);
+        $permission = Permission::create(['name' => 'dashboard', 'description' => 'Dashboard'])->syncRoles([$root, $admin, $dir,$OE]);
 
         //Opciones del menu
         //Control escolar
-        Permission::create(['name' => 'Control-Escolar', 'description' => 'Acceder a Control Escolar '])->syncRoles([$root, $admin, $dir]);
+        Permission::create(['name' => 'Control-Escolar', 'description' => 'Acceder a Control Escolar '])->syncRoles([$root, $admin, $dir,$OE]);
         //Alumnos
         Permission::create(['name' => 'Alumnos', 'description' => 'Acceder a Alumnos '])->syncRoles([$root, $admin, $dir]);
         Permission::create(['name' => 'Registrar-Alumnos', 'description' => 'Registrar Alumnos'])->syncRoles([$root, $admin]);
@@ -46,13 +47,13 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'Eliminar-Secundarias', 'description' => 'Eliminar información de Secundarias'])->syncRoles([$root, $admin]);
 
         //incidencias
-        Permission::create(['name' => 'Incidencias', 'description' => 'Acceder a Incidencias '])->syncRoles([$root, $admin, $dir]);
-        Permission::create(['name' => 'Registrar-Incidencias', 'description' => 'Registrar Incidencias'])->syncRoles([$root, $admin]);
-        Permission::create(['name' => 'Listar-Incidencias', 'description' => 'Ver Incidencias'])->syncRoles([$root, $admin, $dir]);
+        Permission::create(['name' => 'Incidencias', 'description' => 'Acceder a Incidencias '])->syncRoles([$root, $admin, $dir,$OE]);
+        Permission::create(['name' => 'Registrar-Incidencias', 'description' => 'Registrar Incidencias'])->syncRoles([$root, $admin,$OE]);
+        Permission::create(['name' => 'Listar-Incidencias', 'description' => 'Ver Incidencias'])->syncRoles([$root, $admin, $dir,$OE]);
 
-        Permission::create(['name' => 'Editar-Incidencias', 'description' => 'Editar Incidencias'])->syncRoles([$root, $admin]);
-        Permission::create(['name' => 'Generar-Citatorio', 'description' => 'Generar citatorio'])->syncRoles([$root, $admin, $dir]);
-        Permission::create(['name' => 'Eliminar-Incidencias', 'description' => 'Eliminar Incidencias'])->syncRoles([$root, $admin]);
+        Permission::create(['name' => 'Editar-Incidencias', 'description' => 'Editar Incidencias'])->syncRoles([$root, $admin,$OE]);
+        Permission::create(['name' => 'Generar-Citatorio', 'description' => 'Generar citatorio'])->syncRoles([$root, $admin, $dir,$OE]);
+        Permission::create(['name' => 'Eliminar-Incidencias', 'description' => 'Eliminar Incidencias'])->syncRoles([$root, $admin,$OE]);
 
 
 
