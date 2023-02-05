@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string("Perfil_A",45);
             $table->string("Perfil",45);
             $table->date("Fecha_ingreso");
-            $table->date("Fecha_ingreso_SEP");
+            $table->date("Fecha_ingreso_SEP")->nullable();
             $table->date("Fecha_ingreso_DGETI");
             $table->string("Categoria",45);
             $table->string("Numero_Tarjeta",45);

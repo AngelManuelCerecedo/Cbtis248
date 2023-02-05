@@ -7,7 +7,7 @@
         <tbody>
             <tr>
                 <td style="width: 15%; text-align: center;"></td>
-                <td style="width: 70%; text-align: center;">DIRECCIÓN GENERAL DE EDUCACIÓN TECNOLÓGICA INDUSTRIAL Y DE SERVICIOS <br>
+                <td style="width: 70%; text-align: center; font-size: 15px;">DIRECCIÓN GENERAL DE EDUCACIÓN TECNOLÓGICA INDUSTRIAL Y DE SERVICIOS <br>
                     <strong>DISTRIBUCION DE ACTIVIDADES ACADEMICAS<
                 </td>
                 <td style="width: 15%; text-align: center;"></td>  
@@ -32,8 +32,9 @@
     <table  border="1" style="border-collapse: collapse; width: 100%; margin-top: -.1%">
         <tbody>
             <tr>
-                <td style="width: 70%; font-size: 13px;">Nombre Completo: {{$nom}}</td>
-                <td style="width: 30%; font-size: 13px;">RFC: {{$profesor->Rfc}}</td>    
+                <td style="width: 50%; font-size: 13px;">Nombre Completo: {{$nom}}</td>
+                <td style="width: 25%; font-size: 13px;">RFC: {{$profesor->Rfc}}</td>
+                <td style="width: 25%; font-size: 12px;">FECHA DE LLENADO: {{$fechaActual}}</td>  
             </tr>
         </tbody>
     </table>
@@ -46,35 +47,47 @@
             </tr>
         </tbody>
     </table>
-
     <table  border="1" style="border-collapse: collapse; width: 100%; margin-top: -.1%">
         <tbody>
             <tr>
-                <td style="width: 25%; font-size: 13px; text-align: center;">INGRESO SEP</td>
-                <td style="width: 25%; font-size: 13px; text-align: center;">INGRESO DGTI</td>
-                <td style="width: 25%; font-size: 13px; text-align: center;">HORAS NOMBRAMIENTO</td> 
-                <td style="width: 25%; font-size: 13px; text-align: center;">PLAZA (s)</td>
-                <td style="width: 25%; font-size: 13px; text-align: center;">Condiciones de Nombramiento</td>    
+                <td style="width: 25%; font-size: 11px; text-align: center;">INGRESO SEP</td>
+                <td style="width: 25%; font-size: 11px; text-align: center;">INGRESO DGTI</td>
+                <td style="width: 25%; font-size: 11px; text-align: center;">HORAS NOMBRAMIENTO</td> 
+                <td style="width: 25%; font-size: 11px; text-align: center;">PLAZA (s)</td>
+                <td style="width: 25%; font-size: 11px; text-align: center;">Condiciones de Nombramiento</td>    
             </tr>
             <tr>
-                <td style="width: 25%; font-size: 13px; text-align: center;">{{$profesor->Fecha_ingreso_SEP}}</td>
-                <td style="width: 25%; font-size: 13px; text-align: center;">{{$profesor->Fecha_ingreso_DGETI}}</td>
-                <td style="width: 25%; font-size: 13px; text-align: center;">{{$profesor->Horas_Nom}}</td> 
-                <td style="width: 25%; font-size: 13px; text-align: center;">{{$profesor->Numero_Plaza}}</td>
-                <td style="width: 25%; font-size: 13px; text-align: center;"></td>    
+                <td style="width: 25%; font-size: 12px; text-align: center;">{{$profesor->Fecha_ingreso_SEP}}</td>
+                <td style="width: 25%; font-size: 12px; text-align: center;">{{$profesor->Fecha_ingreso_DGETI}}</td>
+                <td style="width: 25%; font-size: 12px; text-align: center;">{{$profesor->Horas_Nom}}</td> 
+                <td style="width: 25%; font-size: 12px; text-align: center;">{{$profesor->Numero_Plaza}}</td>
+                <td style="width: 25%; font-size: 12px; text-align: center;"></td>    
             </tr>
         </tbody>
     </table>
 
-<table border="1" style="border-collapse: collapse; width: 100%; margin-top: 2%">
+    <table border="1" style="border-collapse: collapse; width: 100%; margin-top: 0%">
+        <tbody>
+            <tr>
+                <td style="width: 11%; font-size: 12px;">SUBTOTAL A:</td>
+                <td style="width: 9%; font-size: 12px; text-align: center;">{{$countM}}</td>
+                <td style="width: 11%; font-size: 12px;">SUBTOTAL B:</td>
+                <td style="width: 9%; font-size: 12px; text-align: center;">{{$countA}}</td>
+                <td style="width: 11%; font-size: 12px;">SUBTOTAL A+B:</td>
+                <td style="width: 9%; font-size: 12px; text-align: center;">{{$countM + $countA}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+<table border="1" style="border-collapse: collapse; width: 100%; margin-top: 0%">
 	<thead>
 		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">HORA</td>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">LUNES</td>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">MARTES</td>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">MIERCOLES</td>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">JUEVES</td>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">VIERNES</td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;"><strong>HORA</strong></td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;"><strong>LUNES</strong></td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;"><strong>MARTES</strong></td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;"><strong>MIERCOLES</strong></td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;"><strong>JUEVES</strong></td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;"><strong>VIERNES</strong></td>
 		</tr>
     </thead>
     <tbody>
@@ -85,7 +98,7 @@
                     @foreach ($Phoras as $Phora)
                         @for ($i; $i < 6; $i++)
                             @if ($Phora->dia_id == $i)
-                                <td style="width: 16.6667%; text-align: center;  font-size: 13px; ">
+                                <td style="width: 16.6667%; text-align: center;  font-size: 10px; ">
                                         {{ $Phora->materia->Nombre }} {{ $Phora->grupo->Clave_Grupo }}<br>
                                         ({{ $Phora->Lugar }})
                                 </td>
@@ -102,13 +115,13 @@
             {{ $i= 1 }}
 		</tr>
 		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">8:00-9:00</td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;">8:00-9:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($Shoras) && $Shoras != '[]')
                 @foreach ($Shoras as $Shora)
                     @for ($i; $i < 6; $i++)
                         @if ($Shora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center;  font-size: 13px; ">
+                            <td style="width: 16.6667%; text-align: center;  font-size: 10px; ">
                                     {{ $Shora->materia->Nombre }} {{ $Shora->grupo->Clave_Grupo }}<br>
                                     ({{ $Shora->Lugar }})
                             </td>
@@ -125,13 +138,13 @@
         {{ $i= 1 }}
 		</tr>
 		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">9:00-10:00</td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;">9:00-10:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($Thoras) && $Thoras != '[]')
                 @foreach ($Thoras as $Thora)
                     @for ($i; $i < 6; $i++)
                         @if ($Thora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center;  font-size: 13px;">
+                            <td style="width: 16.6667%; text-align: center;  font-size: 10px;">
                                     {{ $Thora->materia->Nombre }} {{ $Thora->grupo->Clave_Grupo }}<br>
                                     ({{ $Thora->Lugar }})
                             </td>
@@ -148,13 +161,13 @@
         {{ $i= 1 }}
 		</tr>
 		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">10:00-11:00</td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;">10:00-11:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($Choras) && $Choras != '[]')
                 @foreach ($Choras as $Chora)
                     @for ($i; $i < 6; $i++)
                         @if ($Chora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center;  font-size: 13px;  ">
+                            <td style="width: 16.6667%; text-align: center;  font-size: 10px;  ">
                                     {{ $Chora->materia->Nombre }} {{ $Chora->grupo->Clave_Grupo }}<br>
                                     ({{ $Chora->Lugar }})
                             </td>
@@ -171,13 +184,13 @@
         {{ $i= 1 }}
 		</tr>
 		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">11:00-12:00</td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;">11:00-12:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($SEhoras) && $SEhoras != '[]')
                 @foreach ($SEhoras as $SEhora)
                     @for ($i; $i < 6; $i++)
                         @if ($SEhora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center;  font-size: 13px; ">
+                            <td style="width: 16.6667%; text-align: center;  font-size: 10px; ">
                                     {{ $SEhora->materia->Nombre }} {{ $SEhora->grupo->Clave_Grupo }}<br>
                                     ({{ $SEhora->Lugar }})
                             </td>
@@ -194,13 +207,13 @@
         {{ $i= 1 }}
 		</tr>
 		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">12:00-13:00</td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;">12:00-13:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($SIhoras) && $SIhoras != '[]')
                 @foreach ($SIhoras as $SIhora)
                     @for ($i; $i < 6; $i++)
                         @if ($SIhora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center;  font-size: 13px; ">
+                            <td style="width: 16.6667%; text-align: center;  font-size: 10px; ">
                                     {{ $SIhora->materia->Nombre }} {{ $SIhora->grupo->Clave_Grupo }}<br>
                                     ({{ $SIhora->Lugar }})
                             </td>
@@ -217,13 +230,13 @@
         {{ $i= 1 }}
 		</tr>
         <tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">13:00-14:00</td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;">13:00-14:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($Ohoras) && $Ohoras != '[]')
                 @foreach ($Ohoras as $Ohora)
                     @for ($i; $i < 6; $i++)
                         @if ($Ohora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center;  font-size: 13px; ">
+                            <td style="width: 16.6667%; text-align: center;  font-size: 10px; ">
                                     {{ $Ohora->materia->Nombre }} {{ $Ohora->grupo->Clave_Grupo }}<br>
                                     ({{ $Ohora->Lugar }})
                             </td>
@@ -240,13 +253,13 @@
         {{ $i= 1 }}
 		</tr>
 		<tr>
-			<td style="width: 16.6667%; text-align: center; font-size: 13px;">14:00-15:00</td>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;">14:00-15:00</td>
             @for ($p = 0; $p < 5; $p++)
             @if (!empty($Nhoras) && $Nhoras != '[]')
                 @foreach ($Nhoras as $Nhora)
                     @for ($i; $i < 6; $i++)
                         @if ($Nhora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center;  font-size: 13px; ">
+                            <td style="width: 16.6667%; text-align: center;  font-size: 10px; ">
                                     {{ $Nhora->materia->Nombre }} {{ $Nhora->grupo->Clave_Grupo }}<br>
                                     ({{ $Nhora->Lugar }})
                             </td>
@@ -262,47 +275,53 @@
         @endfor
         {{ $i= 1 }}
 		</tr>
+        <tr>
+			<td style="width: 16.6667%; text-align: center; font-size: 12px;">15:00-16:00</td>
+            @for ($p = 0; $p < 5; $p++)
+            @if (!empty($Dhoras) && $Dhoras != '[]')
+                @foreach ($Dhoras as $Dhora)
+                    @for ($i; $i < 6; $i++)
+                        @if ($Dhora->dia_id == $i)
+                            <td style="width: 16.6667%; text-align: center;  font-size: 10px; ">
+                                    {{ $Dhora->materia->Nombre }} {{ $Dhora->grupo->Clave_Grupo }}<br>
+                                    ({{ $Dhora->Lugar }})
+                            </td>
+                            {{ $i++ }}@break
+                        @else
+                            <td style="width: 16.6667%; text-align: center;"></td>
+                        @endif
+                    @endfor
+                @endforeach
+            @else
+                <td style="width: 16.6667%; text-align: center;"></td>
+            @endif
+        @endfor
+        {{ $i= 1 }}
+		</tr>
 	</tbody>
 </table>
-<table style="border-collapse: collapse; width: 20%; margin-top: 1%">
-    <tbody>
-        <tr>
-            <td style="width: 11%; font-size: 13px;">SUBTOTAL A:</td>
-            <td style="width: 9%; font-size: 13px;">{{$countM}}</td>
-        </tr>
-        <tr>
-            <td style="width: 11%; font-size: 13px;">SUBTOTAL B:</td>
-            <td style="width: 9%; font-size: 13px;">{{$countA}}</td>
-        </tr>
-        <tr>
-            <td style="width: 11%; font-size: 13px;">SUBTOTAL A+B:</td>
-            <td style="width: 9%; font-size: 13px;">{{$countM + $countA}}</td>
-        </tr>
-    </tbody>
-</table>
-<table style="border-collapse: collapse; width: 24%; margin-top: 1%">
-    <tbody>
-        <tr>
-            <td style="width: 15%; font-size: 13px;">FECHA DE LLENADO:</td>
-            <td style="width: 9%; font-size: 13px;">{{$fechaActual}}</td>
-        </tr>
-    </tbody>
-</table>
-<br>
 <table style="width: 100%; border-collapse: collapse;">
 	<tbody>
 		<tr>
 			<td style="width: 33%; text-align: center;">
                 <p>________________________________</p>
-				<FONT SIZE=2 class="transformacion2">{{$profesor->Perfil}}. {{$profesor->Nombre}} {{$profesor->ApPaterno}} {{$profesor->ApMaterno}} <br> DOCENTE</FONT>
+				<FONT SIZE=2 class="transformacion2">{{$profesor->Perfil_A}}. {{$profesor->Nombre}} {{$profesor->ApPaterno}} {{$profesor->ApMaterno}} <br> DOCENTE</FONT>
             </td>
-			<td style="width: 33%; text-align: center;">
+			<td style="width: 33%; text-align: center; text-transform: uppercase;">
 				<p>__________________________________</p>
-				<FONT SIZE=2>LIC. CARLA ESTELA HERNÁNDEZ AGUILAR <br> SUBDIRECCIÓN ACADÉMICA</FONT>
+                @if ($profesorF == null)
+				    <FONT SIZE=2>Vacante<br> SUBDIRECCIÓN ACADÉMICA</FONT>  
+                @else
+				    <FONT SIZE=2>{{$profesorF->Perfil_A}}. {{$profesorF->Nombre}} {{$profesorF->ApPaterno}} {{$profesorF->ApMaterno}} <br> SUBDIRECCIÓN ACADÉMICA</FONT>
+                @endif
 			</td>
-			<td style="width: 33%; text-align: center;">
+			<td style="width: 33%; text-align: center; text-transform: uppercase;">
 				<p>________________________________</p>
-				<FONT SIZE=2>LSC. CARLOS BETANZOS JIMÉNEZ <br> DIRECCIÓN</FONT>
+                @if ($profesorD == null)
+                    <FONT SIZE=2>Vacante<br> SUBDIRECCIÓN ACADÉMICA</FONT>  
+                @else
+				    <FONT SIZE=2>{{$profesorD->Perfil_A}}. {{$profesorD->Nombre}} {{$profesorD->ApPaterno}} {{$profesorD->ApMaterno}}<br> DIRECCIÓN</FONT>
+                @endif
 			</td>
 		</tr>
 	</tbody>

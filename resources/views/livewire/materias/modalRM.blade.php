@@ -78,7 +78,9 @@
                                     class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
                                     <option value="">Selecciona un Grupo</option>
                                     @foreach ($grupo as $gp)
+                                    @if ($gp->Clave_Grupo != 'Sin Grupo')
                                         <option value="{{ $gp->id }}">{{ $gp->Clave_Grupo }}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                                 @error('GP')

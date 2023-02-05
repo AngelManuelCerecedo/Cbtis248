@@ -178,6 +178,7 @@ class Index extends Component
                     'profesor_id' => $this->P
                 ]
             );
+            $this->P = 0;
             $this->cerrarModal1();
         }else{
             $this->mensajeerrorp = "Debe seleccionar un docente";

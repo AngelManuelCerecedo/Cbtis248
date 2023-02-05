@@ -47,6 +47,10 @@
                                     </th>
                                     <th
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
+                                        Grupo
+                                    </th>
+                                    <th
+                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-sans text-gray-600 uppercase tracking-wider">
                                         Docente
                                     </th>
                                     <th
@@ -65,11 +69,14 @@
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $actividad->Horas_Sem }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $actividad->grupo->Clave_Grupo }}</p>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
                                             @if ($actividad->profesor_id == null)
                                                 <p class="text-gray-900 whitespace-no-wrap">Sin Asignar</p>
                                             @endif
                                             @if ($actividad->profesor_id != null)
-                                                <p class="text-gray-900 whitespace-no-wrap">
+                                                <p class="text-gray-900 whitespace-no-wrap uppercase">
                                                     {{ $actividad->profesor->Nombre }}
                                                     {{ $actividad->profesor->ApPaterno }}
                                                     {{ $actividad->profesor->ApMaterno }}</p>

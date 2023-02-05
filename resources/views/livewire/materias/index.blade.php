@@ -78,7 +78,7 @@
                                                 <p class="text-gray-900 whitespace-no-wrap">Sin Asignar</p>
                                             @endif
                                             @if ($materia->profesor_id != null)
-                                                <p class="text-gray-900 whitespace-no-wrap">
+                                                <p class="text-gray-900 whitespace-no-wrap uppercase">
                                                     {{ $materia->profesor->Nombre }} {{ $materia->profesor->ApPaterno }}
                                                     {{ $materia->profesor->ApMaterno }}</p>
                                             @endif

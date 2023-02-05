@@ -8,6 +8,7 @@ use App\Models\Grado;
 use App\Models\Padre;
 use App\Models\Secundaria;
 use Livewire\Component;
+use PhpParser\Node\Stmt\For_;
 
 class Ralumnos extends Component
 {

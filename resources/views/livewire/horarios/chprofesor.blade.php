@@ -12,10 +12,17 @@
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
                         <option value="">Seleciona una Materia/Actividad</option>
                         @foreach ($materias as $materia)
+                        @if ($materia->grupo->Clave_Grupo != 'Sin Grupo')
                             @if ($materia->profesor_id == $Profesor->id && $materia->Horas_Sem != $materia->Horas_Reg)
                                 <option value="{{ $materia->id }}">{{ $materia->Nombre }} GRUPO:
                                     {{ $materia->grupo->Clave_Grupo }}</option>
                             @endif
+                        @else
+                            @if ($materia->profesor_id == $Profesor->id && $materia->Horas_Sem != $materia->Horas_Reg)
+                                <option value="{{ $materia->id }}">{{ $materia->Nombre }}</option>
+                            @endif                     
+                        @endif
+
                         @endforeach
                     </select>
                     @error('M')
@@ -40,9 +47,35 @@
                     <select wire:model='H'
                         class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
                         <option value="">Seleciona una Hora</option>
-                        @foreach ($horas as $hora)
-                            <option value="{{ $hora->id }}">{{ $hora->Hora }}</option>
-                        @endforeach
+                        @if ($this->M != '' && $this->D != '')
+                        @if ($this->v1 == null)
+                            <option value="1">7:30-8:20</option>
+                        @endif
+                        @if ($this->v2 == null)
+                        <option value="2">8:20-9:10</option>
+                        @endif
+                        @if ($this->v3 == null)
+                        <option value="3">9:10-10:00</option>
+                        @endif
+                        @if ($this->v5 == null)
+                        <option value="5">10:30-11:20</option>
+                        @endif
+                        @if ($this->v6 == null)
+                        <option value="6">11:20-12:10</option>
+                        @endif
+                        @if ($this->v7 == null)
+                        <option value="7">12:10-13:00</option>
+                        @endif
+                        @if ($this->v8 == null)
+                        <option value="8">13:00-13:50</option>
+                        @endif
+                        @if ($this->v9 == null)
+                        <option value="9">13:50-14:40</option>
+                        @endif
+                        @if ($this->v10 == null)
+                        <option value="10">14:40-15:30</option>
+                        @endif
+                        @endif
                     </select>
                     @error('H')
                         <span class="text-red-600">{{ $message }}</span>
@@ -58,10 +91,12 @@
                         <option value="Taller S.H.">Taller S.H.</option>
                         <option value="Taller A.B.">Taller A.B</option>
                         <option value="Aula Ingles">Aula de Ingles</option>
-                        <option value="Centro de Computo">Centro de Computo</option>
+                        <option value="Centro de Computo 1">Centro de Computo 1</option>
+                        <option value="Centro de Computo 2">Centro de Computo 2</option>
                         <option value="Laboratorio">Laboratorio Multiple</option>
                         <option value="Biblioteca">Biblioteca</option>
                         <option value="Area Verde">Area Verde</option>
+                        <option value="Oficinas del Plantel">Oficinas del Plantel</option>
                     </select>
                     @error('L')
                         <span class="text-red-600">{{ $message }}</span>
@@ -403,6 +438,39 @@
 @endif
 @endfor
 </tr>
+<tr>
+    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">14:40-15:30</td>
+    @for ($p = 0; $p < 5; $p++)
+    @if (!empty($Dhoras) && $Dhoras != '[]')
+        @foreach ($Dhoras as $Dhora)
+            @for ($d; $d < 6; $d++)
+                @if ($Dhora->dia_id == $d)
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
+                        <p class="text-gray-900 whitespace-no-wrap">
+                            {{ $Dhora->materia->Nombre }}
+                            ({{ $Dhora->grupo->Clave_Grupo }})
+                        </p>
+                        <p class="text-gray-900 whitespace-no-wrap uppercase">
+                            ({{ $Dhora->Lugar }})
+                        <button wire:click="borrar({{ $Dhora->id }})" type="button"
+                            class="text-white bg-[#78163B]  rounded-lg text-sm   py-1 px-1 m-1"><i
+                                class="bi bi-trash-fill"></i></button>
+                            </p>
+                    </td>
+                    <var {{ $d++ }}></var>
+                @break
+    
+            @else
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
+                </td>
+            @endif
+        @endfor
+    @endforeach
+    @else
+    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border"></td>
+    @endif
+    @endfor
+    </tr>
 </tbody>
 </table>
 </div>

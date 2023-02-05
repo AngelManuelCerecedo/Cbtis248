@@ -25,7 +25,7 @@
                             <div class="grid grid-cols-1">
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Nombre</label>
                                 <select wire:model='P'
-                                    class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
+                                    class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black uppercase">
                                     <option value="">Selecciona un Docente</option>
                                     @foreach ($profesor as $prof)
                                         @if ($prof->Estatus == 'Activo')

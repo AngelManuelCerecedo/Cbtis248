@@ -316,6 +316,38 @@
                                 @endif
                             @endfor
                         </tr>
+                        <tr>
+                            <td class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
+                                14:40-15:30</td>
+                            @for ($p = 0; $p < 5; $p++)
+                                @if (!empty($Dhoras) && $Dhoras != '[]')
+                                    @foreach ($Dhoras as $Dhora)
+                                        @for ($d; $d < 6; $d++)
+                                            @if ($Dhora->dia_id == $d)
+                                                <td
+                                                    class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
+                                                    <p class="text-gray-900 whitespace-no-wrap">
+                                                        {{ $Dhora->materia->Nombre }} ({{ $Dhora->Lugar }})
+                                                    </p>
+                                                    <p class="text-gray-900 whitespace-no-wrap uppercase text-sm">
+                                                        {{ $Dhora->profesor->Nombre }}  {{ $Dhora->profesor->ApPaterno }} {{ $Dhora->profesor->ApMaterno }}
+                                                    </p>
+                                                </td>
+                                                <var {{ $d++ }}></var>@break
+                                            @else
+                                                <td
+                                                    class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
+                                                </td>
+                                            @endif
+                                        @endfor
+                                    @endforeach
+                                @else
+                                    <td
+                                        class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
+                                    </td>
+                                @endif
+                            @endfor
+                        </tr>
                     </tbody>
                 </table>
             </div>

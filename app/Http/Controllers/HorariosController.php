@@ -35,10 +35,10 @@ class HorariosController extends Controller
 
     public function horariosP($id)
     {
-
-
-         $i = 1; $countM=0;  $countA=0;
+        $i = 1; $countM=0;  $countA=0;
         $Profesor = User::Where([['id', '=', $id]])->first();
+        $F = User::Where([['Puesto', 'like', '%' . 'Subdirección Académica' . '%']])->first();
+        $ProfesorD = User::Where([['Puesto', 'like', '%' . 'Director' . '%']])->first();
         $fechaActual = date('d/m/y');
         $Materias = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Materia']])->get();
         $Actividades = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Actividad']])->get();
@@ -58,9 +58,12 @@ class HorariosController extends Controller
         $SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
+        $Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
 
         $pdf = PDF::loadView('pdfs.horarioP', [
             'profesor' => $Profesor,
+            'profesorF' => $F,
+            'profesorD' => $ProfesorD,
             'Phoras' => $Phoras,
             'Shoras' => $Shoras,
             'Thoras' => $Thoras,
@@ -70,6 +73,7 @@ class HorariosController extends Controller
             'SIhoras' => $SIhoras,
             'Ohoras' => $Ohoras,
             'Nhoras' => $Nhoras,
+            'Dhoras' => $Dhoras,
             'Ciclo' => $Ciclo,
             'fechaActual' => $fechaActual,
             'i'=> $i,
@@ -82,8 +86,10 @@ class HorariosController extends Controller
     }
 
     public function horariosO($id){
-        $i = 1; $countM=0;  $countA=0; $NOM="";
+        $i = 1; $countM=0;  $countA=0;
         $Profesor = User::Where([['id', '=', $id]])->first();
+        $F = User::Where([['Puesto', 'like', '%' . 'Subdirección Académica' . '%']])->first();
+        $ProfesorD = User::Where([['Puesto', 'like', '%' . 'Director' . '%']])->first();
         $fechaActual = date('d/m/y');
         $Materias = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Materia']])->get();
         $Actividades = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Actividad']])->get();
@@ -103,10 +109,13 @@ class HorariosController extends Controller
         $SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
+        $Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $str = strtoupper($Ciclo->Semestre);
         $nom = strtoupper($Profesor->Nombre) . strtoupper($Profesor->ApPaterno) . strtoupper($Profesor->ApMaterno);
         $pdf2 = PDF::loadView('pdfs.horarioO', [
             'profesor' => $Profesor,
+            'profesorF' => $F,
+            'profesorD' => $ProfesorD,
             'Phoras' => $Phoras,
             'Shoras' => $Shoras,
             'Thoras' => $Thoras,
@@ -116,6 +125,7 @@ class HorariosController extends Controller
             'SIhoras' => $SIhoras,
             'Ohoras' => $Ohoras,
             'Nhoras' => $Nhoras,
+            'Dhoras' => $Dhoras,
             'Ciclo' => $str,
             'nom' => $nom,
             'fechaActual' => $fechaActual,
@@ -143,6 +153,7 @@ class HorariosController extends Controller
         $SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
+        $Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
 
         $pdf3 = PDF::loadView('pdfs.horarioG', [
             'grupo' => $Grupos,
@@ -155,6 +166,7 @@ class HorariosController extends Controller
             'SIhoras' => $SIhoras,
             'Ohoras' => $Ohoras,
             'Nhoras' => $Nhoras,
+            'Dhoras' => $Dhoras,
             'Ciclo' => $Ciclo,
             'i'=> $i,
         ]);

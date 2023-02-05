@@ -69,14 +69,14 @@
                                 @foreach ($administradores as $administrador)
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->Nombre }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap uppercase">{{ $administrador->Nombre }}</p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->ApPaterno }}
+                                            <p class="text-gray-900 whitespace-no-wrap uppercase">{{ $administrador->ApPaterno }}
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $administrador->ApMaterno }}
+                                            <p class="text-gray-900 whitespace-no-wrap uppercase">{{ $administrador->ApMaterno }}
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">

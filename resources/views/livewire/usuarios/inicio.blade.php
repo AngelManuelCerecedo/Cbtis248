@@ -77,7 +77,7 @@
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-base">
-                                            <p class="text-gray-900 whitespace-no-wrap"><span>{{ $user->Nombre }}
+                                            <p class="text-gray-900 whitespace-no-wrap uppercase"><span>{{ $user->Nombre }}
                                                 </span><span> {{ $user->ApPaterno }} </span><span>{{ $user->ApMaterno }}
                                                 </span></p>
                                         </td>

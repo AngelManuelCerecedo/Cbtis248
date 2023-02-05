@@ -14,7 +14,7 @@ class Index extends Component
 {
     use WithPagination;
     public $search, $modal, $grado, $especialidad, $ciclo, $grupoAUX;
-    public $cantidad = 6;
+    public $cantidad = 5;
     public $ID, $CG, $T, $E, $S, $G, $C, $TOT, $CONT, $CL;
     public $cicloescolar;
     public $modalAÑ = false, $modalLA = false, $modalAG = false;

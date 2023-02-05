@@ -30,7 +30,7 @@
                     <div class="sm:pl-0 sm:mr-0 xl:pl-32">
                         <select wire:model='cantidad'
                             class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 sm:py-0 sm:px-2 sm:pr-8 md:py-2 md:px-4 md:pr-8 lg:mx-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                            <option value="6">6</option>
+                            <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="20">20</option>
                         </select>
@@ -71,6 +71,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($grupos as $grupo)
+                                @if ($grupo->Clave_Grupo != 'Sin Grupo')
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->Clave_Grupo }}</p>
@@ -141,6 +142,7 @@
                                             @endcan
                                         </td>
                                     </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>

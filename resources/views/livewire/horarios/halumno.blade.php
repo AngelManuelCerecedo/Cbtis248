@@ -51,6 +51,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($grupos as $grupo)
+                                @if ($grupo->Clave_Grupo != 'Sin Grupo')
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $grupo->Clave_Grupo }}</p>
@@ -86,6 +87,7 @@
 
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>
