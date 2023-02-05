@@ -15,7 +15,7 @@ class Ralumnos extends Component
     public $NOM, $APP, $APM, $CEL;
     public $NSEC, $MODS, $CLAVS, $REG;
     public $BTUT, $SUGT, $TUTS, $BSEC, $SUGS, $SECS;
-    public $AUXTUT, $AUXSEC;
+    public $AUXTUT, $AUXSEC, $n,$nom, $apep, $apem ;
     public $PADRES;
 
     //validaciones
@@ -103,6 +103,63 @@ class Ralumnos extends Component
 
     public function render()
     {
+        if ($this->C != ''){
+            $car = str_split($this->C);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+                if ($i>3){ break;}
+               if (is_numeric($car[$i])) {
+                    $this->n = 'La curp no debe empezar con numeros';
+                } else {
+                    $this->n = '';
+                }
+            }
+        }else{
+            $this->n = '';
+        }
+
+        if ($this->N != ''){
+            $car = str_split($this->N);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->nom = 'El nombre no puede llevar numeros';
+                } else {
+                    $this->nom = '';
+                }
+            }
+        }else{
+            $this->nom = '';
+        }
+
+        if ($this->AP != ''){
+            $car = str_split($this->AP);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->apep = 'El apellido paterno no puede llevar numeros';
+                } else {
+                    $this->apep = '';
+                }
+            }
+        }else{
+            $this->apep = '';
+        }
+
+        if ($this->AM != ''){
+            $car = str_split($this->AM);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->apem = 'El apellido materno no puede llevar numeros';
+                } else {
+                    $this->apem = '';
+                }
+            }
+        }else{
+            $this->apem = '';
+        }
+
         $GRADOS = Grado::all();
         $ESP = Especialidad::all();
         return view('livewire.alumnos.ralumnos', ['grados' => $GRADOS, 'especialidad' => $ESP]);

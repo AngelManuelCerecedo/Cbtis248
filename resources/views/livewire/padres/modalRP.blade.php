@@ -29,6 +29,7 @@
                                 @error('NOM')
                                     <span class="text-red-600">{{ $message }}</span>
                                 @enderror
+                                <span class="text-red-600">{{ $nomt }}</span>
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
@@ -39,6 +40,7 @@
                                 @error('AP')
                                     <span class="text-red-600">{{ $message }}</span>
                                 @enderror
+                                <span class="text-red-600">{{ $apept }}</span>
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
@@ -49,6 +51,7 @@
                                 @error('AM')
                                     <span class="text-red-600">{{ $message }}</span>
                                 @enderror
+                                <span class="text-red-600">{{ $apemt }}</span>
                             </div>
                         </div>
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">

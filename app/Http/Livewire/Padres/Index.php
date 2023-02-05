@@ -12,7 +12,7 @@ class Index extends Component
     use WithPagination;
     public $search;
     public $cantidad = 5;
-    public $ID, $NOM, $AP, $AM, $TEL;
+    public $ID, $NOM, $AP, $AM, $TEL, $nomt, $apept, $apemt;
     public $modal = false;
     public $texto = "";
     public $estado = 0;
@@ -38,6 +38,51 @@ class Index extends Component
 
     public function render()
     {
+
+        
+        if ($this->NOM != ''){
+            $car = str_split($this->NOM);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->nomt = 'El nombre no puede llevar numeros';
+                } else {
+                    $this->nomt = '';
+                }
+            }
+        }else{
+            $this->nomt = '';
+        }
+
+        if ($this->AP != ''){
+            $car = str_split($this->AP);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->apept = 'El apellido paterno no puede llevar numeros';
+                } else {
+                    $this->apept = '';
+                }
+            }
+        }else{
+            $this->apept = '';
+        }
+
+        if ($this->AM != ''){
+            $car = str_split($this->AM);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->apemt = 'El apellido materno no puede llevar numeros';
+                } else {
+                    $this->apemt = '';
+                }
+            }
+        }else{
+            $this->apemt = '';
+        }
+
+
         $padres = Padre::Where([['Nombre', 'like', '%' . $this->search . '%']])
             ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%']])
             ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%']])

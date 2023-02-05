@@ -9,6 +9,8 @@ class Radministrador extends Component
 {
     public $N, $AP, $AM, $RFC, $CC, $P, $FI, $FID, $FIS, $CAT, $NT, $HN, $NP, $O, $C, $E, $PS,$TD, $PT, $PA;
 
+    public $cr, $rfc ,$nom, $apep, $apem;
+
      //VALIDACIONES
      protected $rules = [
         'N' => 'required',
@@ -65,6 +67,79 @@ class Radministrador extends Component
 
     public function render()
     {
+        if ($this->C != ''){
+            $car = str_split($this->C);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+                if ($i>3){ break;}
+               if (is_numeric($car[$i])) {
+                    $this->cr = 'La curp no debe empezar con numeros';
+                } else {
+                    $this->cr = '';
+                }
+            }
+        }else{
+            $this->cr = '';
+        }
+
+        if ($this->RFC != ''){
+            $car = str_split($this->RFC);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+                if ($i>3){ break;}
+               if (is_numeric($car[$i])) {
+                    $this->rfc = 'El RFC no debe empezar con numeros';
+                } else {
+                    $this->rfc = '';
+                }
+            }
+        }else{
+            $this->rfc = '';
+        }
+
+        if ($this->N != ''){
+            $car = str_split($this->N);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->nom = 'El nombre no puede llevar numeros';
+                } else {
+                    $this->nom = '';
+                }
+            }
+        }else{
+            $this->nom = '';
+        }
+
+        if ($this->AP != ''){
+            $car = str_split($this->AP);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->apep = 'El apellido paterno no puede llevar numeros';
+                } else {
+                    $this->apep = '';
+                }
+            }
+        }else{
+            $this->apep = '';
+        }
+
+        if ($this->AM != ''){
+            $car = str_split($this->AM);
+            $longitud = count($car);
+            for ($i = 0 ; $i < $longitud ; $i++){
+               if (is_numeric($car[$i])) {
+                    $this->apem = 'El apellido materno no puede llevar numeros';
+                } else {
+                    $this->apem = '';
+                }
+            }
+        }else{
+            $this->apem = '';
+        }
+
+
         return view('livewire.administrador.radministrador');
     }
 
