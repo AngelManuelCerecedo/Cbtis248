@@ -321,16 +321,15 @@
                             @endfor
                         </tr>
                         <tr>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">14:40-15:30</td>
+                            <td class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">14:40-15:30</td>
                             @for ($p = 0; $p < 5; $p++)
                             @if (!empty($Dhoras) && $Dhoras != '[]')
                                 @foreach ($Dhoras as $Dhora)
                                     @for ($d; $d < 6; $d++)
                                         @if ($Dhora->dia_id == $d)
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
+                                            <td class="px-5 py-5 border-b border-black bg-white text-center text-base font-sans border">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    {{ $Dhora->materia->Nombre }}
-                                                    ({{ $Dhora->grupo->Clave_Grupo }})
+                                                    {{ $Dhora->materia->Nombre }} {{ $Dhora->grupo->Clave_Grupo }}
                                                 </p>
                                                 <p class="text-gray-900 whitespace-no-wrap uppercase">
                                                     ({{ $Dhora->Lugar }})
@@ -339,13 +338,13 @@
                                             <var {{ $d++ }}></var>
                                         @break
                                     @else
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border">
+                                        <td class="px-5 py-5 border-b border-black bg-white text-sm border">
                                         </td>
                                     @endif
                                 @endfor
                             @endforeach
                             @else
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm border"></td>
+                            <td class="px-5 py-5 border-b border-black bg-white text-sm border"></td>
                             @endif
                             @endfor
                         </tr>

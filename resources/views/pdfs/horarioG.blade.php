@@ -2,6 +2,9 @@
 <meta charset="UTF-8">  
    <style type="text/css">  
    .transformacion2 { text-transform: uppercase;}    
+   @page {
+            margin: 1cm .5cm;
+        }
    </style> 
     <table style="width: 100%; border-collapse: collapse; margin-top: -4%">
         <tbody>
@@ -9,8 +12,11 @@
                 <td style="width: 20%;">
                     <img src="{{public_path('/assets/logo.png')}}">
                 </td>
-                <td style="width: 80%;">
-                    <h2 style="text-align: center; font-size: 15px;">CENTRO DE BACHILLERATO TECNOLÓGICO <br />industrial y de servicios No. 248</h2>
+                <td style="width: 80%; text-align: center; text-transform: uppercase;"> <strong> CENTRO DE BACHILLERATO TECNOLÓGICO <br />industrial y de servicios No. 248 </strong>
+                    <br> 
+                    SEMESTRE : {{$Ciclo->Semestre}} <br>
+                    HORARIO DE CLASES
+
                 </td>
                 <td style="width: 20%;">
                     <img src="{{public_path('/assets/sep.png')}}">
@@ -19,26 +25,26 @@
             <tr>
                 <td style="">
                 </td>
-                <td style="width: 80%; text-align: center; text-transform: uppercase; font-size: 13px;">SEMESTRE : {{$Ciclo->Semestre}} </td>
+                <td style="width: 80%; text-align: center; text-transform: uppercase; font-size: 13px;"></td>
                 <td style="">
                 </td>
             </tr>
             <tr>
                 <td style="">
                 </td>
-                <td style="width: 80%; text-align: center; font-size: 13px;">HORARIO DE CLASES </td>
+                <td style="width: 80%; text-align: center; font-size: 13px;"> </td>
                 <td style="">
                 </td>
             </tr>
         </tbody>
     </table>
-    <table  style="border-collapse: collapse; width: 100%; margin-left: 8%;  margin-top: 1%;">
+    <table  style="border-collapse: collapse; width: 100%; margin-left: 8%;  margin-top: -1%;">
         <tbody>
             <tr>
-                <td style="width: 25%; font-size: 13px; ">Grupo:{{$grupo->Clave_Grupo}} </td>
-                <td style="width: 25%; font-size: 13px; ">Turno: MATUTINO</td>
-                <td style="width: 25%; font-size: 13px; ">Carrera: {{$grupo->especialidad->Nombre}} </td>
-                <td style="width: 25%; font-size: 13px; ">Salon: {{$grupo->Salon}}</td>  
+                <td style="width: 25%; font-size: 13px; text-transform: uppercase;">Grupo:{{$grupo->Clave_Grupo}} </td>
+                <td style="width: 25%; font-size: 13px; text-transform: uppercase;">Turno: MATUTINO</td>
+                <td style="width: 25%; font-size: 13px; text-transform: uppercase;">Carrera: {{$grupo->especialidad->Nombre}} </td>
+                <td style="width: 25%; font-size: 13px; text-transform: uppercase;"> Salon: {{$grupo->Salon}}</td>  
             </tr>
         </tbody>
     </table>

@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">  
    <style type="text/css">  
-   .transformacion2 { text-transform: uppercase;}    
+   .transformacion2 { text-transform: uppercase;}
+   @page {
+            margin: 1.5cm .5cm;
+        }
    </style> 
     <table style="width: 100%; border-collapse: collapse; margin-top: -5%">
         <tbody>
             <tr>
                 <td style="width: 70%; text-align: center; font-size: 16px;">
-                    CENTRO DE BACHILLERATO TECNOLÓGICO <br />industrial y de servicios No. 248 <br><br>
+                    CENTRO DE BACHILLERATO TECNOLÓGICO <br />industrial y de servicios No. 248 <br>
                     <strong>HORARIO PERSONAL</strong>
                 </td>
                 <td style="width: 25%; font-size: 13px;"> <br> HORAS NOMBRAMIENTO:<br>HORAS FRENTE A GRUPO:  HORAS DE DESCARGA: </td>
@@ -46,7 +49,7 @@
                     @foreach ($Phoras as $Phora)
                         @for ($i; $i < 6; $i++)
                             @if ($Phora->dia_id == $i)
-                                <td style="width: 16.6667%; text-align: center; font-size: 10px; ">
+                                <td style="width: 16.6667%; text-align: center; font-size: 11px; ">
                                         {{ $Phora->materia->Nombre }} {{ $Phora->grupo->Clave_Grupo }}<br>
                                         ({{ $Phora->Lugar }})
                                 </td>
@@ -69,7 +72,7 @@
                 @foreach ($Shoras as $Shora)
                     @for ($i; $i < 6; $i++)
                         @if ($Shora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center; font-size: 10px; ">
+                            <td style="width: 16.6667%; text-align: center; font-size: 11px; ">
                                     {{ $Shora->materia->Nombre }} {{ $Shora->grupo->Clave_Grupo }}<br>
                                     ({{ $Shora->Lugar }})
                             </td>
@@ -92,7 +95,7 @@
                 @foreach ($Thoras as $Thora)
                     @for ($i; $i < 6; $i++)
                         @if ($Thora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center; font-size: 10px; ">
+                            <td style="width: 16.6667%; text-align: center; font-size: 11px; ">
                                     {{ $Thora->materia->Nombre }} {{ $Thora->grupo->Clave_Grupo }}<br>
                                     ({{ $Thora->Lugar }})
                             </td>
@@ -115,7 +118,7 @@
                 @foreach ($Qhoras as $Qhora)
                     @for ($i; $i < 6; $i++)
                         @if ($Qhora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center; font-size: 10px; ">
+                            <td style="width: 16.6667%; text-align: center; font-size: 11px; ">
                                     {{ $Qhora->materia->Nombre }} {{ $Qhora->grupo->Clave_Grupo }}<br>
                                     ({{ $Qhora->Lugar }})
                             </td>
@@ -138,7 +141,7 @@
                 @foreach ($Choras as $Chora)
                     @for ($i; $i < 6; $i++)
                         @if ($Chora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center; font-size: 10px; ">
+                            <td style="width: 16.6667%; text-align: center; font-size: 11px; ">
                                     {{ $Chora->materia->Nombre }} {{ $Chora->grupo->Clave_Grupo }}<br>
                                     ({{ $Chora->Lugar }})
                             </td>
@@ -161,7 +164,7 @@
                 @foreach ($SEhoras as $SEhora)
                     @for ($i; $i < 6; $i++)
                         @if ($SEhora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center; font-size: 10px; ">
+                            <td style="width: 16.6667%; text-align: center; font-size: 11px; ">
                                     {{ $SEhora->materia->Nombre }} {{ $SEhora->grupo->Clave_Grupo }}<br>
                                     ({{ $SEhora->Lugar }})
                             </td>
@@ -184,7 +187,7 @@
                 @foreach ($SIhoras as $SIhora)
                     @for ($i; $i < 6; $i++)
                         @if ($SIhora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center; font-size: 10px; ">
+                            <td style="width: 16.6667%; text-align: center; font-size: 11px; ">
                                     {{ $SIhora->materia->Nombre }} {{ $SIhora->grupo->Clave_Grupo }}<br>
                                     ({{ $SIhora->Lugar }})
                             </td>
@@ -207,7 +210,7 @@
                 @foreach ($Ohoras as $Ohora)
                     @for ($i; $i < 6; $i++)
                         @if ($Ohora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center; font-size: 10px; ">
+                            <td style="width: 16.6667%; text-align: center; font-size: 11px; ">
                                     {{ $Ohora->materia->Nombre }} {{ $Ohora->grupo->Clave_Grupo }}<br>
                                     ({{ $Ohora->Lugar }})
                             </td>
@@ -230,7 +233,7 @@
                 @foreach ($Nhoras as $Nhora)
                     @for ($i; $i < 6; $i++)
                         @if ($Nhora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center; font-size: 10px; ">
+                            <td style="width: 16.6667%; text-align: center; font-size: 11px; ">
                                     {{ $Nhora->materia->Nombre }} {{ $Nhora->grupo->Clave_Grupo }}<br>
                                     ({{ $Nhora->Lugar }})
                             </td>
@@ -253,7 +256,7 @@
                 @foreach ($Dhoras as $Dhora)
                     @for ($i; $i < 6; $i++)
                         @if ($Dhora->dia_id == $i)
-                            <td style="width: 16.6667%; text-align: center; font-size: 10px; ">
+                            <td style="width: 16.6667%; text-align: center; font-size: 11px; ">
                                     {{ $Dhora->materia->Nombre }} {{ $Dhora->grupo->Clave_Grupo }}<br>
                                     ({{ $Dhora->Lugar }})
                             </td>
@@ -272,7 +275,7 @@
 	</tbody>
 </table>
 <br>
-<table style="width: 100%; border-collapse: collapse;">
+<table style="width: 100%; border-collapse: collapse; margin-top: -1%">
 	<tbody>
 		<tr>
 			<td style="width: 33%; text-align: center;">
