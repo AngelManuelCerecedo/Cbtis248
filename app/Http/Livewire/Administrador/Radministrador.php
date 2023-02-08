@@ -67,6 +67,28 @@ class Radministrador extends Component
 
     public function render()
     {
+        if ($this->C == '' && strlen($this->N) >= 2 && strlen($this->AP) >= 3 && strlen($this->AM) >= 2) {
+            $carN = str_split($this->N);
+            $carA = str_split($this->AP);
+            $carM = str_split($this->AM);
+            $curp = $carA[0];
+            if (in_array ($carA[1], ['a','e','i','o','u'])) {
+                $curp .= $carA[1]; 
+            }
+            else {
+                $curp .= $carA[2];
+            }
+            $curp .= $carM[0];
+            $curp .= $carN[0];
+            $this->C = strtoupper($curp);
+        }
+        if($this->N == '' || $this->AP == '' || $this->AM == ''){
+            $this->C = '';
+            $this->RFC = '';
+        }
+        if (strlen($this->C) <= 10){
+            $this->RFC = $this->C;
+        }
         if ($this->C != ''){
             $car = str_split($this->C);
             $longitud = count($car);

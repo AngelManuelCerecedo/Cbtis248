@@ -14,7 +14,7 @@ class AlumnoFactory extends Factory
     public function definition()
     {
         return [
-            'Numero_Control' => $this->faker->unique()->randomElement(['17161','17162','17163','17164','17165','17166','17167','17168','17169','171610']),
+            'Numero_Control' => $this->faker->unique()->randomElement(['17161234567892','17161234567891','17161234567893','17161234567894','17161234567895','17161234567896','17161234567897','17161234567898','17161234567899','17161234567881']),
             'Estatus' => $this->faker->randomElement(['Activo']),
             'Curp' => $this->faker->unique()->randomElement(['CETA990110HOCRLN06','PUAB990110HOCRLN06','HOCT990110HOCRLN06','CRAL990110HOCRLN06','LTOP990110HOCRLN06','MAPT990110HOCRLN06','DTCO990110HOCRLN06','ATCE990110HOCRLN06','ATEC990110HOCRLN06','LOOP990110HOCRLN06']),
             'Nombre' => $this->faker->randomElement(['Alejandro','Rosa','Pedro','Luis','Rene']),

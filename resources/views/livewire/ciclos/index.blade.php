@@ -58,9 +58,6 @@
                                             @endcan
 
                                             @can('Eliminar-Ciclo-Escolar')
-                                                <button wire:click="borrar({{ $ciclo->id }})" type="button"
-                                                    class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1">Eliminar
-                                                </button>
                                             @endcan
 
 

@@ -23,12 +23,13 @@ class Inicio extends Component
     //validaciones
     protected $rules = [
         'administrador' => 'required',
-        'contrasena' => 'required',
+        'contrasena' => 'required|min:8',
     ];
     //Mensajes de validaciones
     protected $messages = [
         'administrador.required' => 'Debe seleccionar un empleado',
         'contrasena.required' => 'El campo contraseña no puede estar vacío',
+        'contrasena.min' => 'La contraseña no puede ser menor de 8 caracteres',
     ];
 
 
@@ -136,38 +137,45 @@ class Inicio extends Component
     public function guardar2()
     {
 
-        if ($this->nuevoemail != '') {
+        if ($this->nuevoemail != '') 
+        {
             $this->mensajenuevoemail = '';
-            if ($this->nuevacontrasena != '') {
+            if ($this->nuevacontrasena != '') 
+            {
                 $this->mensajenuevacontrasena = '';
-                if ($this->nuevoestado != '') {
-                    $this->mensajeestado = '';
-                    User::updateOrCreate(
-                        ['id' => $this->ideee],
-                        [
-                            'email' => $this->nuevoemail,
-                            'password' => bcrypt($this->nuevacontrasena),
-                            'password2' => encrypt($this->nuevacontrasena),
-                            'EstatusUser' =>  $this->nuevoestado,
-                        ]
-                    );
 
-                    $this->dispatchBrowserEvent('swal2', [
-                        'title' => 'Usuario Editado exitosamente',
-                        'type' => 'success'
-                    ]);
+                if (strlen($this->nuevacontrasena) >= 8) 
+                {
+                    $this->mensajenuevacontrasena = '';
 
-                    $this->limpiarCampos2();
-                    $this->cerrarModal2();
-                } else {
-                    $this->mensajeestado = 'Debe seleccionar un estado';
-                }
-            } else {
-                $this->mensajenuevacontrasena = 'El campo contraseña no puede estar vacío';
-            }
-        } else {
-            $this->mensajenuevoemail = 'El campo correo no puede estar vacío';
-        }
+                    if ($this->nuevoestado != '') 
+                    {
+                        $this->mensajeestado = '';
+                        User::updateOrCreate(
+                            ['id' => $this->ideee],
+                            [
+                                'email' => $this->nuevoemail,
+                                'password' => bcrypt($this->nuevacontrasena),
+                                'password2' => encrypt($this->nuevacontrasena),
+                                'EstatusUser' =>  $this->nuevoestado,
+                            ]
+                        );
+
+                        $this->dispatchBrowserEvent('swal2', [
+                            'title' => 'Usuario Editado exitosamente',
+                            'type' => 'success'
+                        ]);
+
+                        $this->limpiarCampos2();
+                        $this->cerrarModal2();
+                    } 
+                    else {$this->mensajeestado = 'Debe seleccionar un estado';}
+                } 
+                else {$this->mensajenuevacontrasena = 'La contraseña no debe de ser menor a 8 caracteres';}
+            } 
+            else {$this->mensajenuevacontrasena = 'El campo contraseña no puede estar vacío';}
+        } 
+        else {$this->mensajenuevoemail = 'El campo correo no puede estar vacío';}
     }
 
 

@@ -16,12 +16,12 @@ class Ralumnos extends Component
     public $NOM, $APP, $APM, $CEL;
     public $NSEC, $MODS, $CLAVS, $REG;
     public $BTUT, $SUGT, $TUTS, $BSEC, $SUGS, $SECS;
-    public $AUXTUT, $AUXSEC, $n,$nom, $apep, $apem ;
+    public $AUXTUT, $AUXSEC, $n, $nom, $apep, $apem;
     public $PADRES;
 
     //validaciones
     protected $rules = [
-        'NC' => 'required|numeric',
+        'NC' => 'required|numeric|min:14|max:14',
         'N' => 'required',
         'AP' => 'required',
         'AM' => 'required',
@@ -59,6 +59,8 @@ class Ralumnos extends Component
     protected $messages = [
         'NC.required' => 'El campo numero de control puede estar vacío',
         'NC.numeric' => 'Solo se aceptan numeros',
+        'NC.min' => 'Numero de control invalido',
+        'NC.max' => 'Numero de control invalido',
         'N.required' => 'El campo nombre no puede estar vacío',
         'AP.required' => 'El campo apellido paterno no puede estar vacío',
         'AM.required' => 'El campo apellido materno no puede estar vacío',
@@ -104,60 +106,80 @@ class Ralumnos extends Component
 
     public function render()
     {
-        if ($this->C != ''){
+        if ($this->C == '' && strlen($this->N) >= 2 && strlen($this->AP) >= 3 && strlen($this->AM) >= 2) {
+            $carN = str_split($this->N);
+            $carA = str_split($this->AP);
+            $carM = str_split($this->AM);
+            $curp = $carA[0];
+            if (in_array ($carA[1], ['a','e','i','o','u'])) {
+                $curp .= $carA[1]; 
+            }
+            else {
+                $curp .= $carA[2];
+            }
+            $curp .= $carM[0];
+            $curp .= $carN[0];
+            $this->C = strtoupper($curp);
+        }
+        if($this->N == '' || $this->AP == '' || $this->AM == ''){
+            $this->C = '';
+        }
+        if ($this->C != '') {
             $car = str_split($this->C);
             $longitud = count($car);
-            for ($i = 0 ; $i < $longitud ; $i++){
-                if ($i>3){ break;}
-               if (is_numeric($car[$i])) {
+            for ($i = 0; $i < $longitud; $i++) {
+                if ($i > 3) {
+                    break;
+                }
+                if (is_numeric($car[$i])) {
                     $this->n = 'La curp no debe empezar con numeros';
                 } else {
                     $this->n = '';
                 }
             }
-        }else{
+        } else {
             $this->n = '';
         }
 
-        if ($this->N != ''){
+        if ($this->N != '') {
             $car = str_split($this->N);
             $longitud = count($car);
-            for ($i = 0 ; $i < $longitud ; $i++){
-               if (is_numeric($car[$i])) {
+            for ($i = 0; $i < $longitud; $i++) {
+                if (is_numeric($car[$i])) {
                     $this->nom = 'El nombre no puede llevar numeros';
                 } else {
                     $this->nom = '';
                 }
             }
-        }else{
+        } else {
             $this->nom = '';
         }
 
-        if ($this->AP != ''){
+        if ($this->AP != '') {
             $car = str_split($this->AP);
             $longitud = count($car);
-            for ($i = 0 ; $i < $longitud ; $i++){
-               if (is_numeric($car[$i])) {
+            for ($i = 0; $i < $longitud; $i++) {
+                if (is_numeric($car[$i])) {
                     $this->apep = 'El apellido paterno no puede llevar numeros';
                 } else {
                     $this->apep = '';
                 }
             }
-        }else{
+        } else {
             $this->apep = '';
         }
 
-        if ($this->AM != ''){
+        if ($this->AM != '') {
             $car = str_split($this->AM);
             $longitud = count($car);
-            for ($i = 0 ; $i < $longitud ; $i++){
-               if (is_numeric($car[$i])) {
+            for ($i = 0; $i < $longitud; $i++) {
+                if (is_numeric($car[$i])) {
                     $this->apem = 'El apellido materno no puede llevar numeros';
                 } else {
                     $this->apem = '';
                 }
             }
-        }else{
+        } else {
             $this->apem = '';
         }
 

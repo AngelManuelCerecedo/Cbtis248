@@ -278,17 +278,25 @@
 <table style="width: 100%; border-collapse: collapse; margin-top: -1%">
 	<tbody>
 		<tr>
-			<td style="width: 33%; text-align: center;">
+			<td style="width: 33%; text-align: center; text-transform: uppercase;">
                 <p>________________________________</p>
 				<FONT SIZE=2 class="transformacion2">{{$profesor->Perfil_A}}. {{$profesor->Nombre}} {{$profesor->ApPaterno}} {{$profesor->ApMaterno}} <br> DOCENTE</FONT>
             </td>
-			<td style="width: 33%; text-align: center;">
+			<td style="width: 33%; text-align: center; text-transform: uppercase;">
 				<p>________________________________</p>
-				<FONT SIZE=2>DEPTO. DE SERVICIOS DOCENTES </FONT><p></p>
+                @if ($profesorF == null)
+                <FONT SIZE=2>DEPTO. DE SERVICIOS DOCENTES</FONT>  
+            @else
+                <FONT SIZE=2>{{$profesorF->Perfil_A}}. {{$profesorF->Nombre}} {{$profesorF->ApPaterno}} {{$profesorF->ApMaterno}}<br> DEPTO. DE SERVICIOS DOCENTES</FONT>
+            @endif
 			</td>
 			<td style="width: 33%; text-align: center; text-transform: uppercase;">
 				<p>________________________________</p>
-				<FONT SIZE=2 >{{$profesorD->Perfil_A}}. {{$profesorD->Nombre}} {{$profesorD->ApPaterno}} {{$profesorD->ApMaterno}} <br> DIRECCIÓN</FONT>
+                @if ($profesorD == null)
+                <FONT SIZE=2>VACANTE<br> DIRECCIÓN</FONT>  
+            @else
+                <FONT SIZE=2 >{{$profesorD->Perfil_A}}. {{$profesorD->Nombre}} {{$profesorD->ApPaterno}} {{$profesorD->ApMaterno}}<br> DIRECCIÓN</FONT>
+            @endif
 			</td>
 		</tr>
 	</tbody>

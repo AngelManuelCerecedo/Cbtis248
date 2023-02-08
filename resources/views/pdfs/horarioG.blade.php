@@ -296,13 +296,21 @@
 <table style="width: 100%; border-collapse: collapse;">
 	<tbody>
 		<tr>
-			<td style="width: 33%; text-align: center;">
+			<td style="width: 33%; text-align: center; text-transform: uppercase;">
 				<p>__________________________________</p>
-				<FONT SIZE=2> VACANTE <br> SUBDIRECCIÓN ACADÉMICA</FONT>
+                @if ($profesorO == null)
+                <FONT SIZE=2>VACANTE<br> SUBDIRECCIÓN ACADÉMICA</FONT>  
+                @else
+                <FONT SIZE=2>{{$profesorO->Perfil_A}}. {{$profesorO->Nombre}} {{$profesorO->ApPaterno}} {{$profesorO->ApMaterno}}<br> SUBDIRECCIÓN ACADÉMICA</FONT>
+                @endif
 			</td>
-			<td style="width: 33%; text-align: center;">
+			<td style="width: 33%; text-align: center; text-transform: uppercase;">
 				<p>________________________________</p>
-				<FONT SIZE=2>LSC. CARLOS BETANZOS JIMÉNEZ <br> DIRECCIÓN</FONT>
+                @if ($profesorD == null)
+                    <FONT SIZE=2>Vacante<br> DIRECCIÓN</FONT>  
+                @else
+				    <FONT SIZE=2>{{$profesorD->Perfil_A}}. {{$profesorD->Nombre}} {{$profesorD->ApPaterno}} {{$profesorD->ApMaterno}}<br> DIRECCIÓN</FONT>
+                @endif
 			</td>
 		</tr>
 	</tbody>

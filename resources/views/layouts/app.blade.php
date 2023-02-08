@@ -43,7 +43,7 @@
                     <a href="{{ route('dashboard') }}">
                         <div
                             class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  
-                    hover:bg-[#D5C28B]">
+                            hover:bg-[#D5C28B]">
                             <i class="bi bi-house"></i>
                             <span class="text-[20px] ml-4 text-white">Inicio</span>
                         </div>
@@ -88,7 +88,6 @@
                 @endcan
 
                 @can('Personal')
-
                     @can('Personal')
                         <!-- PERSONAL -->
                         <div
@@ -96,9 +95,9 @@
                             <i class="bi bi-person"></i>
                             <div class="flex justify-between w-full items-center" onclick="dropDown2()">
                                 <span class="text-[20px] ml-4 text-gray-200">Personal</span>
-                                <span class="text-sm rotate-180" id="arrow2"></span>
                             </div>
                         </div>
+                        </span>
                     @endcan
 
                     @can('Personal-Catalogo')
@@ -113,14 +112,16 @@
                 @can('Horarios')
                     @can('Horarios')
                         <!-- HORARIOS -->
-                        <div
-                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                            <i class="bi bi-clock-history"></i>
-                            <div class="flex justify-between w-full items-center" onclick="dropDown3()">
-                                <span class="text-[20px] ml-4 text-gray-200">Horarios</span>
-                                <span class="text-sm rotate-180" id="arrow3"></span>
+                        <span class="rotate-180" id="arrow3">
+                            <div
+                                class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                                <i class="bi bi-clock-history"></i>
+                                <div class="flex justify-between w-full items-center" onclick="dropDown3()">
+                                    <span class="text-[20px] ml-4 text-gray-200">Horarios</span>
+
+                                </div>
                             </div>
-                        </div>
+                        </span>
                     @endcan
 
                     <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloHorario">
@@ -140,19 +141,18 @@
 
                 @endcan
 
-
                 @can('Materias')
-
                     @can('Materias')
                         <!-- MATERIAS & ACTIVIDAD COMPLEMENTARIA -->
-                        <div
-                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                            <i class="bi bi-book"></i>
-                            <div class="flex justify-between w-full items-center" onclick="dropDown4()">
-                                <span class="text-[20px] ml-4 text-gray-200">Materias</span>
-                                <span class="text-sm rotate-180" id="arrow4"></span>
+                        <span class="rotate-180" id="arrow4">
+                            <div
+                                class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                                <i class="bi bi-book"></i>
+                                <div class="flex justify-between w-full items-center" onclick="dropDown4()">
+                                    <span class="text-[20px] ml-4 text-gray-200">Materias</span>
+                                </div>
                             </div>
-                        </div>
+                        </span>
                     @endcan
 
                     <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloMateria">
@@ -174,19 +174,18 @@
 
                 @endcan
 
-
-
                 @can('Grupos')
                     @can('Grupos')
                         <!-- GRUPOS -->
-                        <div
-                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                            <i class="bi bi-diagram-3"></i>
-                            <div class="flex justify-between w-full items-center" onclick="dropDown5()">
-                                <span class="text-[20px] ml-4 text-gray-200">Grupos</span>
-                                <span class="text-sm rotate-180" id="arrow5"></span>
+                        <span class="rotate-180" id="arrow5">
+                            <div
+                                class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                                <i class="bi bi-diagram-3"></i>
+                                <div class="flex justify-between w-full items-center" onclick="dropDown5()">
+                                    <span class="text-[20px] ml-4 text-gray-200">Grupos</span>
+                                </div>
                             </div>
-                        </div>
+                        </span>
                     @endcan
 
                     <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloGrupo">
@@ -204,14 +203,16 @@
 
                     @can('Ciclo-Escolar')
                         <!-- CICLO ESCOLAR -->
-                        <div
-                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                            <i class="bi bi-alarm"></i>
-                            <div class="flex justify-between w-full items-center" onclick="dropDown6()">
-                                <span class="text-[20px] ml-4 text-gray-200">Ciclo Escolar</span>
-                                <span class="text-sm rotate-180" id="arrow6"></span>
+                        <span class="rotate-180" id="arrow6">
+                            <div
+                                class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                                <i class="bi bi-alarm"></i>
+                                <div class="flex justify-between w-full items-center" onclick="dropDown6()">
+                                    <span class="text-[20px] ml-4 text-gray-200">Ciclo Escolar</span>
+
+                                </div>
                             </div>
-                        </div>
+                        </span>
                     @endcan
 
                     <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloCiclos">
@@ -228,14 +229,15 @@
 
                     @can('Usuarios')
                         <!-- Usuarios-->
-                        <div
-                            class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
-                            <i class="bi bi-person"></i>
-                            <div class="flex justify-between w-full items-center" onclick="dropDown7()">
-                                <span class="text-[20px] ml-4 text-gray-200">Usuarios</span>
-                                <span class="text-sm rotate-180" id="arrow7"></span>
+                        <span class="rotate-180" id="arrow7">
+                            <div
+                                class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#D5C28B]">
+                                <i class="bi bi-person"></i>
+                                <div class="flex justify-between w-full items-center" onclick="dropDown7()">
+                                    <span class="text-[20px] ml-4 text-gray-200">Usuarios</span>
+                                </div>
                             </div>
-                        </div>
+                        </span>
                     @endcan
 
                     <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloUsuarios">
@@ -272,49 +274,52 @@
     </div>
     @stack('modals')
     <script>
+        if (document.querySelector('#submoduloAlumno') != null) {
+            dropDown1()
+        }        
+        if (document.querySelector('#submoduloPersonal') != null) {
+            dropDown2()
+        }
+        if (document.querySelector('#submoduloHorario') != null) {
+            dropDown3()
+        }
+        if (document.querySelector('#submoduloMateria') != null) {
+            dropDown4()
+        }
+        if (document.querySelector('#submoduloGrupo') != null) {
+            dropDown5()
+        }
+        if (document.querySelector('#submoduloCiclos') != null) {
+            dropDown6()
+        }
+        if (document.querySelector('#submoduloUsuarios') != null) {
+            dropDown7()
+        }
         function dropDown1() {
             document.querySelector('#submoduloAlumno').classList.toggle('hidden')
-            document.querySelector('#arrow1').classList.toggle('rotate-0')
         }
-        dropDown1()
-
         function dropDown2() {
             document.querySelector('#submoduloPersonal').classList.toggle('hidden')
-            document.querySelector('#arrow2').classList.toggle('rotate-0')
         }
-        dropDown2()
 
         function dropDown3() {
             document.querySelector('#submoduloHorario').classList.toggle('hidden')
-            document.querySelector('#arrow3').classList.toggle('rotate-0')
         }
-        dropDown3()
 
         function dropDown4() {
             document.querySelector('#submoduloMateria').classList.toggle('hidden')
-            document.querySelector('#arrow4').classList.toggle('rotate-0')
         }
-        dropDown4()
 
         function dropDown5() {
             document.querySelector('#submoduloGrupo').classList.toggle('hidden')
-            document.querySelector('#arrow5').classList.toggle('rotate-0')
-        }
-        dropDown5()
 
+        }
         function dropDown6() {
-
             document.querySelector('#submoduloCiclos').classList.toggle('hidden')
-            document.querySelector('#arrow6').classList.toggle('rotate-0')
         }
-        dropDown6()
-
         function dropDown7() {
             document.querySelector('#submoduloUsuarios').classList.toggle('hidden')
-            document.querySelector('#arrow7').classList.toggle('rotate-0')
         }
-
-        dropDown7()
 
         function Openbar() {
             document.querySelector('.sidebar').classList.toggle('left-[-300px]')

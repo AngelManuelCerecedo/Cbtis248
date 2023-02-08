@@ -303,14 +303,14 @@
 <table style="width: 100%; border-collapse: collapse; margin-top: 3%">
 	<tbody>
 		<tr>
-			<td style="width: 33%; text-align: center;">
+			<td style="width: 33%; text-align: center; text-transform: uppercase;">
                 ________________________________ <br>
 				<FONT SIZE=2 class="transformacion2">{{$profesor->Perfil_A}}. {{$profesor->Nombre}} {{$profesor->ApPaterno}} {{$profesor->ApMaterno}} <br> DOCENTE</FONT>
             </td>
 			<td style="width: 33%; text-align: center; text-transform: uppercase;">
 				__________________________________<br>
                 @if ($profesorF == null)
-				    <FONT SIZE=2>Vacante<br> SUBDIRECCIÓN ACADÉMICA</FONT>  
+				    <FONT SIZE=2>VACANTE<br> SUBDIRECCIÓN ACADÉMICA</FONT>  
                 @else
 				    <FONT SIZE=2>{{$profesorF->Perfil_A}}. {{$profesorF->Nombre}} {{$profesorF->ApPaterno}} {{$profesorF->ApMaterno}} <br> SUBDIRECCIÓN ACADÉMICA</FONT>
                 @endif
@@ -318,7 +318,7 @@
 			<td style="width: 33%; text-align: center; text-transform: uppercase;">
 				________________________________<br>
                 @if ($profesorD == null)
-                    <FONT SIZE=2>Vacante<br> SUBDIRECCIÓN ACADÉMICA</FONT>  
+                    <FONT SIZE=2>VACANTE<br> DIRECCIÓN</FONT>  
                 @else
 				    <FONT SIZE=2>{{$profesorD->Perfil_A}}. {{$profesorD->Nombre}} {{$profesorD->ApPaterno}} {{$profesorD->ApMaterno}}<br> DIRECCIÓN</FONT>
                 @endif

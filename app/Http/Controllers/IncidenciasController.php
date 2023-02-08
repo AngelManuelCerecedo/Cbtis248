@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumno;
 use App\Models\Incidencia;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 
@@ -22,6 +23,7 @@ class IncidenciasController extends Controller
     {
 
         $incidencia = Incidencia::Where([['id', '=', $id]])->first();
+        $ProfesorO = User::Where([['Puesto', 'like', '%' . 'Orientador Educativo' . '%'], ['Estatus', '=', 'Activo']])->first();
         $g = ''; $m='';
         $dia = date('z');
         $mes = date('n');
@@ -73,6 +75,7 @@ class IncidenciasController extends Controller
         if ($mes == 12){$m = 'Diciembre';}
         $pdf = PDF::loadView('pdfs.Citatorio', [
             'incidencia' => $incidencia,
+            'profesorO' => $ProfesorO,
             'dia' => $dia+1,
             'mes' => $m,
             'año' => $año,

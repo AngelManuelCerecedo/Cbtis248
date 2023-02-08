@@ -19,7 +19,7 @@ class Ealumnos extends Component
 
     //validaciones
     protected $rules = [
-        'NC' => 'required|numeric',
+        'NC' => 'required|numeric|min:14|max:14',
         'N' => 'required',
         'AP' => 'required',
         'AM' => 'required',
@@ -58,6 +58,8 @@ class Ealumnos extends Component
     protected $messages = [
         'NC.required' => 'El campo número de control puede estar vacío',
         'NC.numeric' => 'Solo se aceptan numeros',
+        'NC.min' => 'Numero de control invalido',
+        'NC.max' => 'Numero de control invalido',
         'N.required' => 'El campo nombre no puede estar vacío',
         'AP.required' => 'El campo apellido paterno no puede estar vacío',
         'AM.required' => 'El campo apellido materno no puede estar vacío',
@@ -104,7 +106,24 @@ class Ealumnos extends Component
 
     public function render()
     {
-
+        if ($this->C == '' && strlen($this->N) >= 2 && strlen($this->AP) >= 3 && strlen($this->AM) >= 2) {
+            $carN = str_split($this->N);
+            $carA = str_split($this->AP);
+            $carM = str_split($this->AM);
+            $curp = $carA[0];
+            if (in_array ($carA[1], ['a','e','i','o','u'])) {
+                $curp .= $carA[1]; 
+            }
+            else {
+                $curp .= $carA[2];
+            }
+            $curp .= $carM[0];
+            $curp .= $carN[0];
+            $this->C = strtoupper($curp);
+        }
+        if($this->N == '' || $this->AP == '' || $this->AM == ''){
+            $this->C = '';
+        }
         if ($this->C != ''){
             $car = str_split($this->C);
             $longitud = count($car);

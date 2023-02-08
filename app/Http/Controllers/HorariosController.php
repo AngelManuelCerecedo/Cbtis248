@@ -37,8 +37,8 @@ class HorariosController extends Controller
     {
         $i = 1; $countM=0;  $countA=0;
         $Profesor = User::Where([['id', '=', $id]])->first();
-        $F = User::Where([['Puesto', 'like', '%' . 'Subdirección Académica' . '%']])->first();
-        $ProfesorD = User::Where([['Puesto', 'like', '%' . 'Director' . '%']])->first();
+        $F = User::Where([['Puesto', 'like', '%' . 'SERVICIOS DOCENTES' . '%'], ['Estatus', '=', 'Activo']])->first();
+        $ProfesorD = User::Where([['Puesto', 'like', '%' . 'Director' . '%'], ['Estatus', '=', 'Activo']])->first();
         $fechaActual = date('d/m/y');
         $Materias = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Materia']])->get();
         $Actividades = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Actividad']])->get();
@@ -88,8 +88,8 @@ class HorariosController extends Controller
     public function horariosO($id){
         $i = 1; $countM=0;  $countA=0;
         $Profesor = User::Where([['id', '=', $id]])->first();
-        $F = User::Where([['Puesto', 'like', '%' . 'Subdirección Académica' . '%']])->first();
-        $ProfesorD = User::Where([['Puesto', 'like', '%' . 'Director' . '%']])->first();
+        $F = User::Where([['Puesto', 'like', '%' . 'Subdirección Académica' . '%'], ['Estatus', '=', 'Activo']])->first();
+        $ProfesorD = User::Where([['Puesto', 'like', '%' . 'Director' . '%'], ['Estatus', '=', 'Activo']])->first();
         $fechaActual = date('d/m/y');
         $Materias = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Materia']])->get();
         $Actividades = Materia::Where([['profesor_id', '=', $id],['Tipo', '=', 'Actividad']])->get();
@@ -143,7 +143,9 @@ class HorariosController extends Controller
     public function horariosG($id){
         $i = 1;
         $Grupos = Grupo::Where([['id', '=', $id]])->first();
-        $Ciclo = CicloEscolar::orderBy('id', 'desc')->first(); 
+        $Ciclo = CicloEscolar::orderBy('id', 'desc')->first();
+        $ProfesorSA = User::Where([['Puesto', 'like', '%' . 'Subdireccion Academica' . '%'], ['Estatus', '=', 'Activo']])->first(); 
+        $ProfesorD = User::Where([['Puesto', 'like', '%' . 'Director' . '%'], ['Estatus', '=', 'Activo']])->first();
         $Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
         $Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
@@ -157,6 +159,8 @@ class HorariosController extends Controller
 
         $pdf3 = PDF::loadView('pdfs.horarioG', [
             'grupo' => $Grupos,
+            'profesorO' => $ProfesorSA,
+            'profesorD' => $ProfesorD,
             'Phoras' => $Phoras,
             'Shoras' => $Shoras,
             'Thoras' => $Thoras,

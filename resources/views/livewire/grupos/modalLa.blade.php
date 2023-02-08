@@ -62,10 +62,12 @@
                                                     {{ $Alumno->grado_id }}</p>
                                             </td>
                                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                <button wire:click="eliminarA({{ $Alumno->id }})" type="button"
-                                                    class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1">
-                                                    Eliminar
-                                                </button>
+                                                @can('Eliminar-Alumnos')
+                                                    <button wire:click="eliminarA({{ $Alumno->id }})" type="button"
+                                                        class="text-white bg-red-600 hover:bg-red-700  rounded-lg text-sm  ml-10 py-2 px-6 m-1">
+                                                        Eliminar
+                                                    </button>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach
@@ -91,7 +93,7 @@
                 </div>
             </div>
             <div class=" pb-3 ml-3  font-sans">
-                <p>ESPACIOS DISPONIBLES : {{$gruposAÑ->TotAL - $gruposAÑ->ALR}} </p>
+                <p>ESPACIOS DISPONIBLES : {{ $gruposAÑ->TotAL - $gruposAÑ->ALR }} </p>
                 <p>ESPACIOS OCUPADOS : {{ $CONT }}</p>
             </div>
             <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

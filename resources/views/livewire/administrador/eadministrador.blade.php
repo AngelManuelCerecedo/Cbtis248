@@ -162,14 +162,8 @@
             <div class="md:flex items-center mt-8">
                 <div class="w-full md:w-1/4 flex flex-col pr-4 ">
                     <label class="font-sans leading-none">Puesto</label>
-                    <select wire:model='PT'
-                        class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
-                        <option value="">Selecciona un Puesto</option>
-                        <option value="Docente">Docente</option>
-                        <option value="Jefe de Departamento">Jefe de Departamento</option>
-                        <option value="Administrativo">Administrativo</option>
-                        <option value="Docente/Administrativo">Docente/Administrativo</option>
-                    </select>
+                    <input type="text" wire:model='PT'
+                    class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black" />
                     @error('PT')
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
