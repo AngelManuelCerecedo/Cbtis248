@@ -16,6 +16,14 @@ class HorariosController extends Controller
     {
         return view('horarios.index');
     }
+    public function horarioT()
+    {
+        return view('horarios.thorario');
+    }
+    public function horarioTT($id)
+    {
+        return view('horarios.thprofesor',['id' => $id]);
+    }
     public function horarioM($id)
     {
         return view('horarios.chprofesor', ['id' => $id]);
@@ -49,16 +57,16 @@ class HorariosController extends Controller
             $countA += $Actividade->Horas_Sem;
         }
         $Ciclo = CicloEscolar::orderBy('id', 'desc')->first();
-        $Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Qhoras = Horario_Profesor::Where([['hora_id', '=', 4], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Choras = Horario_Profesor::Where([['hora_id', '=', 5], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $SEhoras = Horario_Profesor::Where([['hora_id', '=', 6], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
+        $Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Qhoras = Horario_Profesor::Where([['hora_id', '=', 4], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Choras = Horario_Profesor::Where([['hora_id', '=', 5], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $SEhoras = Horario_Profesor::Where([['hora_id', '=', 6], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
 
         $pdf = PDF::loadView('pdfs.horarioP', [
             'profesor' => $Profesor,
@@ -100,16 +108,16 @@ class HorariosController extends Controller
             $countA += $Actividade->Horas_Sem;
         }
         $Ciclo = CicloEscolar::orderBy('id', 'desc')->first();  
-        $Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Qhoras = Horario_Profesor::Where([['hora_id', '=', 4], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Choras = Horario_Profesor::Where([['hora_id', '=', 5], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $SEhoras = Horario_Profesor::Where([['hora_id', '=', 6], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['profesor_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
+        $Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Qhoras = Horario_Profesor::Where([['hora_id', '=', 4], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Choras = Horario_Profesor::Where([['hora_id', '=', 5], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $SEhoras = Horario_Profesor::Where([['hora_id', '=', 6], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['profesor_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
         $str = strtoupper($Ciclo->Semestre);
         $nom = strtoupper($Profesor->Nombre) . strtoupper($Profesor->ApPaterno) . strtoupper($Profesor->ApMaterno);
         $pdf2 = PDF::loadView('pdfs.horarioO', [
@@ -146,16 +154,16 @@ class HorariosController extends Controller
         $Ciclo = CicloEscolar::orderBy('id', 'desc')->first();
         $ProfesorSA = User::Where([['Puesto', 'like', '%' . 'Subdireccion Academica' . '%'], ['Estatus', '=', 'Activo']])->first(); 
         $ProfesorD = User::Where([['Puesto', 'like', '%' . 'Director' . '%'], ['Estatus', '=', 'Activo']])->first();
-        $Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Qhoras = Horario_Profesor::Where([['hora_id', '=', 4], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Choras = Horario_Profesor::Where([['hora_id', '=', 5], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $SEhoras = Horario_Profesor::Where([['hora_id', '=', 6], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
-        $Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['grupo_id', '=', $id]])->orderBy('dia_id', 'asc')->get();
+        $Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['grupo_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['grupo_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['grupo_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Qhoras = Horario_Profesor::Where([['hora_id', '=', 4], ['grupo_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Choras = Horario_Profesor::Where([['hora_id', '=', 5], ['grupo_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $SEhoras = Horario_Profesor::Where([['hora_id', '=', 6], ['grupo_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['grupo_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['grupo_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['grupo_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['grupo_id', '=', $id],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
 
         $pdf3 = PDF::loadView('pdfs.horarioG', [
             'grupo' => $Grupos,

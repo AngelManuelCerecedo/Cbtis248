@@ -80,7 +80,24 @@ class Radministrador extends Component
             }
             $curp .= $carM[0];
             $curp .= $carN[0];
-            $this->C = strtoupper($curp);
+            if (
+                strtoupper($curp) == 'PENE' || strtoupper($curp) == 'CACA' || strtoupper($curp) == 'CAGA' || strtoupper($curp) == 'CAKA' || strtoupper($curp) == 'COGE' || strtoupper($curp) == 'COJE' || strtoupper($curp) == 'FETO' || strtoupper($curp) == 'COJO'
+                || strtoupper($curp) == 'JOTO' || strtoupper($curp) == 'KACO' || strtoupper($curp) == 'KAGO' || strtoupper($curp) == 'KACO' || strtoupper($curp) == 'KOJO' || strtoupper($curp) == 'CULO' || strtoupper($curp) == 'KULO'
+                || strtoupper($curp) == 'MAMO' || strtoupper($curp) == 'MEAS' || strtoupper($curp) == 'MION' || strtoupper($curp) == 'MULA' || strtoupper($curp) == 'PEDO' || strtoupper($curp) == 'PUTA' || strtoupper($curp) == 'QULO'
+                || strtoupper($curp) == 'RUIN' || strtoupper($curp) == 'BUEY' || strtoupper($curp) == 'COJA' || strtoupper($curp) == 'COJI' || strtoupper($curp) == 'GUEY' || strtoupper($curp) == 'KACA' || strtoupper($curp) == 'KOGE'
+                || strtoupper($curp) == 'MOCO' || strtoupper($curp) == 'PEDA' || strtoupper($curp) == 'RATA' || strtoupper($curp) == 'PUTO' || strtoupper($curp) == 'CACO' || strtoupper($curp) == 'CAGO' || strtoupper($curp) == 'MAME'
+                || strtoupper($curp) == 'MEAR' || strtoupper($curp) == 'PIPI' || strtoupper($curp) == 'POPO' || strtoupper($curp) == 'PITO' || strtoupper($curp) == 'PEDO'
+            ) {
+                $ncurp =str_split($curp);
+                $ncurp[1] = 'X';
+                $nncurp = $ncurp[0];
+                $nncurp .= $ncurp[1];
+                $nncurp .= $ncurp[2];
+                $nncurp .= $ncurp[3];
+                $this->C = strtoupper($nncurp);
+            } else {
+                $this->C = strtoupper($curp);
+            }
         }
         if($this->N == '' || $this->AP == '' || $this->AM == ''){
             $this->C = '';

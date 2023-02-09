@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Añadir Materias')
+@section('title', 'Añadir Materias Tentativas')
 @section('content')
-    @livewire('horarios.chprofesor', ['ide' => $id])
+    @livewire('horarios.thprofesor', ['ide' => $id])
 @endsection
 @section('js')
     <script>
@@ -31,30 +31,11 @@
                             'Eliminado',
                             'El registro se eliminó exitosamente',
                             'success',
+
                         )
 
                     } else {
                         window.livewire.emit('', event.detail.id);
-                    }
-                });
-        });
-        window.addEventListener('swal:confirm1', event => {
-            Swal.fire({
-                    title: event.detail.title,
-                    text: "¡No podrás revertir esto!",
-                    icon: event.detail.type,
-                    showCancelButton: true,
-                    cancelButtonColor: '#D5C28B',
-                    confirmButtonColor: '#78163B',
-                    cancelButtonText: 'Cancelar',
-                    confirmButtonText: 'Confirmar',
-                })
-                .then((result) => {
-                    if (result.isConfirmed) {
-                        window.livewire.emit('añadir');
-
-                    } else {
-                        window.livewire.emit('');
                     }
                 });
         });

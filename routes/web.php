@@ -76,6 +76,8 @@ Route::get('Grupos',[GruposController::class,'grupo'])->middleware('can:Ver-Grup
 // HORARIOS
 Route::get('Horarios',[HorariosController::class,'horario'])->middleware('can:Horario-Docente')->name('Horarios');
 Route::get('Horarios/Materias/{id}',[HorariosController::class,'horarioM'])->middleware('can:Registrar-Horario-Docente')->name('HorariosM');
+Route::get('Horarios/Tentativo',[HorariosController::class,'horarioT'])->name('HorariosT');
+Route::get('Horarios/Tentativo/Materias/{id}',[HorariosController::class,'horarioTT'])->middleware('can:Registrar-Horario-Docente')->name('HorariosTT');
 Route::get('Horarios/{id}',[HorariosController::class,'horarioV'])->middleware('can:Ver-Horario-Docentes')->name('HorariosV');
 
 //PDF

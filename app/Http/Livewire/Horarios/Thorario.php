@@ -4,12 +4,11 @@ namespace App\Http\Livewire\Horarios;
 
 use App\Models\Horario_Profesor;
 use App\Models\Materia;
-use App\Models\Profesor;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Hprofesor extends Component
+class Thorario extends Component
 {
     use WithPagination;
     public $search;
@@ -17,12 +16,12 @@ class Hprofesor extends Component
     protected $listeners = ['delete'];
     public function render()
     {
-        $profesores = User::Where([['Nombre', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'],['Puesto', 'like', '%' . 'Docente' . '%']])
-            ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', 'like', '%' . 'Docente' . '%']])
-            ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', 'like', '%' . 'Docente' . '%']])
-            ->orWhere([['Curp', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', 'like', '%' . 'Docente' . '%']])
+        $profesores = User::Where([['Nombre', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', 'like', '%' . 'Docente' . '%'],['Horas_Nom', '<=', 30]])
+            ->orWhere([['ApPaterno', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', 'like', '%' . 'Docente' . '%'],['Horas_Nom', '<=', 30]])
+            ->orWhere([['ApMaterno', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', 'like', '%' . 'Docente' . '%'],['Horas_Nom', '<=', 30]])
+            ->orWhere([['Curp', 'like', '%' . $this->search . '%'], ['Estatus', '=', 'Activo'], ['Puesto', 'like', '%' . 'Docente' . '%'],['Horas_Nom', '<=', 30]])
             ->paginate($this->cantidad);
-        return view('livewire.horarios.hprofesor', ['profesores' => $profesores]);
+        return view('livewire.horarios.thorario', ['profesores' => $profesores]);
     }
     public function updatingSearch()
     {
@@ -55,6 +54,6 @@ class Hprofesor extends Component
 
     }
     public function redic(){
-        return redirect()->route('Horarios');
+        return redirect()->route('HorariosT');
     }
 }

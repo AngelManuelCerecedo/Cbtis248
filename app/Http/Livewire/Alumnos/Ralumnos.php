@@ -21,7 +21,7 @@ class Ralumnos extends Component
 
     //validaciones
     protected $rules = [
-        'NC' => 'required|numeric|min:14|max:14',
+        'NC' => 'required|digits_between:14,14',
         'N' => 'required',
         'AP' => 'required',
         'AM' => 'required',
@@ -32,7 +32,7 @@ class Ralumnos extends Component
         'LOC' => 'required',
         'CP' => 'required|numeric',
         'LR' => 'required',
-        'NSS' => 'required|min:11|max:11',
+        'NSS' => 'required|digits_between:11,11',
         'TS' => 'required',
         'EC' => 'required',
         'EM' => 'required|email',
@@ -59,8 +59,7 @@ class Ralumnos extends Component
     protected $messages = [
         'NC.required' => 'El campo numero de control puede estar vacío',
         'NC.numeric' => 'Solo se aceptan numeros',
-        'NC.min' => 'Numero de control invalido',
-        'NC.max' => 'Numero de control invalido',
+        'NC.digits_between' => 'Numero de control invalido',
         'N.required' => 'El campo nombre no puede estar vacío',
         'AP.required' => 'El campo apellido paterno no puede estar vacío',
         'AM.required' => 'El campo apellido materno no puede estar vacío',
@@ -75,8 +74,7 @@ class Ralumnos extends Component
         'CP.numeric' => 'Solo se aceptan numeros',
         'LR.required' => 'El campo lugar de radicación no puede estar vacío',
         'NSS.required' => 'El campo número de seguro social no puede estar vacío',
-        'NSS.min' => 'Número de seguro social invalido',
-        'NSS.max' => 'Número de seguro social invalido',
+        'NSS.digits_between' => 'Número de seguro social invalido',
         'TS.required' => 'El campo tipo de sangre no puede estar vacío',
         'EC.required' => 'El campo estado civil no puede estar vacío',
         'EM.required' => 'El campo correo electronico no puede estar vacío',
@@ -111,17 +109,33 @@ class Ralumnos extends Component
             $carA = str_split($this->AP);
             $carM = str_split($this->AM);
             $curp = $carA[0];
-            if (in_array ($carA[1], ['a','e','i','o','u'])) {
-                $curp .= $carA[1]; 
-            }
-            else {
+            if (in_array($carA[1], ['a', 'e', 'i', 'o', 'u'])) {
+                $curp .= $carA[1];
+            } else {
                 $curp .= $carA[2];
             }
             $curp .= $carM[0];
             $curp .= $carN[0];
-            $this->C = strtoupper($curp);
+            if (
+                strtoupper($curp) == 'PENE' || strtoupper($curp) == 'CACA' || strtoupper($curp) == 'CAGA' || strtoupper($curp) == 'CAKA' || strtoupper($curp) == 'COGE' || strtoupper($curp) == 'COJE' || strtoupper($curp) == 'FETO' || strtoupper($curp) == 'COJO'
+                || strtoupper($curp) == 'JOTO' || strtoupper($curp) == 'KACO' || strtoupper($curp) == 'KAGO' || strtoupper($curp) == 'KACO' || strtoupper($curp) == 'KOJO' || strtoupper($curp) == 'CULO' || strtoupper($curp) == 'KULO'
+                || strtoupper($curp) == 'MAMO' || strtoupper($curp) == 'MEAS' || strtoupper($curp) == 'MION' || strtoupper($curp) == 'MULA' || strtoupper($curp) == 'PEDO' || strtoupper($curp) == 'PUTA' || strtoupper($curp) == 'QULO'
+                || strtoupper($curp) == 'RUIN' || strtoupper($curp) == 'BUEY' || strtoupper($curp) == 'COJA' || strtoupper($curp) == 'COJI' || strtoupper($curp) == 'GUEY' || strtoupper($curp) == 'KACA' || strtoupper($curp) == 'KOGE'
+                || strtoupper($curp) == 'MOCO' || strtoupper($curp) == 'PEDA' || strtoupper($curp) == 'RATA' || strtoupper($curp) == 'PUTO' || strtoupper($curp) == 'CACO' || strtoupper($curp) == 'CAGO' || strtoupper($curp) == 'MAME'
+                || strtoupper($curp) == 'MEAR' || strtoupper($curp) == 'PIPI' || strtoupper($curp) == 'POPO' || strtoupper($curp) == 'PITO' || strtoupper($curp) == 'PEDO'
+            ) {
+                $ncurp =str_split($curp);
+                $ncurp[1] = 'X';
+                $nncurp = $ncurp[0];
+                $nncurp .= $ncurp[1];
+                $nncurp .= $ncurp[2];
+                $nncurp .= $ncurp[3];
+                $this->C = strtoupper($nncurp);
+            } else {
+                $this->C = strtoupper($curp);
+            }
         }
-        if($this->N == '' || $this->AP == '' || $this->AM == ''){
+        if ($this->N == '' || $this->AP == '' || $this->AM == '') {
             $this->C = '';
         }
         if ($this->C != '') {
