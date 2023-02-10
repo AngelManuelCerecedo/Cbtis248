@@ -126,10 +126,13 @@
 
                     <div class=" leading-7 text-left text-[18px] font-[Poppins]mt-2 w-4/5 mx-auto" id="submoduloHorario">
 
-                        <a href="{{ route('HorariosT') }}">
-                            <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Tentativo Docente
-                            </h1>
-                        </a>
+                        @can('Horario-Tentativo-Docente')
+                            <a href="{{ route('HorariosT') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Tentativo
+                                    Docente
+                                </h1>
+                            </a>
+                        @endcan
 
                         @can('Horario-Docente')
                             <a href="{{ route('Horarios') }}">
@@ -282,7 +285,7 @@
     <script>
         if (document.querySelector('#submoduloAlumno') != null) {
             dropDown1()
-        }        
+        }
         if (document.querySelector('#submoduloPersonal') != null) {
             dropDown2()
         }
@@ -301,9 +304,11 @@
         if (document.querySelector('#submoduloUsuarios') != null) {
             dropDown7()
         }
+
         function dropDown1() {
             document.querySelector('#submoduloAlumno').classList.toggle('hidden')
         }
+
         function dropDown2() {
             document.querySelector('#submoduloPersonal').classList.toggle('hidden')
         }
@@ -320,9 +325,11 @@
             document.querySelector('#submoduloGrupo').classList.toggle('hidden')
 
         }
+
         function dropDown6() {
             document.querySelector('#submoduloCiclos').classList.toggle('hidden')
         }
+
         function dropDown7() {
             document.querySelector('#submoduloUsuarios').classList.toggle('hidden')
         }
