@@ -73,6 +73,10 @@ class RoleSeeder extends Seeder
         //Horarios
         Permission::create(['name' => 'Horarios', 'description' => 'Acceder a Horarios'])->syncRoles([$root , $dir,$CD]);
 
+        //Horario Tentativo
+        Permission::create(['name' => 'Horario-Tentativo-Docente', 'description' => 'Acceder a Horarios Tentativos de Docentes'])->syncRoles([$root,$CD]);
+        Permission::create(['name' => 'Crear-Horario-Tentativo-Docente', 'description' => 'Crear Horarios Tentativos de Docentes'])->syncRoles([$root,$CD]);
+
         //Horario Docente
         Permission::create(['name' => 'Horario-Docente', 'description' => 'Acceder a Horarios de Docentes'])->syncRoles([$root , $dir,$CD]);
         Permission::create(['name' => 'Registrar-Horario-Docente', 'description' => 'Registrar Horario de Docentes'])->syncRoles([$root ,$CD]);

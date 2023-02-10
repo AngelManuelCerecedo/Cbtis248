@@ -72,10 +72,13 @@
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <a href="{{ route('HorariosTT', [$profesor->id]) }}">
-                                                <button type="button"
-                                                    class="text-white bg-[#4eb553] rounded-lg  text-sm mr-8 py-2 px-8 ">
-                                                    Crear Horario Tentativo
-                                                </button>
+
+                                                @can('Crear-Horario-Tentativo-Docente')
+                                                    <button type="button"
+                                                        class="text-white bg-[#4eb553] rounded-lg  text-sm mr-8 py-2 px-8 ">
+                                                        Crear Horario Tentativo
+                                                    </button>
+                                                @endcan
                                             </a>
                                         </td>
                                     </tr>
