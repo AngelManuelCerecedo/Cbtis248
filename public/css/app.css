@@ -1366,6 +1366,9 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
+.ml-40 {
+  margin-left: 10rem;
+}
 .ml-0 {
   margin-left: 0px;
 }
@@ -1377,12 +1380,6 @@ select {
 }
 .mr-8 {
   margin-right: 2rem;
-}
-.ml-40 {
-  margin-left: 10rem;
-}
-.ml-80 {
-  margin-left: 20rem;
 }
 .block {
   display: block;
@@ -1725,9 +1722,6 @@ select {
 }
 .border-2 {
   border-width: 2px;
-}
-.border-8 {
-  border-width: 8px;
 }
 .border-b-2 {
   border-bottom-width: 2px;
