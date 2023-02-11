@@ -24,6 +24,9 @@ class Grupo extends Model
     public function materia(){
         return $this->hasMany("App\Models\Materia");
     }
+    public function incidencia(){
+        return $this->hasMany("App\Models\Incidencia");
+    }
     public function horarioalu(){
         return $this->belongsTo("App\Models\horarioAlumno");
     }

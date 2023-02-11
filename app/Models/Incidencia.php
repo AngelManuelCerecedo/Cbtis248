@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Incidencia extends Model
 {
     use HasFactory;
-    protected $fillable=['id','Fecha','Descripcion','ciclo_id','alumno_id','user_id','Fecha_C'];
+    protected $fillable=['id','Fecha','Descripcion','ciclo_id','alumno_id','grupo_id','user_id','Fecha_C','Hora_C'];
     public function alumno(){
         return $this->belongsTo("App\Models\Alumno");
+    }
+    public function grupo(){
+        return $this->belongsTo("App\Models\Grupo");
     }
     public function ciclo(){
         return $this->belongsTo("App\Models\CicloEscolar");

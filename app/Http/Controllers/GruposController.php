@@ -10,4 +10,12 @@ class GruposController extends Controller
     {
         return view('grupos.index');
     }
+    public function grupoL()
+    {
+        return view('grupos.indexL');
+    }
+    public function lincidencia($id)
+    {
+        return view('grupos.lincidencia-g', ['id' => $id]);
+    }
 }

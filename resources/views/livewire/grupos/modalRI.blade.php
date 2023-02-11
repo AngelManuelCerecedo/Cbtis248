@@ -13,7 +13,7 @@
 
             <!--header-->
             <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                <h3 class="text-2xl font-semibold">CITATORIO</h3>
+                <h3 class="text-2xl font-semibold">REGISTRAR INCIDENCIA</h3>
             </div>
 
             <form>
@@ -22,24 +22,44 @@
                         <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
                             <div class="grid grid-cols-1">
                                 <label class=" md:text-sm text-xs text-gray-900 font-semibold">Fecha</label>
-                                <input type="date" wire:model="F1" class= "py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "/>
-                                <span class="text-red-600">{{ $t1 }}</span>
+                                <input class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "
+                                    type="date" wire:model="F" autocomplete="off" />
+                                @error('F')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
+                            <div class="grid grid-cols-1">
+                                <label class=" md:text-sm text-xs text-gray-900 font-semibold">Ciclo</label>
+                                <select wire:model='C'
+                                    class="leading-none text-black p-3 focus:outline-none focus:border-blue-700 mt-4 bg-white border rounded border-black">
+                                    <option value="">Seleccione un Ciclo Escolar</option>
+                                    @foreach ($ciclo as $ciclo)
+                                        <option value="{{ $ciclo->id }}">{{ $ciclo->Semestre }}</option>
+                                    @endforeach
+                                </select>
+                                @error('C')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
+                            <div class="grid grid-cols-1">
+                                <label class=" md:text-sm text-xs text-gray-900 font-semibold">Descripcion</label>
+                                <textarea class="py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 " type="text"
+                                    wire:model="D" autocomplete="off">
+                                </textarea>
+                                @error('D')
+                                    <span class="text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="  items-center justify-center pb-3 ml-3 ">
-                    <div class="grid    w-auto ">
-                        <div class="grid grid-cols-1  gap-5 md:gap-8 mt-2 mx-7">
-                            <div class="grid grid-cols-1">
-                                <label class=" md:text-sm text-xs text-gray-900 font-semibold">Hora</label>
-                                <input type="time" wire:model="H1" class= "py-1 px-3 rounded-lg border-2 border-gray-300 mt-1   focus:ring-gray-900 "/>
-                                <span class="text-red-600">{{ $t2 }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!--footer-->
 
                 <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
@@ -50,7 +70,7 @@
                     </span>
 
                     <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                        <button wire:click.prevent="citar({{$incidencia->id}})" type="button"
+                        <button wire:click.prevent="guardar()" type="button"
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold  text-sm px-6 py-3 rounded shadow mr-1 mb-1 ">Guardar</button>
                     </span>
                 </div>

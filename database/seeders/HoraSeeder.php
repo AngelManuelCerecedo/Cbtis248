@@ -23,5 +23,6 @@ class HoraSeeder extends Seeder
         Hora::create(['Hora'=>'13:00-13:50']);
         Hora::create(['Hora'=>'13:50-14:40']);
         Hora::create(['Hora'=>'14:40-15:30']);
+        Hora::create(['Hora'=>'14:40-15:30']);
     }
 }

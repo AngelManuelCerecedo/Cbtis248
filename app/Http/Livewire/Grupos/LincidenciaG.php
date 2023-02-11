@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Livewire\Incidencias;
+namespace App\Http\Livewire\Grupos;
 
-use App\Models\Alumno;
 use App\Models\CicloEscolar;
+use App\Models\Grupo;
 use App\Models\Incidencia;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Lincidencia extends Component
+class LincidenciaG extends Component
 {
     use WithPagination;
     public $cantidad = 5, $incidencia;
@@ -37,11 +37,11 @@ class Lincidencia extends Component
 
     public function render()
     {
-        $incidencias = Incidencia::Where('alumno_id', $this->IDAUX)
+        $incidencias = Incidencia::Where('grupo_id', $this->IDAUX)
             ->paginate($this->cantidad);
-        $Alumno = Alumno::Where('id', $this->IDAUX)->first();
+        $Grupo = Grupo::Where('id', $this->IDAUX)->first();
         $Ciclo = CicloEscolar::all();
-        return view('livewire.incidencias.lincidencia', ['incidencias' => $incidencias, 'alumno' => $Alumno, 'ciclo' => $Ciclo]);
+        return view('livewire.grupos.lincidencia-g', ['incidencias' => $incidencias, 'grupo' => $Grupo, 'ciclo' => $Ciclo]);
     }
     //metodo que valida en tiempo real
     public function updated($propertyName)
@@ -152,15 +152,8 @@ class Lincidencia extends Component
     public function verificar($id)
     {
         $this->incidencia = Incidencia::Where([['id', '=', $id]])->first();
-        if ($this->incidencia->alumno->grupo_id == NULL) {
-            $this->dispatchBrowserEvent('swal', [
-                'title' => 'El alumno no tiene un grupo asignado',
-                'type' => 'error'
-            ]);
-        } else {
-            $this->estado = 1;
-            $this->abrirmodal1();
-        }
+        $this->estado = 1;
+        $this->abrirmodal1();
     }
     public function citar($id)
     {
@@ -185,7 +178,7 @@ class Lincidencia extends Component
                     );
                     $this->F1 = '';
                     $this->H1 = '';
-                    redirect()->route('citatorio', [$id]);
+                    redirect()->route('citatorioG', [$id]);
                 }
             }
         }
@@ -193,6 +186,6 @@ class Lincidencia extends Component
 
     public function redic()
     {
-        return redirect()->route('Lincidencias', [$this->IDAUX]);
+        return redirect()->route('LincidenciasG', [$this->IDAUX]);
     }
 }

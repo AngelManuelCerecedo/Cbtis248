@@ -128,7 +128,7 @@
 
                         @can('Horario-Tentativo-Docente')
                             <a href="{{ route('HorariosT') }}">
-                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Tentativo
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Crear Horario Disponible
                                     Docente
                                 </h1>
                             </a>
@@ -204,6 +204,9 @@
                                 <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Grupos</h1>
                             </a>
                         @endcan
+                            <a href="{{ route('GruposL') }}">
+                                <h1 class="cursor-pointer p-2 hover:bg-[#D5C28B] rounded-md  ml-5 mt-1">Incidencias Grupales</h1>
+                            </a>
                     </div>
                 @endcan
 

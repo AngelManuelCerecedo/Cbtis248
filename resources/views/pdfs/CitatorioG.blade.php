@@ -25,17 +25,13 @@
     ZIMATLAN DE ALVAREZ, OAXACA, A {{ $dia }} DE {{ $mes }} DEL {{ $año }}
 </p>
 <p style="text-transform: uppercase; font-size: 18px;">
-    <strong> <u>C. {{ $incidencia->alumno->padre->Nombre }} {{ $incidencia->alumno->padre->ApPaterno }}
-            {{ $incidencia->alumno->padre->ApMaterno }} </u> <br>
         PADRE DE FAMILIA O TUTOR. <br>
         P R E S E N T E </strong>
 </p>
 <p
     style="text-transform: uppercase; text-align: justify; font-size: 18px; font-family: 'Times New Roman', Times, serif;">
-    DEL ALUMNO (A) <u>{{ $incidencia->alumno->Nombre }} {{ $incidencia->alumno->ApPaterno }}
-        {{ $incidencia->alumno->ApMaterno }} </u> DEL <u>{{ $g }}</u>
-    SEMESTRE GRUPO <u>{{ $incidencia->alumno->grupo->Clave_Grupo }}</u>
-    DE LA CARRERA DE <u>{{ $incidencia->alumno->especialidad->Nombre }} </u>, POR ESTE CONDUCTO ME PERMITO CITARLO PARA
+    DEL ALUMNO INSCRITO EN EL GRUPO <u>{{ $incidencia->grupo->Clave_Grupo }} </u> 
+    DE LA CARRERA DE <u>{{ $incidencia->grupo->especialidad->Nombre }} </u>, POR ESTE CONDUCTO ME PERMITO CITARLO PARA
     EL DIA <u> {{ $dc }} {{ $nd }} DE {{ $mc }}</u>
     DEL AÑO EN CURSO A LAS <strong>{{$incidencia->Hora_C}} </strong> HORAS EN LA OFICINA DE ORIENTACION EDUCATIVA, CON EL OBJETIVO DE
     TRATAR ASUNTOS RELACIONADOS CON LA EDUCACIÓN DE SU HIJO.
@@ -59,7 +55,7 @@
                     <FONT SIZE=2>VACANTE<br> ORIENTADOR EDUCATIVO</FONT>
                 @else
                     <FONT SIZE=2>{{ $profesorO->Perfil_A }}. {{ $profesorO->Nombre }} {{ $profesorO->ApPaterno }}
-                        {{ $profesorO->ApMaterno }}<br> ORIENTADOR EDUCATIV</FONT>
+                        {{ $profesorO->ApMaterno }}<br> ORIENTADOR EDUCATIVO</FONT>
                 @endif
             </td>
             <td style="width: 33%; text-align: center;">

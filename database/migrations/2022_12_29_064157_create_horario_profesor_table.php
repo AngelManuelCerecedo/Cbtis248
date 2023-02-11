@@ -15,10 +15,10 @@ class CreateHorarioProfesorTable extends Migration
     {
         Schema::create('horario__profesors', function (Blueprint $table) {
             $table->id();
-            $table->string("Lugar",45);
+            $table->string("Lugar",45)->nullable();
             $table->unsignedBigInteger("dia_id");
             $table->foreign("dia_id")->references("id")->on("dias")->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("hora_id");
+            $table->unsignedBigInteger("hora_id")->nullable();
             $table->foreign("hora_id")->references("id")->on("horas")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("materia_id")->nullable();
             $table->foreign("materia_id")->references("id")->on("materias")->onDelete('cascade')->onUpdate('cascade');

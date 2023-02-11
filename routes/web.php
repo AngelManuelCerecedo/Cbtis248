@@ -72,6 +72,8 @@ Route::get('ActividadesComplementarias',[ActividadController::class,'actividad']
 
 // GRUPOS
 Route::get('Grupos',[GruposController::class,'grupo'])->middleware('can:Ver-Grupos')->name('Grupos');
+Route::get('Grupos/Lista',[GruposController::class,'grupoL'])->name('GruposL');
+Route::get('ListadoIncidenciasG/{id}',[GruposController::class,'lincidencia'])->name('LincidenciasG');
 
 // HORARIOS
 Route::get('Horarios',[HorariosController::class,'horario'])->middleware('can:Horario-Docente')->name('Horarios');
@@ -88,6 +90,7 @@ Route::get('Horarios/Profesor/Oficial/{id}',[HorariosController::class,'horarios
 Route::get('Horarios/Grupos/{id}',[HorariosController::class,'horariosG'])->name('horariosG');
 //Citatorio
 Route::get('Citatorio/{id}',[IncidenciasController::class,'citatorio'])->name('citatorio');
+Route::get('CitatorioG/{id}',[IncidenciasController::class,'citatorioG'])->name('citatorioG');
 
 Route::get('HorariosG',[HorariosController::class,'horarioG'])->middleware('can:Horario-Grupos')->name('HorariosG');
 Route::get('HorariosG/{id}',[HorariosController::class,'horarioVG'])->middleware('can:Ver-Horario-Grupos')->name('HorariosVG');

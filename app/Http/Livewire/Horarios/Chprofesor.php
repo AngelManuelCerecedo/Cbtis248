@@ -44,28 +44,28 @@ class Chprofesor extends Component
         $this->Profesor = User::Where([['id', '=', $this->ide]])->first();
         if ($this->M != '' && $this->D != '') {
             $Horas = Hora::all();
-            $this->v1 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 1],['Lugar', '!=', NULL]])->first();
-            $this->v2 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 2],['Lugar', '!=', NULL]])->first();
-            $this->v3 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 3],['Lugar', '!=', NULL]])->first();
-            $this->v4 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 4],['Lugar', '!=', NULL]])->first();
-            $this->v5 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 5],['Lugar', '!=', NULL]])->first();
-            $this->v6 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 6],['Lugar', '!=', NULL]])->first();
-            $this->v7 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 7],['Lugar', '!=', NULL]])->first();
-            $this->v8 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 8],['Lugar', '!=', NULL]])->first();
-            $this->v9 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 9],['Lugar', '!=', NULL]])->first();
-            $this->v10 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 10],['Lugar', '!=', NULL]])->first();
+            $this->v1 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 1], ['Lugar', '!=', NULL]])->first();
+            $this->v2 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 2], ['Lugar', '!=', NULL]])->first();
+            $this->v3 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 3], ['Lugar', '!=', NULL]])->first();
+            $this->v4 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 4], ['Lugar', '!=', NULL]])->first();
+            $this->v5 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 5], ['Lugar', '!=', NULL]])->first();
+            $this->v6 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 6], ['Lugar', '!=', NULL]])->first();
+            $this->v7 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 7], ['Lugar', '!=', NULL]])->first();
+            $this->v8 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 8], ['Lugar', '!=', NULL]])->first();
+            $this->v9 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 9], ['Lugar', '!=', NULL]])->first();
+            $this->v10 = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', 10], ['Lugar', '!=', NULL]])->first();
             return view('livewire.horarios.chprofesor', ['materias' => $Materias, 'horas' => $Horas, 'dias' => $Dias]);
         }
-        $this->Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $this->ide],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
-        $this->Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $this->ide],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
-        $this->Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['profesor_id', '=', $this->ide],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
-        $this->Qhoras = Horario_Profesor::Where([['hora_id', '=', 4], ['profesor_id', '=', $this->ide],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
-        $this->Choras = Horario_Profesor::Where([['hora_id', '=', 5], ['profesor_id', '=', $this->ide],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
-        $this->SEhoras = Horario_Profesor::Where([['hora_id', '=', 6], ['profesor_id', '=', $this->ide],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
-        $this->SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['profesor_id', '=', $this->ide],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
-        $this->Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['profesor_id', '=', $this->ide],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
-        $this->Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $this->ide],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
-        $this->Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['profesor_id', '=', $this->ide],['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $this->Phoras = Horario_Profesor::Where([['hora_id', '=', 1], ['profesor_id', '=', $this->ide], ['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $this->Shoras = Horario_Profesor::Where([['hora_id', '=', 2], ['profesor_id', '=', $this->ide], ['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $this->Thoras = Horario_Profesor::Where([['hora_id', '=', 3], ['profesor_id', '=', $this->ide], ['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $this->Qhoras = Horario_Profesor::Where([['hora_id', '=', 4], ['profesor_id', '=', $this->ide], ['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $this->Choras = Horario_Profesor::Where([['hora_id', '=', 5], ['profesor_id', '=', $this->ide], ['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $this->SEhoras = Horario_Profesor::Where([['hora_id', '=', 6], ['profesor_id', '=', $this->ide], ['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $this->SIhoras = Horario_Profesor::Where([['hora_id', '=', 7], ['profesor_id', '=', $this->ide], ['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $this->Ohoras = Horario_Profesor::Where([['hora_id', '=', 8], ['profesor_id', '=', $this->ide], ['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $this->Nhoras = Horario_Profesor::Where([['hora_id', '=', 9], ['profesor_id', '=', $this->ide], ['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
+        $this->Dhoras = Horario_Profesor::Where([['hora_id', '=', 10], ['profesor_id', '=', $this->ide], ['Lugar', '!=', NULL]])->orderBy('dia_id', 'asc')->get();
         return view('livewire.horarios.chprofesor', ['materias' => $Materias, 'dias' => $Dias]);
     }
 
@@ -78,13 +78,27 @@ class Chprofesor extends Component
 
     public function verificar()
     {
-        $this->cons = Horario_Profesor::Where([['profesor_id', '=', $this->ide], ['dia_id', '=', $this->D], ['hora_id', '=', $this->H], ['Lugar', '=', NULL]])->first();
-        if ($this->cons != null) {
-            $this->añadir();
+        $th = 0;
+        for ($i = 1; $i <= 10; $i++) {
+            $cum = Horario_Profesor::Where([['dia_id', '=', $this->D], ['profesor_id', '=', $this->ide], ['hora_id', '=', $i], ['Lugar', '!=', NULL]])->first();
+            if($cum != null){
+                $th ++;
+            }
+        }
+        if ($th < 8) {
+            $this->cons = Horario_Profesor::Where([['profesor_id', '=', $this->ide], ['dia_id', '=', $this->D], ['hora_id', '=', $this->H], ['Lugar', '=', NULL]])->first();
+            if ($this->cons != null) {
+                $this->añadir();
+            } else {
+                $this->dispatchBrowserEvent('swal:confirm1', [
+                    'title' => 'La materia esta fuera del horario sugerido <br> ¿Quieres Continuar?',
+                    'type' => 'warning',
+                ]);
+            }
         } else {
-            $this->dispatchBrowserEvent('swal:confirm1', [
-                'title' => 'La materia esta fuera del horario sugerido <br> ¿Quieres Continuar?',
-                'type' => 'warning',
+            $this->dispatchBrowserEvent('swal', [
+                'title' => 'No se pueden agregar <br> mas de 8 hrs.',
+                'type' => 'error'
             ]);
         }
     }
@@ -99,7 +113,7 @@ class Chprofesor extends Component
             $this->Grupo = Materia::Where([['id', '=', $this->M]])->first();
             $hgrupo = Horario_Profesor::Where([['grupo_id', '=', $this->Grupo->grupo_id], ['dia_id', '=', $this->D], ['hora_id', '=', $this->H]])->first();
             $lugar = Horario_Profesor::Where([['Lugar', '=', $this->L], ['dia_id', '=', $this->D], ['hora_id', '=', $this->H]])->first();
-            $hprofesor = Horario_Profesor::Where([['profesor_id', '=', $this->Grupo->profesor_id], ['dia_id', '=', $this->D], ['hora_id', '=', $this->H],['materia_id', '!=', NULL], ['actividad_id', '!=', NULL]])->first();
+            $hprofesor = Horario_Profesor::Where([['profesor_id', '=', $this->Grupo->profesor_id], ['dia_id', '=', $this->D], ['hora_id', '=', $this->H], ['materia_id', '!=', NULL], ['actividad_id', '!=', NULL]])->first();
             if ($hprofesor == null) {
                 if ($hgrupo == null) {
                     if ($lugar == null) {
